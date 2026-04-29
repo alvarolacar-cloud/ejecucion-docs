@@ -424,13 +424,17 @@ Los IDs permiten filtrar, auditar y producir por lotes.
 **Patrón o fórmula**
 
 ```text
-HP / SO / GH / LBS / AC / GA + número correlativo
+HP                    (sin sufijo — solo hay una Homepage)
+GH                    (sin sufijo — solo hay un GeoHub Main City)
+SO-N, LBS-N, AC-N, GA-N    (correlativo simple, N empieza en 1)
 ```
 
 **Ejemplo correcto con Cerrajeros Madrid 24h**
 
 ```text
-LBS-001 identifica /cerrajero/madrid/cerrajero-urgente/ y GA-001 identifica /madrid/cuanto-cuesta-un-cerrajero-urgente/.
+HP identifica `/`. SO-1 identifica /cerrajero/cerrajero-urgente/.
+LBS-1 identifica /cerrajero/madrid/cerrajero-urgente/.
+GA-1 identifica /madrid/cuanto-cuesta-un-cerrajero-urgente/.
 ```
 
 **Ejemplos incorrectos**
@@ -858,14 +862,31 @@ No se debe escribir contenido página por página sin haber cerrado la matriz. L
 
 ## §19 Ejemplo de URL Matrix base
 
+### Patrones URL por tipo de página
+
+Antes del ejemplo, la matriz se construye aplicando estos patrones URL por tipo. Todos derivan de los slugs declarados en §6 (GeoHub URL Style) y §7 (Additional Category Slugs) + heredados de Paso 2 §6 (Slug Generation).
+
+```text
+Homepage             /
+Service Overview     /{primary-cat-slug}/{service-slug}/
+GeoHub Main City     /{main-city-slug}/                                  (si Option A; si Option B → /{primary-cat-slug}/{main-city-slug}/)
+LBS                  /{primary-cat-slug}/{main-city-slug}/{service-slug}/
+Additional Category  /{primary-cat-slug}/{main-city-slug}/{additional-slug}/
+GeoArticle           /{main-city-slug}/{topic-slug}/
+```
+
+> **Regla:** Additional Category Pages siguen el mismo patrón que LBS (`/cat/city/slug/`), NO el patrón GeoArticle (`/city/slug/`). Esto las mantiene como páginas comerciales bajo la categoría principal, con la ciudad como nivel intermedio.
+
+### Ejemplo aplicado a Cerrajeros Madrid 24h
+
 | ID | Page Type | URL | H1 | Schema | Priority | Phase |
 |---|---|---|---|---|---|---|
-| HP-001 | Homepage | `/` | Cerrajeros Madrid 24h – Servicios de cerrajería de confianza en Madrid | Organization, WebSite, LocalBusiness | P1 | Phase 1 |
-| SO-001 | Service Overview | `/cerrajero/cerrajero-urgente/` | Servicios profesionales de cerrajería urgente por Cerrajeros Madrid 24h | Service, WebPage, BreadcrumbList | P1 | Phase 1 |
-| GH-001 | GeoHub | `/madrid/` | Cerrajeros Madrid 24h – Servicios de cerrajería en Madrid | CollectionPage, BreadcrumbList | P1 | Phase 1 |
-| LBS-001 | Location-Based Service | `/cerrajero/madrid/cerrajero-urgente/` | Cerrajeros Madrid 24h – Cerrajero urgente en Madrid | LocalBusiness, BreadcrumbList | P1 | Phase 2 |
-| AC-001 | Additional Category | `/cerrajero/madrid/duplicado-llaves/` | Cerrajeros Madrid 24h – Duplicado de llaves experto en Madrid | Service, BreadcrumbList | P3 | Phase 2 |
-| GA-001 | GeoArticle | `/madrid/cuanto-cuesta-un-cerrajero-urgente/` | Precio de cerrajero urgente en Madrid | Article, FAQPage, BreadcrumbList | P3 | Phase 3 |
+| HP | Homepage | `/` | Cerrajeros Madrid 24h – Servicios de cerrajería de confianza en Madrid | Organization, WebSite, LocalBusiness | P1 | Phase 1 |
+| SO-1 | Service Overview | `/cerrajero/cerrajero-urgente/` | Servicios profesionales de cerrajería urgente por Cerrajeros Madrid 24h | Service, WebPage, BreadcrumbList | P1 | Phase 1 |
+| GH | GeoHub | `/madrid/` | Cerrajeros Madrid 24h – Servicios de cerrajería en Madrid | CollectionPage, BreadcrumbList | P1 | Phase 1 |
+| LBS-1 | Location-Based Service | `/cerrajero/madrid/cerrajero-urgente/` | Cerrajeros Madrid 24h – Cerrajero urgente en Madrid | LocalBusiness, BreadcrumbList | P1 | Phase 2 |
+| AC-1 | Additional Category | `/cerrajero/madrid/duplicado-llaves/` | Cerrajeros Madrid 24h – Duplicado de llaves experto en Madrid | Service, BreadcrumbList | P3 | Phase 2 |
+| GA-1 | GeoArticle | `/madrid/cuanto-cuesta-un-cerrajero-urgente/` | Precio de cerrajero urgente en Madrid | Article, FAQPage, BreadcrumbList | P3 | Phase 3 |
 
 ## §20 Filas que NO se generan en la base
 

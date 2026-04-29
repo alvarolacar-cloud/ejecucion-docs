@@ -25,7 +25,7 @@ Fuentes posibles: `GMB Crush`, `Input humano`, `Decisión de diseño`, `Competid
 
 | ID y referencia canónica | Viene de una decisión anterior | Decisión y ejemplo | Cómo decidimos |
 |---|---|---|---|
-| **3.04** · Paso-03 §19; Paso-05 §7 | no | **Se decide incluir la Homepage en la matriz** = `HP-001` | Lo dicta la doctrina GMB Crush. **Fuente:** GMB Crush. |
+| **3.04** · Paso-03 §19; Paso-05 §7 | no | **Se decide incluir la Homepage en la matriz** = `HP` | Lo dicta la doctrina GMB Crush. **Fuente:** GMB Crush. |
 | **3.05** · Paso-03 §19; Paso-04 §9 | no | **Se decide que la Homepage use la raíz** = `/` | Lo dicta la doctrina GMB Crush. **Fuente:** GMB Crush. |
 | **3.06** · Paso-03 §19; Paso-02 §17 | no | **Se decide incluir página de contacto como auxiliar** = `/contacto/` | Lo dicta la doctrina GMB Crush. **Fuente:** GMB Crush. |
 
