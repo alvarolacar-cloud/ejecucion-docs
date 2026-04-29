@@ -2,17 +2,6 @@
 
 > Documento producido por la IA aplicando los manuales del sistema GMB Crush a partir del input declarado en `00preflight.md`. Aplicadas las convenciones de `00convenciones-ejecucion.md` — los campos no validados llevan marcador `⚠`. Cada fila lleva el `ID` del b-doc correspondiente para cruzar trazabilidad entre pasos.
 
-## Metadata
-
-| Campo | Valor |
-|---|---|
-| Cliente | Aeroterm |
-| Sector | Instalaciones de aerotermia |
-| Sistema | GMB Crush V6.4 |
-| Bloques cubiertos | Bloque 1 — Fundamentos (Pasos 1, 2, 3) |
-| Operador | IA sin acceso a Local Pack ni keyword research en directo |
-| Fecha de ejecución | 2026-04-30 |
-
 ---
 
 # Paso 1 — Intake Form
