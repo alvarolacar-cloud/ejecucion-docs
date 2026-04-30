@@ -36,69 +36,35 @@ Error que previene: escribir páginas sin word count, CTA, FAQs o estructura AUD
 
 ## §3 Lo que la IA tiene que rellenar/obtener
 
+### Inputs heredados de pasos anteriores
+
+> Estos campos NO se rellenan en Paso 5 — la IA los lee del paso indicado.
+
+| Campo | Origen |
+|---|---|
+| Business Name | Paso 1 §5 |
+| Website Root Domain | Paso 1 §6 |
+| GBP URL (si aplica) | Paso 1 §7 |
+| Full NAP (Name, Address, Phone, Email) | Paso 1 §8 |
+| Planned Primary GBP Category | Paso 1 §9 |
+| Planned Additional GBP Categories que necesitan página | Paso 1 §10 |
+| Main City | Paso 1 §11 |
+| Physical Location City | Paso 1 §12 |
+| Servicios principales (5 core services) | Paso 1 §13 |
+| Local Coverage Areas (Direct + Candidate) | Paso 1 §14 |
+| Approved Expansion Areas | Paso 1 §15 |
+| Preferred CTA | Paso 1 §17 |
+| Trust Signals | Paso 1 §18 |
+| Primary Category Slug, Main City Slug, Service Slugs | Paso 2 §6 |
+| Additional Category Slugs | Paso 3 §7 |
+
+### Campos nuevos en Paso 5
+
 ```text
-Business Name:
-
-Website Root Domain:
-
-Planned Primary GBP Category:
-
-Primary Category Slug:
-
-Main City:
-
-Main City Slug:
-
 Primary Service:
-
-Servicios principales:
-1.
-2.
-3.
-4.
-5.
-
-Planned Additional GBP Categories that need pages:
-1.
-2.
-3.
-
-Local Coverage Areas:
-1.
-2.
-3.
-4.
-5.
-
-Approved Expansion Areas:
-Default: None.
-
-Phone:
-
-Email:
-
-GBP URL:
-
-NAP:
-- Name:
-- Address:
-- Phone:
-
-Physical Location City:
-
-Trust Signals:
-- Years in business:
-- Reviews:
-- Certifications:
-- Awards:
-- Guarantees:
-- Urgencias / servicio en el mismo día / servicio móvil:
-
-Preferred CTA:
-Option A: Llamar ahora
-Option B: Reservar online
-Option C: Solicitar presupuesto
-Option D: Contactar
+(Servicio principal único usado en H1 y Meta Title de la Homepage —
+normalmente el más demandado / con más volumen de búsqueda del top 5
+heredado del Paso 1 §13)
 
 Brand tone:
 Option A: Professional
