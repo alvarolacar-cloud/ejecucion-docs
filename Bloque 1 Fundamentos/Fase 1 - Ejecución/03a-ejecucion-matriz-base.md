@@ -57,18 +57,18 @@ Convertir el inventario calculado en Paso 2 en una **URL Matrix operativa** — 
 
 | Campo | Origen |
 |---|---|
-| Website Root Domain | Paso 1 §6.2 |
-| Canonical Domain | Paso 1 §6.2 |
-| Planned Primary GBP Category | Paso 1 §6.6 |
-| Primary Category Slug | Paso 2 §6.2 |
-| Main City | Paso 1 §6.8 |
-| Main City Slug | Paso 2 §6.3 |
-| Servicios principales (5 core services) | Paso 1 §6.10 |
-| Service Slugs (S=5) | Paso 2 §6.5 |
-| Additional Categories que necesitan página | Paso 1 §6.7 |
-| Local Coverage Areas | Paso 1 §6.11 |
-| Approved Expansion Areas | Paso 1 §6.12 |
-| GeoArticles per Service (G) | Paso 1 §6.13 |
+| Website Root Domain | Paso-01 1.2 |
+| Canonical Domain | Paso-01 1.2 |
+| Planned Primary GBP Category | Paso-01 1.6 |
+| Primary Category Slug | Paso-02 2.2 |
+| Main City | Paso-01 1.8 |
+| Main City Slug | Paso-02 2.3 |
+| Servicios principales (5 core services) | Paso-01 1.10 |
+| Service Slugs (S=5) | Paso-02 2.5 |
+| Additional Categories que necesitan página | Paso-01 1.7 |
+| Local Coverage Areas | Paso-01 1.11 |
+| Approved Expansion Areas | Paso-01 1.12 |
+| GeoArticles per Service (G) | Paso-01 1.13 |
 
 > Los outputs nuevos que se producen en Paso 3 (Spreadsheet Name, GeoHub URL Style, Additional Category Slugs, GeoArticle Topics) tienen sus propias secciones en Bloque III — §6.1, §6.2, §6.3 y §6.4. Default Page Status y Default Priority son outputs de §6.11 y §6.10 respectivamente.
 
@@ -247,7 +247,7 @@ Ciclo de vida: `Planned → Draft → Ready for QA → Approved → Published`.
 |---|---|---|---|
 | 3.1 | Spreadsheet Name | String | Decisión de diseño |
 | 3.2 | GeoHub URL Style | Enum (Option A / Option B) | Decisión de diseño |
-| 3.3 | Additional Category Slugs | Lista de slugs URL-safe | GMB Crush ← Paso 1 §6.7 |
+| 3.3 | Additional Category Slugs | Lista de slugs URL-safe | GMB Crush ← Paso-01 1.7 |
 | 3.4 | GeoArticle Topics propuestos | Lista de G × S topics validados | GMB Crush + Datos de búsqueda |
 | 3.5 | URL Matrix completa | Tabla N filas × 20 columnas | GMB Crush |
 | 3.6 | IDs por tipo de página | Strings únicos por fila | GMB Crush |
@@ -260,11 +260,11 @@ Ciclo de vida: `Planned → Draft → Ready for QA → Approved → Published`.
 | 3.13 | Validación LCAs sin filas base | Validation flag | GMB Crush |
 | 3.14 | Validación matriz cerrada antes de contenido | Validation flag | GMB Crush |
 
-## Reglas que Aplican
+## Obtención de Outputs
 
 <small>§6</small>
 
-> Esta sección desarrolla cada uno de los 14 outputs (3.1–3.14) con el mismo patrón: Explicación / Patrón o fórmula / Ejemplos correctos / Ejemplos incorrectos / Regla final / Validación operativa / Cómo se obtiene / Output del paso. Cada sub-sección §6.X corresponde 1:1 al output 3.X declarado en §5.
+> Esta sección es donde la IA produce cada uno de los 14 outputs (3.1–3.14) con el mismo patrón: Explicación / Patrón o fórmula / Ejemplos correctos / Ejemplos incorrectos / Regla final / Validación operativa / Cómo se obtiene / Output del paso. Cada sub-sección §6.X corresponde 1:1 al output 3.X declarado en §5.
 
 ### 3.1 — Spreadsheet Name
 
@@ -308,7 +308,7 @@ El spreadsheet name se reutiliza en filenames de exports (`Cerrajeros Madrid 24h
 **Cómo se obtiene**
 
 - **Fuente:** Decisión de diseño.
-- **Método:** Aplicar la fórmula `[Business Name] – GMB Crush Website Architecture` usando el Business Name del Paso 1 §6.1.
+- **Método:** Aplicar la fórmula `[Business Name] – GMB Crush Website Architecture` usando el Business Name del Paso-01 1.1.
 
 **Output del paso**
 
@@ -352,7 +352,7 @@ Una sola GeoHub URL Style consistente en todo el cluster, decidida antes de gene
 
 **Validación operativa**
 
-La decisión es contractual con el Paso 4 §9 (Main City GeoHub URL Style). Por defecto se usa Option A (URL más corta y memorable). Option B se elige solo si el cliente quiere consolidar todo el cluster bajo `/category/`. Una vez elegida, aplica idéntica a todas las URLs tipo GeoHub.
+La decisión es contractual con el Paso-04 4.5 (Main City GeoHub URL Style). Por defecto se usa Option A (URL más corta y memorable). Option B se elige solo si el cliente quiere consolidar todo el cluster bajo `/category/`. Una vez elegida, aplica idéntica a todas las URLs tipo GeoHub.
 
 **Cómo se obtiene**
 
@@ -370,7 +370,7 @@ La decisión es contractual con el Paso 4 §9 (Main City GeoHub URL Style). Por 
 
 **Explicación**
 
-Las Additional Categories que necesitan página propia (Paso 1 §6.7) necesitan slugs URL-safe específicos. La transformación es la misma que la del Paso 2 §6.2 Slug Generation, pero aplicada al subconjunto de Additional Categories no cubiertas por core services.
+Las Additional Categories que necesitan página propia (Paso-01 1.7) necesitan slugs URL-safe específicos. La transformación es la misma que la del Paso-02 2.2 Slug Generation, pero aplicada al subconjunto de Additional Categories no cubiertas por core services.
 
 **Patrón o fórmula**
 
@@ -401,12 +401,12 @@ Cada Additional Category con página propia tiene un slug derivado limpio y úni
 
 **Validación operativa**
 
-Aplicar slugify a cada Additional Category que necesita página propia (heredada del Paso 1 §6.7, validada en Paso 2 §6.8 Variable A). Validar que los slugs no colisionen con Service Slugs ni Primary Category Slug. Solo se generan slugs para Additional Categories efectivas (A); las cubiertas por core services no necesitan slug propio.
+Aplicar slugify a cada Additional Category que necesita página propia (heredada del Paso-01 1.7, validada en Paso-02 2.8 Variable A). Validar que los slugs no colisionen con Service Slugs ni Primary Category Slug. Solo se generan slugs para Additional Categories efectivas (A); las cubiertas por core services no necesitan slug propio.
 
 **Cómo se obtiene**
 
-- **Fuente:** GMB Crush ← heredados del Paso 1 §6.7.
-- **Método:** Aplicar la transformación slugify (ver Paso 2 §6.2) a cada Additional Category que necesita página propia. Validar que los slugs no colisionen con Service Slugs ni Primary Category Slug.
+- **Fuente:** GMB Crush ← heredados del Paso-01 1.7.
+- **Método:** Aplicar la transformación slugify (ver Paso-02 2.2) a cada Additional Category que necesita página propia. Validar que los slugs no colisionen con Service Slugs ni Primary Category Slug.
 
 **Output del paso**
 
@@ -472,23 +472,23 @@ Los topics de GeoArticle se descubren con keyword research por servicio core. Ca
 
 **Validación operativa**
 
-Los topics son input directo para el output 3.5 (URL Matrix completa) — cada topic genera una fila GA-N con URL `/{main-city-slug}/{topic-slug}/`. Sin keyword research validado, las URLs GA del cluster nacen débiles y la inversión en contenido se desperdicia. Cruce con Paso 1 §6.12 (G variable), Paso 2 §6.8 (Variable G) y Paso 4 §6.8 (GeoArticle URL pattern). Si el cliente no tiene presupuesto/herramientas de keyword research, documentar como ⚠ inferido y validar antes de Paso 15 (Redacción).
+Los topics son input directo para el output 3.5 (URL Matrix completa) — cada topic genera una fila GA-N con URL `/{main-city-slug}/{topic-slug}/`. Sin keyword research validado, las URLs GA del cluster nacen débiles y la inversión en contenido se desperdicia. Cruce con Paso-01 1.12 (G variable), Paso-02 2.8 (Variable G) y Paso-04 4.8 (GeoArticle URL pattern). Si el cliente no tiene presupuesto/herramientas de keyword research, documentar como ⚠ inferido y validar antes de Paso 15 (Redacción).
 
 **Cómo se obtiene**
 
 - **Fuente:** GMB Crush + Datos de búsqueda.
 - **Método (6 pasos):**
-  1. **Ejecutar keyword research** por cada core service (Paso 1 §6.9, S=5 servicios) con volumen ≥ X impresiones/mes y dificultad ≤ Y (umbrales del cliente / sector).
+  1. **Ejecutar keyword research** por cada core service (Paso-01 1.9, S=5 servicios) con volumen ≥ X impresiones/mes y dificultad ≤ Y (umbrales del cliente / sector).
   2. **Filtrar queries con intent informativo:** cómo, qué, cuándo, por qué, cuánto, dónde, cuál, mejor.
   3. **Excluir queries con intent transaccional** o que coincidan con la query de la LBS (anti-canibalización Paso-04 §19).
-  4. **Seleccionar G topics por servicio** (G=3 por defecto, Paso 1 §6.12):
+  4. **Seleccionar G topics por servicio** (G=3 por defecto, Paso-01 1.12):
      - Priorizar volumen alto + dificultad baja.
      - Asegurar complementariedad: cada topic responde una intención distinta dentro del mismo servicio.
   5. **Generar el slug del topic:**
      - Base = la query como apareció en keyword research.
      - Normalizar siguiendo Paso-04 §17 + Paso-04 §18 + Paso-04 §19 (lowercase, sin acentos, guiones medios, sin adjetivos SEO vacíos).
   6. **Construir la URL del GeoArticle:**
-     - Patrón: `/{main-city-slug}/{topic-slug}/` (Paso 4 §6.8).
+     - Patrón: `/{main-city-slug}/{topic-slug}/` (Paso-04 4.8).
 
 **Output del paso**
 
@@ -508,7 +508,7 @@ La URL Matrix completa es el output central del Paso 3. Convierte arquitectura e
 ```text
 One URL = one row = one page type = one function
 
-Total filas = Total inventario base (Paso 2 §6.11) + 1 auxiliar (/contacto/)
+Total filas = Total inventario base (Paso-02 2.11) + 1 auxiliar (/contacto/)
             = (1 + S + 1 + S + A + G×S) + 1
 ```
 
@@ -552,7 +552,7 @@ La matriz base no es una lista de ideas; es una tabla de producción. Cada fila 
 **Cómo se obtiene**
 
 - **Fuente:** GMB Crush.
-- **Método:** Para cada URL del cluster (heredada de Paso 2 §6.11 Tabla de inventario base), crear una fila con todos los campos obligatorios (§6.5.1 Columnas obligatorias listadas más abajo). Una URL = una fila exacta. Las URLs no aprobadas (LCAs sin AEA) NO se incluyen.
+- **Método:** Para cada URL del cluster (heredada de Paso-02 2.11 Tabla de inventario base), crear una fila con todos los campos obligatorios (§6.5.1 Columnas obligatorias listadas más abajo). Una URL = una fila exacta. Las URLs no aprobadas (LCAs sin AEA) NO se incluyen.
 
 **Output del paso**
 
@@ -649,7 +649,7 @@ Cada fila necesita un ID legible para controlar producción, QA y enlaces. El ID
 **Cómo se obtiene**
 
 - **Fuente:** GMB Crush.
-- **Método:** Asignar ID por tipo según la nomenclatura GMB Crush: `HP`, `SO-N`, `GH`, `LBS-N`, `AC-N`, `GA-N`. El número N es secuencial dentro del tipo, ordenado por importancia o por orden de aparición del servicio en Paso 1 §6.10.
+- **Método:** Asignar ID por tipo según la nomenclatura GMB Crush: `HP`, `SO-N`, `GH`, `LBS-N`, `AC-N`, `GA-N`. El número N es secuencial dentro del tipo, ordenado por importancia o por orden de aparición del servicio en Paso-01 1.10.
 
 **Output del paso**
 
@@ -959,7 +959,7 @@ Status refleja el estado real de cada fila a lo largo del ciclo de vida de la p�
 
 **Validación operativa**
 
-Cada URL necesita un estado para controlar el flujo de producción. Planned, Draft, Ready for QA, Approved y Published son estados suficientes para saber qué hacer con cada fila. El cierre de la matriz (Paso 3 §6.14) deja todas las filas en Planned; los pasos posteriores actualizan según avance: Paso 15 Redacción → Draft, Paso 16 QA → Ready for QA, Paso 18 Deploy → Published.
+Cada URL necesita un estado para controlar el flujo de producción. Planned, Draft, Ready for QA, Approved y Published son estados suficientes para saber qué hacer con cada fila. El cierre de la matriz (Paso-03 3.14) deja todas las filas en Planned; los pasos posteriores actualizan según avance: Paso 15 Redacción → Draft, Paso 16 QA → Ready for QA, Paso 18 Deploy → Published.
 
 **Cómo se obtiene**
 
@@ -1030,7 +1030,7 @@ La columna Notes debe registrar por qué una página existe, qué categoría sop
 
 **Explicación**
 
-Las Local Coverage Areas (Paso 1 §6.11) son zonas seleccionadas como señales GEO. NO generan filas en la matriz base mientras no sean Approved Expansion Areas (Paso 1 §6.12). Esta validación garantiza que la matriz no se infla con URLs no aprobadas.
+Las Local Coverage Areas (Paso-01 1.11) son zonas seleccionadas como señales GEO. NO generan filas en la matriz base mientras no sean Approved Expansion Areas (Paso-01 1.12). Esta validación garantiza que la matriz no se infla con URLs no aprobadas.
 
 **Patrón o fórmula**
 
@@ -1044,7 +1044,7 @@ Para cada LCA: 0 filas adicionales en la matriz base.
 **Ejemplo correcto con Cerrajeros Madrid 24h**
 
 ```text
-LCAs declaradas (Paso 1 §6.11):
+LCAs declaradas (Paso-01 1.11):
   Direct: Almagro, Chamberí
   Candidate: Salamanca, Retiro, Centro, Tetuán, Chamartín, Arganzuela, Moncloa, Prosperidad
 
@@ -1075,12 +1075,12 @@ Las Local Coverage Areas no generan filas en la matriz base; refuerzan contenido
 
 **Validación operativa**
 
-En la matriz base, el campo Main City (columna F) debe corresponder a la Main City del Paso 1 §6.8. Las Local Coverage Areas (columna I) listan las zonas mencionadas en contenido pero NO en path. Esta validación cruza con Paso 4 §13 (LCAs no generan URLs) y Paso 6 §6 (Principio 2 — LCAs enriquecen contenido). Para que una LCA pase a fila, debe pasar antes a AEA en Paso 1 §6.12.
+En la matriz base, el campo Main City (columna F) debe corresponder a la Main City del Paso-01 1.8. Las Local Coverage Areas (columna I) listan las zonas mencionadas en contenido pero NO en path. Esta validación cruza con Paso-04 4.9 (LCAs no generan URLs) y Paso 6 §6 (Principio 2 — LCAs enriquecen contenido). Para que una LCA pase a fila, debe pasar antes a AEA en Paso-01 1.12.
 
 **Cómo se obtiene**
 
-- **Fuente:** GMB Crush ← heredado del Paso 1 §6.11 Local Coverage Areas.
-- **Método:** No crear filas en la matriz base para LCAs. La columna geográfica (Main City) usa la Main City (Paso 1 §6.8). Las LCAs aparecen en columna Local Coverage Areas (texto) y schema `areaServed` (Paso 8), no como URLs.
+- **Fuente:** GMB Crush ← heredado del Paso-01 1.11 Local Coverage Areas.
+- **Método:** No crear filas en la matriz base para LCAs. La columna geográfica (Main City) usa la Main City (Paso-01 1.8). Las LCAs aparecen en columna Local Coverage Areas (texto) y schema `areaServed` (Paso 8), no como URLs.
 
 **Output del paso**
 

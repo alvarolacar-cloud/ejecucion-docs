@@ -31,11 +31,11 @@ Fijar las **reglas operativas de URL** que rigen toda la arquitectura del cluste
 - **4.7** Additional Category URL pattern — `/{primary-cat-slug}/{main-city-slug}/{additional-slug}/` para AC Pages efectivas
 - **4.8** GeoArticle URL pattern — Option A `/{main-city-slug}/{topic-slug}/` (default) u Option B con primary category prefijo
 - **4.9** LCAs no generan URLs — regla de doctrina: LCAs viven en contenido y schema `areaServed`, no en path
-- **4.10** Approved Expansion URLs — patrones aplicables solo si hay AEAs aprobadas (Paso 1 §6.11); por defecto E=0
+- **4.10** Approved Expansion URLs — patrones aplicables solo si hay AEAs aprobadas (Paso-01 1.11); por defecto E=0
 - **4.11** No "near me" en URLs — validación que rechaza patrones `near-me`, `cerca-de-mi`, equivalentes en slugs
 - **4.12** No adjetivos vacíos en URLs — validación que rechaza `best`, `cheap`, `top-rated`, `mejor`, `barato`
 - **4.13** Slugs limpios — transformación slugify estándar: lowercase + sin diacríticos + dashes + sin símbolos
-- **4.14** No falsa ubicación — validación cruzada con NAP (Paso 1 §6.4) y AEA (Paso 1 §6.11) para rechazar URLs que sugieren oficina física inexistente
+- **4.14** No falsa ubicación — validación cruzada con NAP (Paso-01 1.4) y AEA (Paso-01 1.11) para rechazar URLs que sugieren oficina física inexistente
 - **4.15** No duplicar intención — validación de pares de URLs en el cluster; consolida duplicados con 301
 
 **Errores que previene:**
@@ -58,19 +58,19 @@ Fijar las **reglas operativas de URL** que rigen toda la arquitectura del cluste
 
 | # | Input heredado | Origen | Uso en el Paso 4 |
 |---|---|---|---|
-| 1 | Website URL (root domain) | Paso 1 §6.2 | Define la URL canónica base (4.1) |
-| 2 | Brand Name | Paso 1 §6.1 | Confirma identidad para validaciones cruzadas |
-| 3 | NAP — Physical Location City | Paso 1 §6.8 | Valida el segmento Main City (4.14 No falsa ubicación) |
-| 4 | Core Services list (S core services) | Paso 1 §6.9 | Genera las S URLs Service Overview (4.4) y S URLs LBS (4.6) |
-| 5 | Local Coverage Areas (Direct + Candidate) | Paso 1 §6.10 | Confirma que NO generan URLs por defecto (4.9) |
-| 6 | Approved Expansion Areas (E count) | Paso 1 §6.11 | Determina si se aplican patrones de expansión (4.10); E=0 → 0 URLs adicionales |
-| 7 | Slug Generation rule | Paso 2 §6.2 | Aplica slugify estándar a cada slug del cluster (4.13) |
-| 8 | Primary Category Slug | Paso 2 §6.2 | Segmento `[primary-cat-slug]` en patrones 4.4, 4.6, 4.7, 4.8 (Option B), 4.10 |
-| 9 | Main City Slug | Paso 2 §6.3 | Segmento `[main-city-slug]` en patrones 4.5, 4.6, 4.7, 4.8, 4.10 |
-| 10 | Service slugs (S=5 slugs aprobados) | Paso 2 §6.4 | Segmento `[service-slug]` en 4.4, 4.6, 4.10 |
-| 11 | Additional Category slugs (A slugs efectivos) | Paso 3 §6.3 | Segmento `[additional-slug]` en 4.7 |
-| 12 | GeoArticle topics validados | Paso 3 §9 (módulo doctrinal) | Segmento `[topic-slug]` en 4.8 (15 GeoArticles = G × S) |
-| 13 | GeoHub URL Style (Option A / B) | Paso 3 §6.2 | Aplica directamente en 4.5 (decisión heredada, no se re-toma aquí) |
+| 1 | Website URL (root domain) | Paso-01 1.2 | Define la URL canónica base (4.1) |
+| 2 | Brand Name | Paso-01 1.1 | Confirma identidad para validaciones cruzadas |
+| 3 | NAP — Physical Location City | Paso-01 1.8 | Valida el segmento Main City (4.14 No falsa ubicación) |
+| 4 | Core Services list (S core services) | Paso-01 1.9 | Genera las S URLs Service Overview (4.4) y S URLs LBS (4.6) |
+| 5 | Local Coverage Areas (Direct + Candidate) | Paso-01 1.10 | Confirma que NO generan URLs por defecto (4.9) |
+| 6 | Approved Expansion Areas (E count) | Paso-01 1.11 | Determina si se aplican patrones de expansión (4.10); E=0 → 0 URLs adicionales |
+| 7 | Slug Generation rule | Paso-02 2.2 | Aplica slugify estándar a cada slug del cluster (4.13) |
+| 8 | Primary Category Slug | Paso-02 2.2 | Segmento `[primary-cat-slug]` en patrones 4.4, 4.6, 4.7, 4.8 (Option B), 4.10 |
+| 9 | Main City Slug | Paso-02 2.3 | Segmento `[main-city-slug]` en patrones 4.5, 4.6, 4.7, 4.8, 4.10 |
+| 10 | Service slugs (S=5 slugs aprobados) | Paso-02 2.4 | Segmento `[service-slug]` en 4.4, 4.6, 4.10 |
+| 11 | Additional Category slugs (A slugs efectivos) | Paso-03 3.3 | Segmento `[additional-slug]` en 4.7 |
+| 12 | GeoArticle topics validados | Paso-03 3.13 (módulo doctrinal) | Segmento `[topic-slug]` en 4.8 (15 GeoArticles = G × S) |
+| 13 | GeoHub URL Style (Option A / B) | Paso-03 3.2 | Aplica directamente en 4.5 (decisión heredada, no se re-toma aquí) |
 
 # Bloque II — Ejemplo rellenado para el Paso 4 — URL Rules
 
@@ -182,7 +182,7 @@ Resultado: solo `/madrid/` aparece como segmento de city en URLs (NAP = Madrid).
 
 ### 4.15 — Validación No duplicar intención
 
-Resultado: 0 pares de URLs con duplicación de intención local + servicio detectados. Servicio de cerrajería de urgencia consolidada con core service Cerrajero urgente (ver Paso 1 §6.6 + Paso 2 §6.12). Validación: OK.
+Resultado: 0 pares de URLs con duplicación de intención local + servicio detectados. Servicio de cerrajería de urgencia consolidada con core service Cerrajero urgente (ver Paso-01 1.6 + Paso-02 2.12). Validación: OK.
 
 # Bloque III — Ejecución por la IA
 
@@ -194,27 +194,27 @@ Resultado: 0 pares de URLs con duplicación de intención local + servicio detec
 
 | ID | Output | Tipo | Origen |
 |---|---|---|---|
-| 4.1 | Canonical Domain | URL canónica única | GMB Crush ← Paso 1 §6.2 |
+| 4.1 | Canonical Domain | URL canónica única | GMB Crush ← Paso-01 1.2 |
 | 4.2 | Trailing Slash | Boolean (Yes/No) global | Decisión de diseño |
 | 4.3 | Homepage URL | Path constante (`/`) | GMB Crush |
 | 4.4 | Service Overview URL pattern | Patrón string | GMB Crush |
-| 4.5 | Main City GeoHub URL Style | Patrón string (Option A/B) | GMB Crush ← Paso 3 §6.2 |
+| 4.5 | Main City GeoHub URL Style | Patrón string (Option A/B) | GMB Crush ← Paso-03 3.2 |
 | 4.6 | Location-Based Service URL pattern | Patrón string | GMB Crush |
 | 4.7 | Additional Category URL pattern | Patrón string | GMB Crush |
 | 4.8 | GeoArticle URL pattern | Patrón string (Option A/B) | GMB Crush |
-| 4.9 | LCAs no generan URLs | Regla de doctrina | GMB Crush ← Paso 1 §6.10 |
-| 4.10 | Approved Expansion URLs | Lista de URLs (puede estar vacía) | Decisión de diseño ← Paso 1 §6.11 |
+| 4.9 | LCAs no generan URLs | Regla de doctrina | GMB Crush ← Paso-01 1.10 |
+| 4.10 | Approved Expansion URLs | Lista de URLs (puede estar vacía) | Decisión de diseño ← Paso-01 1.11 |
 | 4.11 | Validación No "near me" en URLs | Validation flag | GMB Crush |
 | 4.12 | Validación No adjetivos vacíos en URLs | Validation flag | GMB Crush |
-| 4.13 | Validación Slugs limpios | Validation flag | GMB Crush ← Paso 2 §6.2 |
-| 4.14 | Validación No falsa ubicación | Validation flag | GMB Crush ← Paso 1 §6.8 + §6.11 |
+| 4.13 | Validación Slugs limpios | Validation flag | GMB Crush ← Paso-02 2.2 |
+| 4.14 | Validación No falsa ubicación | Validation flag | GMB Crush ← Paso-01 1.8 + §6.11 |
 | 4.15 | Validación No duplicar intención | Validation flag | GMB Crush |
 
-## Reglas que Aplican
+## Obtención de Outputs
 
 <small>§6</small>
 
-> Esta sección desarrolla cada uno de los 15 outputs (4.1–4.15) con el mismo patrón: Explicación / Patrón o fórmula / Ejemplos correctos / Ejemplos incorrectos / Regla final / Validación operativa / Cómo se obtiene / Output del paso. Cada sub-sección §6.X corresponde 1:1 al output 4.X declarado en §5.
+> Esta sección es donde la IA produce cada uno de los 15 outputs (4.1–4.15) con el mismo patrón: Explicación / Patrón o fórmula / Ejemplos correctos / Ejemplos incorrectos / Regla final / Validación operativa / Cómo se obtiene / Output del paso. Cada sub-sección §6.X corresponde 1:1 al output 4.X declarado en §5.
 
 ### 4.1 — Canonical Domain
 
@@ -255,12 +255,12 @@ Una sola versión canónica del dominio en toda la web; el resto redirige 301.
 
 **Validación operativa**
 
-Todas las URLs deben salir de una única versión canónica del dominio. Mezclar www, non-www, HTTP y HTTPS crea duplicados técnicos y dificulta la consistencia del schema y la matriz. La decisión se hereda del Paso 1 §6.2 (Website URL).
+Todas las URLs deben salir de una única versión canónica del dominio. Mezclar www, non-www, HTTP y HTTPS crea duplicados técnicos y dificulta la consistencia del schema y la matriz. La decisión se hereda del Paso-01 1.2 (Website URL).
 
 **Cómo se obtiene**
 
-- **Fuente:** GMB Crush ← heredado del Paso 1 §6.2 Website URL.
-- **Método:** Tomar el dominio canónico declarado en el intake del Paso 1 §6.2. Aplicar como única versión válida en todo el cluster. El resto de variantes (con/sin www, http vs https, mayúsculas) redirigen 301 a la canónica.
+- **Fuente:** GMB Crush ← heredado del Paso-01 1.2 Website URL.
+- **Método:** Tomar el dominio canónico declarado en el intake del Paso-01 1.2. Aplicar como única versión válida en todo el cluster. El resto de variantes (con/sin www, http vs https, mayúsculas) redirigen 301 a la canónica.
 
 **Output del paso**
 
@@ -359,7 +359,7 @@ La Homepage vive en `/` — sin prefijo, sin sufijo.
 
 **Validación operativa**
 
-La homepage debe ser la raíz del dominio. No debe moverse a /home/, /inicio/ o /cerrajero-madrid/ porque actúa como Root Entity Anchor del negocio. Es la primera URL que el Paso 3 §6.4 (URL Matrix) registra y la que el Paso 7 (Internal Linking) usa como hub principal.
+La homepage debe ser la raíz del dominio. No debe moverse a /home/, /inicio/ o /cerrajero-madrid/ porque actúa como Root Entity Anchor del negocio. Es la primera URL que el Paso-03 3.4 (URL Matrix) registra y la que el Paso 7 (Internal Linking) usa como hub principal.
 
 **Cómo se obtiene**
 
@@ -410,12 +410,12 @@ Service Overview Pages siguen `/{primary-cat-slug}/{service-slug}/` sin ciudad.
 
 **Validación operativa**
 
-Las páginas de servicio general no deben incluir ciudad en la URL. Su función es construir autoridad temática y servir como padre de la página local. La validación cruza con Paso 7 §6.3 (Regla 3 — SO empuja la versión local) que requiere que cada SO enlace a su LBS correspondiente.
+Las páginas de servicio general no deben incluir ciudad en la URL. Su función es construir autoridad temática y servir como padre de la página local. La validación cruza con Paso-07 7.3 (Regla 3 — SO empuja la versión local) que requiere que cada SO enlace a su LBS correspondiente.
 
 **Cómo se obtiene**
 
 - **Fuente:** GMB Crush.
-- **Método:** Aplicar `/{primary-cat-slug}/{service-slug}/` para cada core service heredado del Paso 1 §6.9 (S=5). Los slugs se obtienen del Paso 2 §6.4 Service Slugs. Genera S Service Overview Pages.
+- **Método:** Aplicar `/{primary-cat-slug}/{service-slug}/` para cada core service heredado del Paso-01 1.9 (S=5). Los slugs se obtienen del Paso-02 2.4 Service Slugs. Genera S Service Overview Pages.
 
 **Output del paso**
 
@@ -428,7 +428,7 @@ Las páginas de servicio general no deben incluir ciudad en la URL. Su función 
 
 **Explicación**
 
-El GeoHub de la Main City agrupa todo lo relacionado con la ciudad principal. Puede usar Option A (`/{main-city-slug}/`) u Option B (`/{primary-cat-slug}/{main-city-slug}/`). La decisión se hereda del Paso 3 §6.2 GeoHub URL Style.
+El GeoHub de la Main City agrupa todo lo relacionado con la ciudad principal. Puede usar Option A (`/{main-city-slug}/`) u Option B (`/{primary-cat-slug}/{main-city-slug}/`). La decisión se hereda del Paso-03 3.2 GeoHub URL Style.
 
 **Patrón o fórmula**
 
@@ -466,8 +466,8 @@ El GeoHub de la Main City debe ser corto, estable y fácil de enlazar. Puede usa
 
 **Cómo se obtiene**
 
-- **Fuente:** GMB Crush ← heredado del Paso 3 §6.2 GeoHub URL Style.
-- **Método:** Aplicar la decisión Option A (`/{main-city-slug}/`) o Option B (`/{primary-cat-slug}/{main-city-slug}/`) tomada en el Paso 3 §6.2. Default: Option A (más limpio).
+- **Fuente:** GMB Crush ← heredado del Paso-03 3.2 GeoHub URL Style.
+- **Método:** Aplicar la decisión Option A (`/{main-city-slug}/`) o Option B (`/{primary-cat-slug}/{main-city-slug}/`) tomada en el Paso-03 3.2. Default: Option A (más limpio).
 
 **Output del paso**
 
@@ -512,7 +512,7 @@ LBS sigue `/{primary-cat-slug}/{main-city-slug}/{service-slug}/` — patrón fij
 
 **Validación operativa**
 
-Las páginas comerciales locales deben seguir el patrón categoría + ciudad + servicio. Esto mantiene claro el silo y evita mezclar intención de servicio con artículo o hub. Cada LBS depende de su SO padre (Paso 7 §6.5 Regla 5 — LBS conecta servicio y ciudad).
+Las páginas comerciales locales deben seguir el patrón categoría + ciudad + servicio. Esto mantiene claro el silo y evita mezclar intención de servicio con artículo o hub. Cada LBS depende de su SO padre (Paso-07 7.5 Regla 5 — LBS conecta servicio y ciudad).
 
 **Cómo se obtiene**
 
@@ -562,12 +562,12 @@ Additional Category Page sigue `/{primary-cat-slug}/{main-city-slug}/{additional
 
 **Validación operativa**
 
-Las categorías adicionales efectivas usan el mismo patrón que una página servicio+ciudad, porque su función es dar soporte local a una categoría GBP secundaria. La consolidación con core services se valida en Paso 2 §6.12 (Anti-duplicación).
+Las categorías adicionales efectivas usan el mismo patrón que una página servicio+ciudad, porque su función es dar soporte local a una categoría GBP secundaria. La consolidación con core services se valida en Paso-02 2.12 (Anti-duplicación).
 
 **Cómo se obtiene**
 
 - **Fuente:** GMB Crush.
-- **Método:** Aplicar `/{primary-cat-slug}/{main-city-slug}/{additional-slug}/` para cada Additional Category que necesita página propia (Paso 1 §6.6, A categorías efectivas). Slugs heredados del Paso 3 §6.3.
+- **Método:** Aplicar `/{primary-cat-slug}/{main-city-slug}/{additional-slug}/` para cada Additional Category que necesita página propia (Paso-01 1.6, A categorías efectivas). Slugs heredados del Paso-03 3.3.
 
 **Output del paso**
 
@@ -614,12 +614,12 @@ GeoArticle sigue `/{main-city-slug}/{topic-slug}/` (Option A); Option B solo baj
 
 **Validación operativa**
 
-Los GeoArticles son contenido de soporte, no landings comerciales. Su URL debe reflejar un tema long-tail asociado a la Main City, sin competir con la LBS. Cada GA tiene como Parent Page la LBS correspondiente (Paso 3 §6.6) y enlaza a ella (Paso 7 §6.7 Regla 7 — GeoArticle pasa relevancia a la landing).
+Los GeoArticles son contenido de soporte, no landings comerciales. Su URL debe reflejar un tema long-tail asociado a la Main City, sin competir con la LBS. Cada GA tiene como Parent Page la LBS correspondiente (Paso-03 3.6) y enlaza a ella (Paso-07 7.7 Regla 7 — GeoArticle pasa relevancia a la landing).
 
 **Cómo se obtiene**
 
 - **Fuente:** GMB Crush.
-- **Método:** Aplicar Option A (`/{main-city-slug}/{topic-slug}/`) por defecto, u Option B (`/{primary-cat-slug}/{main-city-slug}/{topic-slug}/`) si el cliente quiere los GeoArticles bajo la Primary Category (override de diseño). Topics validados con keyword research (Paso 3 §9 módulo doctrinal).
+- **Método:** Aplicar Option A (`/{main-city-slug}/{topic-slug}/`) por defecto, u Option B (`/{primary-cat-slug}/{main-city-slug}/{topic-slug}/`) si el cliente quiere los GeoArticles bajo la Primary Category (override de diseño). Topics validados con keyword research (Paso-03 3.13 módulo doctrinal).
 
 **Output del paso**
 
@@ -632,13 +632,13 @@ Los GeoArticles son contenido de soporte, no landings comerciales. Su URL debe r
 
 **Explicación**
 
-Las áreas de cobertura local (Paso 1 §6.10) se mencionan en contenido y schema `areaServed`, pero NO crean rutas en la matriz base. Solo las Approved Expansion Areas (Paso 1 §6.11) pueden generar URLs propias.
+Las áreas de cobertura local (Paso-01 1.10) se mencionan en contenido y schema `areaServed`, pero NO crean rutas en la matriz base. Solo las Approved Expansion Areas (Paso-01 1.11) pueden generar URLs propias.
 
 **Patrón o fórmula**
 
 ```text
 Local Coverage Area → mención de contenido | schema areaServed | NO URL base
-Para que una LCA genere URL: debe pasar a AEA en Paso 1 §6.11
+Para que una LCA genere URL: debe pasar a AEA en Paso-01 1.11
 ```
 
 **Ejemplo correcto con Cerrajeros Madrid 24h**
@@ -666,11 +666,11 @@ Las Local Coverage Areas no generan URLs en la fase base; viven en contenido y s
 
 **Validación operativa**
 
-Las áreas de cobertura local pueden ser barrios, distritos o municipios cercanos, pero no generan URLs por defecto. Esta regla evita que el sistema base vuelva a multiplicarse sin necesidad. La validación cruza con Paso 3 §6.12 (LCAs sin filas base) y Paso 6 §6 (Principio 2 — LCAs enriquecen contenido).
+Las áreas de cobertura local pueden ser barrios, distritos o municipios cercanos, pero no generan URLs por defecto. Esta regla evita que el sistema base vuelva a multiplicarse sin necesidad. La validación cruza con Paso-03 3.12 (LCAs sin filas base) y Paso 6 §6 (Principio 2 — LCAs enriquecen contenido).
 
 **Cómo se obtiene**
 
-- **Fuente:** GMB Crush ← heredado del Paso 1 §6.10 Local Coverage Areas.
+- **Fuente:** GMB Crush ← heredado del Paso-01 1.10 Local Coverage Areas.
 - **Método:** Las LCAs (Direct + Candidate) heredadas del Paso 1 NO se convierten en URLs en la fase base. Se mencionan en contenido y schema `areaServed` pero no como segmentos de path.
 
 **Output del paso**
@@ -729,12 +729,12 @@ Approved Expansion Areas generan URLs solo tras aprobación explícita y siguien
 
 **Validación operativa**
 
-Si una Local Coverage Area pasa a Approved Expansion Area, entonces sí puede generar GeoHub, páginas servicio+zona y artículos. Pero ese módulo debe quedar separado de la base. La distinción LCA vs AEA es contractual con Paso 1 §6.10 vs §6.11. La fórmula de expansión está en Paso 2 §6.11.
+Si una Local Coverage Area pasa a Approved Expansion Area, entonces sí puede generar GeoHub, páginas servicio+zona y artículos. Pero ese módulo debe quedar separado de la base. La distinción LCA vs AEA es contractual con Paso-01 1.10 vs §6.11. La fórmula de expansión está en Paso-02 2.11.
 
 **Cómo se obtiene**
 
-- **Fuente:** Decisión de diseño ← heredado del Paso 1 §6.11 Approved Expansion Areas.
-- **Método:** Si hay Approved Expansion Areas en Paso 1 §6.11, aplicar los mismos patrones del cluster con la zona aprobada como segmento. Por defecto E=0 en Phase 1 → no genera URLs.
+- **Fuente:** Decisión de diseño ← heredado del Paso-01 1.11 Approved Expansion Areas.
+- **Método:** Si hay Approved Expansion Areas en Paso-01 1.11, aplicar los mismos patrones del cluster con la zona aprobada como segmento. Por defecto E=0 en Phase 1 → no genera URLs.
 
 **Output del paso**
 
@@ -890,11 +890,11 @@ Slugs limpios: lowercase, sin tildes, sin caracteres especiales, separados por g
 
 **Validación operativa**
 
-Los slugs deben ser legibles, estables y sin adornos. Minúsculas, guiones medios y sin símbolos es suficiente. Evita acentos, underscores, mayúsculas o palabras vacías innecesarias. La validación cruza con Paso 2 §6.2/§6.3/§6.4 (Slug Generation) y Paso 3 §6.3 (Additional Category Slugs).
+Los slugs deben ser legibles, estables y sin adornos. Minúsculas, guiones medios y sin símbolos es suficiente. Evita acentos, underscores, mayúsculas o palabras vacías innecesarias. La validación cruza con Paso-02 2.2/§6.3/§6.4 (Slug Generation) y Paso-03 3.3 (Additional Category Slugs).
 
 **Cómo se obtiene**
 
-- **Fuente:** GMB Crush ← heredado del Paso 2 §6.2 Slug Generation.
+- **Fuente:** GMB Crush ← heredado del Paso-02 2.2 Slug Generation.
 - **Método:** Validar que cada slug aplica la transformación slugify estándar: lowercase + remove diacritics + replace non-alphanumeric con dash + collapse multiple dashes + trim. Slugs no derivados del nombre real se rechazan.
 
 **Output del paso**
@@ -908,7 +908,7 @@ Los slugs deben ser legibles, estables y sin adornos. Minúsculas, guiones medio
 
 **Explicación**
 
-Una URL no debe fingir oficina física. Si no hay oficina en una zona X, no se crea `/x/` ni `/cat/x/...`. La validación cruza el segmento city de cada URL contra NAP (Paso 1 §6.8 Physical Location City) y AEA aprobada (Paso 1 §6.11).
+Una URL no debe fingir oficina física. Si no hay oficina en una zona X, no se crea `/x/` ni `/cat/x/...`. La validación cruza el segmento city de cada URL contra NAP (Paso-01 1.8 Physical Location City) y AEA aprobada (Paso-01 1.11).
 
 **Patrón o fórmula**
 
@@ -948,11 +948,11 @@ Nunca inventar ubicación física en URLs — si no hay oficina en X, no se crea
 
 **Validación operativa**
 
-La regla aplica como filtro pre-publicación: para cada URL candidata, validar que la zona mencionada en el path corresponde a una ubicación física real (Paso 1 §6.8 Physical Location City) o a una Approved Expansion Area aprobada (Paso 1 §6.11). URLs que implican presencia en zonas donde el negocio solo opera remotamente o no opera en absoluto se rechazan. Cruce con Paso 1 §6.8, Paso 6 §9 (Principio 5 — No falsa ubicación) y Paso 8 (schema sin address falsa).
+La regla aplica como filtro pre-publicación: para cada URL candidata, validar que la zona mencionada en el path corresponde a una ubicación física real (Paso-01 1.8 Physical Location City) o a una Approved Expansion Area aprobada (Paso-01 1.11). URLs que implican presencia en zonas donde el negocio solo opera remotamente o no opera en absoluto se rechazan. Cruce con Paso-01 1.8, Paso 6 §9 (Principio 5 — No falsa ubicación) y Paso 8 (schema sin address falsa).
 
 **Cómo se obtiene**
 
-- **Fuente:** GMB Crush ← heredado del Paso 1 §6.8 Physical Location City + §6.11 Approved Expansion.
+- **Fuente:** GMB Crush ← heredado del Paso-01 1.8 Physical Location City + §6.11 Approved Expansion.
 - **Método:** Para cada URL candidata cuya path implique una zona (LBS, Additional, GeoArticle), validar que la zona corresponde a (a) la Main City del NAP, (b) una Approved Expansion Area, o (c) ninguna ubicación implícita (caso de patterns sin segmento city). URLs que sugieren oficina física en zonas no declaradas se rechazan.
 
 **Output del paso**
@@ -1006,7 +1006,7 @@ Una intención local = una sola URL principal. No duplicar variaciones que compi
 
 **Validación operativa**
 
-La regla aplica como filtro de detección de duplicados antes de cerrar la URL Matrix. Para cada par de URLs candidatas, validar que NO compartan intención local + servicio. Si dos URLs compiten en el mismo nicho semántico, consolidar en una y redirigir 301 la otra. La validación cruza con Paso 2 §6.12 (Control anti-duplicación al construir A) y Paso 3 §6.13 (matriz cerrada antes de contenido).
+La regla aplica como filtro de detección de duplicados antes de cerrar la URL Matrix. Para cada par de URLs candidatas, validar que NO compartan intención local + servicio. Si dos URLs compiten en el mismo nicho semántico, consolidar en una y redirigir 301 la otra. La validación cruza con Paso-02 2.12 (Control anti-duplicación al construir A) y Paso-03 3.13 (matriz cerrada antes de contenido).
 
 **Cómo se obtiene**
 
@@ -1040,8 +1040,8 @@ La regla aplica como filtro de detección de duplicados antes de cerrar la URL M
 
 ### Validación de cobertura geográfica
 
-- ☐ LCAs no generan URLs (4.9) — verificar que ninguna LCA de Paso 1 §6.10 aparece como path
-- ☐ Approved Expansion URLs (4.10) generadas solo si E≥1 (Paso 1 §6.11); por defecto E=0
+- ☐ LCAs no generan URLs (4.9) — verificar que ninguna LCA de Paso-01 1.10 aparece como path
+- ☐ Approved Expansion URLs (4.10) generadas solo si E≥1 (Paso-01 1.11); por defecto E=0
 
 ### Validación anti-canibalización
 

@@ -244,7 +244,7 @@ Trust Signals:
 
 `G = 3`
 
-Aplicación: G × S = 3 × 5 = 15 GeoArticles para Madrid (calculados en Paso 2 §6.8).
+Aplicación: G × S = 3 × 5 = 15 GeoArticles para Madrid (calculados en Paso-02 2.8).
 
 ### 1.13 — Preferred CTA
 
@@ -285,11 +285,11 @@ Aplicación: G × S = 3 × 5 = 15 GeoArticles para Madrid (calculados en Paso 2 
 | 1.13 | Preferred CTA | Una opción de 4 estándar | Decisión de diseño |
 | 1.14 | Trust Signals | Lista de 4-7 señales reales | GMB Crush + Competidores |
 
-## Reglas que Aplican
+## Obtención de Outputs
 
 <small>§6</small>
 
-> Esta sección desarrolla cada uno de los 14 outputs (1.1–1.14) con el mismo patrón: Explicación / Patrón o fórmula / Ejemplos correctos / Ejemplos incorrectos / Regla final / Validación operativa / Cómo se obtiene / Output del paso. Cada sub-sección §6.X corresponde 1:1 al output 1.X declarado en §5.
+> Esta sección es donde la IA produce cada uno de los 14 outputs (1.1–1.14) con el mismo patrón: Explicación / Patrón o fórmula / Ejemplos correctos / Ejemplos incorrectos / Regla final / Validación operativa / Cómo se obtiene / Output del paso. Cada sub-sección §6.X corresponde 1:1 al output 1.X declarado en §5.
 
 ### 1.1 — Business Name
 
@@ -377,7 +377,7 @@ Una web local debe operar con un solo dominio canónico.
 
 **Validación operativa**
 
-Una sola versión canónica del dominio en TODA la web; el resto redirige 301. Esta decisión se hereda al Paso 4 §5 (Canonical Domain) que aplica la regla a las URLs absolutas, schema y enlaces internos del cluster.
+Una sola versión canónica del dominio en TODA la web; el resto redirige 301. Esta decisión se hereda al Paso-04 4.1 (Canonical Domain) que aplica la regla a las URLs absolutas, schema y enlaces internos del cluster.
 
 **Cómo se obtiene**
 
@@ -584,7 +584,7 @@ Cada categoría adicional se consolida o se convierte en página, pero nunca se 
 
 **Validación operativa**
 
-Cada categoría adicional debe clasificarse antes de entrar en la arquitectura. Primero se revisa si ya está cubierta por un servicio core (entonces no genera URL — queda consolidada); si no, se marca como categoría efectiva que necesita página propia. Esta clasificación evita duplicar intenciones, crear páginas casi idénticas y canibalizar la Service Overview Page del core service. La consolidación final se valida en Paso 2 §6.12 (Control anti-duplicación).
+Cada categoría adicional debe clasificarse antes de entrar en la arquitectura. Primero se revisa si ya está cubierta por un servicio core (entonces no genera URL — queda consolidada); si no, se marca como categoría efectiva que necesita página propia. Esta clasificación evita duplicar intenciones, crear páginas casi idénticas y canibalizar la Service Overview Page del core service. La consolidación final se valida en Paso-02 2.12 (Control anti-duplicación).
 
 **Cómo se obtiene**
 
@@ -686,7 +686,7 @@ Nunca se inventa ubicación física.
 
 **Validación operativa**
 
-El intake debe indicar la ciudad de presencia física real y si existe atención presencial. Esto controla qué páginas pueden usar LocalBusiness con dirección, mapa o lenguaje de oficina. Nunca afirmar oficinas en áreas de cobertura donde el negocio solo presta servicio móvil — si no hay oficina en Almagro, las páginas de Madrid no deben decir «our Almagro storefront». La validación cruzada se aplica en Paso 4 §18 (No falsa ubicación) y Paso 6 §9 (Principio 5 — No falsa ubicación).
+El intake debe indicar la ciudad de presencia física real y si existe atención presencial. Esto controla qué páginas pueden usar LocalBusiness con dirección, mapa o lenguaje de oficina. Nunca afirmar oficinas en áreas de cobertura donde el negocio solo presta servicio móvil — si no hay oficina en Almagro, las páginas de Madrid no deben decir «our Almagro storefront». La validación cruzada se aplica en Paso-04 4.14 (No falsa ubicación) y Paso 6 §9 (Principio 5 — No falsa ubicación).
 
 **Cómo se obtiene**
 
@@ -799,7 +799,7 @@ Las áreas de cobertura refuerzan el contenido; no crean páginas automáticamen
 
 **Validación operativa**
 
-Las LCAs son señales GEO, no URLs. Para entender CÓMO se eligen Direct y Candidate, consultar el Bloque IV — Módulo doctrinal (§9-§19) que explica el test GEO 3/6, los criterios de validación y la diferencia LCA vs AEA. Validación cruzada en Paso 4 §13 (LCAs no generan URLs), Paso 6 §6 (Principio 2 — LCAs enriquecen contenido) y Paso 8 (schema `areaServed`).
+Las LCAs son señales GEO, no URLs. Para entender CÓMO se eligen Direct y Candidate, consultar el Bloque IV — Módulo doctrinal (§9-§19) que explica el test GEO 3/6, los criterios de validación y la diferencia LCA vs AEA. Validación cruzada en Paso-04 4.9 (LCAs no generan URLs), Paso 6 §6 (Principio 2 — LCAs enriquecen contenido) y Paso 8 (schema `areaServed`).
 
 **Cómo se obtiene**
 
@@ -909,7 +909,7 @@ G es el default doctrinal (3); ajustable solo si el cliente justifica otra capac
 
 **Validación operativa**
 
-G se decide en Paso 1 y la Fórmula Maestra del Paso 2 lo aplica como multiplicador. Cambiar G aquí cambia el inventario completo del cluster aguas abajo. Si el cliente no tiene capacidad para producir 15 artículos, hay que negociar G más bajo en el intake en lugar de aceptarlo y luego no publicarlos. Cruce con Paso 2 §6.8 (Variable G).
+G se decide en Paso 1 y la Fórmula Maestra del Paso 2 lo aplica como multiplicador. Cambiar G aquí cambia el inventario completo del cluster aguas abajo. Si el cliente no tiene capacidad para producir 15 artículos, hay que negociar G más bajo en el intake en lugar de aceptarlo y luego no publicarlos. Cruce con Paso-02 2.8 (Variable G).
 
 **Cómo se obtiene**
 
