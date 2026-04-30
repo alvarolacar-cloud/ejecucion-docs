@@ -8,9 +8,9 @@ Proveniencia: sistema construido paso a paso en el chat y alineado con los frame
 
 ## §2 Objetivo del Paso 5
 
-Producir la spec completa de cada uno de los 6 page types del cluster combinando los inputs heredados de Pasos 1-3 con las decisiones nuevas de Paso 5 (Primary Service y Brand tone).
+En este paso la IA toma todas las decisiones que definen cómo se construye cada page type del cluster — decisiones globales (Primary Service, Brand tone), spec por page type (Función, URL, H1, Meta Title, Meta Description, Word count, Estructura, Schema, Internal links) y validaciones cross-cutting (Schema por tipo, Word count por intención, CTA por funnel, No false location). Todas se aplican sobre los inputs heredados de Pasos 1-3.
 
-**Decisiones tomadas en el paso:**
+**Decisiones que se van a tomar en el paso:**
 
 - **Primary Service** elegido (servicio único hero para Homepage, del top 5 heredado)
 - **Brand tone** elegido (Professional / Friendly / Premium / Urgente / Local)
