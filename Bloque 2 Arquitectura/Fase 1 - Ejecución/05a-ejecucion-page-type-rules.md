@@ -12,6 +12,8 @@ Producir la spec completa de cada uno de los 6 page types del cluster combinando
 
 **Outputs del paso:**
 
+- **Primary Service** elegido (servicio único hero para Homepage, del top 5 heredado)
+- **Brand tone** elegido (Professional / Friendly / Premium / Urgente / Local)
 - Spec **Homepage** — Root Entity Anchor (Función, URL, H1, Meta Title, Meta Description, Word count, Estructura, Schema, Internal links)
 - Spec **Service Overview Page** — Topical Authority Pillar (idem)
 - Spec **Location-Based Service Page** — Main City Converter (idem)
