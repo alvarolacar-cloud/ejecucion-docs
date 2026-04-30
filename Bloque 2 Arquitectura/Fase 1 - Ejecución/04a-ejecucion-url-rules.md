@@ -8,162 +8,122 @@ Proveniencia: sistema construido paso a paso en el chat y alineado con los frame
 
 ## §2 Objetivo del Paso 4
 
-Este paso existe para resolver un problema concreto dentro del sistema GMB Crush: fijar una estructura de URLs limpia, escalable y anti-canibalización antes de producir contenidos.
-La web local no debe construirse desde la intuición, sino desde una secuencia operativa que conecta entidad, categoría GBP, servicios, ciudad principal, cobertura local, schema, contenido e interlinking.
-El objetivo es que cada dato que se recoge o cada página que se crea tenga una función clara dentro del ecosistema local.
-Cuando este paso se omite, la arquitectura empieza a crecer de forma desordenada.
-Eso produce páginas duplicadas, URLs sin intención, contenidos genéricos, señales locales débiles y problemas de canibalización.
-La metodología GMB Crush busca evitar precisamente ese escenario.
-Por eso cada paso debe indicar qué se rellena, qué se genera, qué se revisa y qué errores previene.
-En la versión simplificada del sistema usamos una Main City como base de arquitectura.
-En esta versión web-first, el Google Business Profile no existe todavía: las categorías se tratan como Planned GBP Categories hasta que el Paso 14 cree, verifique y sincronice el GBP con la web.
-Esto evita inventar una GBP URL, reseñas de Google o señales de perfil antes de que existan.
-Las Local Coverage Areas no generan URLs por defecto.
-Las Local Coverage Areas se usan para reforzar el contenido, los ejemplos locales, las FAQs y el schema areaServed.
-Solo las Approved Expansion Areas pueden convertirse en URLs propias cuando exista una justificación clara.
-Esta separación evita confundir cobertura real con arquitectura obligatoria.
-También evita que un negocio local pequeño acabe con cientos de páginas antes de tener una base sólida.
-El criterio principal es crear primero las páginas que soportan la entidad, la categoría GBP y la intención comercial.
-Después se añaden artículos, enlaces internos, QA y optimización.
-Este paso debe ejecutarse antes de avanzar al siguiente.
-Si se salta o se rellena mal, los pasos posteriores arrastran errores.
-La revisión final debe comprobar que cada elemento tiene una función SEO, una función local y una función de conversión.
-Error que previene: crear URLs distintas para la misma intención.
-Error que previene: usar Local Coverage Areas como carpetas sin aprobación.
-Error que previene: mezclar ciudad, servicio y artículo en el mismo patrón.
-Error que previene: crear slugs con near-me, best o cheap.
-Error que previene: tener versiones con y sin trailing slash.
+Fijar las **reglas operativas de URL** que rigen toda la arquitectura del cluster local: dominio canónico, convención de slash, patrones de path por tipo de página, y filtros anti-canibalización. Estas reglas son la base sobre la que el Paso 3 (URL Matrix) genera URLs concretas y el Paso 5 (Page Type Rules) define cómo rellenar cada tipo de página.
 
-## §3 Lo que la IA tiene que rellenar/obtener
+**Outputs del Paso 4:**
 
-```text
-Website Root Domain:
+- §5 Canonical Domain — versión única del dominio (con/sin www, http/https) usada en todas las URLs absolutas, schema y enlaces internos
+- §6 Trailing Slash — convención boolean (Yes/No) aplicada idéntica a todo el cluster
+- §7 Homepage URL — path constante `/` (doctrina, no decisión)
+- §8 Service Overview URL pattern — `/{primary-cat-slug}/{service-slug}/` para Service Overview Pages (sin ciudad)
+- §9 Main City GeoHub URL Style — Option A `/{main-city-slug}/` (default) u Option B `/{primary-cat-slug}/{main-city-slug}/`
+- §10 Location-Based Service URL pattern — `/{primary-cat-slug}/{main-city-slug}/{service-slug}/` para LBS Pages
+- §11 Additional Category URL pattern — `/{primary-cat-slug}/{main-city-slug}/{additional-slug}/` para AC Pages efectivas
+- §12 GeoArticle URL pattern — Option A `/{main-city-slug}/{topic-slug}/` (default) u Option B con primary category prefijo
+- §13 Local Coverage Areas no generan URLs — regla de doctrina: LCAs viven en contenido y schema `areaServed`, no en path
+- §14 Approved Expansion URLs — patrones aplicables solo si hay AEAs aprobadas (Paso 1 §15); por defecto E=0
+- §15 No "near me" en URLs — validación que rechaza patrones `near-me`, `cerca-de-mi`, equivalentes en slugs
+- §16 No adjetivos vacíos en URLs — validación que rechaza `best`, `cheap`, `top-rated`, `mejor`, `barato`
+- §17 Slugs limpios — transformación slugify estándar: lowercase + sin diacríticos + dashes + sin símbolos
+- §18 No falsa ubicación — validación cruzada con NAP (Paso 1 §12) y AEA (Paso 1 §15) para rechazar URLs que sugieren oficina física inexistente
+- §19 No duplicar intención — validación de pares de URLs en el cluster; consolida duplicados con 301
 
-Canonical Domain:
-Option A: https://www.domain.com
-Option B: https://domain.com
+**Errores que previene el Paso 4:**
 
-Trailing Slash:
-Yes / No
+- Crear URLs distintas para la misma intención local (canibalización)
+- Convertir Local Coverage Areas en carpetas sin aprobación (sprawl arquitectónico)
+- Mezclar ciudad, servicio y artículo en el mismo patrón (silos rotos)
+- Slugs con `near-me`, `best`, `cheap`, `top-rated` (modificadores inestables)
+- Versiones inconsistentes con/sin trailing slash (duplicación técnica)
+- Mezclar `www` y non-www, HTTP y HTTPS en URLs absolutas (señales canónicas mezcladas)
+- Implicar oficina física en zonas donde el negocio no opera (E-E-A-T comprometido)
 
-Planned Primary GBP Category:
+**Cuándo se ejecuta:**
 
-Primary Category Slug:
+Antes del Paso 3 (URL Matrix). El Paso 3 aplica los patrones aquí definidos para generar las URLs concretas. Sin las reglas del Paso 4, el Paso 3 no tiene base para validar el formato y la consistencia de cada URL del cluster.
 
-Main City:
+## §3 Info heredada de pasos anteriores
 
-Main City Slug:
+El Paso 4 toma como input estos elementos generados en pasos previos. La IA no los re-decide aquí; los aplica como restricciones / fuentes para construir las reglas y patrones URL del cluster.
 
-Homepage URL:
-/ 
+| # | Input heredado | Origen | Uso en el Paso 4 |
+|---|---|---|---|
+| 1 | Website URL (root domain) | Paso 1 §6 | Define la URL canónica base (§5) |
+| 2 | Brand Name | Paso 1 §2 | Confirma identidad para validaciones cruzadas |
+| 3 | NAP — Physical Location City | Paso 1 §12 | Valida el segmento Main City (§18 No falsa ubicación) |
+| 4 | Core Services list (S core services) | Paso 1 §13 | Genera las S URLs Service Overview (§8) y S URLs LBS (§10) |
+| 5 | Local Coverage Areas (Direct + Candidate) | Paso 1 §14 | Confirma que NO generan URLs por defecto (§13) |
+| 6 | Approved Expansion Areas (E count) | Paso 1 §15 | Determina si se aplican patrones de expansión (§14); E=0 → 0 URLs adicionales |
+| 7 | Slug Generation rule | Paso 2 §6 | Aplica slugify estándar a cada slug del cluster (§17) |
+| 8 | Primary Category Slug | Paso 3 §3 (Slug Generation aplicado al Primary GBP Category) | Segmento `[primary-cat-slug]` en patrones §8, §10, §11, §12 (Option B), §14 |
+| 9 | Main City Slug | Paso 3 §3 (Slug Generation aplicado a Main City) | Segmento `[main-city-slug]` en patrones §9, §10, §11, §12, §14 |
+| 10 | Service slugs (S slugs aprobados) | Paso 3 §3 | Segmento `[service-slug]` en §8, §10, §14 |
+| 11 | Additional Category slugs (A slugs efectivos) | Paso 3 §7 | Segmento `[additional-slug]` en §11 |
+| 12 | GeoArticle topics validados | Paso 3 §21 (keyword research) | Segmento `[topic-slug]` en §12 (15 GeoArticles = G × S) |
+| 13 | GeoHub URL Style (Option A / B) | Paso 3 §6 | Aplica directamente en §9 (decisión heredada, no se re-toma aquí) |
 
-Service Overview URL Style:
-/[primary-category-slug]/[service-slug]/
+## §4 Ejemplo rellenado — Outputs del Paso 4 para Cerrajeros Madrid 24h
 
-Main City GeoHub URL Style:
-Option A: /[main-city-slug]/
-Option B: /[primary-category-slug]/[main-city-slug]/
+Esta sección consolida los 15 outputs del Paso 4 en tablas operativas. Cada output corresponde a una sección §X del Bloque II y se valida individualmente.
 
-Main City Location-Based Service URL Style:
-/[primary-category-slug]/[main-city-slug]/[service-slug]/
+### §4.1 Reglas de dominio y convención (§5–§7)
 
-Main City Additional Category URL Style:
-/[primary-category-slug]/[main-city-slug]/[additional-category-slug]/
+| Output | §X | Valor (Cerrajeros Madrid 24h) | Status |
+|---|---|---|---|
+| Canonical Domain | §5 | `https://www.cerrajerosmadrid24h.com` | confirmed |
+| Trailing Slash | §6 | Yes (todas las URLs terminan en `/`) | confirmed |
+| Homepage URL | §7 | `/` | confirmed |
 
-Main City GeoArticle URL Style:
-Option A: /[main-city-slug]/[article-topic-slug]/
-Option B: /[primary-category-slug]/[main-city-slug]/[article-topic-slug]/
+### §4.2 Patrones URL por tipo de página (§8–§12)
 
-Local Coverage Areas:
-Do they generate URLs?
-Default: No
+| Output | §X | Patrón | Aplicado a (Cerrajeros Madrid 24h) | Status |
+|---|---|---|---|---|
+| Service Overview pattern | §8 | `/{primary-cat-slug}/{service-slug}/` | 5 URLs SO → `/cerrajero/cerrajero-urgente/`, `/cerrajero/apertura-puertas/`, `/cerrajero/cambio-cerraduras/`, `/cerrajero/cambio-bombines/`, `/cerrajero/instalacion-cerraduras-seguridad/` | confirmed |
+| Main City GeoHub pattern | §9 | Option A `/{main-city-slug}/` | 1 URL → `/madrid/` | confirmed |
+| Location-Based Service pattern | §10 | `/{primary-cat-slug}/{main-city-slug}/{service-slug}/` | 5 URLs LBS → `/cerrajero/madrid/cerrajero-urgente/`, etc. (S=5) | confirmed |
+| Additional Category pattern | §11 | `/{primary-cat-slug}/{main-city-slug}/{additional-slug}/` | 1 URL AC → `/cerrajero/madrid/duplicado-llaves/` (A=1 efectiva) | confirmed |
+| GeoArticle pattern | §12 | Option A `/{main-city-slug}/{topic-slug}/` | 15 URLs GA (G=3 × S=5) → `/madrid/cuanto-cuesta-un-cerrajero-urgente/`, etc. | ⚠ inferido (topics requieren keyword research real, ver §24.1) |
 
-Approved Expansion Areas:
-If any, list:
-1.
-2.
-3.
+### §4.3 Reglas de cobertura geográfica (§13–§14)
 
-Use “near me” in URL?
-Yes / No
+| Output | §X | Regla | Aplicación (Cerrajeros Madrid 24h) | Status |
+|---|---|---|---|---|
+| LCAs no generan URLs | §13 | Las Local Coverage Areas viven en contenido y schema `areaServed`, NO en path | Almagro, Chamberí, Salamanca, Retiro → 0 URLs adicionales | confirmed |
+| Approved Expansion URLs | §14 | Solo si E≥1 en Paso 1 §15; aplicar mismos patrones del cluster con AEA como segmento | E=0 en Phase 1 → 0 URLs de expansión | confirmed |
 
-Use “best”, “cheap”, “top-rated” in URL?
-Yes / No
+### §4.4 Validaciones anti-canibalización y limpieza (§15–§19)
 
-Approved service slugs:
+| Output | §X | Validación | Resultado (Cerrajeros Madrid 24h) | Status |
+|---|---|---|---|---|
+| No "near me" en URLs | §15 | Rechazar `near-me`, `cerca-de-mi`, `cerca-mi`, `near` y equivalentes en cualquier slug | 0 URLs del cluster contienen estos patrones | confirmed |
+| No adjetivos vacíos | §16 | Rechazar `best`, `cheap`, `top-rated`, `mejor`, `barato`, `top` en cualquier slug | 0 URLs del cluster contienen estos patrones | confirmed |
+| Slugs limpios | §17 | Aplicar slugify: lowercase + sin diacríticos + dashes + sin símbolos | Todos los slugs (`cerrajero-urgente`, `chamberi`, `duplicado-llaves`) cumplen | confirmed |
+| No falsa ubicación | §18 | Cada segmento city del path debe corresponder a NAP (Paso 1 §12) o AEA aprobada (Paso 1 §15) | Solo `/madrid/` aparece como city; ninguna `/almagro/`, `/chamberi/` (LCAs sin oficina) | confirmed |
+| No duplicar intención | §19 | Para cada par de URLs, validar que NO compartan intención local + servicio | 0 pares con duplicación detectada (core services y additional category cubren intenciones distintas) | confirmed |
 
-Approved local coverage area names:
+### §4.5 Estructura final del cluster — totales
 
-Approved expansion slugs:
-```
+| Tipo de página | Patrón | Cantidad | Subtotal |
+|---|---|---|---|
+| Homepage | `/` | 1 | 1 |
+| Service Overview | `/cerrajero/{service}/` | 5 | 5 |
+| Main City GeoHub | `/madrid/` | 1 | 1 |
+| Location-Based Service | `/cerrajero/madrid/{service}/` | 5 | 5 |
+| Additional Category | `/cerrajero/madrid/{additional}/` | 1 | 1 |
+| GeoArticle | `/madrid/{topic}/` | 15 | 15 |
+| **Total cluster (sin expansión)** | — | — | **28** |
+| Approved Expansion (Phase 1) | — | 0 | 0 |
+| **Total final** | — | — | **28** |
 
-## §4 Ejemplo rellenado
+### §4.6 Validaciones cruzadas con otros pasos
 
-```text
-Website Root Domain:
-https://www.cerrajerosmadrid24h.com
-
-Canonical Domain:
-https://www.cerrajerosmadrid24h.com
-
-Trailing Slash:
-Yes
-
-Planned Primary GBP Category:
-Cerrajero
-
-Primary Category Slug:
-cerrajero
-
-Main City:
-Madrid
-
-Main City Slug:
-madrid
-
-Homepage URL:
-/
-
-Service Overview URL Style:
-/cerrajero/[service-slug]/
-
-Main City GeoHub URL Style:
-/madrid/
-
-Main City Location-Based Service URL Style:
-/cerrajero/madrid/[service-slug]/
-
-Main City Additional Category URL Style:
-/cerrajero/madrid/[additional-category-slug]/
-
-Main City GeoArticle URL Style:
-/madrid/[article-topic-slug]/
-
-Local Coverage Areas:
-Almagro, Chamberí, Salamanca, Retiro
-
-Do they generate URLs?
-No, not in the base build.
-
-Approved Expansion Areas:
-None in Phase 1.
-
-Use “near me” in URL?
-No
-
-Use “best”, “cheap”, “top-rated” in URL?
-No
-
-Approved service slugs:
-- cerrajero-urgente
-- apertura-puertas
-- cambio-cerraduras
-- cambio-bombines
-- instalacion-cerraduras-seguridad
-
-Approved additional category slugs:
-- duplicado-llaves
-```
+| Validación | Origen | Comprobación en Paso 4 | Status |
+|---|---|---|---|
+| Canonical Domain coincide con Website URL | Paso 1 §6 | `https://www.cerrajerosmadrid24h.com` = Website URL declarada | OK |
+| Slugs generados con regla del Paso 2 | Paso 2 §6 | Todos los slugs del cluster pasan slugify estándar | OK |
+| URLs de la URL Matrix (Paso 3 §3) cumplen los patrones del Paso 4 | Paso 3 §3 | 28 URLs de la matriz validadas contra §8, §9, §10, §11, §12 | OK |
+| Main City del path = NAP del Paso 1 §12 | Paso 1 §12 | `/madrid/` corresponde a Madrid (oficina física declarada) | OK |
+| LCAs heredadas no aparecen como path | Paso 1 §14 | 0 paths con `/almagro/`, `/chamberi/`, `/salamanca/`, `/retiro/` | OK |
 
 # Bloque II — Ejecución por la IA
 
@@ -581,9 +541,9 @@ Los GeoArticles son contenido de soporte, no landings comerciales. Su URL debe r
 
 ### §12.2 Cómo obtenemos el GeoArticle URL pattern
 
-**Fuente:** Decisión de diseño + GMB Crush.
+**Fuente:** GMB Crush.
 
-**Método:** Aplicar Option A (`/{main-city-slug}/{topic-slug}/`) por defecto, u Option B (`/{primary-cat-slug}/{main-city-slug}/{topic-slug}/`) si el cliente quiere los GeoArticles bajo la Primary Category. Topics validados con keyword research (Paso 3 §21).
+**Método:** Aplicar Option A (`/{main-city-slug}/{topic-slug}/`) por defecto, u Option B (`/{primary-cat-slug}/{main-city-slug}/{topic-slug}/`) si el cliente quiere los GeoArticles bajo la Primary Category (override de diseño). Topics validados con keyword research (Paso 3 §21).
 
 ### §12.3 Output del paso
 
@@ -1020,18 +980,27 @@ Estas URLs solo se crearían como Approved Expansion Areas.
 | No false location | ¿No se afirma ubicación física falsa? | ✅ / ⬜ |
 | No duplicate intent | ¿Cada intención tiene una sola URL principal? | ✅ / ⬜ |
 
-# Bloque IV — Outputs
+# Bloque IV — Outputs consolidados
 
 ## §23 Outputs del Paso 4
 
-- Dominio canónico definido
-- Trailing slash definido
-- Patrones URL aprobados
-- URLs base generadas
-- URLs prohibidas detectadas
-- Reglas para Local Coverage Areas definidas
-- Reglas para Approved Expansion Areas definidas
-- Reglas anti-canibalización establecidas
+| # | Output | §X | Tipo |
+|---|---|---|---|
+| 1 | Canonical Domain | §5 | URL canónica única |
+| 2 | Trailing Slash | §6 | Boolean (Yes/No) global |
+| 3 | Homepage URL | §7 | Path constante (`/`) |
+| 4 | Service Overview URL pattern | §8 | Patrón string |
+| 5 | Main City GeoHub URL Style | §9 | Patrón string (Option A/B) |
+| 6 | Location-Based Service URL pattern | §10 | Patrón string |
+| 7 | Additional Category URL pattern | §11 | Patrón string |
+| 8 | GeoArticle URL pattern | §12 | Patrón string (Option A/B) |
+| 9 | Regla LCAs sin URL | §13 | Regla de doctrina |
+| 10 | Approved Expansion URLs | §14 | Lista de URLs (puede estar vacía) |
+| 11 | Validación No "near me" | §15 | Validation flag |
+| 12 | Validación No adjetivos vacíos | §16 | Validation flag |
+| 13 | Validación Slugs limpios | §17 | Validation flag |
+| 14 | Validación No falsa ubicación | §18 | Validation flag |
+| 15 | Validación No duplicar intención | §19 | Validation flag |
 
 ---
 
