@@ -102,6 +102,70 @@ Son tres vistas del mismo conjunto de outputs. Por eso hay que mantener los **mi
 
 ---
 
+## Outputs compuestos — Formato A vs Formato B
+
+Cuando un output contiene múltiples valores (ej. lista de slugs, NAP con 8 campos), tienes **dos formatos posibles**:
+
+### Formato A — Una fila, valores agregados (default)
+
+```markdown
+| 2.4 | Service Slugs (S=5) | URL-safe strings | GMB Crush | Paso-01 1.9 |
+```
+
+Y en §8 Outputs Consolidados:
+
+```markdown
+| 2.4 | Service Slugs (5) | cerrajero-urgente, apertura-puertas, cambio-cerraduras, cambio-bombines, instalacion-cerraduras-seguridad | confirmed |
+```
+
+**Usar cuando:** los N valores son del mismo tipo, mismo status, sin sub-categorización. La IA lee "es una lista de N elementos" sin ambigüedad.
+
+### Formato B — Multi-fila con MISMO ID (sub-categorización)
+
+```markdown
+| 1.10 | Direct LCAs (proximidad NAP) | Lista | GMB Crush | Paso-01 1.4 (NAP) |
+| 1.10 | Candidate LCAs (validables con test GEO) | Lista | GMB Crush + Competidores | — |
+```
+
+Y en §8 Outputs Consolidados:
+
+```markdown
+| 1.10 | Direct LCAs | Almagro, Chamberí | confirmed |
+| 1.10 | Candidate LCAs | Salamanca, Retiro, Centro, Tetuán, Chamartín, Arganzuela, Moncloa, Prosperidad | confirmed |
+```
+
+**Usar cuando:**
+- Hay sub-categorías semánticamente distintas (ej. NAP tiene 8 campos: Name, Street, City, etc.)
+- Cada sub-categoría tiene metadata propia (Fuente distinta, Status distinto, Hereda de distinto)
+- Aporta legibilidad significativa vs lista comma-separated
+
+### Cuándo NO usar ni A ni B — Tabla aparte
+
+Para outputs con 10+ valores (URL Matrix, GeoArticle Topics), se usa una **tabla detallada en §4 Bloque II Ejemplo** con su propio formato (columns específicas del output). El §8 Outputs Consolidados solo muestra un resumen y referencia esa tabla.
+
+### Decisión rápida
+
+```
+¿Tu output tiene...
+
+  Un solo valor escalar?
+  → Formato A, valor literal en §8
+
+  2-5 valores cortos del mismo tipo?
+  → Formato A, comma-separated
+
+  2-5 valores con sub-categorías o metadata distinta?
+  → Formato B (multi-fila mismo ID)
+
+  6+ campos distintos como un NAP?
+  → Formato B (multi-fila mismo ID)
+
+  10+ valores estructurados (URLs, topics)?
+  → Tabla aparte en §4, §8 referencia el resumen
+```
+
+---
+
 ## Reglas mínimas
 
 1. Solo 4 bloques (I / II / III / IV). No añadir más sin discusión.

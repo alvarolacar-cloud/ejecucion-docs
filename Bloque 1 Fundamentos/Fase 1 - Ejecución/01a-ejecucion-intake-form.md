@@ -273,13 +273,21 @@ Aplicación: G × S = 3 × 5 = 15 GeoArticles para Madrid (calculados en Paso-02
 | 1.1 | Business Name | String | Input humano | — |
 | 1.2 | Website URL / Canonical Domain | URL canónica | Input humano | — |
 | 1.3 | GBP Lifecycle Status | 4 campos discretos | GMB Crush + Input humano | — |
-| 1.4 | Full NAP | Bloque NAP de 8 campos | Input humano | — |
+| 1.4 | Full NAP — Name | String | Input humano | — |
+| 1.4 | Full NAP — Street Address | String | Input humano | — |
+| 1.4 | Full NAP — City | String (= Main City) | Input humano | — |
+| 1.4 | Full NAP — State / Province | String | Input humano | — |
+| 1.4 | Full NAP — ZIP / Postal Code | String | Input humano | — |
+| 1.4 | Full NAP — Country | String | Input humano | — |
+| 1.4 | Full NAP — Phone | String (E.164 format) | Input humano | — |
+| 1.4 | Full NAP — Email | String (opcional) | Input humano | — |
 | 1.5 | Planned Primary GBP Category | Categoría GBP oficial | GMB Crush + Competidores | — |
 | 1.6 | Planned Additional GBP Categories | Lista clasificada (cubiertas vs página propia) | GMB Crush + Competidores | — |
 | 1.7 | Main City | Ciudad única | GMB Crush | — |
 | 1.8 | Physical Location City | Ciudad de presencia física | Input humano | — |
 | 1.9 | Servicios principales | 5 core services priorizados | GMB Crush + Competidores | — |
-| 1.10 | Local Coverage Areas | Direct + Candidate (dos listas) | GMB Crush + Competidores | — |
+| 1.10 | Direct LCAs (proximidad NAP) | Lista de zonas | GMB Crush | Paso-01 1.4 (NAP Street + City) |
+| 1.10 | Candidate LCAs (validables con test GEO) | Lista de zonas | GMB Crush + Competidores | — |
 | 1.11 | Approved Expansion Areas | Lista de zonas aprobadas (puede estar vacía) | Decisión de diseño | — |
 | 1.12 | GeoArticles per Service (G) | Entero (default 3) | GMB Crush | — |
 | 1.13 | Preferred CTA | Una opción de 4 estándar | Decisión de diseño | — |
@@ -1072,13 +1080,21 @@ Las señales de confianza recogidas en el intake se reutilizan en homepage, pág
 | 1.1 | Business Name | `Cerrajeros Madrid 24h` | confirmed |
 | 1.2 | Website URL / Canonical Domain | `https://www.cerrajerosmadrid24h.com` | confirmed |
 | 1.3 | GBP Lifecycle Status | Not Created / After website launch / Not Started / N/A | confirmed (web-first) |
-| 1.4 | Full NAP | Cerrajeros Madrid 24h, Calle Rafael Calvo 12, 28010 Madrid, España, +34 600 000 000, info@cerrajerosmadrid24h.com | confirmed |
+| 1.4 | Full NAP — Name | Cerrajeros Madrid 24h | confirmed |
+| 1.4 | Full NAP — Street Address | Calle Rafael Calvo 12, Barrio Almagro, Distrito Chamberí | confirmed |
+| 1.4 | Full NAP — City | Madrid | confirmed |
+| 1.4 | Full NAP — State / Province | Comunidad de Madrid | confirmed |
+| 1.4 | Full NAP — ZIP / Postal Code | 28010 | confirmed |
+| 1.4 | Full NAP — Country | España | confirmed |
+| 1.4 | Full NAP — Phone | +34 600 000 000 | confirmed |
+| 1.4 | Full NAP — Email | info@cerrajerosmadrid24h.com | confirmed |
 | 1.5 | Planned Primary GBP Category | `Cerrajero` (Planned) | confirmed |
 | 1.6 | Planned Additional GBP Categories | Servicio de cerrajería de urgencia (cubierta) + Servicio de duplicado de llaves (página propia) | confirmed |
 | 1.7 | Main City | `Madrid` | confirmed |
 | 1.8 | Physical Location City | `Madrid` | confirmed |
 | 1.9 | Servicios principales (S=5) | Cerrajero urgente, Apertura de puertas, Cambio de cerraduras, Cambio de bombines, Instalación de cerraduras de seguridad | confirmed |
-| 1.10 | Local Coverage Areas | Direct: Almagro, Chamberí · Candidate: Salamanca, Retiro, Centro, Tetuán, Chamartín, Arganzuela, Moncloa, Prosperidad | confirmed |
+| 1.10 | Direct LCAs (proximidad NAP) | Almagro, Chamberí | confirmed |
+| 1.10 | Candidate LCAs (validables con test GEO) | Salamanca, Retiro, Centro, Tetuán, Chamartín, Arganzuela, Moncloa, Prosperidad | confirmed |
 | 1.11 | Approved Expansion Areas | None in Phase 1 (E=0) | confirmed |
 | 1.12 | GeoArticles per Service (G) | `G = 3` → G × S = 15 GeoArticles | confirmed |
 | 1.13 | Preferred CTA | `Llamar ahora` | confirmed |
