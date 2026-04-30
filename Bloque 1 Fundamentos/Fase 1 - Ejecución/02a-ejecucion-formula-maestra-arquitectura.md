@@ -4,6 +4,11 @@ Proveniencia: sistema construido paso a paso en el chat y alineado con los frame
 
 # §1 Paso 2 — Fórmula Maestra de Arquitectura
 
+> **Cómo leer este documento:**
+> - **Bloque I — Introducción** describe qué produce el paso, qué hereda y qué resultado ejemplo se espera.
+> - **Bloque II — Ejecución por la IA** contiene los 4 sub-bloques operativos: outputs a conseguir, reglas que aplican, checklist final y outputs consolidados.
+> - **Bloque III — Fuentes Internas GMB Crush usadas** lista los frameworks GMB Crush en los que se basa el paso.
+
 # Bloque I — Introducción
 
 ## §2 Objetivo del Paso 2
@@ -50,7 +55,7 @@ Calcular el tamaño exacto del cluster aplicando la fórmula maestra `1 + S + 1 
 | Approved Expansion Areas | Paso 1 §15 |
 | GeoArticles per Service (G) | Paso 1 §16 |
 
-> Las decisiones nuevas que se toman en Paso 2 (Slug Generation y Service-to-Main-City Applicability) tienen sus propias secciones en Bloque II — §6 y §9.
+> Los outputs nuevos que se producen en Paso 2 (Slug Generation y Service-to-Main-City Applicability) tienen sus propias secciones en Bloque II — §6.2 y §6.5.
 
 ## §4 Ejemplo rellenado
 
@@ -121,9 +126,33 @@ Calcular el tamaño exacto del cluster aplicando la fórmula maestra `1 + S + 1 
 
 > **Definición operativa — Local Coverage Areas:** zonas, barrios, distritos o landmarks seleccionados desde la dirección física, la Main City, la coherencia GEO, la proximidad, los datos de búsqueda, los competidores y la lógica GMB Crush para reforzar relevancia local dentro del contenido, schema y futuros análisis. No son automáticamente URLs. No son automáticamente páginas propias. No son necesariamente oficinas físicas. Las Local Coverage Areas se usan primero como señales GEO dentro del contenido. No generan URLs por defecto.
 
-## §5 Planned GBP Categories Before GBP Creation
+## §5 Outputs a Conseguir
 
-### §5.1 Explicación
+> Tabla declarativa de los 15 outputs que el Paso 2 debe producir. Cada output tiene su tipo, su origen (de dónde viene la información necesaria) y la sección §6.X donde se genera operativamente.
+
+| # | Output | Tipo | Origen | Producido en |
+|---|---|---|---|---|
+| 1 | Planned GBP Categories Status | Status (`Planned` hasta Paso 14) | GMB Crush ← Paso 1 §9 + Paso 1 §10 | §6.1 |
+| 2 | Primary Category Slug | URL-safe string | GMB Crush ← Paso 1 §9 | §6.2 |
+| 3 | Main City Slug | URL-safe string | GMB Crush ← Paso 1 §11 | §6.2 |
+| 4 | Service Slugs (S=5) | URL-safe strings | GMB Crush ← Paso 1 §13 | §6.2 |
+| 5 | Service-to-Main-City Applicability | Boolean + exclusiones | GMB Crush + Input humano | §6.5 |
+| 6 | Variable S (S_efectiva) | Entero | GMB Crush ← Paso 1 §13 | §6.4 |
+| 7 | Variable A | Entero | GMB Crush ← Paso 1 §10 | §6.6 |
+| 8 | Variable G | Entero | GMB Crush ← Paso 1 §16 | §6.7 |
+| 9 | Total páginas SEO base | Entero (28 para Cerrajeros) | Fórmula `1+S+1+S+A+G×S` | §6.3, §6.11 |
+| 10 | Inventario por tipo de página | Tabla 6 page types | Aplicación de la fórmula | §6.13 |
+| 11 | Optional Expansion Formula | Fórmula declarada | GMB Crush | §6.14, §6.15 |
+| 12 | Validación anti-duplicación | Validation flag | GMB Crush | §6.12 |
+| 13 | Validación dependencias | Validation flag | GMB Crush | §6.10 |
+| 14 | Validación LCAs fuera fórmula | Validation flag | GMB Crush | §6.8 |
+| 15 | Validación auditabilidad del total | Validation flag | GMB Crush | §6.11 |
+
+## §6 Reglas que Aplican
+
+> Esta sección contiene los 15 outputs operativos del Paso 2. Cada uno se desarrolla con el mismo patrón: Explicación / Patrón o fórmula / Ejemplos / Regla final / Validación operativa / Cómo se obtiene / Output del paso.
+
+### §6.1 Planned GBP Categories Before GBP Creation
 
 **Explicación**
 
@@ -159,21 +188,17 @@ Base page: /cerrajero/madrid/duplicado-llaves/
 Antes del GBP, la web soporta categorías planificadas; después del Paso 14, se validan y sincronizan con categorías confirmadas.
 ```
 
-### §5.2 Cómo obtenemos las Planned GBP Categories
+**Cómo se obtiene**
 
-**Fuente:** GMB Crush.
+- **Fuente:** GMB Crush.
+- **Método:** Marcar todas las categorías GBP planificadas como `Planned` hasta que el Paso 14 cree y verifique el GBP. La arquitectura web se construye sobre la Planned Primary y solo soporta Planned Additional que necesitan página separada (cruce con §6.6 Variable A).
 
-**Método:** Marcar todas las categorías GBP planificadas como `Planned` hasta que el Paso 14 cree y verifique el GBP. La arquitectura web se construye sobre la Planned Primary y solo soporta Planned Additional que necesitan página separada (cruce con §10 Variable A).
+**Output del paso**
 
-### §5.3 Output del paso
+- **Tipo:** Status declarado de categorías GBP — `Planned` hasta el Paso 14.
+- **Ejemplo (Cerrajeros Madrid 24h):** Planned Primary: Cerrajero. Planned Additional: Servicio de cerrajería de urgencia (cubierta por core service), Servicio de duplicado de llaves (necesita página propia).
 
-**Tipo:** Status declarado de categorías GBP — `Planned` hasta el Paso 14.
-
-**Ejemplo (Cerrajeros Madrid 24h):** Planned Primary: Cerrajero. Planned Additional: Servicio de cerrajería de urgencia (cubierta por core service), Servicio de duplicado de llaves (necesita página propia).
-
-## §6 Slug Generation
-
-### §6.1 Explicación
+### §6.2 Slug Generation
 
 **Explicación**
 
@@ -221,21 +246,17 @@ Los slugs son derivados deterministas de los nombres heredados; nunca se inventa
 
 La transformación es determinista: lowercase + remove diacritics + replace non-alphanumeric con dash + collapse multiple dashes. La IA no inventa slugs; los deriva mecánicamente del Business Name (Paso 1 §5), Primary Category (Paso 1 §9), Main City (Paso 1 §11) y cada Service (Paso 1 §13). Si el cliente exige un slug distinto del derivado, hay que documentarlo como excepción.
 
-### §6.2 Cómo obtenemos los Slugs
+**Cómo se obtiene**
 
-**Fuente:** GMB Crush ← heredados del Paso 1.
+- **Fuente:** GMB Crush ← heredados del Paso 1.
+- **Método:** Aplicar la transformación slugify a Primary Category (Paso 1 §9), Main City (Paso 1 §11) y a cada uno de los servicios principales (Paso 1 §13). Reutilizar los slugs en todas las URLs y schema del Paso 4 en adelante.
 
-**Método:** Aplicar la transformación slugify a Primary Category (Paso 1 §9), Main City (Paso 1 §11) y a cada uno de los servicios principales (Paso 1 §13). Reutilizar los slugs en todas las URLs y schema del Paso 4 en adelante.
+**Output del paso**
 
-### §6.3 Output del paso
+- **Tipo:** Conjunto de slugs URL-safe (1 Primary + 1 Main City + S Services).
+- **Ejemplo (Cerrajeros Madrid 24h):** `cerrajero` / `madrid` / `cerrajero-urgente`, `apertura-puertas`, `cambio-cerraduras`, `cambio-bombines`, `instalacion-cerraduras-seguridad`.
 
-**Tipo:** Conjunto de slugs URL-safe (1 Primary + 1 Main City + S Services).
-
-**Ejemplo (Cerrajeros Madrid 24h):** `cerrajero` / `madrid` / `cerrajero-urgente`, `apertura-puertas`, `cambio-cerraduras`, `cambio-bombines`, `instalacion-cerraduras-seguridad`.
-
-## §7 Regla 1 — Fórmula base de una Main City
-
-### §7.1 Explicación
+### §6.3 Fórmula base de una Main City
 
 **Explicación**
 
@@ -279,21 +300,17 @@ La versión base del sistema usa una sola Main City. Esto simplifica la arquitec
 
 La fórmula debe devolver un inventario ejecutable, no un mapa teórico inmanejable. En una web local base, el resultado debe contener homepage, service overview pages, Main City GeoHub, Main City service pages, additional category pages y GeoArticles.
 
-### §7.2 Cómo obtenemos la Fórmula base
+**Cómo se obtiene**
 
-**Fuente:** GMB Crush.
+- **Fuente:** GMB Crush.
+- **Método:** Aplicar la fórmula `1 + S + 1 + S + A + G × S` con los valores de S (§6.4), A (§6.6) y G (§6.7). El resultado da el total de páginas SEO base del cluster Main City. Una sola Main City multiplica — las Local Coverage Areas no entran en la fórmula (§6.8).
 
-**Método:** Aplicar la fórmula `1 + S + 1 + S + A + G × S` con los valores de S (§8), A (§10) y G (§11). El resultado da el total de páginas SEO base del cluster Main City. Una sola Main City multiplica — las Local Coverage Areas no entran en la fórmula (§12).
+**Output del paso**
 
-### §7.3 Output del paso
+- **Tipo:** Total de páginas SEO base del cluster Main City.
+- **Ejemplo (Cerrajeros Madrid 24h):** 1 + 5 + 1 + 5 + 1 + 15 = 28 páginas SEO base.
 
-**Tipo:** Total de páginas SEO base del cluster Main City.
-
-**Ejemplo (Cerrajeros Madrid 24h):** 1 + 5 + 1 + 5 + 1 + 15 = 28 páginas SEO base.
-
-## §8 Regla 2 — Variable S
-
-### §8.1 Explicación
+### §6.4 Variable S
 
 **Explicación**
 
@@ -332,21 +349,17 @@ S solo incluye servicios core reales y principales que merecen página propia.
 
 La variable S solo cuenta servicios principales reales. Esta regla evita que sinónimos, modificadores o subcasos inflen la fórmula. Si un servicio no merece una página general y una página local, probablemente no debe entrar como servicio core en la fórmula base.
 
-### §8.2 Cómo obtenemos la Variable S
+**Cómo se obtiene**
 
-**Fuente:** GMB Crush ← heredado del Paso 1 §13 Servicios principales.
+- **Fuente:** GMB Crush ← heredado del Paso 1 §13 Servicios principales.
+- **Método:** Tomar el conteo de core services declarados en el Paso 1. Solo cuentan servicios reales con valor comercial. No inflar con sinónimos, modificadores ni subcasos.
 
-**Método:** Tomar el conteo de core services declarados en el Paso 1. Solo cuentan servicios reales con valor comercial. No inflar con sinónimos, modificadores ni subcasos.
+**Output del paso**
 
-### §8.3 Output del paso
+- **Tipo:** Entero — número de core services aprobados.
+- **Ejemplo (Cerrajeros Madrid 24h):** S = 5 (Cerrajero urgente, Apertura de puertas, Cambio de cerraduras, Cambio de bombines, Instalación de cerraduras de seguridad).
 
-**Tipo:** Entero — número de core services aprobados.
-
-**Ejemplo (Cerrajeros Madrid 24h):** S = 5 (Cerrajero urgente, Apertura de puertas, Cambio de cerraduras, Cambio de bombines, Instalación de cerraduras de seguridad).
-
-## §9 Service-to-Main-City Applicability
-
-### §9.1 Explicación
+### §6.5 Service-to-Main-City Applicability
 
 **Explicación**
 
@@ -384,23 +397,19 @@ Por defecto todos los servicios aplican a la Main City; las exclusiones reducen 
 
 **Validación operativa**
 
-La pregunta debe hacerse explícitamente al cliente. Si todos los servicios aplican (caso default), `S_efectiva = S` y la fórmula queda intacta. Si hay exclusiones, hay que recalcular `S_efectiva` y revisar el inventario LBS y GeoArticles del Bloque II. La exclusión solo aplica a la Main City; servicios excluidos pueden aplicar en Approved Expansion Areas (§13) si las hay.
+La pregunta debe hacerse explícitamente al cliente. Si todos los servicios aplican (caso default), `S_efectiva = S` y la fórmula queda intacta. Si hay exclusiones, hay que recalcular `S_efectiva` y revisar el inventario LBS y GeoArticles del Bloque II. La exclusión solo aplica a la Main City; servicios excluidos pueden aplicar en Approved Expansion Areas (§6.9) si las hay.
 
-### §9.2 Cómo obtenemos la Service-to-Main-City Applicability
+**Cómo se obtiene**
 
-**Fuente:** GMB Crush + Input humano.
+- **Fuente:** GMB Crush + Input humano.
+- **Método:** Preguntar al cliente «¿Todos los servicios aplican a la Main City?». Si Sí (default web-first según doctrina): `S_efectiva = S` y la fórmula queda intacta. Si No: registrar las exclusiones declaradas por el cliente con su razón, recalcular `S_efectiva` y propagar al inventario LBS y GeoArticles base.
 
-**Método:** Preguntar al cliente «¿Todos los servicios aplican a la Main City?». Si Sí (default web-first según doctrina): `S_efectiva = S` y la fórmula queda intacta. Si No: registrar las exclusiones declaradas por el cliente con su razón, recalcular `S_efectiva` y propagar al inventario LBS y GeoArticles base.
+**Output del paso**
 
-### §9.3 Output del paso
+- **Tipo:** Boolean (Yes/No) + lista de exclusiones (si aplica).
+- **Ejemplo (Cerrajeros Madrid 24h):** Yes — todos los 5 servicios aplican a Madrid. S_efectiva = 5.
 
-**Tipo:** Boolean (Yes/No) + lista de exclusiones (si aplica).
-
-**Ejemplo (Cerrajeros Madrid 24h):** Yes — todos los 5 servicios aplican a Madrid. S_efectiva = 5.
-
-## §10 Regla 3 — Variable A
-
-### §10.1 Explicación
+### §6.6 Variable A
 
 **Explicación**
 
@@ -439,21 +448,17 @@ A cuenta categorías adicionales efectivas, no etiquetas repetidas ni cubiertas 
 
 La variable A no es igual al número total de categorías adicionales del GBP. Solo cuenta las que no están cubiertas por un servicio core. Esto evita duplicaciones y mantiene la fórmula realista.
 
-### §10.2 Cómo obtenemos la Variable A
+**Cómo se obtiene**
 
-**Fuente:** GMB Crush ← heredado del Paso 1 §10 Planned Additional GBP Categories.
+- **Fuente:** GMB Crush ← heredado del Paso 1 §10 Planned Additional GBP Categories.
+- **Método:** Contar las Planned Additional Categories que NO están cubiertas por core services. Las cubiertas no suman a A (ver §6.12 Control anti-duplicación).
 
-**Método:** Contar las Planned Additional Categories que NO están cubiertas por core services. Las cubiertas no suman a A (§16 Control anti-duplicación).
+**Output del paso**
 
-### §10.3 Output del paso
+- **Tipo:** Entero — categorías adicionales efectivas que requieren página propia.
+- **Ejemplo (Cerrajeros Madrid 24h):** A = 1 (Servicio de duplicado de llaves; Servicio de cerrajería de urgencia queda cubierta por core service).
 
-**Tipo:** Entero — categorías adicionales efectivas que requieren página propia.
-
-**Ejemplo (Cerrajeros Madrid 24h):** A = 1 (Servicio de duplicado de llaves; Servicio de cerrajería de urgencia queda cubierta por core service).
-
-## §11 Regla 4 — Variable G
-
-### §11.1 Explicación
+### §6.7 Variable G
 
 **Explicación**
 
@@ -492,21 +497,17 @@ Los GeoArticles base refuerzan Main City + servicio. No se multiplican por Local
 
 La variable G representa cuántos GeoArticles se crean por servicio en la Main City. No debe multiplicarse por áreas de cobertura en la base. Esto permite tener profundidad semántica sin producir decenas de artículos antes de tener landings comerciales sólidas.
 
-### §11.2 Cómo obtenemos la Variable G
+**Cómo se obtiene**
 
-**Fuente:** GMB Crush ← heredado del Paso 1 §16 GeoArticles per Service.
+- **Fuente:** GMB Crush ← heredado del Paso 1 §16 GeoArticles per Service.
+- **Método:** Tomar el valor de G capturado en el Paso 1 (default 3). Aplicar `G × S_efectiva` para obtener el total de GeoArticles del cluster Main City. No multiplicar por Local Coverage Areas (§6.8).
 
-**Método:** Tomar el valor de G capturado en el Paso 1 (default 3). Aplicar `G × S_efectiva` para obtener el total de GeoArticles del cluster Main City. No multiplicar por Local Coverage Areas (§12).
+**Output del paso**
 
-### §11.3 Output del paso
+- **Tipo:** Entero — GeoArticles por servicio core.
+- **Ejemplo (Cerrajeros Madrid 24h):** G = 3 → G × S = 15 GeoArticles para Madrid.
 
-**Tipo:** Entero — GeoArticles por servicio core.
-
-**Ejemplo (Cerrajeros Madrid 24h):** G = 3 → G × S = 15 GeoArticles para Madrid.
-
-## §12 Regla 5 — Local Coverage Areas no entran en la fórmula
-
-### §12.1 Explicación
+### §6.8 Local Coverage Areas fuera de la fórmula
 
 **Explicación**
 
@@ -545,21 +546,17 @@ Mencionar una zona como cobertura no crea una URL para esa zona; refuerza conten
 
 Las áreas de cobertura local son importantes, pero no son multiplicadores de páginas. Se usan en contenido, FAQs, ejemplos, schema areaServed y secciones de cobertura. Esta regla evita que cobertura real se convierta automáticamente en arquitectura.
 
-### §12.2 Cómo obtenemos las LCAs (exclusión de la fórmula)
+**Cómo se obtiene**
 
-**Fuente:** GMB Crush ← heredado del Paso 1 §14 Local Coverage Areas.
+- **Fuente:** GMB Crush ← heredado del Paso 1 §14 Local Coverage Areas.
+- **Método:** Las LCAs (Direct + Candidate) heredadas del Paso 1 NO se usan como multiplicador de la fórmula. Se mencionan en contenido, FAQs, ejemplos locales y schema `areaServed`, pero no generan filas en el inventario base.
 
-**Método:** Las LCAs (Direct + Candidate) heredadas del Paso 1 NO se usan como multiplicador de la fórmula. Se mencionan en contenido, FAQs, ejemplos locales y schema `areaServed`, pero no generan filas en el inventario base.
+**Output del paso**
 
-### §12.3 Output del paso
+- **Tipo:** LCAs declaradas como señales de contenido — 0 URLs adicionales en la base.
+- **Ejemplo (Cerrajeros Madrid 24h):** Almagro, Chamberí, Salamanca, Retiro, Centro, Tetuán, Chamartín, Arganzuela, Moncloa, Prosperidad → 0 páginas adicionales en el cluster base.
 
-**Tipo:** LCAs declaradas como señales de contenido — 0 URLs adicionales en la base.
-
-**Ejemplo (Cerrajeros Madrid 24h):** Almagro, Chamberí, Salamanca, Retiro, Centro, Tetuán, Chamartín, Arganzuela, Moncloa, Prosperidad → 0 páginas adicionales en el cluster base.
-
-## §13 Regla 6 — Approved Expansion Areas opcional
-
-### §13.1 Explicación
+### §6.9 Approved Expansion Areas opcional
 
 **Explicación**
 
@@ -598,21 +595,17 @@ La expansión se calcula aparte de la base y solo con zonas aprobadas explícita
 
 Si una zona de cobertura se aprueba para expansión, se calcula con un módulo separado. Esto mantiene la base limpia y permite escalar con control. Las Expansion Areas no deben mezclarse con la fórmula base.
 
-### §13.2 Cómo obtenemos las Approved Expansion Areas
+**Cómo se obtiene**
 
-**Fuente:** Decisión de diseño ← heredado del Paso 1 §15 Approved Expansion Areas.
+- **Fuente:** Decisión de diseño ← heredado del Paso 1 §15 Approved Expansion Areas.
+- **Método:** Si hay zonas aprobadas en Paso 1 §15, aplicar la fórmula expansión `E + S × E + A × E + G × S × E` (ver §6.14 Optional Expansion Formula). Por defecto `E = 0` en Phase 1. Cada zona aprobada se calcula aparte de la base, no mezclada.
 
-**Método:** Si hay zonas aprobadas en Paso 1 §15, aplicar la fórmula expansión `E + S × E + A × E + G × S × E` (ver §18 Optional Expansion Formula). Por defecto `E = 0` en Phase 1. Cada zona aprobada se calcula aparte de la base, no mezclada.
+**Output del paso**
 
-### §13.3 Output del paso
+- **Tipo:** Entero — total de páginas de expansión (puede ser 0).
+- **Ejemplo (Cerrajeros Madrid 24h):** 0 páginas de expansión (Phase 1 sin Approved Expansion).
 
-**Tipo:** Entero — total de páginas de expansión (puede ser 0).
-
-**Ejemplo (Cerrajeros Madrid 24h):** 0 páginas de expansión (Phase 1 sin Approved Expansion).
-
-## §14 Regla 7 — Páginas comerciales antes que artículos (dependencias)
-
-### §14.1 Explicación
+### §6.10 Dependencias entre páginas
 
 **Explicación**
 
@@ -651,21 +644,17 @@ Cada página contada debe tener padre publicable y destino de enlace interno; ni
 
 El conteo no solo mide cantidad; también debe prever dependencias. Una GeoArticle no debería existir si no existe la página local que apoya. Una Location-Based Service Page necesita Service Overview y GeoHub.
 
-### §14.2 Cómo obtenemos las dependencias entre páginas
+**Cómo se obtiene**
 
-**Fuente:** GMB Crush.
+- **Fuente:** GMB Crush.
+- **Método:** Validar dependencias antes de cerrar el inventario. Jerarquía obligatoria: Homepage → Service Overview Pages → GeoHub Main City → Location-Based Service Pages → Additional Category Pages → GeoArticles. Cada página hija debe tener padre publicable y destino de enlace interno.
 
-**Método:** Validar dependencias antes de cerrar el inventario. Jerarquía obligatoria: Homepage → Service Overview Pages → GeoHub Main City → Location-Based Service Pages → Additional Category Pages → GeoArticles. Cada página hija debe tener padre publicable y destino de enlace interno.
+**Output del paso**
 
-### §14.3 Output del paso
+- **Tipo:** Mapa de dependencias resuelto — orden de publicación viable.
+- **Ejemplo (Cerrajeros Madrid 24h):** `/madrid/cuanto-cuesta-un-cerrajero-urgente/` se programa después de `/cerrajero/madrid/cerrajero-urgente/` y `/madrid/`.
 
-**Tipo:** Mapa de dependencias resuelto — orden de publicación viable.
-
-**Ejemplo (Cerrajeros Madrid 24h):** `/madrid/cuanto-cuesta-un-cerrajero-urgente/` se programa después de `/cerrajero/madrid/cerrajero-urgente/` y `/madrid/`.
-
-## §15 Regla 8 — Resultado total como inventario auditable
-
-### §15.1 Explicación
+### §6.11 Resultado total auditable
 
 **Explicación**
 
@@ -704,21 +693,17 @@ El conteo final debe entregarse como tabla transparente y auditable componente a
 
 La fórmula debe terminar con una tabla clara de cantidades por tipo de página. Si el número total no se puede explicar por componentes, no está listo para producción.
 
-### §15.2 Cómo obtenemos el Resultado final
+**Cómo se obtiene**
 
-**Fuente:** GMB Crush.
+- **Fuente:** GMB Crush.
+- **Método:** Entregar el resultado como tabla por tipo de página con fórmula y cantidad (ver §6.13 Tabla de inventario base). NO entregar como calendario de publicación — el orden y ritmo se decide en el Paso 10 (Producción en fases). El total debe ser explicable componente a componente.
 
-**Método:** Entregar el resultado como tabla por tipo de página con fórmula y cantidad (ver §17 Tabla de inventario base). NO entregar como calendario de publicación — el orden y ritmo se decide en el Paso 10 (Producción en fases). El total debe ser explicable componente a componente.
+**Output del paso**
 
-### §15.3 Output del paso
+- **Tipo:** Tabla auditable — desglose por tipo de página + total.
+- **Ejemplo (Cerrajeros Madrid 24h):** 1 Homepage + 5 SO + 1 GeoHub + 5 LBS + 1 Additional + 15 GeoArticles = 28 páginas SEO base.
 
-**Tipo:** Tabla auditable — desglose por tipo de página + total.
-
-**Ejemplo (Cerrajeros Madrid 24h):** 1 Homepage + 5 SO + 1 GeoHub + 5 LBS + 1 Additional + 15 GeoArticles = 28 páginas SEO base.
-
-## §16 Regla 9 — Control anti-duplicación
-
-### §16.1 Explicación
+### §6.12 Control anti-duplicación
 
 **Explicación**
 
@@ -754,19 +739,23 @@ Una intención local debe tener una sola URL principal.
 
 La validación se aplica antes de cerrar el conteo. La IA recorre las Planned Additional Categories (intake §3, Paso 1 §10) y descarta las que coinciden en intención comercial con un core service. El número final de A debe ser explicable por exclusión, no por inflación.
 
-### §16.2 Cómo obtenemos el Control anti-duplicación
+**Cómo se obtiene**
 
-**Fuente:** GMB Crush.
+- **Fuente:** GMB Crush.
+- **Método:** Antes de cerrar el conteo, comparar cada Planned Additional Category con la lista de core services. Si una categoría adicional coincide en intención comercial con un core service, NO suma a A. La regla aplica también entre LBS y Additional Category Pages: una intención comercial = una URL principal.
 
-**Método:** Antes de cerrar el conteo, comparar cada Planned Additional Category con la lista de core services. Si una categoría adicional coincide en intención comercial con un core service, NO suma a A. La regla aplica también entre LBS y Additional Category Pages: una intención comercial = una URL principal.
+**Output del paso**
 
-### §16.3 Output del paso
+- **Tipo:** Lista de duplicados detectados y consolidados.
+- **Ejemplo (Cerrajeros Madrid 24h):** Servicio de cerrajería de urgencia → consolidado con core service Cerrajero urgente (no suma a A).
 
-**Tipo:** Lista de duplicados detectados y consolidados.
+### §6.13 Tabla de inventario base
 
-**Ejemplo (Cerrajeros Madrid 24h):** Servicio de cerrajería de urgencia → consolidado con core service Cerrajero urgente (no suma a A).
+**Explicación**
 
-## §17 Tabla de inventario base
+Resultado tabular del cálculo. Es el output principal que el Paso 3 (URL Matrix) consume directamente para generar URLs concretas.
+
+**Patrón o fórmula**
 
 | Tipo de página | Fórmula | Ejemplo Cerrajeros Madrid 24h |
 |---|---:|---:|
@@ -778,7 +767,23 @@ La validación se aplica antes de cerrar el conteo. La IA recorre las Planned Ad
 | GeoArticles de la Main City | G × S | 15 |
 | **Total base** | — | **28** |
 
-## §18 Optional Expansion Formula
+**Cómo se obtiene**
+
+- **Fuente:** GMB Crush.
+- **Método:** Aplicar S, A, G a la fórmula base (§6.3) y desplegar en tabla. La tabla es el handoff al Paso 3.
+
+**Output del paso**
+
+- **Tipo:** Tabla de inventario por page type.
+- **Ejemplo (Cerrajeros Madrid 24h):** Tabla anterior con totales 1 + 5 + 1 + 5 + 1 + 15 = 28.
+
+### §6.14 Optional Expansion Formula
+
+**Explicación**
+
+Fórmula declarada para futura activación si una zona de cobertura pasa a Approved Expansion Area. No se ejecuta en Phase 1 si E=0.
+
+**Patrón o fórmula**
 
 ```text
 Solo si una Local Coverage Area pasa a Approved Expansion Area:
@@ -789,7 +794,23 @@ Solo si una Local Coverage Area pasa a Approved Expansion Area:
 + G × S × E Expansion GeoArticles
 ```
 
-## §19 Ejemplo de expansión opcional
+**Cómo se obtiene**
+
+- **Fuente:** GMB Crush.
+- **Método:** Declarar la fórmula en el documento aunque E=0 en Phase 1. Lista para activación futura sin re-deducir el sistema.
+
+**Output del paso**
+
+- **Tipo:** Fórmula declarada (paramétrica en E).
+- **Ejemplo (Cerrajeros Madrid 24h):** E = 0 → 0 páginas de expansión. Fórmula lista para activar si E ≥ 1 en Phase 2.
+
+### §6.15 Ejemplo de expansión opcional
+
+**Explicación**
+
+Ilustración del cálculo de expansión con valores hipotéticos para Almagro como Approved Expansion Area.
+
+**Patrón o fórmula**
 
 ```text
 Approved Expansion Area:
@@ -808,40 +829,67 @@ Extra pages:
 = 22 páginas extra
 ```
 
-# Bloque III — Checklist Final
+**Cómo se obtiene**
 
-## §20 Checklist final del Paso 2
+- **Fuente:** GMB Crush.
+- **Método:** Aplicar §6.14 con valores E=1 y los mismos S, A, G del cluster base. El resultado se publica como módulo separado (no se suma al cluster base).
 
-| Check | Pregunta | Estado |
-|---|---|---|
-| Fórmula base | ¿La fórmula usa una sola Main City? | ✅ / ⬜ |
-| Servicios | ¿S cuenta solo core services reales? | ✅ / ⬜ |
-| Categorías adicionales | ¿A excluye categorías ya cubiertas? | ✅ / ⬜ |
-| GeoArticles | ¿G se calcula por servicio dentro de la Main City? | ✅ / ⬜ |
-| Local Coverage Areas | ¿No están generando URLs por defecto? | ✅ / ⬜ |
-| Approved Expansion | ¿La expansión está separada de la base? | ✅ / ⬜ |
-| Dependencias | ¿Los artículos dependen de páginas comerciales? | ✅ / ⬜ |
-| Total base | ¿El total de páginas está claro? | ✅ / ⬜ |
-| No duplicación | ¿Se evitaron duplicados de intención? | ✅ / ⬜ |
+**Output del paso**
 
-# Bloque IV — Outputs consolidados
+- **Tipo:** Cálculo paramétrico de expansión (ejemplo ilustrativo).
+- **Ejemplo (Cerrajeros Madrid 24h):** No aplica en Phase 1 (E=0). Si Almagro se aprueba, se generan 22 páginas adicionales en módulo de expansión.
 
-## §21 Outputs consolidados del Paso 2
+## §7 Checklist Final
 
-- Fórmula base calculada
-- Variables S, A y G definidas
-- Total de páginas base
-- Categorías duplicadas detectadas
-- Local Coverage Areas excluidas del conteo de URLs
-- Optional Expansion Formula preparada
-- Inventario base de páginas
-- Dependencias iniciales claras
+> Validación operativa antes de cerrar el Paso 2 y avanzar al Paso 3 (URL Matrix). Cada ☐ es un check que debe pasar antes del handoff.
 
----
+### Validación de outputs
 
-# Bloque V — Fuentes Internas GMB Crush Usadas
+- ☐ Todos los outputs de §5 tienen valor calculado para el negocio
+- ☐ Slugs derivados con slugify estándar (sin tildes, lowercase, dashes)
+- ☐ S_efectiva calculada y aplicada a la fórmula
+- ☐ A excluye categorías cubiertas por core services
+- ☐ G × S calculado correctamente para Main City
 
-# §22 Fuentes internas GMB Crush usadas
+### Validación de reglas
+
+- ☐ Una sola Main City multiplica
+- ☐ LCAs NO multiplican (mencionadas en contenido y schema, no en URL)
+- ☐ AEAs NO entran en la fórmula base (separadas en Optional Expansion)
+- ☐ Dependencias resueltas (orden Homepage → SO → GeoHub → LBS → AC → GAs)
+- ☐ Anti-duplicación validada (intención = una URL)
+
+### Validación de auditabilidad
+
+- ☐ Total componente a componente explicable
+- ☐ Tabla de inventario base completa
+- ☐ Optional Expansion Formula declarada (aunque E=0)
+
+## §8 Outputs Consolidados
+
+> Tabla final con valores reales para Cerrajeros Madrid 24h y status de cada output. Cada row corresponde a un output declarado en §5 y producido en §6.X.
+
+| # | Output | §X regla | Valor (Cerrajeros Madrid 24h) | Status |
+|---|---|---|---|---|
+| 1 | Planned GBP Categories Status | §6.1 | Cerrajero (Planned) + 2 Additional (Planned) | confirmed |
+| 2 | Primary Category Slug | §6.2 | `cerrajero` | confirmed |
+| 3 | Main City Slug | §6.2 | `madrid` | confirmed |
+| 4 | Service Slugs (5) | §6.2 | `cerrajero-urgente`, `apertura-puertas`, `cambio-cerraduras`, `cambio-bombines`, `instalacion-cerraduras-seguridad` | confirmed |
+| 5 | Service-to-Main-City Applicability | §6.5 | Yes / 0 exclusiones / S_efectiva = 5 | confirmed |
+| 6 | Variable S | §6.4 | 5 | confirmed |
+| 7 | Variable A | §6.6 | 1 (Servicio de duplicado de llaves) | confirmed |
+| 8 | Variable G | §6.7 | 3 | confirmed |
+| 9 | Total páginas SEO base | §6.3 + §6.11 | 1 + 5 + 1 + 5 + 1 + 15 = **28** | confirmed |
+| 10 | Inventario por tipo de página | §6.13 | Homepage=1 / SO=5 / GeoHub=1 / LBS=5 / AC=1 / GAs=15 | confirmed |
+| 11 | Optional Expansion Formula | §6.14 + §6.15 | E=0 → 0 páginas (declarada para activación futura) | confirmed |
+| 12 | Validación anti-duplicación | §6.12 | Servicio de cerrajería de urgencia consolidada con core service Cerrajero urgente | OK |
+| 13 | Validación dependencias | §6.10 | Orden Homepage → SO → GeoHub → LBS → AC → GAs validado | OK |
+| 14 | Validación LCAs fuera fórmula | §6.8 | Almagro, Chamberí, Salamanca, Retiro, etc. → 0 páginas adicionales | OK |
+| 15 | Validación auditabilidad del total | §6.11 | 28 explicable componente a componente | OK |
+
+# Bloque III — Fuentes Internas GMB Crush usadas
+
+## §9 Fuentes internas GMB Crush usadas
 
 - Analysis Framework.pdf
 - GMB CRUSH Universal AI Local SEO Framework Template
@@ -852,7 +900,7 @@ Extra pages:
 - GeoArticle Pages AI Framework
 - Additional Categories Pages AI Framework
 
-### §22.1 GeoArticles completos (15)
+### §9.1 GeoArticles completos (15)
 
 > **Aviso de trazabilidad:** estos 15 títulos son un primer borrador derivado de la fórmula G × S = 15 y de la lógica del servicio. **No vienen de keyword research real**. Antes de producirlos hay que validar volumen de búsqueda, dificultad y oportunidad competitiva por título. La fórmula garantiza la cantidad; los temas concretos requieren validación.
 
