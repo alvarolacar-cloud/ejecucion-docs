@@ -224,7 +224,9 @@ Y se documenta el bloque extra en el callout "Cómo leer este documento" del top
 
 ## Validación automática
 
-El autocheck (`_autocheck_paso.py`) verifica:
+El autocheck vive en `00 convenciones/_autocheck_paso.py` — junto a este esqueleto, porque es su contraparte ejecutable. Si cambias una regla del esqueleto, el autocheck cambia con ella en el mismo commit.
+
+Verifica:
 
 1. Que las cross-refs internas resuelven (no hay §X rotos)
 2. Que las Fuentes están en el catálogo
@@ -235,5 +237,11 @@ El autocheck (`_autocheck_paso.py`) verifica:
 Comando:
 
 ```bash
-python _autocheck_paso.py <a-doc>.md Paso-NN
+python "00 convenciones/_autocheck_paso.py" <ruta-al-a-doc>.md Paso-NN
+```
+
+Ejemplo:
+
+```bash
+python "00 convenciones/_autocheck_paso.py" "Bloque 1 Fundamentos/Fase 1 - Ejecución/01a-ejecucion-intake-form.md" Paso-01
 ```
