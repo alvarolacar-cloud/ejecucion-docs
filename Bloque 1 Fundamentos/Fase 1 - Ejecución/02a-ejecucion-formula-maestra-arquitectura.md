@@ -21,16 +21,21 @@ Calcular el tamaño exacto del cluster aplicando la fórmula maestra `1 + S + 1 
 
 **Outputs del paso:**
 
-- **Planned GBP Categories Status** — todas las categorías marcadas como `Planned` hasta el Paso 14
-- **Slugs** — Primary Category Slug, Main City Slug, 5 Service Slugs (operación slugify aplicada)
-- **Service-to-Main-City Applicability** — boolean + lista de exclusiones (default: todos aplican)
-- **Variable S** — número de core services aplicables a Main City (S_efectiva)
-- **Variable A** — número de Additional Categories que necesitan página propia
-- **Variable G** — GeoArticles per Service (heredado del Paso 1 §16)
-- **Total páginas SEO base** — resultado de la fórmula `1 + S + 1 + S + A + G × S`
-- **Inventario por tipo de página** — Homepage / SO / GeoHub / LBS / AC / GeoArticles con sus cantidades
-- **Optional Expansion Formula** — fórmula adicional para Approved Expansion Areas (default: 0 en Phase 1)
-- **Validaciones** — control anti-duplicación, dependencias entre páginas, resultado auditable
+- **2.1** Planned GBP Categories Status — todas las categorías marcadas como `Planned` hasta el Paso 14
+- **2.2** Primary Category Slug — operación slugify aplicada al Planned Primary Category
+- **2.3** Main City Slug — operación slugify aplicada a la Main City
+- **2.4** Service Slugs (S=5) — operación slugify aplicada a cada core service
+- **2.5** Service-to-Main-City Applicability — boolean + lista de exclusiones (default: todos aplican)
+- **2.6** Variable S — número de core services aplicables a Main City (S_efectiva)
+- **2.7** Variable A — número de Additional Categories que necesitan página propia
+- **2.8** Variable G — GeoArticles per Service (heredado del Paso 1 §16)
+- **2.9** Total páginas SEO base — resultado de la fórmula `1 + S + 1 + S + A + G × S`
+- **2.10** Inventario por tipo de página — Homepage / SO / GeoHub / LBS / AC / GeoArticles con sus cantidades
+- **2.11** Optional Expansion Formula — fórmula adicional para Approved Expansion Areas (default: 0 en Phase 1)
+- **2.12** Validación anti-duplicación
+- **2.13** Validación dependencias entre páginas
+- **2.14** Validación LCAs fuera fórmula
+- **2.15** Validación auditabilidad del total
 
 **Errores que previene:**
 
@@ -67,40 +72,55 @@ Calcular el tamaño exacto del cluster aplicando la fórmula maestra `1 + S + 1 
 
 <small>§4</small>
 
-> Todos los outputs del Paso 2 con sus valores para Cerrajeros Madrid 24h. Los heredados (Business Name, Categories, Servicios, LCAs, etc.) tienen su ejemplo en sus pasos de origen (§4 de Paso 1).
+> Los 15 outputs del Paso 2 con sus valores para Cerrajeros Madrid 24h. Los inputs heredados (Business Name, Categories, Servicios, LCAs, etc.) tienen su ejemplo en sus pasos de origen (§4 de Paso 1).
 
-### Status GBP Categories
+### 2.1 — Planned GBP Categories Status
 
-| Output | Valor |
+| Categoría | Status |
 |---|---|
-| Planned Primary GBP Category | Cerrajero (status: `Planned`) |
-| Planned Additional Categories | Servicio de cerrajería de urgencia, Servicio de duplicado de llaves (status: `Planned`) |
+| Planned Primary GBP Category: Cerrajero | `Planned` |
+| Planned Additional: Servicio de cerrajería de urgencia | `Planned` |
+| Planned Additional: Servicio de duplicado de llaves | `Planned` |
 
-### Slugs
+### 2.2 — Primary Category Slug
 
-| Output | Valor |
-|---|---|
-| Primary Category Slug | `cerrajero` |
-| Main City Slug | `madrid` |
-| Service Slugs | `cerrajero-urgente`, `apertura-puertas`, `cambio-cerraduras`, `cambio-bombines`, `instalacion-cerraduras-seguridad` |
+`cerrajero`
 
-### Service-to-Main-City Applicability
+### 2.3 — Main City Slug
 
-| Output | Valor |
+`madrid`
+
+### 2.4 — Service Slugs (S=5)
+
+`cerrajero-urgente`, `apertura-puertas`, `cambio-cerraduras`, `cambio-bombines`, `instalacion-cerraduras-seguridad`
+
+### 2.5 — Service-to-Main-City Applicability
+
+| Campo | Valor |
 |---|---|
 | ¿Todos los servicios aplican a Main City? | Yes |
 | Exclusiones | (ninguna) |
 | S_efectiva | 5 |
 
-### Variables de la fórmula
+### 2.6 — Variable S
 
-| Variable | Valor | Origen |
-|---|---|---|
-| S | 5 | Paso 1 §13 (5 core services) |
-| A | 1 | Paso 1 §10 (Solo Servicio de duplicado de llaves necesita página propia; Servicio de cerrajería de urgencia queda cubierta por core service Cerrajero urgente) |
-| G | 3 | Paso 1 §16 |
+`S = 5` (5 core services declarados en Paso 1 §13)
 
-### Inventario por tipo de página
+### 2.7 — Variable A
+
+`A = 1` (Solo Servicio de duplicado de llaves necesita página propia; Servicio de cerrajería de urgencia queda cubierta por core service Cerrajero urgente)
+
+### 2.8 — Variable G
+
+`G = 3` (heredado del Paso 1 §16)
+
+### 2.9 — Total páginas SEO base
+
+`1 + 5 + 1 + 5 + 1 + 15 = 28 páginas SEO base`
+
+Aplicación de la fórmula `1 + S + 1 + S + A + (G × S)` con S=5, A=1, G=3.
+
+### 2.10 — Inventario por tipo de página
 
 | Tipo de página | Cantidad | Fórmula |
 |---|---:|---|
@@ -113,22 +133,29 @@ Calcular el tamaño exacto del cluster aplicando la fórmula maestra `1 + S + 1 
 | **Total SEO base** | **28** | **1 + S + 1 + S + A + (G × S)** |
 | `/contacto/` (auxiliar fuera SEO base) | 1 | — |
 
-### Optional Expansion Formula
+### 2.11 — Optional Expansion Formula
 
-| Output | Valor |
+| Campo | Valor |
 |---|---|
 | Approved Expansion Areas (E) | 0 (None in Phase 1) |
 | Páginas de expansión | 0 |
 | Fórmula expansion declarada | `E + S × E + A × E + G × S × E` (lista para futura activación) |
 
-### Validaciones
+### 2.12 — Validación anti-duplicación
 
-| Validación | Resultado para Cerrajeros |
-|---|---|
-| LCAs no entran en fórmula base | Cumplido — Almagro, Chamberí, Salamanca, Retiro NO generan URLs base |
-| Anti-duplicación | Cumplido — Servicio de cerrajería de urgencia consolidada con core service Cerrajero urgente |
-| Dependencias entre páginas | Cumplido — orden Homepage → SO → GeoHub → LBS → AC → GeoArticles |
-| Resultado auditable | Cumplido — 28 páginas explicables componente a componente |
+Cumplido — Servicio de cerrajería de urgencia consolidada con core service Cerrajero urgente (no suma a A).
+
+### 2.13 — Validación dependencias entre páginas
+
+Cumplido — orden Homepage → Service Overview Pages → GeoHub Main City → LBS → Additional Category → GeoArticles validado.
+
+### 2.14 — Validación LCAs fuera fórmula
+
+Cumplido — Almagro, Chamberí, Salamanca, Retiro y demás LCAs NO generan URLs base; viven en contenido y `areaServed`.
+
+### 2.15 — Validación auditabilidad del total
+
+Cumplido — 28 páginas explicables componente a componente: 1 Homepage + 5 SO + 1 GeoHub + 5 LBS + 1 AC + 15 GAs.
 
 # Bloque II — Ejecución por la IA
 
