@@ -58,95 +58,14 @@ En este paso la IA toma todas las decisiones que definen cómo se construye cada
 
 ## §4 Ejemplo rellenado
 
+> Solo las decisiones que se toman en Paso 5. Los heredados (Business Name, NAP, Servicios, Categorías GBP, etc.) tienen su ejemplo rellenado en sus pasos de origen (§4 de Paso 1). Las specs por page type tienen su ejemplo en cada `§X.10 Ejemplo rellenado con Cerrajeros Madrid 24h` dentro del Bloque II.
+
 ```text
-Business Name:
-Cerrajeros Madrid 24h
-
-Website URL:
-https://www.cerrajerosmadrid24h.com
-
-Canonical Domain:
-https://www.cerrajerosmadrid24h.com
-
-Full NAP:
-- Name: Cerrajeros Madrid 24h
-- Street Address: Calle Rafael Calvo 12, Barrio Almagro, Distrito Chamberí
-- City: Madrid
-- State / Province: Comunidad de Madrid
-- ZIP / Postal Code: 28010
-- Country: España
-- Phone: +34 600 000 000
-
-Planned Primary GBP Category:
-Cerrajero
-
-Planned Additional GBP Categories:
-1. Servicio de cerrajería de urgencia
-2. Servicio de duplicado de llaves
-
-Main City:
-Madrid
-
-Physical Location City:
-Madrid
-
-Servicios principales:
-1. Cerrajero urgente
-2. Apertura de puertas
-3. Cambio de cerraduras
-4. Cambio de bombines
-5. Instalación de cerraduras de seguridad
-
-Direct Local Coverage Areas:
-1. Almagro
-2. Chamberí
-
-Candidate Local Coverage Areas:
-1. Salamanca
-2. Retiro
-3. Centro
-4. Tetuán
-5. Chamartín
-6. Arganzuela
-7. Moncloa
-8. Prosperidad
-
-Should Local Coverage Areas generate pages?
-No, not in the base build.
-
-Approved Expansion Areas:
-None in Phase 1.
-
-Additional Categories already covered by core services:
-1. Servicio de cerrajería de urgencia
-
-Additional Categories that need separate pages:
-1. Servicio de duplicado de llaves
-
-GeoArticles per Service:
-3
-
-Preferred CTA:
-Llamar ahora
-
-Trust Signals:
-- 10+ años de experiencia
-- reseñas iniciales pendientes de recopilar tras crear el GBP
-- Técnicos cerrajeros cualificados
-- Servicio móvil en el mismo día
-- Garantía de trabajo
-
-GBP URL:
-N/A — GBP not created yet
-
-Phone:
-+34 600 000 000
-
-Email:
-info@cerrajerosmadrid24h.com
+Primary Service:
+Cerrajero urgente
 
 Brand tone:
-Friendly, professional, local and urgente when needed
+Urgente
 ```
 
 # Bloque II — Ejecución por la IA
