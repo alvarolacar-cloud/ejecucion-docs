@@ -168,23 +168,23 @@ Cumplido — 28 páginas explicables componente a componente: 1 Homepage + 5 SO 
 
 > Tabla declarativa de los 15 outputs que el Paso 2 debe producir. Cada output tiene un ID global (`Paso.Output`, ej. `2.1`) citable desde cualquier doc del sistema.
 
-| ID | Output | Tipo | Origen |
-|---|---|---|---|
-| 2.1 | Planned GBP Categories Status | Status (`Planned` hasta Paso 14) | GMB Crush ← Paso-01 1.5 + Paso-01 1.6 |
-| 2.2 | Primary Category Slug | URL-safe string | GMB Crush ← Paso-01 1.5 |
-| 2.3 | Main City Slug | URL-safe string | GMB Crush ← Paso-01 1.7 |
-| 2.4 | Service Slugs (S=5) | URL-safe strings | GMB Crush ← Paso-01 1.9 |
-| 2.5 | Service-to-Main-City Applicability | Boolean + exclusiones | GMB Crush + Input humano |
-| 2.6 | Variable S (S_efectiva) | Entero | GMB Crush ← Paso-01 1.9 |
-| 2.7 | Variable A | Entero | GMB Crush ← Paso-01 1.6 |
-| 2.8 | Variable G | Entero | GMB Crush ← Paso-01 1.12 |
-| 2.9 | Total páginas SEO base | Entero (28 para Cerrajeros) | Fórmula `1+S+1+S+A+G×S` |
-| 2.10 | Inventario por tipo de página | Tabla 6 page types | Aplicación de la fórmula |
-| 2.11 | Optional Expansion Formula | Fórmula declarada | GMB Crush |
-| 2.12 | Validación anti-duplicación | Validation flag | GMB Crush |
-| 2.13 | Validación dependencias | Validation flag | GMB Crush |
-| 2.14 | Validación LCAs fuera fórmula | Validation flag | GMB Crush |
-| 2.15 | Validación auditabilidad del total | Validation flag | GMB Crush |
+| ID | Output | Tipo | Fuente | Hereda de |
+|---|---|---|---|---|
+| 2.1 | Planned GBP Categories Status | Status (`Planned` hasta Paso 14) | GMB Crush | Paso-01 1.5 + Paso-01 1.6 |
+| 2.2 | Primary Category Slug | URL-safe string | GMB Crush | Paso-01 1.5 |
+| 2.3 | Main City Slug | URL-safe string | GMB Crush | Paso-01 1.7 |
+| 2.4 | Service Slugs (S=5) | URL-safe strings | GMB Crush | Paso-01 1.9 |
+| 2.5 | Service-to-Main-City Applicability | Boolean + exclusiones | GMB Crush + Input humano | — |
+| 2.6 | Variable S (S_efectiva) | Entero | GMB Crush | Paso-01 1.9 |
+| 2.7 | Variable A | Entero | GMB Crush | Paso-01 1.6 |
+| 2.8 | Variable G | Entero | GMB Crush | Paso-01 1.12 |
+| 2.9 | Total páginas SEO base | Entero (28 para Cerrajeros) | GMB Crush | Paso-02 2.6 + 2.7 + 2.8 (intra-paso) |
+| 2.10 | Inventario por tipo de página | Tabla 6 page types | GMB Crush | Paso-02 2.6 + 2.7 + 2.8 (intra-paso) |
+| 2.11 | Optional Expansion Formula | Fórmula declarada | GMB Crush | — |
+| 2.12 | Validación anti-duplicación | Validation flag | GMB Crush | — |
+| 2.13 | Validación dependencias | Validation flag | GMB Crush | — |
+| 2.14 | Validación LCAs fuera fórmula | Validation flag | GMB Crush | — |
+| 2.15 | Validación auditabilidad del total | Validation flag | GMB Crush | — |
 
 ## Obtención de Outputs
 

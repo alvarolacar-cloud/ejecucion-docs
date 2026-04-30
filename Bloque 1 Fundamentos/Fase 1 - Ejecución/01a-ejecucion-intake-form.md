@@ -268,22 +268,22 @@ Aplicación: G × S = 3 × 5 = 15 GeoArticles para Madrid (calculados en Paso-02
 
 > Tabla declarativa de los 14 outputs que el Paso 1 debe producir. Cada output tiene un ID global (`Paso.Output`, ej. `1.1`) citable desde cualquier doc del sistema.
 
-| ID | Output | Tipo | Origen |
-|---|---|---|---|
-| 1.1 | Business Name | String | Input humano |
-| 1.2 | Website URL / Canonical Domain | URL canónica | Input humano |
-| 1.3 | GBP Lifecycle Status | 4 campos discretos | GMB Crush + Input humano |
-| 1.4 | Full NAP | Bloque NAP de 8 campos | Input humano |
-| 1.5 | Planned Primary GBP Category | Categoría GBP oficial | GMB Crush + Competidores |
-| 1.6 | Planned Additional GBP Categories | Lista clasificada (cubiertas vs página propia) | GMB Crush + Competidores |
-| 1.7 | Main City | Ciudad única | GMB Crush |
-| 1.8 | Physical Location City | Ciudad de presencia física | Input humano |
-| 1.9 | Servicios principales | 5 core services priorizados | GMB Crush + Competidores |
-| 1.10 | Local Coverage Areas | Direct + Candidate (dos listas) | GMB Crush + Competidores |
-| 1.11 | Approved Expansion Areas | Lista de zonas aprobadas (puede estar vacía) | Decisión de diseño |
-| 1.12 | GeoArticles per Service (G) | Entero (default 3) | GMB Crush |
-| 1.13 | Preferred CTA | Una opción de 4 estándar | Decisión de diseño |
-| 1.14 | Trust Signals | Lista de 4-7 señales reales | GMB Crush + Competidores |
+| ID | Output | Tipo | Fuente | Hereda de |
+|---|---|---|---|---|
+| 1.1 | Business Name | String | Input humano | — |
+| 1.2 | Website URL / Canonical Domain | URL canónica | Input humano | — |
+| 1.3 | GBP Lifecycle Status | 4 campos discretos | GMB Crush + Input humano | — |
+| 1.4 | Full NAP | Bloque NAP de 8 campos | Input humano | — |
+| 1.5 | Planned Primary GBP Category | Categoría GBP oficial | GMB Crush + Competidores | — |
+| 1.6 | Planned Additional GBP Categories | Lista clasificada (cubiertas vs página propia) | GMB Crush + Competidores | — |
+| 1.7 | Main City | Ciudad única | GMB Crush | — |
+| 1.8 | Physical Location City | Ciudad de presencia física | Input humano | — |
+| 1.9 | Servicios principales | 5 core services priorizados | GMB Crush + Competidores | — |
+| 1.10 | Local Coverage Areas | Direct + Candidate (dos listas) | GMB Crush + Competidores | — |
+| 1.11 | Approved Expansion Areas | Lista de zonas aprobadas (puede estar vacía) | Decisión de diseño | — |
+| 1.12 | GeoArticles per Service (G) | Entero (default 3) | GMB Crush | — |
+| 1.13 | Preferred CTA | Una opción de 4 estándar | Decisión de diseño | — |
+| 1.14 | Trust Signals | Lista de 4-7 señales reales | GMB Crush + Competidores | — |
 
 ## Obtención de Outputs
 

@@ -64,12 +64,12 @@ Fijar las **reglas operativas de URL** que rigen toda la arquitectura del cluste
 | 4 | Core Services list (S core services) | Paso-01 1.9 | Genera las S URLs Service Overview (4.4) y S URLs LBS (4.6) |
 | 5 | Local Coverage Areas (Direct + Candidate) | Paso-01 1.10 | Confirma que NO generan URLs por defecto (4.9) |
 | 6 | Approved Expansion Areas (E count) | Paso-01 1.11 | Determina si se aplican patrones de expansión (4.10); E=0 → 0 URLs adicionales |
-| 7 | Slug Generation rule | Paso-02 2.2 | Aplica slugify estándar a cada slug del cluster (4.13) |
+| 7 | Slug Generation rule | Paso-02 2.2 + 2.3 + 2.4 | Aplica slugify estándar a cada slug del cluster (4.13) |
 | 8 | Primary Category Slug | Paso-02 2.2 | Segmento `[primary-cat-slug]` en patrones 4.4, 4.6, 4.7, 4.8 (Option B), 4.10 |
 | 9 | Main City Slug | Paso-02 2.3 | Segmento `[main-city-slug]` en patrones 4.5, 4.6, 4.7, 4.8, 4.10 |
 | 10 | Service slugs (S=5 slugs aprobados) | Paso-02 2.4 | Segmento `[service-slug]` en 4.4, 4.6, 4.10 |
 | 11 | Additional Category slugs (A slugs efectivos) | Paso-03 3.3 | Segmento `[additional-slug]` en 4.7 |
-| 12 | GeoArticle topics validados | Paso-03 3.13 (módulo doctrinal) | Segmento `[topic-slug]` en 4.8 (15 GeoArticles = G × S) |
+| 12 | GeoArticle topics validados | Paso-03 3.4 | Segmento `[topic-slug]` en 4.8 (15 GeoArticles = G × S) |
 | 13 | GeoHub URL Style (Option A / B) | Paso-03 3.2 | Aplica directamente en 4.5 (decisión heredada, no se re-toma aquí) |
 
 # Bloque II — Ejemplo rellenado para el Paso 4 — URL Rules
@@ -192,23 +192,23 @@ Resultado: 0 pares de URLs con duplicación de intención local + servicio detec
 
 > Tabla declarativa de los 15 outputs que el Paso 4 debe producir. Cada output tiene un ID global (`Paso.Output`, ej. `4.1`) citable desde cualquier doc del sistema.
 
-| ID | Output | Tipo | Origen |
-|---|---|---|---|
-| 4.1 | Canonical Domain | URL canónica única | GMB Crush ← Paso-01 1.2 |
-| 4.2 | Trailing Slash | Boolean (Yes/No) global | Decisión de diseño |
-| 4.3 | Homepage URL | Path constante (`/`) | GMB Crush |
-| 4.4 | Service Overview URL pattern | Patrón string | GMB Crush |
-| 4.5 | Main City GeoHub URL Style | Patrón string (Option A/B) | GMB Crush ← Paso-03 3.2 |
-| 4.6 | Location-Based Service URL pattern | Patrón string | GMB Crush |
-| 4.7 | Additional Category URL pattern | Patrón string | GMB Crush |
-| 4.8 | GeoArticle URL pattern | Patrón string (Option A/B) | GMB Crush |
-| 4.9 | LCAs no generan URLs | Regla de doctrina | GMB Crush ← Paso-01 1.10 |
-| 4.10 | Approved Expansion URLs | Lista de URLs (puede estar vacía) | Decisión de diseño ← Paso-01 1.11 |
-| 4.11 | Validación No "near me" en URLs | Validation flag | GMB Crush |
-| 4.12 | Validación No adjetivos vacíos en URLs | Validation flag | GMB Crush |
-| 4.13 | Validación Slugs limpios | Validation flag | GMB Crush ← Paso-02 2.2 |
-| 4.14 | Validación No falsa ubicación | Validation flag | GMB Crush ← Paso-01 1.8 + §6.11 |
-| 4.15 | Validación No duplicar intención | Validation flag | GMB Crush |
+| ID | Output | Tipo | Fuente | Hereda de |
+|---|---|---|---|---|
+| 4.1 | Canonical Domain | URL canónica única | GMB Crush | Paso-01 1.2 |
+| 4.2 | Trailing Slash | Boolean (Yes/No) global | Decisión de diseño | — |
+| 4.3 | Homepage URL | Path constante (`/`) | GMB Crush | — |
+| 4.4 | Service Overview URL pattern | Patrón string | GMB Crush | — |
+| 4.5 | Main City GeoHub URL Style | Patrón string (Option A/B) | GMB Crush | Paso-03 3.2 |
+| 4.6 | Location-Based Service URL pattern | Patrón string | GMB Crush | — |
+| 4.7 | Additional Category URL pattern | Patrón string | GMB Crush | — |
+| 4.8 | GeoArticle URL pattern | Patrón string (Option A/B) | GMB Crush | — |
+| 4.9 | LCAs no generan URLs | Regla de doctrina | GMB Crush | Paso-01 1.10 |
+| 4.10 | Approved Expansion URLs | Lista de URLs (puede estar vacía) | Decisión de diseño | Paso-01 1.11 |
+| 4.11 | Validación No "near me" en URLs | Validation flag | GMB Crush | — |
+| 4.12 | Validación No adjetivos vacíos en URLs | Validation flag | GMB Crush | — |
+| 4.13 | Validación Slugs limpios | Validation flag | GMB Crush | Paso-02 2.2 |
+| 4.14 | Validación No falsa ubicación | Validation flag | GMB Crush | Paso-01 1.8 + Paso-01 1.11 |
+| 4.15 | Validación No duplicar intención | Validation flag | GMB Crush | — |
 
 ## Obtención de Outputs
 

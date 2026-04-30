@@ -59,16 +59,16 @@ Convertir el inventario calculado en Paso 2 en una **URL Matrix operativa** — 
 |---|---|
 | Website Root Domain | Paso-01 1.2 |
 | Canonical Domain | Paso-01 1.2 |
-| Planned Primary GBP Category | Paso-01 1.6 |
+| Planned Primary GBP Category | Paso-01 1.5 |
 | Primary Category Slug | Paso-02 2.2 |
-| Main City | Paso-01 1.8 |
+| Main City | Paso-01 1.7 |
 | Main City Slug | Paso-02 2.3 |
-| Servicios principales (5 core services) | Paso-01 1.10 |
-| Service Slugs (S=5) | Paso-02 2.5 |
-| Additional Categories que necesitan página | Paso-01 1.7 |
-| Local Coverage Areas | Paso-01 1.11 |
-| Approved Expansion Areas | Paso-01 1.12 |
-| GeoArticles per Service (G) | Paso-01 1.13 |
+| Servicios principales (5 core services) | Paso-01 1.9 |
+| Service Slugs (S=5) | Paso-02 2.4 |
+| Additional Categories que necesitan página | Paso-01 1.6 |
+| Local Coverage Areas | Paso-01 1.10 |
+| Approved Expansion Areas | Paso-01 1.11 |
+| GeoArticles per Service (G) | Paso-01 1.12 |
 
 > Los outputs nuevos que se producen en Paso 3 (Spreadsheet Name, GeoHub URL Style, Additional Category Slugs, GeoArticle Topics) tienen sus propias secciones en Bloque III — §6.1, §6.2, §6.3 y §6.4. Default Page Status y Default Priority son outputs de §6.11 y §6.10 respectivamente.
 
@@ -243,22 +243,22 @@ Ciclo de vida: `Planned → Draft → Ready for QA → Approved → Published`.
 
 > Tabla declarativa de los 14 outputs que el Paso 3 debe producir. Cada output tiene un ID global (`Paso.Output`, ej. `3.1`) citable desde cualquier doc del sistema.
 
-| ID | Output | Tipo | Origen |
-|---|---|---|---|
-| 3.1 | Spreadsheet Name | String | Decisión de diseño |
-| 3.2 | GeoHub URL Style | Enum (Option A / Option B) | Decisión de diseño |
-| 3.3 | Additional Category Slugs | Lista de slugs URL-safe | GMB Crush ← Paso-01 1.7 |
-| 3.4 | GeoArticle Topics propuestos | Lista de G × S topics validados | GMB Crush + Datos de búsqueda |
-| 3.5 | URL Matrix completa | Tabla N filas × 20 columnas | GMB Crush |
-| 3.6 | IDs por tipo de página | Strings únicos por fila | GMB Crush |
-| 3.7 | Parent Page declarado por fila | URL del parent | GMB Crush |
-| 3.8 | Schema asignado desde matriz | Schema Type(s) por fila | GMB Crush |
-| 3.9 | Enlaces internos Required por fila | Lista de URLs internas | GMB Crush |
-| 3.10 | Priority y Publish Phase por fila | P1-P4 + Phase 1-N | GMB Crush |
-| 3.11 | Default Page Status | Enum (Planned / Draft / Published) | GMB Crush |
-| 3.12 | Notes estratégicas por fila | String libre, opcional | Decisión de diseño |
-| 3.13 | Validación LCAs sin filas base | Validation flag | GMB Crush |
-| 3.14 | Validación matriz cerrada antes de contenido | Validation flag | GMB Crush |
+| ID | Output | Tipo | Fuente | Hereda de |
+|---|---|---|---|---|
+| 3.1 | Spreadsheet Name | String | Decisión de diseño | — |
+| 3.2 | GeoHub URL Style | Enum (Option A / Option B) | Decisión de diseño | — |
+| 3.3 | Additional Category Slugs | Lista de slugs URL-safe | GMB Crush | Paso-01 1.6 |
+| 3.4 | GeoArticle Topics propuestos | Lista de G × S topics validados | GMB Crush + Datos de búsqueda | — |
+| 3.5 | URL Matrix completa | Tabla N filas × 20 columnas | GMB Crush | — |
+| 3.6 | IDs por tipo de página | Strings únicos por fila | GMB Crush | — |
+| 3.7 | Parent Page declarado por fila | URL del parent | GMB Crush | — |
+| 3.8 | Schema asignado desde matriz | Schema Type(s) por fila | GMB Crush | — |
+| 3.9 | Enlaces internos Required por fila | Lista de URLs internas | GMB Crush | — |
+| 3.10 | Priority y Publish Phase por fila | P1-P4 + Phase 1-N | GMB Crush | — |
+| 3.11 | Default Page Status | Enum (Planned / Draft / Published) | GMB Crush | — |
+| 3.12 | Notes estratégicas por fila | String libre, opcional | Decisión de diseño | — |
+| 3.13 | Validación LCAs sin filas base | Validation flag | GMB Crush | — |
+| 3.14 | Validación matriz cerrada antes de contenido | Validation flag | GMB Crush | — |
 
 ## Obtención de Outputs
 
