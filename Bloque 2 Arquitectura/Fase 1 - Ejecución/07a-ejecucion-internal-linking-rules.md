@@ -8,184 +8,131 @@ Proveniencia: sistema construido paso a paso en el chat y alineado con los frame
 
 ## §2 Objetivo del Paso 7
 
-Este paso existe para resolver un problema concreto dentro del sistema GMB Crush: definir cómo se conectan las páginas para crear un silo local claro, sin enlaces caóticos ni páginas huérfanas.
-La web local no debe construirse desde la intuición, sino desde una secuencia operativa que conecta entidad, categoría GBP, servicios, ciudad principal, cobertura local, schema, contenido e interlinking.
-El objetivo es que cada dato que se recoge o cada página que se crea tenga una función clara dentro del ecosistema local.
-Cuando este paso se omite, la arquitectura empieza a crecer de forma desordenada.
-Eso produce páginas duplicadas, URLs sin intención, contenidos genéricos, señales locales débiles y problemas de canibalización.
-La metodología GMB Crush busca evitar precisamente ese escenario.
-Por eso cada paso debe indicar qué se rellena, qué se genera, qué se revisa y qué errores previene.
-En la versión simplificada del sistema usamos una Main City como base de arquitectura.
-En esta versión web-first, el Google Business Profile no existe todavía: las categorías se tratan como Planned GBP Categories hasta que el Paso 14 cree, verifique y sincronice el GBP con la web.
-Esto evita inventar una GBP URL, reseñas de Google o señales de perfil antes de que existan.
-Las Local Coverage Areas no generan URLs por defecto.
-Las Local Coverage Areas se usan para reforzar el contenido, los ejemplos locales, las FAQs y el schema areaServed.
-Solo las Approved Expansion Areas pueden convertirse en URLs propias cuando exista una justificación clara.
-Esta separación evita confundir cobertura real con arquitectura obligatoria.
-También evita que un negocio local pequeño acabe con cientos de páginas antes de tener una base sólida.
-El criterio principal es crear primero las páginas que soportan la entidad, la categoría GBP y la intención comercial.
-Después se añaden artículos, enlaces internos, QA y optimización.
-Este paso debe ejecutarse antes de avanzar al siguiente.
-Si se salta o se rellena mal, los pasos posteriores arrastran errores.
-La revisión final debe comprobar que cada elemento tiene una función SEO, una función local y una función de conversión.
-Error que previene: crear páginas sin enlaces hacia sus padres.
-Error que previene: enlazar a Local Coverage Areas sin URL aprobada.
-Error que previene: usar solo enlaces de footer.
-Error que previene: no variar anchor text.
-Error que previene: dejar GeoArticles sin enlace a la landing comercial.
+Definir **cómo se conectan internamente las páginas del cluster** mediante reglas de enlace, anchors variados y breadcrumbs jerárquicos. Establece qué páginas enlazan a qué, qué anchors usar, dónde colocar los enlaces (contextual vs nav/footer) y qué Local Coverage Areas reciben enlace (solo si tienen URL aprobada). El silo local resultante debe ser navegable por usuario y crawler sin páginas huérfanas ni enlaces a URLs inexistentes.
 
-## §3 Lo que la IA tiene que rellenar/obtener
+**Outputs del Paso 7:**
 
-```text
-Business Name:
+- §5 Regla 1 — Enlazar arriba/abajo/lateral: cada página tiene up + down + lateral links dentro del silo
+- §6 Regla 2 — Homepage distribuye autoridad: enlaza a 5 SO + GeoHub Main City + contacto + AC principal
+- §7 Regla 3 — Service Overview empuja la versión local: cada SO enlaza a su LBS Main City correspondiente
+- §8 Regla 4 — GeoHub organiza la Main City: enlaza a todas las páginas locales (LBS, AC, GAs)
+- §9 Regla 5 — LBS conecta servicio y ciudad: enlaza a SO padre, GeoHub, related LBS, GeoArticles
+- §10 Regla 6 — Additional Category se integra en el silo local: enlaza a GeoHub + LBS relacionados
+- §11 Regla 7 — GeoArticle pasa relevancia a la landing: enlaza a matching LBS + GeoHub
+- §12 Regla 8 — LCAs sin URL no reciben enlaces: solo menciones de contenido, nunca anchors a URLs inexistentes
+- §13 Regla 9 — Anchor text variado: exact match + partial + branded + CTA + informational + local entity
+- §14 Regla 10 — Enlaces contextuales primero: body > nav/footer; placement en intro, FAQs, related resources
+- §15 Matriz de enlaces obligatorios por page type — 14 conexiones source → target documentadas
+- §16 Ejemplo completo de enlaces — set completo de inbound/outbound + anchors para una LBS modelo
+- §17 Breadcrumbs recomendados — jerarquía por page type (Home > Cat > City > Service)
+- §18 Inbound links esperados (cross-cutting) — cada page type tiene mapa de inbound mínimo
+- §19 Expansion linking separado (cross-cutting) — AEAs crean sub-cluster propio sin contaminar la base
 
-Website Root Domain:
+**Errores que previene el Paso 7:**
 
-Homepage URL:
+- Páginas sin enlaces a su padre (huérfanas en el silo)
+- Enlaces a Local Coverage Areas sin URL aprobada (anchors rotos a `/almagro/` inexistente)
+- Solo enlaces de footer sin contextuales en body (señal débil)
+- Anchor text repetido / 100% exact match (apariencia mecánica, riesgo manual penalty)
+- GeoArticles sin enlace a la landing comercial (artículo no cumple función booster)
+- GeoHub sin enlaces a páginas locales (no organiza el silo Main City)
+- Service Overview sin enlace a su LBS local (no transfiere autoridad temática)
+- Expansion linking mezclado con la base (sub-cluster contamina el silo principal)
+- Breadcrumbs que inventan niveles de cobertura inexistentes
 
-Planned Primary GBP Category:
+**Cuándo se ejecuta:**
 
-Primary Category Slug:
+Después del Paso 6 (Estructura de Contenido). El Paso 6 define qué se escribe en cada page type; el Paso 7 define cómo esas páginas se conectan entre sí. El output del Paso 7 alimenta directamente el Paso 8 (Schema Markup) — `WebPage.breadcrumb`, `Article.mentions`, `Service.areaServed` — y el Paso 18 (QA + deploy) usa la matriz de inbound links como referencia de validación.
 
-Main City:
+## §3 Info heredada de pasos anteriores
 
-Main City GeoHub URL:
+El Paso 7 toma como input estos elementos generados en pasos previos. La IA no los re-decide aquí; los usa para construir la matriz de enlaces internos del cluster.
 
-Service Overview Pages:
-1.
-2.
-3.
-4.
-5.
+| # | Input heredado | Origen | Uso en el Paso 7 |
+|---|---|---|---|
+| 1 | Business Name | Paso 1 §2 | Anchors de marca (branded anchors) |
+| 2 | Website Root Domain + Canonical Domain | Paso 1 §6 + Paso 4 §5 | Confirmar dominio único en todos los enlaces internos absolutos |
+| 3 | Homepage URL (`/`) | Paso 4 §7 | Source de enlaces a SO + GeoHub + contacto |
+| 4 | Primary Category Slug | Paso 3 §3 | Segmento `[primary-cat-slug]` en URLs de los enlaces |
+| 5 | Main City + slug | Paso 1 §11 + Paso 3 §3 | Anchors locales y target geográfico del silo |
+| 6 | URL Matrix (28 URLs base) | Paso 3 §3 | Conjunto cerrado de URLs disponibles para enlazar |
+| 7 | Service Overview Pages (S=5) | Paso 4 §8 + Paso 3 §3 | Source y target de enlaces SO ↔ LBS |
+| 8 | Location-Based Service Pages (S=5) | Paso 4 §10 + Paso 3 §3 | Hub principal de enlaces salientes (SO padre, GeoHub, related LBS, GAs) |
+| 9 | Additional Category Pages (A=1 efectiva) | Paso 4 §11 + Paso 3 §3 | Source/target dentro del silo local |
+| 10 | Main City GeoHub (`/madrid/`) | Paso 4 §9 + Paso 3 §3 | Hub central que enlaza a todas las páginas locales |
+| 11 | GeoArticle Pages (G×S=15) | Paso 4 §12 + Paso 3 §3 | Boosters semánticos que enlazan a matching LBS |
+| 12 | Local Coverage Areas (Direct + Candidate) | Paso 1 §14 | Mencionadas en contenido SIN enlace (no tienen URL) |
+| 13 | Approved Expansion Areas (E count) | Paso 1 §15 | Si E≥1 → sub-cluster de linking separado (§19); E=0 → no aplica |
+| 14 | Page Type assignment por URL | Paso 5 §3 | Determina qué reglas de enlace (§5–§14) aplican a cada URL |
+| 15 | Page-level anchors (CTA, informational, local) | Paso 5 §11 + Paso 6 cross-cutting | Inputs para el catálogo de anchors variados (§13) |
+| 16 | Página de contacto URL (`/contacto/`) | Paso 1 §6 (NAP) + Paso 3 §3 (auxiliar) | Target de CTA desde homepage y todas las LBS |
 
-Main City Location-Based Service Pages:
-1.
-2.
-3.
-4.
-5.
+## §4 Ejemplo rellenado — Outputs del Paso 7 para Cerrajeros Madrid 24h
 
-Páginas de categoría adicional en la Main City:
-1.
-2.
-3.
+Esta sección consolida los outputs del Paso 7 en tablas operativas. Cada output corresponde a una sección §X del Bloque II/III y se valida individualmente.
 
-Main City GeoArticle Pages:
-1.
-2.
-3.
-4.
-5.
+### §4.1 Reglas de enlace por page type (§5–§12)
 
-Local Coverage Areas:
-1.
-2.
-3.
-4.
-5.
+| # | Regla | §X | Aplicación (Cerrajeros Madrid 24h) | Status |
+|---|---|---|---|---|
+| 1 | Enlazar arriba/abajo/lateral | §5 | Todas las 28 URLs del cluster tienen al menos 1 enlace up + 1 down/lateral | confirmed |
+| 2 | Homepage distribuye autoridad | §6 | `/` enlaza a 5 SO + `/madrid/` + `/contacto/` + `/cerrajero/madrid/duplicado-llaves/` (8 outbound mínimos) | confirmed |
+| 3 | SO empuja la versión local | §7 | Cada `/cerrajero/{service}/` enlaza a su `/cerrajero/madrid/{service}/` correspondiente (5 conexiones SO → LBS) | confirmed |
+| 4 | GeoHub organiza la Main City | §8 | `/madrid/` enlaza a 5 LBS + 1 AC + 15 GA (21 outbound) | confirmed |
+| 5 | LBS conecta servicio y ciudad | §9 | Cada LBS enlaza a SO padre + `/madrid/` + 2-3 related LBS + 3 matching GAs | confirmed |
+| 6 | AC se integra en silo local | §10 | `/cerrajero/madrid/duplicado-llaves/` enlaza a `/madrid/` + LBS relacionados (cambio-cerraduras, instalación-seguridad) | confirmed |
+| 7 | GeoArticle pasa relevancia a landing | §11 | Cada GA enlaza a su matching LBS + `/madrid/` (15 conexiones GA → LBS) | confirmed |
+| 8 | LCAs sin URL no reciben enlaces | §12 | Almagro, Chamberí, Salamanca, Retiro mencionadas en contenido; 0 anchors `<a href="/almagro/">` | confirmed |
 
-Do Local Coverage Areas have URLs?
-Default: No
+### §4.2 Reglas de anchor text y placement (§13–§14)
 
-Approved Expansion Areas with URLs:
-1.
-2.
-3.
+| # | Regla | §X | Catálogo aplicado (Cerrajeros Madrid 24h) | Status |
+|---|---|---|---|---|
+| 1 | Anchor text variado | §13 | 6 categorías de anchor: exact match (`cerrajero urgente en Madrid`), partial (`servicios de cerrajería`), branded (`Cerrajeros Madrid 24h`), CTA (`Llama hoy`), informational (`Conoce más sobre cerrajero urgente`), local entity (`zonas de cobertura en Madrid`) | confirmed |
+| 2 | Enlaces contextuales primero | §14 | Body links > nav/footer; placement principal en intro, FAQs y related resources sections | confirmed |
 
-Página de contacto URL:
+### §4.3 Matriz de enlaces obligatorios (§15)
 
-GBP URL:
+| # | Source Page | Target | Tipo de enlace | Cantidad (Cerrajeros Madrid 24h) |
+|---|---|---|---|---|
+| 1 | Homepage | Service Overview Pages | Top-of-funnel | 5 enlaces |
+| 2 | Homepage | Main City GeoHub | Geo anchor | 1 enlace (`/madrid/`) |
+| 3 | Homepage | Página de contacto | CTA conversión | 1 enlace |
+| 4 | Service Overview | Main City LBS Page | Local push | 5 enlaces (1 por SO) |
+| 5 | Service Overview | Related Services | Topical | 2-3 enlaces por SO |
+| 6 | Main City GeoHub | All Main City Service Pages | Silo organization | 5 enlaces a LBS |
+| 7 | Main City GeoHub | Additional Category Pages | GBP support | 1 enlace |
+| 8 | Main City GeoHub | GeoArticles | Local resources | 15 enlaces |
+| 9 | LBS | Parent Service Overview | Up (topical) | 1 enlace por LBS |
+| 10 | LBS | Main City GeoHub | Up (geo) | 1 enlace por LBS |
+| 11 | LBS | Related same-city services | Lateral | 2-3 enlaces por LBS |
+| 12 | LBS | Matching GeoArticles | Down (depth) | 3 enlaces por LBS |
+| 13 | GeoArticle | Matching LBS Page | Authority transfer | 1 enlace por GA |
+| 14 | GeoArticle | Main City GeoHub | Geo anchor | 1 enlace por GA |
 
-Top Priority Services:
-1.
-2.
-3.
+### §4.4 Outputs auxiliares (§16–§17)
 
-Preferred CTA Anchor:
+| # | Output | §X | Contenido (Cerrajeros Madrid 24h) | Status |
+|---|---|---|---|---|
+| 1 | Ejemplo completo de enlaces para LBS modelo | §16 | Source `/cerrajero/madrid/cerrajero-urgente/` con 6 outbound + 6 anchor suggestions | confirmed |
+| 2 | Breadcrumbs por page type | §17 | Homepage: Home / SO: Home > Cerrajero > Cerrajero urgente / GeoHub: Home > Madrid / LBS: Home > Cerrajero > Madrid > Cerrajero urgente / AC: Home > Cerrajero > Madrid > Duplicado de llaves / GA: Home > Madrid > {topic} | confirmed |
 
-Preferred Informational Anchor:
+### §4.5 Reglas cross-cutting (§18–§19)
 
-Preferred Local Anchor:
-```
+| # | Regla cross-cutting | §X | Aplicación (Cerrajeros Madrid 24h) | Status |
+|---|---|---|---|---|
+| 1 | Inbound links esperados | §18 | Cada URL del cluster con mapa de inbound: LBS recibe enlaces de homepage, SO padre, GeoHub, GAs (4 inbound mínimos); 0 páginas huérfanas | confirmed |
+| 2 | Expansion linking separado | §19 | E=0 en Phase 1 → no aplica sub-cluster de expansión | confirmed |
 
-## §4 Ejemplo rellenado
+### §4.6 Validaciones cruzadas con otros pasos
 
-```text
-Business Name:
-Cerrajeros Madrid 24h
-
-Website Root Domain:
-https://www.cerrajerosmadrid24h.com
-
-Homepage URL:
-/
-
-Planned Primary GBP Category:
-Cerrajero
-
-Primary Category Slug:
-cerrajero
-
-Main City:
-Madrid
-
-Main City GeoHub URL:
-/madrid/
-
-Service Overview Pages:
-1. /cerrajero/cerrajero-urgente/
-2. /cerrajero/apertura-puertas/
-3. /cerrajero/cambio-cerraduras/
-4. /cerrajero/cambio-bombines/
-5. /cerrajero/instalacion-cerraduras-seguridad/
-
-Main City Location-Based Service Pages:
-1. /cerrajero/madrid/cerrajero-urgente/
-2. /cerrajero/madrid/apertura-puertas/
-3. /cerrajero/madrid/cambio-cerraduras/
-4. /cerrajero/madrid/cambio-bombines/
-5. /cerrajero/madrid/instalacion-cerraduras-seguridad/
-
-Páginas de categoría adicional en la Main City:
-1. /cerrajero/madrid/duplicado-llaves/
-
-Main City GeoArticle Pages:
-1. /madrid/cuanto-cuesta-un-cerrajero-urgente/
-2. /madrid/que-hacer-si-no-puedes-entrar-casa/
-3. /madrid/cuanto-tarda-un-cerrajero/
-
-Local Coverage Areas:
-1. Almagro
-2. Chamberí
-3. Salamanca
-4. Retiro
-
-Do Local Coverage Areas have URLs?
-No, not in the base build.
-
-Approved Expansion Areas with URLs:
-None in Phase 1.
-
-Página de contacto URL:
-/contacto/
-
-GBP URL:
-N/A — GBP not created yet
-
-Top Priority Services:
-1. Cerrajero urgente
-2. Apertura de puertas
-3. Cambio de bombines
-
-Preferred CTA Anchor:
-Llama a Cerrajeros Madrid 24h hoy
-
-Preferred Informational Anchor:
-Conoce más sobre servicios de cerrajería urgente
-
-Preferred Local Anchor:
-servicios de cerrajería en Madrid
-```
+| Validación | Origen | Comprobación en Paso 7 | Status |
+|---|---|---|---|
+| Todos los target URLs existen en URL Matrix | Paso 3 §3 | 28 URLs aprobadas; 0 enlaces a URLs fuera de la matriz | OK |
+| Patrones de URL respetados en cada anchor | Paso 4 §5–§19 | Todos los enlaces internos usan canonical domain + trailing slash uniforme | OK |
+| 0 enlaces a Local Coverage Areas sin URL | Paso 1 §14 + Paso 4 §13 | Almagro, Chamberí, Salamanca, Retiro mencionadas en texto, 0 anchors hacia ellas | OK |
+| Página de contacto auxiliar enlazada desde homepage y LBS | Paso 3 §3 (URL aux) | `/contacto/` recibe enlaces desde `/` y desde las 5 LBS | OK |
+| Brand tone respetado en anchors CTA | Paso 5 §6 | Anchors CTA siguen brand tone declarado en Paso 5 | OK |
 
 # Bloque II — Ejecución por la IA
 
@@ -890,17 +837,27 @@ Approved Expansion Areas crean su propio sub-cluster de linking, separado del ba
 | Placement | ¿Los enlaces están en contenido contextual? | ✅ / ⬜ |
 | Breadcrumbs | ¿La ruta de navegación es lógica? | ✅ / ⬜ |
 
-# Bloque V — Outputs
+# Bloque V — Outputs consolidados
 
 ## §21 Outputs del Paso 7
 
-- Mapa de enlaces internos por tipo de página
-- Anchors sugeridos
-- Enlaces obligatorios
-- Breadcrumbs
-- Reglas para Local Coverage Areas sin URL
-- Reglas de expansión si existe
-- Checklist anti-páginas huérfanas
+| # | Output | §X | Tipo |
+|---|---|---|---|
+| 1 | Regla 1 — Enlazar arriba/abajo/lateral | §5 | Regla operativa por page type |
+| 2 | Regla 2 — Homepage distribuye autoridad | §6 | Regla operativa |
+| 3 | Regla 3 — Service Overview empuja la versión local | §7 | Regla operativa |
+| 4 | Regla 4 — GeoHub organiza la Main City | §8 | Regla operativa |
+| 5 | Regla 5 — LBS conecta servicio y ciudad | §9 | Regla operativa |
+| 6 | Regla 6 — Additional Category se integra en silo local | §10 | Regla operativa |
+| 7 | Regla 7 — GeoArticle pasa relevancia a la landing | §11 | Regla operativa |
+| 8 | Regla 8 — LCAs sin URL no reciben enlaces | §12 | Regla operativa |
+| 9 | Regla 9 — Anchor text variado | §13 | Catálogo de 6 categorías de anchor |
+| 10 | Regla 10 — Enlaces contextuales primero | §14 | Regla de placement |
+| 11 | Matriz de enlaces obligatorios por page type | §15 | Tabla 14 conexiones source → target |
+| 12 | Ejemplo completo de enlaces | §16 | Set inbound/outbound + anchors |
+| 13 | Breadcrumbs por page type | §17 | Jerarquía 6 page types |
+| 14 | Inbound links esperados (cross-cutting) | §18 | Validation flag |
+| 15 | Expansion linking separado (cross-cutting) | §19 | Regla operativa para E≥1 |
 
 ---
 
