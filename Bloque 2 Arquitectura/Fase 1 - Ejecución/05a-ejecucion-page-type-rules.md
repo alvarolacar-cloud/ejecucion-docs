@@ -162,7 +162,7 @@ En este paso la IA produce todos los outputs que definen cómo se construye cada
 
 # Bloque II — Ejecución por la IA
 
-> Bloque II tiene 2 capas: **outputs globales** (§5 Primary Service, §6 Brand tone) que la IA produce una vez y aplican a todo el cluster; y **page types** (§7-§12) con sus 12 subsections de spec completa + §X.13 Validación operativa.
+> Bloque II tiene 2 capas: **outputs globales** (§5 Primary Service, §6 Brand tone) que la IA produce una vez y aplican a todo el cluster; y **page types** (§7-§12) con 13 subsections cada una (9 de spec + Ejemplos incorrectos + Regla final + Validación operativa + Output del paso).
 
 ## §5 Primary Service
 
@@ -338,18 +338,7 @@ Páginas de categoría adicional en la Main City
 Página de contacto
 ```
 
-### §7.10 Ejemplo rellenado con Cerrajeros Madrid 24h
-
-```text
-URL: /
-H1: Cerrajeros Madrid 24h – Servicios de cerrajería de confianza en Madrid
-Meta Title: Cerrajero en Madrid | Cerrajeros Madrid 24h
-Servicios principales: Cerrajero urgente, apertura de puertas, cambio de cerraduras, cambio de bombines e instalación de cerraduras de seguridad
-Vista previa de cobertura local: Almagro, Chamberí, Salamanca, Retiro
-Schema: Organization, WebSite, LocalBusiness, FAQPage, Speakable
-```
-
-### §7.11 Ejemplos incorrectos
+### §7.10 Ejemplos incorrectos
 
 ```text
 - Homepage with no services
@@ -358,17 +347,17 @@ Schema: Organization, WebSite, LocalBusiness, FAQPage, Speakable
 - Homepage without links to service pages
 ```
 
-### §7.12 Regla final
+### §7.11 Regla final
 
 ```text
 1. Homepage — Root Entity Anchor debe cumplir su función específica y no debe mezclarse con otro tipo de página.
 ```
 
-### §7.13 Validación operativa
+### §7.12 Validación operativa
 
 La homepage no es una página decorativa. Es el contenedor principal de la entidad local y debe establecer marca, categoría GBP, servicio principal, Main City, NAP, señales de confianza y enlaces a las páginas clave.
 
-### §7.14 Output del paso
+### §7.13 Output del paso
 
 **Tipo:** Spec completa de Homepage — 9 sub-outputs (Función, Patrón URL, H1, Meta Title, Meta Description, Word count, Estructura completa, Schema, Internal links).
 
@@ -449,16 +438,7 @@ Main City Location-Based Service Page
 Relevant GeoArticle
 ```
 
-### §8.10 Ejemplo rellenado con Cerrajeros Madrid 24h
-
-```text
-URL: /cerrajero/cerrajero-urgente/
-H1: Servicios profesionales de cerrajería urgente por Cerrajeros Madrid 24h
-Meta Title: Cerrajero urgente por Cerrajeros Madrid 24h | Expertos en cerrajería
-Enlaces internos: /, /cerrajero/apertura-puertas/, /cerrajero/madrid/cerrajero-urgente/, /madrid/cuanto-cuesta-un-cerrajero-urgente/
-```
-
-### §8.11 Ejemplos incorrectos
+### §8.10 Ejemplos incorrectos
 
 ```text
 - Mentioning Madrid as the primary target
@@ -467,17 +447,17 @@ Enlaces internos: /, /cerrajero/apertura-puertas/, /cerrajero/madrid/cerrajero-u
 - Thin content under 400 words
 ```
 
-### §8.12 Regla final
+### §8.11 Regla final
 
 ```text
 2. Service Overview Page — Topical Authority Pillar debe cumplir su función específica y no debe mezclarse con otro tipo de página.
 ```
 
-### §8.13 Validación operativa
+### §8.12 Validación operativa
 
 La Service Overview Page crea autoridad temática sobre un servicio sin enfocarse en ciudad. Debe explicar el servicio, proceso, problemas resueltos, FAQs y enlaces a su versión Main City.
 
-### §8.14 Output del paso
+### §8.13 Output del paso
 
 **Tipo:** Spec completa de Service Overview Page — 9 sub-outputs replicados para los 5 core services (Cerrajero urgente, Apertura de puertas, Cambio de cerraduras, Cambio de bombines, Instalación de cerraduras de seguridad).
 
@@ -560,16 +540,7 @@ Related GeoArticles
 Contacto
 ```
 
-### §9.10 Ejemplo rellenado con Cerrajeros Madrid 24h
-
-```text
-URL: /cerrajero/madrid/cerrajero-urgente/
-H1: Cerrajeros Madrid 24h – Cerrajero urgente en Madrid
-Local Coverage Areas: Almagro, Chamberí, Salamanca, Retiro mencionadas de forma natural
-Enlaces: /cerrajero/cerrajero-urgente/, /madrid/, /cerrajero/madrid/apertura-puertas/, /madrid/cuanto-cuesta-un-cerrajero-urgente/
-```
-
-### §9.11 Ejemplos incorrectos
+### §9.10 Ejemplos incorrectos
 
 ```text
 - Mezclar Madrid and Almagro as equal targets
@@ -578,17 +549,17 @@ Enlaces: /cerrajero/cerrajero-urgente/, /madrid/, /cerrajero/madrid/apertura-pue
 - Combinar apertura de puertas y cambio de cerraduras en una sola landing local
 ```
 
-### §9.12 Regla final
+### §9.11 Regla final
 
 ```text
 3. Location-Based Service Page — Main City Converter debe cumplir su función específica y no debe mezclarse con otro tipo de página.
 ```
 
-### §9.13 Validación operativa
+### §9.12 Validación operativa
 
 La Location-Based Service Page es la página comercial más importante para una combinación servicio + Main City. Debe tener intención local, CTA, reviews, contenido GEO y enlaces a padre, GeoHub y artículos.
 
-### §9.14 Output del paso
+### §9.13 Output del paso
 
 **Tipo:** Spec completa de Location-Based Service Page — 9 sub-outputs replicados para los 5 core services en la Main City.
 
@@ -669,16 +640,7 @@ Related GeoArticles
 Contacto
 ```
 
-### §10.10 Ejemplo rellenado con Cerrajeros Madrid 24h
-
-```text
-URL: /cerrajero/madrid/duplicado-llaves/
-H1: Cerrajeros Madrid 24h – Duplicado de llaves experto en Madrid
-Meta Title: Duplicado de llaves en Madrid | Cerrajeros Madrid 24h
-Enlaces: /madrid/, /cerrajero/madrid/cambio-cerraduras/, /cerrajero/madrid/instalacion-cerraduras-seguridad/
-```
-
-### §10.11 Ejemplos incorrectos
+### §10.10 Ejemplos incorrectos
 
 ```text
 - Crear /cerrajero/madrid/cerrajero-urgente/ when urgente is already covered
@@ -687,17 +649,17 @@ Enlaces: /madrid/, /cerrajero/madrid/cambio-cerraduras/, /cerrajero/madrid/insta
 - Category page with no relation to GBP
 ```
 
-### §10.12 Regla final
+### §10.11 Regla final
 
 ```text
 4. Additional Category Page — GBP Additional Category Support debe cumplir su función específica y no debe mezclarse con otro tipo de página.
 ```
 
-### §10.13 Validación operativa
+### §10.12 Validación operativa
 
 Las Additional Category Pages existen para soportar categorías adicionales reales del GBP que no estén ya cubiertas por servicios core. Su formato es local porque refuerzan relevancia de categoría en la Main City.
 
-### §10.14 Output del paso
+### §10.13 Output del paso
 
 **Tipo:** Spec completa de Additional Category Page — 9 sub-outputs replicados para cada Additional Category que necesita página propia (A categorías efectivas).
 
@@ -776,17 +738,7 @@ GeoArticles de la Main City
 Página de contacto
 ```
 
-### §11.10 Ejemplo rellenado con Cerrajeros Madrid 24h
-
-```text
-URL: /madrid/
-H1: Cerrajeros Madrid 24h – Servicios de cerrajería en Madrid
-Menú de servicios: urgente, apertura de puertas, cambio de cerraduras, cambio de bombines, instalación de cerraduras de seguridad
-Sección de cobertura: Almagro, Chamberí, Salamanca, Retiro
-Enlaces: /cerrajero/madrid/cerrajero-urgente/, /cerrajero/madrid/duplicado-llaves/, /madrid/cuanto-cuesta-un-cerrajero-urgente/
-```
-
-### §11.11 Ejemplos incorrectos
+### §11.10 Ejemplos incorrectos
 
 ```text
 - GeoHub with only generic city text
@@ -795,17 +747,17 @@ Enlaces: /cerrajero/madrid/cerrajero-urgente/, /cerrajero/madrid/duplicado-llave
 - No CTA
 ```
 
-### §11.12 Regla final
+### §11.11 Regla final
 
 ```text
 5. GeoHub Page — Main City Silo Container debe cumplir su función específica y no debe mezclarse con otro tipo de página.
 ```
 
-### §11.13 Validación operativa
+### §11.12 Validación operativa
 
 El GeoHub organiza todas las señales de la Main City: servicios, categorías adicionales, GeoArticles, cobertura local, confianza y contacto. No es una landing de un servicio concreto.
 
-### §11.14 Output del paso
+### §11.13 Output del paso
 
 **Tipo:** Spec completa de GeoHub Page — 9 sub-outputs (instancia única por cluster).
 
@@ -885,15 +837,7 @@ Related GeoArticle
 Contacto
 ```
 
-### §12.10 Ejemplo rellenado con Cerrajeros Madrid 24h
-
-```text
-URL: /madrid/cuanto-cuesta-un-cerrajero-urgente/
-H1: Precio de cerrajero urgente en Madrid
-Enlaces: /cerrajero/madrid/cerrajero-urgente/, /madrid/, /madrid/que-hacer-si-no-puedes-entrar-casa/
-```
-
-### §12.11 Ejemplos incorrectos
+### §12.10 Ejemplos incorrectos
 
 ```text
 - Writing as a generic landing page
@@ -902,17 +846,17 @@ Enlaces: /cerrajero/madrid/cerrajero-urgente/, /madrid/, /madrid/que-hacer-si-no
 - Pretending physical location in every coverage area
 ```
 
-### §12.12 Regla final
+### §12.11 Regla final
 
 ```text
 6. GeoArticle Page — Semantic Booster debe cumplir su función específica y no debe mezclarse con otro tipo de página.
 ```
 
-### §12.13 Validación operativa
+### §12.12 Validación operativa
 
 El GeoArticle no es una landing comercial. Debe cubrir un tema long-tail de servicio + Main City y enlazar a la página comercial correspondiente y al GeoHub.
 
-### §12.14 Output del paso
+### §12.13 Output del paso
 
 **Tipo:** Spec completa de GeoArticle Page — 9 sub-outputs replicados para cada uno de los 15 GeoArticles (G × S = 3 × 5).
 
