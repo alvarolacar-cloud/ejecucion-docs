@@ -7,9 +7,10 @@ Proveniencia: sistema construido paso a paso en el chat y alineado con los frame
 <small>§1</small>
 
 > **Cómo leer este documento:**
-> - **Bloque I — Introducción** describe qué produce el paso, qué hereda y qué resultado ejemplo se espera.
-> - **Bloque II — Ejecución por la IA** contiene los 4 sub-bloques operativos: outputs a conseguir, reglas que aplican, checklist final y outputs consolidados.
-> - **Bloque III — Fuentes Internas GMB Crush usadas** lista los frameworks GMB Crush en los que se basa el paso.
+> - **Bloque I — Introducción** describe qué produce el paso y qué hereda.
+> - **Bloque II — Ejemplo rellenado** muestra los 15 outputs del Paso 2 con sus valores reales para Cerrajeros Madrid 24h.
+> - **Bloque III — Ejecución por la IA** contiene los 4 sub-bloques operativos: outputs a conseguir, reglas que aplican, checklist final y outputs consolidados.
+> - **Bloque IV — Fuentes Internas GMB Crush usadas** lista los frameworks GMB Crush en los que se basa el paso.
 
 # Bloque I — Introducción
 
@@ -66,13 +67,13 @@ Calcular el tamaño exacto del cluster aplicando la fórmula maestra `1 + S + 1 
 | Approved Expansion Areas | Paso 1 §15 |
 | GeoArticles per Service (G) | Paso 1 §16 |
 
-> Los outputs nuevos que se producen en Paso 2 (Slug Generation y Service-to-Main-City Applicability) tienen sus propias secciones en Bloque II — §6.2 y §6.5.
+> Los outputs nuevos que se producen en Paso 2 (Slug Generation y Service-to-Main-City Applicability) tienen sus propias secciones en Bloque III — §6.2 y §6.5.
 
-## Ejemplo rellenado
+# Bloque II — Ejemplo rellenado para el Paso 2 — Fórmula Maestra de Arquitectura
 
 <small>§4</small>
 
-> Los 15 outputs del Paso 2 con sus valores para Cerrajeros Madrid 24h. Los inputs heredados (Business Name, Categories, Servicios, LCAs, etc.) tienen su ejemplo en sus pasos de origen (§4 de Paso 1).
+> Los 15 outputs del Paso 2 con sus valores reales para Cerrajeros Madrid 24h. Los inputs heredados (Business Name, Categories, Servicios, LCAs, etc.) tienen su ejemplo en sus pasos de origen (§4 de Paso 1).
 
 ### 2.1 — Planned GBP Categories Status
 
@@ -157,7 +158,7 @@ Cumplido — Almagro, Chamberí, Salamanca, Retiro y demás LCAs NO generan URLs
 
 Cumplido — 28 páginas explicables componente a componente: 1 Homepage + 5 SO + 1 GeoHub + 5 LBS + 1 AC + 15 GAs.
 
-# Bloque II — Ejecución por la IA
+# Bloque III — Ejecución por la IA
 
 > **Definición operativa — Local Coverage Areas:** zonas, barrios, distritos o landmarks seleccionados desde la dirección física, la Main City, la coherencia GEO, la proximidad, los datos de búsqueda, los competidores y la lógica GMB Crush para reforzar relevancia local dentro del contenido, schema y futuros análisis. No son automáticamente URLs. No son automáticamente páginas propias. No son necesariamente oficinas físicas. Las Local Coverage Areas se usan primero como señales GEO dentro del contenido. No generan URLs por defecto.
 
@@ -960,7 +961,7 @@ Extra pages:
 | 2.14 | Validación LCAs fuera fórmula | Almagro, Chamberí, Salamanca, Retiro, etc. → 0 páginas adicionales | OK |
 | 2.15 | Validación auditabilidad del total | 28 explicable componente a componente | OK |
 
-# Bloque III — Fuentes Internas GMB Crush usadas
+# Bloque IV — Fuentes Internas GMB Crush usadas
 
 ## Fuentes internas GMB Crush usadas
 
