@@ -8,161 +8,120 @@ Proveniencia: sistema construido paso a paso en el chat y alineado con los frame
 
 ## §2 Objetivo del Paso 3
 
-Este paso existe para resolver un problema concreto dentro del sistema GMB Crush: convertir la fórmula del Paso 2 en una tabla operativa donde cada URL tenga función, tipo de página, estado, prioridad y dependencias.
-La web local no debe construirse desde la intuición, sino desde una secuencia operativa que conecta entidad, categoría GBP, servicios, ciudad principal, cobertura local, schema, contenido e interlinking.
-El objetivo es que cada dato que se recoge o cada página que se crea tenga una función clara dentro del ecosistema local.
-Cuando este paso se omite, la arquitectura empieza a crecer de forma desordenada.
-Eso produce páginas duplicadas, URLs sin intención, contenidos genéricos, señales locales débiles y problemas de canibalización.
-La metodología GMB Crush busca evitar precisamente ese escenario.
-Por eso cada paso debe indicar qué se rellena, qué se genera, qué se revisa y qué errores previene.
-En la versión simplificada del sistema usamos una Main City como base de arquitectura.
-En esta versión web-first, el Google Business Profile no existe todavía: las categorías se tratan como Planned GBP Categories hasta que el Paso 14 cree, verifique y sincronice el GBP con la web.
-Esto evita inventar una GBP URL, reseñas de Google o señales de perfil antes de que existan.
-Las Local Coverage Areas no generan URLs por defecto.
-Las Local Coverage Areas se usan para reforzar el contenido, los ejemplos locales, las FAQs y el schema areaServed.
-Solo las Approved Expansion Areas pueden convertirse en URLs propias cuando exista una justificación clara.
-Esta separación evita confundir cobertura real con arquitectura obligatoria.
-También evita que un negocio local pequeño acabe con cientos de páginas antes de tener una base sólida.
-El criterio principal es crear primero las páginas que soportan la entidad, la categoría GBP y la intención comercial.
-Después se añaden artículos, enlaces internos, QA y optimización.
-Este paso debe ejecutarse antes de avanzar al siguiente.
-Si se salta o se rellena mal, los pasos posteriores arrastran errores.
-La revisión final debe comprobar que cada elemento tiene una función SEO, una función local y una función de conversión.
-Error que previene: crear URLs sin ID ni estado.
-Error que previene: perder la relación entre página padre y página hija.
-Error que previene: generar filas para Local Coverage Areas sin aprobación.
-Error que previene: olvidar schema o enlaces internos en la planificación.
-Error que previene: publicar páginas sin saber qué función cumplen.
+Convertir el inventario calculado en Paso 2 en una **URL Matrix operativa** — una tabla donde cada URL del cluster ocupa una fila con todos los campos de producción (URL, H1, Meta Title, Schema, Priority, Phase, Status, Parent Page, Internal links, Notes).
 
-## §3 Lo que la IA tiene que rellenar/obtener
+**Outputs del paso:**
 
-```text
-Spreadsheet Name:
+- **Spreadsheet Name** — nombre del archivo/spreadsheet que contiene la matriz
+- **GeoHub URL Style** — Option A `/city/` o Option B `/category/city/` (decisión de diseño)
+- **Additional Category Slugs** — slugs URL-safe para las Additional Categories que necesitan página propia
+- **URL Matrix completa** — N filas (28 para Cerrajeros) con todos los campos rellenos
+- **IDs por tipo de página** — HP, SO-N, GH, LBS-N, AC-N, GA-N
+- **Parent Page declarado por fila** — jerarquía del cluster
+- **Schema asignado por fila** — desde la matriz, no en build-time
+- **Enlaces internos Required por fila** — linking contractual
+- **Priority y Publish Phase por fila** — orden y agrupación
+- **Default Page Status** — estado inicial de cada fila (Planned)
+- **Notes estratégicas por fila** — decisiones que no encajan en columnas estructuradas
+- **GeoArticle Topics propuestos** — 15 topics derivados de servicio + Main City + intención long-tail
+- **Validaciones** — LCAs sin filas base, matriz cerrada antes de contenido
 
-Website Root Domain:
+**Errores que previene:**
 
-Canonical Domain:
+- Crear URLs sin ID ni estado
+- Perder la relación entre página padre y página hija
+- Generar filas para Local Coverage Areas sin aprobación
+- Olvidar schema o enlaces internos en la planificación
+- Publicar páginas sin saber qué función cumplen
 
-Planned Primary GBP Category:
+**Cuándo se ejecuta:** después de Paso 2 cerrado (fórmula aplicada). Antes de Paso 4 (URL Rules) y Paso 15 (Redacción de contenido).
 
-Primary Category Slug:
+## §3 Info heredada de pasos anteriores
 
-Main City:
+> Estos campos NO se deciden en Paso 3 — la IA los lee del paso indicado y los usa como input para construir la URL Matrix del Bloque II.
 
-Main City Slug:
+| Campo | Origen |
+|---|---|
+| Website Root Domain | Paso 1 §6 |
+| Canonical Domain | Paso 1 §6 |
+| Planned Primary GBP Category | Paso 1 §9 |
+| Primary Category Slug | Paso 2 §6 |
+| Main City | Paso 1 §11 |
+| Main City Slug | Paso 2 §6 |
+| Servicios principales (5 core services) | Paso 1 §13 |
+| Service Slugs | Paso 2 §6 |
+| Additional Categories que necesitan página | Paso 1 §10 |
+| Local Coverage Areas | Paso 1 §14 |
+| Approved Expansion Areas | Paso 1 §15 |
+| GeoArticles per Service (G) | Paso 1 §16 |
 
-GeoHub URL Style:
-Option A: /city/
-Option B: /category/city/
-
-Servicios principales:
-1.
-2.
-3.
-4.
-5.
-
-Service Slugs:
-1.
-2.
-3.
-4.
-5.
-
-Additional Categories that need separate pages:
-1.
-2.
-3.
-
-Additional Category Slugs:
-1.
-2.
-3.
-
-Local Coverage Areas:
-1.
-2.
-3.
-4.
-5.
-
-Approved Expansion Areas:
-Default: None.
-
-GeoArticles per Service:
-
-Default Page Status:
-Planned / Draft / Published
-
-Default Priority:
-P1 / P2 / P3 / P4
-```
+> Las decisiones nuevas que se toman en Paso 3 (Spreadsheet Name, GeoHub URL Style, Additional Category Slugs) tienen sus propias secciones en Bloque II — §5, §6 y §7. Default Page Status y Default Priority son outputs de §15 y §14 respectivamente.
 
 ## §4 Ejemplo rellenado
 
-```text
-Spreadsheet Name:
-Cerrajeros Madrid 24h – GMB Crush Website Architecture
+> Todos los outputs del Paso 3 con sus valores para Cerrajeros Madrid 24h. Los heredados (Domain, Categories, Servicios, etc.) tienen su ejemplo en sus pasos de origen (§4 de Paso 1 y Paso 2).
 
-Website Root Domain:
-https://www.cerrajerosmadrid24h.com
+### Outputs del paso
 
-Canonical Domain:
-https://www.cerrajerosmadrid24h.com
+| Output | Valor |
+|---|---|
+| Spreadsheet Name | `Cerrajeros Madrid 24h – GMB Crush Website Architecture` |
+| GeoHub URL Style | Option A → `/madrid/` |
+| Additional Category Slugs | `duplicado-llaves` (1 slug, A=1) |
+| Default Page Status | `Planned` (estado inicial de cada fila) |
+| Default Priority | P3 (default; sobreescrito por tipo de página) |
 
-Planned Primary GBP Category:
-Cerrajero
+### URL Matrix base — 28 filas SEO + 1 auxiliar
 
-Primary Category Slug:
-cerrajero
+| ID | URL | Tipo | Schema | Priority | Phase | Status |
+|---|---|---|---|---|---|---|
+| HP | `/` | Homepage | Organization + WebSite + LocalBusiness + FAQPage + Speakable | P1 | 1 | Planned |
+| SO-1 | `/cerrajero/cerrajero-urgente/` | Service Overview | Service + WebPage + BreadcrumbList | P1 | 1 | Planned |
+| SO-2 | `/cerrajero/apertura-puertas/` | Service Overview | Service + WebPage + BreadcrumbList | P1 | 1 | Planned |
+| SO-3 | `/cerrajero/cambio-cerraduras/` | Service Overview | Service + WebPage + BreadcrumbList | P1 | 1 | Planned |
+| SO-4 | `/cerrajero/cambio-bombines/` | Service Overview | Service + WebPage + BreadcrumbList | P1 | 1 | Planned |
+| SO-5 | `/cerrajero/instalacion-cerraduras-seguridad/` | Service Overview | Service + WebPage + BreadcrumbList | P1 | 1 | Planned |
+| GH | `/madrid/` | GeoHub | CollectionPage + BreadcrumbList | P1 | 1 | Planned |
+| LBS-1 | `/cerrajero/madrid/cerrajero-urgente/` | LBS | LocalBusiness + BreadcrumbList | P1 | 1 | Planned |
+| LBS-2 | `/cerrajero/madrid/apertura-puertas/` | LBS | LocalBusiness + BreadcrumbList | P1 | 1 | Planned |
+| LBS-3 | `/cerrajero/madrid/cambio-cerraduras/` | LBS | LocalBusiness + BreadcrumbList | P1 | 1 | Planned |
+| LBS-4 | `/cerrajero/madrid/cambio-bombines/` | LBS | LocalBusiness + BreadcrumbList | P1 | 1 | Planned |
+| LBS-5 | `/cerrajero/madrid/instalacion-cerraduras-seguridad/` | LBS | LocalBusiness + BreadcrumbList | P1 | 1 | Planned |
+| AC-1 | `/cerrajero/madrid/duplicado-llaves/` | Additional Category | Service + BreadcrumbList | P2 | 1 | Planned |
+| GA-1 | `/madrid/cuanto-cuesta-un-cerrajero-urgente/` | GeoArticle | Article + FAQPage + BreadcrumbList | P3 | 2 | Planned |
+| GA-2 | `/madrid/que-hacer-si-no-puedes-entrar-casa/` | GeoArticle | Article + FAQPage + BreadcrumbList | P3 | 2 | Planned |
+| GA-3 | `/madrid/cuanto-tarda-un-cerrajero/` | GeoArticle | Article + FAQPage + BreadcrumbList | P3 | 2 | Planned |
+| GA-4 | `/madrid/cuanto-cuesta-abrir-una-puerta/` | GeoArticle | Article + FAQPage + BreadcrumbList | P3 | 2 | Planned |
+| GA-5 | `/madrid/que-hacer-si-te-dejas-las-llaves-dentro/` | GeoArticle | Article + FAQPage + BreadcrumbList | P3 | 2 | Planned |
+| GA-6 | `/madrid/apertura-de-puertas-sin-romper-cerradura/` | GeoArticle | Article + FAQPage + BreadcrumbList | P3 | 2 | Planned |
+| GA-7 | `/madrid/cuando-cambiar-la-cerradura-de-casa/` | GeoArticle | Article + FAQPage + BreadcrumbList | P3 | 2 | Planned |
+| GA-8 | `/madrid/cambio-de-cerradura-tras-perder-llaves/` | GeoArticle | Article + FAQPage + BreadcrumbList | P3 | 2 | Planned |
+| GA-9 | `/madrid/cerradura-nueva-o-reparacion/` | GeoArticle | Article + FAQPage + BreadcrumbList | P3 | 2 | Planned |
+| GA-10 | `/madrid/cuando-cambiar-el-bombin/` | GeoArticle | Article + FAQPage + BreadcrumbList | P3 | 2 | Planned |
+| GA-11 | `/madrid/bombin-antibumping-madrid/` | GeoArticle | Article + FAQPage + BreadcrumbList | P3 | 2 | Planned |
+| GA-12 | `/madrid/cambio-de-bombin-sin-cambiar-cerradura/` | GeoArticle | Article + FAQPage + BreadcrumbList | P3 | 2 | Planned |
+| GA-13 | `/madrid/mejores-cerraduras-de-seguridad-para-viviendas/` | GeoArticle | Article + FAQPage + BreadcrumbList | P3 | 2 | Planned |
+| GA-14 | `/madrid/cerraduras-de-seguridad-para-comunidades/` | GeoArticle | Article + FAQPage + BreadcrumbList | P3 | 2 | Planned |
+| GA-15 | `/madrid/instalar-cerradura-de-seguridad-en-puerta-blindada/` | GeoArticle | Article + FAQPage + BreadcrumbList | P3 | 2 | Planned |
+| AUX | `/contacto/` | Auxiliar | ContactPoint | P4 | 1 | Planned |
 
-Main City:
-Madrid
+### LCAs (no generan filas)
 
-Main City Slug:
-madrid
+| LCA | Tratamiento en matriz |
+|---|---|
+| Almagro, Chamberí, Salamanca, Retiro, Centro, Tetuán, Chamartín, Arganzuela, Moncloa, Prosperidad | Sin filas URL — viven en contenido y schema `areaServed` |
 
-GeoHub URL Style:
-Option A: /city/
+### Validaciones
 
-Servicios principales:
-1. Cerrajero urgente
-2. Apertura de puertas
-3. Cambio de cerraduras
-4. Cambio de bombines
-5. Instalación de cerraduras de seguridad
-
-Service Slugs:
-1. cerrajero-urgente
-2. apertura-puertas
-3. cambio-cerraduras
-4. cambio-bombines
-5. instalacion-cerraduras-seguridad
-
-Additional Categories that need separate pages:
-1. Servicio de duplicado de llaves
-
-Additional Category Slugs:
-1. duplicado-llaves
-
-Local Coverage Areas:
-1. Almagro
-2. Chamberí
-3. Salamanca
-4. Retiro
-
-Approved Expansion Areas:
-None in Phase 1.
-
-GeoArticles per Service:
-3
-
-Default Page Status:
-Planned
-
-Default Priority:
-P3
-```
+| Validación | Resultado para Cerrajeros |
+|---|---|
+| Una fila por URL | ✅ 28 filas SEO + 1 auxiliar |
+| ID único por tipo | ✅ HP, SO-1..5, GH, LBS-1..5, AC-1, GA-1..15, AUX |
+| Parent Page declarado | ✅ cada fila apunta a una URL existente o `–` (Homepage root) |
+| Schema asignado desde matriz | ✅ no se decide en build-time |
+| Internal links Required | ✅ contractual por tipo de página (ver Paso 7) |
+| Anti-duplicación | ✅ Servicio de cerrajería de urgencia consolidada con LBS-1 |
+| Matriz cerrada antes de contenido | ✅ todos los campos rellenos antes de Paso 15 |
 
 # Bloque II — Ejecución por la IA
 
@@ -672,7 +631,7 @@ La prioridad mide importancia estratégica; la fase mide cuándo se publica. Una
 
 ### §14.2 Cómo obtenemos la Priority y Publish Phase
 
-**Fuente:** GMB Crush + Decisión de diseño.
+**Fuente:** GMB Crush.
 
 **Método:** Priority captura el orden de importancia (P1 alta → P4 baja); Publish Phase captura cuándo se publica (Phase 1, 2, 3...). Default Priority del intake aplica a filas sin override explícito. Son dos campos independientes que NUNCA se mezclan.
 
@@ -725,7 +684,7 @@ Cada URL necesita un estado para controlar el flujo de producción. Planned, Dra
 
 ### §15.2 Cómo obtenemos el Default Page Status
 
-**Fuente:** GMB Crush + Decisión de diseño.
+**Fuente:** GMB Crush.
 
 **Método:** Status refleja el estado real de cada fila a lo largo del ciclo de vida (Planned → Draft → Published). Default Page Status del intake aplica a filas nuevas; se actualiza manualmente al avanzar de fase.
 
@@ -933,7 +892,7 @@ Por cada core service (paso-01 §14, filas 1.34–1.38):
 
 ### §21.3 Ejemplo correcto con Cerrajeros Madrid 24h
 
-15 GeoArticles = 5 servicios core × G=3 topics. Ver listado completo en §30.1.
+15 GeoArticles = 5 servicios core × G=3 topics. Ver listado completo en §24.1.
 
 ### §21.4 Ejemplos incorrectos
 
@@ -970,9 +929,9 @@ core. Cantidad fija por fórmula, contenido validado por datos reales.
 | Priority | ¿La prioridad está definida? | ✅ / ⬜ |
 | Status | ¿El estado de producción está claro? | ✅ / ⬜ |
 
-# Bloque V — Outputs
+# Bloque V — Outputs consolidados
 
-## §23 Outputs del Paso 3
+## §23 Outputs consolidados del Paso 3
 
 - URL Matrix creada
 - Filas base generadas
