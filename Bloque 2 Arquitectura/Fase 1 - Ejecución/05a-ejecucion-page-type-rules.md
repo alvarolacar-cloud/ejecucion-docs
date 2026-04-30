@@ -368,6 +368,17 @@ Schema: Organization, WebSite, LocalBusiness, FAQPage, Speakable
 
 La homepage no es una página decorativa. Es el contenedor principal de la entidad local y debe establecer marca, categoría GBP, servicio principal, Main City, NAP, señales de confianza y enlaces a las páginas clave.
 
+### §7.14 Output del paso
+
+**Tipo:** Spec completa de Homepage — 9 sub-outputs (Función, Patrón URL, H1, Meta Title, Meta Description, Word count, Estructura completa, Schema, Internal links).
+
+**Resumen (Cerrajeros Madrid 24h):**
+- URL: `/`
+- H1: Cerrajeros Madrid 24h – Cerrajero urgente de confianza en Madrid
+- Schema: Organization + WebSite + LocalBusiness + FAQPage + Speakable
+
+**Detalle completo:** ver §4 — tabla con los 9 sub-outputs rellenos.
+
 ## §8 Service Overview Page — Topical Authority Pillar
 
 ### §8.1 Función
@@ -465,6 +476,17 @@ Enlaces internos: /, /cerrajero/apertura-puertas/, /cerrajero/madrid/cerrajero-u
 ### §8.13 Validación operativa
 
 La Service Overview Page crea autoridad temática sobre un servicio sin enfocarse en ciudad. Debe explicar el servicio, proceso, problemas resueltos, FAQs y enlaces a su versión Main City.
+
+### §8.14 Output del paso
+
+**Tipo:** Spec completa de Service Overview Page — 9 sub-outputs replicados para los 5 core services (Cerrajero urgente, Apertura de puertas, Cambio de cerraduras, Cambio de bombines, Instalación de cerraduras de seguridad).
+
+**Resumen (Cerrajeros Madrid 24h, instancia Cerrajero urgente):**
+- URL: `/cerrajero/cerrajero-urgente/`
+- H1: Servicios profesionales de cerrajería urgente por Cerrajeros Madrid 24h
+- Schema: Service + WebPage + BreadcrumbList + Speakable
+
+**Detalle completo:** ver §4 — tabla con los 9 sub-outputs rellenos. Las otras 4 instancias siguen el mismo patrón con sus respectivos slugs.
 
 ## §9 Location-Based Service Page — Main City Converter
 
@@ -566,6 +588,17 @@ Enlaces: /cerrajero/cerrajero-urgente/, /madrid/, /cerrajero/madrid/apertura-pue
 
 La Location-Based Service Page es la página comercial más importante para una combinación servicio + Main City. Debe tener intención local, CTA, reviews, contenido GEO y enlaces a padre, GeoHub y artículos.
 
+### §9.14 Output del paso
+
+**Tipo:** Spec completa de Location-Based Service Page — 9 sub-outputs replicados para los 5 core services en la Main City.
+
+**Resumen (Cerrajeros Madrid 24h, instancia Cerrajero urgente):**
+- URL: `/cerrajero/madrid/cerrajero-urgente/`
+- H1: Cerrajeros Madrid 24h – Cerrajero urgente en Madrid
+- Schema: LocalBusiness + BreadcrumbList + FAQPage (opcional) + Speakable (opcional)
+
+**Detalle completo:** ver §4 — tabla con los 9 sub-outputs rellenos. Las otras 4 instancias siguen el mismo patrón con sus respectivos slugs.
+
 ## §10 Additional Category Page — GBP Additional Category Support
 
 ### §10.1 Función
@@ -664,6 +697,17 @@ Enlaces: /madrid/, /cerrajero/madrid/cambio-cerraduras/, /cerrajero/madrid/insta
 
 Las Additional Category Pages existen para soportar categorías adicionales reales del GBP que no estén ya cubiertas por servicios core. Su formato es local porque refuerzan relevancia de categoría en la Main City.
 
+### §10.14 Output del paso
+
+**Tipo:** Spec completa de Additional Category Page — 9 sub-outputs replicados para cada Additional Category que necesita página propia (A categorías efectivas).
+
+**Resumen (Cerrajeros Madrid 24h, instancia Duplicado de llaves):**
+- URL: `/cerrajero/madrid/duplicado-llaves/`
+- H1: Cerrajeros Madrid 24h – Duplicado de llaves experto en Madrid
+- Schema: Service (con `areaServed`) + BreadcrumbList + FAQPage (opcional) + Speakable (opcional)
+
+**Detalle completo:** ver §4 — tabla con los 9 sub-outputs rellenos. Para Cerrajeros A=1 → solo una instancia.
+
 ## §11 GeoHub Page — Main City Silo Container
 
 ### §11.1 Función
@@ -761,6 +805,17 @@ Enlaces: /cerrajero/madrid/cerrajero-urgente/, /cerrajero/madrid/duplicado-llave
 
 El GeoHub organiza todas las señales de la Main City: servicios, categorías adicionales, GeoArticles, cobertura local, confianza y contacto. No es una landing de un servicio concreto.
 
+### §11.14 Output del paso
+
+**Tipo:** Spec completa de GeoHub Page — 9 sub-outputs (instancia única por cluster).
+
+**Resumen (Cerrajeros Madrid 24h):**
+- URL: `/madrid/` (Option A heredada de Paso 3 §6)
+- H1: Cerrajeros Madrid 24h – Servicios de cerrajería en Madrid
+- Schema: CollectionPage + BreadcrumbList + LocalBusiness (opcional)
+
+**Detalle completo:** ver §4 — tabla con los 9 sub-outputs rellenos.
+
 ## §12 GeoArticle Page — Semantic Booster
 
 ### §12.1 Función
@@ -856,6 +911,17 @@ Enlaces: /cerrajero/madrid/cerrajero-urgente/, /madrid/, /madrid/que-hacer-si-no
 ### §12.13 Validación operativa
 
 El GeoArticle no es una landing comercial. Debe cubrir un tema long-tail de servicio + Main City y enlazar a la página comercial correspondiente y al GeoHub.
+
+### §12.14 Output del paso
+
+**Tipo:** Spec completa de GeoArticle Page — 9 sub-outputs replicados para cada uno de los 15 GeoArticles (G × S = 3 × 5).
+
+**Resumen (Cerrajeros Madrid 24h, instancia "¿Cuánto cuesta un cerrajero urgente?"):**
+- URL: `/madrid/cuanto-cuesta-un-cerrajero-urgente/`
+- H1: Precio de cerrajero urgente en Madrid
+- Schema: Article + FAQPage + BreadcrumbList + Speakable
+
+**Detalle completo:** ver §4 — tabla con los 9 sub-outputs rellenos. Las otras 14 instancias siguen el mismo patrón con sus respectivos topic-slugs.
 
 # Bloque III — Reglas Cross-Cutting
 
