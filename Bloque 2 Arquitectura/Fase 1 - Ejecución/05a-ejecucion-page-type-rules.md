@@ -10,7 +10,7 @@ Proveniencia: sistema construido paso a paso en el chat y alineado con los frame
 
 Producir la spec completa de cada uno de los 6 page types del cluster combinando los inputs heredados de Pasos 1-3 con las decisiones nuevas de Paso 5 (Primary Service y Brand tone).
 
-**Outputs del paso:**
+**Decisiones tomadas en el paso:**
 
 - **Primary Service** elegido (servicio único hero para Homepage, del top 5 heredado)
 - **Brand tone** elegido (Professional / Friendly / Premium / Urgente / Local)
@@ -769,7 +769,7 @@ El GeoArticle no es una landing comercial. Debe cubrir un tema long-tail de serv
 
 # Bloque III — Reglas Cross-Cutting
 
-> Reglas que aplican a TODAS las page types como filtro de QA. Siguen el patrón 3-subsecciones (Explicación / Cómo aplicamos / Output).
+> Reglas que aplican a TODAS las page types como filtro de QA. Siguen el patrón 3-subsecciones (Explicación / Cómo aplicamos / Decisión registrada).
 
 ## §11 Schema por tipo de página
 
@@ -811,7 +811,7 @@ Cada tipo de página declara su Schema obligatorio; el implementador no decide e
 
 **Método:** Aplicar la regla a TODAS las page types del Bloque II como filtro de QA antes de cerrar el spec de cada página.
 
-### §11.3 Output del paso
+### §11.3 Decisión registrada
 
 **Tipo:** Validation flag — la regla cumple en todas las page types.
 
@@ -857,7 +857,7 @@ Word count se ajusta a la intención del page type, no a un número fijo arbitra
 
 **Método:** Aplicar la regla a TODAS las page types del Bloque II como filtro de QA antes de cerrar el spec de cada página.
 
-### §12.3 Output del paso
+### §12.3 Decisión registrada
 
 **Tipo:** Validation flag — la regla cumple en todas las page types.
 
@@ -903,7 +903,7 @@ El CTA se adapta a la fase del funnel del page type — no es uniforme en todo e
 
 **Método:** Aplicar la regla a TODAS las page types del Bloque II como filtro de QA antes de cerrar el spec de cada página.
 
-### §13.3 Output del paso
+### §13.3 Decisión registrada
 
 **Tipo:** Validation flag — la regla cumple en todas las page types.
 
@@ -949,7 +949,7 @@ Nunca afirmar ubicación física en zonas donde el negocio no opera realmente.
 
 **Método:** Aplicar la regla a TODAS las page types del Bloque II como filtro de QA antes de cerrar el spec de cada página.
 
-### §14.3 Output del paso
+### §14.3 Decisión registrada
 
 **Tipo:** Validation flag — la regla cumple en todas las page types.
 
@@ -972,9 +972,9 @@ Nunca afirmar ubicación física en zonas donde el negocio no opera realmente.
 | Enlaces internos | ¿Cada tipo tiene enlaces obligatorios? | ✅ / ⬜ |
 | No mezcla | ¿No se mezclan servicios ni zonas sin aprobación? | ✅ / ⬜ |
 
-# Bloque V — Outputs
+# Bloque V — Decisiones consolidadas
 
-## §16 Outputs del Paso 5
+## §16 Decisiones consolidadas del Paso 5
 
 - Reglas de tipo de página definidas
 - URLs por tipo de página confirmadas
