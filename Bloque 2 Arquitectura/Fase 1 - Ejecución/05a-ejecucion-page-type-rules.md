@@ -58,14 +58,57 @@ En este paso la IA toma todas las decisiones que definen cómo se construye cada
 
 ## §4 Ejemplo rellenado
 
-> Solo las decisiones que se toman en Paso 5. Los heredados (Business Name, NAP, Servicios, Categorías GBP, etc.) tienen su ejemplo rellenado en sus pasos de origen (§4 de Paso 1). Las specs por page type tienen su ejemplo en cada `§X.10 Ejemplo rellenado con Cerrajeros Madrid 24h` dentro del Bloque II.
+> Resumen de TODAS las decisiones que se toman en Paso 5, con sus valores para Cerrajeros Madrid 24h. El detalle completo de cada page type spec (Estructura, Word count, Internal links, Ejemplos incorrectos, etc.) vive en cada `§X.10 Ejemplo rellenado` dentro del Bloque II. Los heredados (Business Name, NAP, Servicios, Categorías GBP, etc.) tienen su ejemplo en sus pasos de origen (§4 de Paso 1).
 
 ```text
-Primary Service:
-Cerrajero urgente
+DECISIONES GLOBALES
+- Primary Service: Cerrajero urgente
+- Brand tone: Urgente
 
-Brand tone:
-Urgente
+DECISIONES POR PAGE TYPE (resumen — detalle en §X.10 de cada uno)
+
+Homepage (§7):
+  URL: /
+  H1: Cerrajeros Madrid 24h – Servicios de cerrajería de confianza en Madrid
+  Meta Title: Cerrajero en Madrid | Cerrajeros Madrid 24h
+  Schema: Organization + WebSite + LocalBusiness + FAQPage + Speakable
+  Word count: 900–1,300
+
+Service Overview (§8):
+  URL pattern: /cerrajero/[service-slug]/
+  H1 pattern: Servicios profesionales de [service] por Cerrajeros Madrid 24h
+  Schema: Service + WebPage + BreadcrumbList
+  Word count: 700–1,000
+
+Location-Based Service (§9):
+  URL pattern: /cerrajero/madrid/[service-slug]/
+  H1 pattern: Cerrajeros Madrid 24h – [service] en Madrid
+  Schema: Service + LocalBusiness + BreadcrumbList
+  Word count: 800–1,200
+
+Additional Category (§10):
+  URL pattern: /cerrajero/madrid/[additional-slug]/
+  H1 pattern: Cerrajeros Madrid 24h – [additional] experto en Madrid
+  Schema: Service + BreadcrumbList
+  Word count: 700–1,000
+
+GeoHub (§11):
+  URL: /madrid/
+  H1: Cerrajeros Madrid 24h – Servicios de cerrajería en Madrid
+  Schema: CollectionPage + BreadcrumbList
+  Word count: 600–900
+
+GeoArticle (§12):
+  URL pattern: /madrid/[article-topic-slug]/
+  H1 pattern: [Pregunta o tópico local]
+  Schema: Article + FAQPage + BreadcrumbList
+  Word count: 800–1,400
+
+VALIDACIONES CROSS-CUTTING (§13–§16)
+- Schema por tipo de página: cumplido en las 6 specs
+- Word count por intención: cumplido (rangos por page type alineados con funnel)
+- CTA adaptado al page type: Llamar ahora (Homepage, LBS, GeoHub) / Solicitar presupuesto (SO, AC) / leer-más (GeoArticle → LBS)
+- No false location claims: cumplido (todas las URLs usan Main City o slug-funcional, ninguna implica oficina física en LCAs)
 ```
 
 # Bloque II — Ejecución por la IA
