@@ -1181,25 +1181,25 @@ NO permitir: Expansion LBS → /madrid/ (GeoHub base) o Expansion GA → matchin
 
 <small>§8</small>
 
-> Tabla final con valores reales para Cerrajeros Madrid 24h y status de cada output. Los IDs (`7.1`–`7.15`) coinciden con los declarados en §5.
+> Tabla final compacta con la trazabilidad row-per-output. Los IDs (`7.1`–`7.15`) coinciden con los declarados en §5. Esta tabla es la fuente única de la trazabilidad consolidada del paso (sustituye al antiguo b-doc).
 
-| ID | Output | Valor (Cerrajeros Madrid 24h) | Status |
-|---|---|---|---|
-| 7.1 | Regla 1 — Enlazar arriba/abajo/lateral | Aplicada a 28 URLs (cada una con 3 direcciones) | confirmed |
-| 7.2 | Regla 2 — Homepage distribuye autoridad | 8 outbound desde `/` (5 SO + 1 GeoHub + 1 AC + 1 contacto) | confirmed |
-| 7.3 | Regla 3 — SO empuja versión local | 5 conexiones SO → LBS | confirmed |
-| 7.4 | Regla 4 — GeoHub organiza Main City | 21 outbound desde `/madrid/` (5 LBS + 1 AC + 15 GAs) | confirmed |
-| 7.5 | Regla 5 — LBS conecta servicio y ciudad | ~30-35 enlaces (6-7 por LBS × 5) | confirmed |
-| 7.6 | Regla 6 — AC se integra en silo local | 3 outbound desde AC duplicado-llaves | confirmed |
-| 7.7 | Regla 7 — GeoArticle pasa relevancia a landing | 30 conexiones (15 GA → LBS + 15 GA → GeoHub) | confirmed |
-| 7.8 | Regla 8 — LCAs sin URL no reciben enlaces | 0 anchors a 10 LCAs declaradas | OK |
-| 7.9 | Regla 9 — Anchor text variado | Mix 6 categorías aplicado a ~80 enlaces | confirmed |
-| 7.10 | Regla 10 — Enlaces contextuales primero | Body links priorizados en 28 URLs | confirmed |
-| 7.11 | Matriz de enlaces obligatorios | 14 conexiones source → target documentadas | confirmed |
-| 7.12 | Ejemplo completo de enlaces LBS modelo | 6 outbound + 6 anchors para `/cerrajero/madrid/cerrajero-urgente/` | confirmed |
-| 7.13 | Breadcrumbs por page type | 6 breadcrumbs documentados (1 por page type) | confirmed |
-| 7.14 | Inbound links esperados | 0 páginas huérfanas; mínimos cumplidos por page type | OK |
-| 7.15 | Expansion linking separado | E=0 en Phase 1 → no aplica sub-cluster | OK |
+| ID | Hereda de | Output y valor (Cerrajeros Madrid 24h) | Cómo se obtiene + Fuente | Status |
+|---|---|---|---|---|
+| 7.1 | — | **Regla 1 — Enlazar arriba/abajo/lateral** = `Aplicada a 28 URLs (cada una con 3 direcciones)` | Aplicar la regla a las 28 URLs como filtro de QA antes de cerrar enlaces. **Fuente:** GMB Crush. | confirmed |
+| 7.2 | ← Paso-03 3.5 | **Regla 2 — Homepage distribuye autoridad** = `8 outbound desde / (5 SO + 1 GeoHub + 1 AC + 1 contacto)` | Aplicar la regla al outbound de Homepage según matriz 7.11. **Fuente:** GMB Crush. | confirmed |
+| 7.3 | ← Paso-03 3.5 | **Regla 3 — SO empuja versión local** = `5 conexiones SO → LBS` | Aplicar la regla a las 5 SO según matriz 7.11. **Fuente:** GMB Crush. | confirmed |
+| 7.4 | ← Paso-03 3.5 | **Regla 4 — GeoHub organiza Main City** = `21 outbound desde /madrid/ (5 LBS + 1 AC + 15 GAs)` | Aplicar la regla al outbound del GeoHub según matriz 7.11. **Fuente:** GMB Crush. | confirmed |
+| 7.5 | ← Paso-03 3.5 | **Regla 5 — LBS conecta servicio y ciudad** = `~30-35 enlaces (6-7 por LBS × 5)` | Aplicar la regla a las 5 LBS según matriz 7.11 (parent SO + GeoHub + lateral + GAs + contacto). **Fuente:** GMB Crush. | confirmed |
+| 7.6 | ← Paso-03 3.5 | **Regla 6 — AC se integra en silo local** = `3 outbound desde AC duplicado-llaves` | Aplicar la regla a las A=1 AC según matriz 7.11. **Fuente:** GMB Crush. | confirmed |
+| 7.7 | ← Paso-03 3.5 | **Regla 7 — GeoArticle pasa relevancia a landing** = `30 conexiones (15 GA → LBS + 15 GA → GeoHub)` | Aplicar la regla a los G×S=15 GAs según matriz 7.11. **Fuente:** GMB Crush. | confirmed |
+| 7.8 | ← Paso-01 1.10 + Paso-04 4.9 | **Regla 8 — LCAs sin URL no reciben enlaces** = `0 anchors a 10 LCAs declaradas` | Validar que ninguna URL del cluster enlaza a `/{lca}/`. **Fuente:** GMB Crush. | OK |
+| 7.9 | ← Paso-01 1.1 + 1.13 | **Regla 9 — Anchor text variado** = `Mix 6 categorías aplicado a ~80 enlaces` | Aplicar catálogo de anchors (branded / exact / partial / topic / generic / CTA) con distribución equilibrada. **Fuente:** GMB Crush. | confirmed |
+| 7.10 | — | **Regla 10 — Enlaces contextuales primero** = `Body links priorizados en 28 URLs` | Aplicar la regla al placement: enlaces inline en body antes que en footer. **Fuente:** GMB Crush. | confirmed |
+| 7.11 | ← Paso-03 3.5 | **Matriz de enlaces obligatorios** = `14 conexiones source → target documentadas` | Generar matriz fila-por-conexión con source, target, anchor y direction. **Fuente:** GMB Crush. | confirmed |
+| 7.12 | ← Paso-03 3.5 | **Ejemplo completo de enlaces LBS modelo** = `6 outbound + 6 anchors para /cerrajero/madrid/cerrajero-urgente/` | Redactar ejemplo aplicado a una LBS modelo (inbound + outbound + anchors). **Fuente:** GMB Crush. | confirmed |
+| 7.13 | ← Paso-03 3.5 | **Breadcrumbs por page type** = `6 breadcrumbs documentados (1 por page type)` | Aplicar jerarquía Home > [Categoría] > [Ciudad] > [Servicio] según page type. **Fuente:** GMB Crush. | confirmed |
+| 7.14 | ← Paso-03 3.5 | **Inbound links esperados (cross-cutting)** = `0 páginas huérfanas; mínimos cumplidos por page type` | Validar que cada URL recibe el mínimo de inbound según matriz 7.11. **Fuente:** GMB Crush. | OK |
+| 7.15 | ← Paso-01 1.11 | **Expansion linking separado (cross-cutting)** = `E=0 en Phase 1 → no aplica sub-cluster` | Aplicar la regla solo si E≥1; sub-cluster de expansion linking aislado del cluster base. **Fuente:** GMB Crush. | OK |
 
 # Bloque IV — Fuentes Internas GMB Crush usadas
 

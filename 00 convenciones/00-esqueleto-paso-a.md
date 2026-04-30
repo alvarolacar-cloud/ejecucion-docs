@@ -45,8 +45,11 @@ Cada a-doc tiene **4 bloques**. Solo 4.
 │                                                              │
 │ §7 Checklist Final → lista de ☐ que validar antes de cerrar  │
 │                                                              │
-│ §8 Outputs Consolidados → tabla final con VALOR concreto     │
-│                            de cada output para Cerrajeros    │
+│ §8 Outputs Consolidados → tabla compacta row-per-output con  │
+│                            ID / Hereda de / Output y valor / │
+│                            Cómo se obtiene + Fuente / Status │
+│                            (absorbe lo que antes estaba en   │
+│                            el b-doc — fuente única de verdad)│
 └──────────────────────────────────────────────────────────────┘
 
 ┌──────────────────────────────────────────────────────────────┐
@@ -58,15 +61,18 @@ Cada a-doc tiene **4 bloques**. Solo 4.
 
 ---
 
-## El truco mental: los outputs aparecen 3 veces
+## El truco mental: los outputs aparecen 4 veces
 
-Cada output del paso aparece en tres sitios distintos del a-doc, con el mismo ID `N.X`:
+Cada output del paso aparece en cuatro sitios distintos del a-doc, con el mismo ID `N.X`:
 
-1. **En §5 Outputs a Conseguir** — listado en una tabla (ficha técnica: ID / Output / Tipo / Fuente / Hereda de)
-2. **En §4 (Bloque II)** — con su valor concreto para Cerrajeros
+1. **En §4 (Bloque II)** — con su valor concreto para Cerrajeros (en prosa o tabla)
+2. **En §5 Outputs a Conseguir** — listado en tabla declarativa (ficha técnica: ID / Output / Tipo / Fuente / Hereda de)
 3. **En §6 Obtención de Outputs** — explicado con prosa, fórmula, ejemplos correctos/incorrectos, regla, validación, fuente, método
+4. **En §8 Outputs Consolidados** — tabla compacta row-per-output (ID / Hereda de / Output y valor / Cómo se obtiene + Fuente / Status)
 
-Son tres vistas del mismo conjunto de outputs. Por eso hay que mantener los **mismos IDs** (`N.1`, `N.2`, ..., `N.X`) en los tres sitios.
+Son cuatro vistas del mismo conjunto de outputs. Por eso hay que mantener los **mismos IDs** (`N.1`, `N.2`, ..., `N.X`) en los cuatro sitios.
+
+> **Nota:** §8 absorbe lo que antes vivía en un b-doc separado. La consolidación tabular y el a-doc viven en el mismo archivo — sin drift entre docs, sin cross-refs cruzados, una única fuente de verdad por paso.
 
 ---
 
@@ -112,10 +118,10 @@ Cuando un output contiene múltiples valores (ej. lista de slugs, NAP con 8 camp
 | 2.4 | Service Slugs (S=5) | URL-safe strings | GMB Crush | Paso-01 1.9 |
 ```
 
-Y en §8 Outputs Consolidados:
+Y en §8 Outputs Consolidados (formato compacto):
 
 ```markdown
-| 2.4 | Service Slugs (5) | cerrajero-urgente, apertura-puertas, cambio-cerraduras, cambio-bombines, instalacion-cerraduras-seguridad | confirmed |
+| 2.4 | ← 1.9 | **Service Slugs (5)** = `cerrajero-urgente, apertura-puertas, cambio-cerraduras, cambio-bombines, instalacion-cerraduras-seguridad` | Generados con la fórmula de Paso-02 §6.4. **Fuente:** GMB Crush. | confirmed |
 ```
 
 **Usar cuando:** los N valores son del mismo tipo, mismo status, sin sub-categorización. La IA lee "es una lista de N elementos" sin ambigüedad.
@@ -127,11 +133,11 @@ Y en §8 Outputs Consolidados:
 | 1.10 | Candidate LCAs (validables con test GEO) | Lista | GMB Crush + Competidores | — |
 ```
 
-Y en §8 Outputs Consolidados:
+Y en §8 Outputs Consolidados (formato compacto):
 
 ```markdown
-| 1.10 | Direct LCAs | Almagro, Chamberí | confirmed |
-| 1.10 | Candidate LCAs | Salamanca, Retiro, Centro, Tetuán, Chamartín, Arganzuela, Moncloa, Prosperidad | confirmed |
+| 1.10 | ← 1.4 | **Direct LCAs** = `Almagro, Chamberí` | Calculadas por proximidad NAP (Paso-01 §6.10). **Fuente:** GMB Crush. | confirmed |
+| 1.10 | — | **Candidate LCAs** = `Salamanca, Retiro, Centro, Tetuán, Chamartín, Arganzuela, Moncloa, Prosperidad` | Validadas con test GEO (Paso-01 §6.10). **Fuente:** GMB Crush + Competidores. | confirmed |
 ```
 
 **Usar cuando:**
@@ -175,6 +181,7 @@ Para outputs con 10+ valores (URL Matrix, GeoArticle Topics), se usa una **tabla
 5. Fuentes solo del catálogo (ver abajo). Combinaciones inventadas no se permiten.
 6. **Cross-refs cross-paso por Output ID** (`Paso-NN N.X`), no por sección.
 7. **§5 tabla con 5 columnas** (ID / Output / Tipo / Fuente / Hereda de), no 4.
+8. **§8 tabla con 5 columnas** (ID / Hereda de / Output y valor / Cómo se obtiene + Fuente / Status). Es la fuente única de la trazabilidad consolidada — sustituye al b-doc.
 
 ---
 
@@ -220,13 +227,13 @@ Y se documenta el bloque extra en el callout "Cómo leer este documento" del top
 El autocheck (`_autocheck_paso.py`) verifica:
 
 1. Que las cross-refs internas resuelven (no hay §X rotos)
-2. Que las refs del b-doc al a-doc resuelven
-3. Cuántas rows tiene el b-doc
-4. Que las Fuentes están en el catálogo
-5. Que los outputs declarados en §5 tienen rows en el b-doc
+2. Que las Fuentes están en el catálogo
+3. Que §5 (declaración) y §8 (consolidación) tienen los mismos IDs de outputs
+
+> **Nota:** los checks de "refs b-doc → a-doc" y "cobertura outputs ↔ rows" se eliminaron al consolidar el b-doc dentro del a-doc. La trazabilidad ahora vive en §8 del propio a-doc.
 
 Comando:
 
 ```bash
-python _autocheck_paso.py <a-doc>.md <b-doc>.md Paso-NN
+python _autocheck_paso.py <a-doc>.md Paso-NN
 ```

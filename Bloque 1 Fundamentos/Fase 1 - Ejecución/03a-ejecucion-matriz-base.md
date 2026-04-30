@@ -1179,24 +1179,24 @@ No se debe escribir contenido página por página sin haber cerrado la matriz. L
 
 <small>§8</small>
 
-> Tabla final con valores reales para Cerrajeros Madrid 24h y status de cada output. Los IDs (`3.1`–`3.14`) coinciden con los declarados en §5.
+> Tabla final compacta con la trazabilidad row-per-output. Los IDs (`3.1`–`3.14`) coinciden con los declarados en §5. Esta tabla es la fuente única de la trazabilidad consolidada del paso (sustituye al antiguo b-doc).
 
-| ID | Output | Valor (Cerrajeros Madrid 24h) | Status |
-|---|---|---|---|
-| 3.1 | Spreadsheet Name | `Cerrajeros Madrid 24h – GMB Crush Website Architecture` | confirmed |
-| 3.2 | GeoHub URL Style | Option A → `/madrid/` | confirmed |
-| 3.3 | Additional Category Slugs | `duplicado-llaves` (1 slug, A=1) | confirmed |
-| 3.4 | GeoArticle Topics propuestos | 15 topics (G=3 × S=5) — ver §4 sub-sección 3.4 | ⚠ inferido (requiere validación con keyword research real) |
-| 3.5 | URL Matrix completa | 28 filas SEO + 1 auxiliar = 29 filas | confirmed |
-| 3.6 | IDs por tipo de página | HP, SO-1..5, GH, LBS-1..5, AC-1, GA-1..15, AUX | confirmed |
-| 3.7 | Parent Page declarado por fila | Cada fila apunta a URL existente o `–` | confirmed |
-| 3.8 | Schema asignado desde matriz | Mapeo doctrinal aplicado a 29 filas | confirmed |
-| 3.9 | Enlaces internos Required por fila | Listado contractual por page type | confirmed |
-| 3.10 | Priority y Publish Phase por fila | P1-P4 + Phase 1-2 según page type | confirmed |
-| 3.11 | Default Page Status | `Planned` (todas las 29 filas) | confirmed |
-| 3.12 | Notes estratégicas por fila | Sample notes documentadas | confirmed |
-| 3.13 | Validación LCAs sin filas base | 0 filas extra para 10 LCAs (Almagro, Chamberí, Salamanca, etc.) | OK |
-| 3.14 | Validación matriz cerrada antes de contenido | 29 filas × 20 columnas = 580 celdas rellenas | OK |
+| ID | Hereda de | Output y valor (Cerrajeros Madrid 24h) | Cómo se obtiene + Fuente | Status |
+|---|---|---|---|---|
+| 3.1 | — | **Spreadsheet Name** = `Cerrajeros Madrid 24h – GMB Crush Website Architecture` | Decisión de diseño — convención de naming del cluster. **Fuente:** Decisión de diseño. | confirmed |
+| 3.2 | — | **GeoHub URL Style** = `Option A → /madrid/` | Decisión de diseño entre Option A (`/madrid/`) y Option B (`/cerrajero/madrid/`). **Fuente:** Decisión de diseño. | confirmed |
+| 3.3 | ← Paso-01 1.6 | **Additional Category Slugs** = `duplicado-llaves` (1 slug, A=1) | Slugificar las Additional Categories que necesitan página propia. **Fuente:** GMB Crush. | confirmed |
+| 3.4 | — | **GeoArticle Topics propuestos** = 15 topics (G=3 × S=5) — ver §4 sub-sección 3.4 | Keyword research por core service (Ahrefs / Semrush / Google KP) + filtrar por intención GEO + validar volumen. **Fuente:** GMB Crush + Datos de búsqueda. | ⚠ inferido (requiere validación con keyword research real) |
+| 3.5 | — | **URL Matrix completa** = 28 filas SEO + 1 auxiliar = 29 filas | Generar matriz N filas × 20 columnas con todas las URLs derivadas de la fórmula maestra (Paso-02 2.9). **Fuente:** GMB Crush. | confirmed |
+| 3.6 | — | **IDs por tipo de página** = `HP, SO-1..5, GH, LBS-1..5, AC-1, GA-1..15, AUX` | Asignar ID único por fila usando convención `[PageType-Index]`. **Fuente:** GMB Crush. | confirmed |
+| 3.7 | — | **Parent Page declarado por fila** = Cada fila apunta a URL existente o `–` | Mapear la jerarquía padre→hijo según doctrina (HP raíz; SO padres de LBS; GH padre de LBS+AC+GAs). **Fuente:** GMB Crush. | confirmed |
+| 3.8 | — | **Schema asignado desde matriz** = Mapeo doctrinal aplicado a 29 filas | Asignar Schema Type(s) por page type según mapping de Paso-05 5.9. **Fuente:** GMB Crush. | confirmed |
+| 3.9 | — | **Enlaces internos Required por fila** = Listado contractual por page type | Listar enlaces obligatorios por page type según mapping de Paso-07. **Fuente:** GMB Crush. | confirmed |
+| 3.10 | — | **Priority y Publish Phase por fila** = `P1-P4 + Phase 1-2 según page type` | Asignar prioridad y fase de publicación según doctrina (HP P1, LBS P1, SO P2, GH P2, GAs P3-4). **Fuente:** GMB Crush. | confirmed |
+| 3.11 | — | **Default Page Status** = `Planned` (todas las 29 filas) | Asignar status `Planned` al cerrar la matriz; actualizar a `Draft` / `Published` en pasos posteriores. **Fuente:** GMB Crush. | confirmed |
+| 3.12 | — | **Notes estratégicas por fila** = Sample notes documentadas | Decisión de diseño — anotar fila a fila contexto operativo (ej. dependencias, riesgos). **Fuente:** Decisión de diseño. | confirmed |
+| 3.13 | — | **Validación LCAs sin filas base** = 0 filas extra para 10 LCAs (Almagro, Chamberí, Salamanca, etc.) | Confirmar que ninguna LCA genera una fila URL en la matriz. **Fuente:** GMB Crush. | OK |
+| 3.14 | — | **Validación matriz cerrada antes de contenido** = 29 filas × 20 columnas = 580 celdas rellenas | Comprobar que todas las celdas están rellenas antes de entrar a Paso 4 (URL Rules) y posteriores. **Fuente:** GMB Crush. | OK |
 
 # Bloque IV — Fuentes Internas GMB Crush usadas
 

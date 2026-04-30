@@ -1055,25 +1055,25 @@ La regla aplica como filtro de detección de duplicados antes de cerrar la URL M
 
 <small>§8</small>
 
-> Tabla final con valores reales para Cerrajeros Madrid 24h y status de cada output. Los IDs (`4.1`–`4.15`) coinciden con los declarados en §5.
+> Tabla final compacta con la trazabilidad row-per-output. Los IDs (`4.1`–`4.15`) coinciden con los declarados en §5. Esta tabla es la fuente única de la trazabilidad consolidada del paso (sustituye al antiguo b-doc).
 
-| ID | Output | Valor (Cerrajeros Madrid 24h) | Status |
-|---|---|---|---|
-| 4.1 | Canonical Domain | `https://www.cerrajerosmadrid24h.com` | confirmed |
-| 4.2 | Trailing Slash | `Yes` (todas las URLs terminan en `/`) | confirmed |
-| 4.3 | Homepage URL | `/` | confirmed |
-| 4.4 | Service Overview URL pattern | `/{primary-cat-slug}/{service-slug}/` → 5 URLs SO | confirmed |
-| 4.5 | Main City GeoHub URL Style | Option A → `/madrid/` | confirmed |
-| 4.6 | LBS URL pattern | `/{primary-cat-slug}/{main-city-slug}/{service-slug}/` → 5 URLs LBS | confirmed |
-| 4.7 | Additional Category URL pattern | `/{primary-cat-slug}/{main-city-slug}/{additional-slug}/` → 1 URL AC | confirmed |
-| 4.8 | GeoArticle URL pattern | Option A → `/{main-city-slug}/{topic-slug}/` → 15 URLs GA | confirmed |
-| 4.9 | LCAs no generan URLs | 10 LCAs declaradas → 0 URLs generadas | OK |
-| 4.10 | Approved Expansion URLs | E=0 → 0 URLs de expansión | OK |
-| 4.11 | Validación No "near me" | 0 URLs contienen patrones prohibidos | OK |
-| 4.12 | Validación No adjetivos vacíos | 0 URLs contienen `best`, `cheap`, `top-rated`, etc. | OK |
-| 4.13 | Validación Slugs limpios | Todos los slugs cumplen slugify estándar | OK |
-| 4.14 | Validación No falsa ubicación | Solo `/madrid/` aparece como city; 0 LCAs como path | OK |
-| 4.15 | Validación No duplicar intención | 0 pares de URLs con duplicación detectada | OK |
+| ID | Hereda de | Output y valor (Cerrajeros Madrid 24h) | Cómo se obtiene + Fuente | Status |
+|---|---|---|---|---|
+| 4.1 | ← Paso-01 1.2 | **Canonical Domain** = `https://www.cerrajerosmadrid24h.com` | Tomar el dominio del intake; doctrina dicta HTTPS + www. **Fuente:** GMB Crush. | confirmed |
+| 4.2 | — | **Trailing Slash** = `Yes` (todas las URLs terminan en `/`) | Decisión de diseño global; coherente y aplicable a las 28 URLs del cluster. **Fuente:** Decisión de diseño. | confirmed |
+| 4.3 | — | **Homepage URL** = `/` | Doctrina GMB Crush — Homepage siempre es raíz. **Fuente:** GMB Crush. | confirmed |
+| 4.4 | — | **Service Overview URL pattern** = `/{primary-cat-slug}/{service-slug}/` → 5 URLs SO | Doctrina GMB Crush — pilar temático no geolocalizado bajo categoría primaria. **Fuente:** GMB Crush. | confirmed |
+| 4.5 | ← Paso-03 3.2 | **Main City GeoHub URL Style** = `Option A → /madrid/` | Hereda el estilo elegido en Paso-03 3.2 (Option A o B). **Fuente:** GMB Crush. | confirmed |
+| 4.6 | — | **LBS URL pattern** = `/{primary-cat-slug}/{main-city-slug}/{service-slug}/` → 5 URLs LBS | Doctrina GMB Crush — converter local servicio + Main City. **Fuente:** GMB Crush. | confirmed |
+| 4.7 | — | **Additional Category URL pattern** = `/{primary-cat-slug}/{main-city-slug}/{additional-slug}/` → 1 URL AC | Doctrina GMB Crush — soporte de categoría adicional GBP en Main City. **Fuente:** GMB Crush. | confirmed |
+| 4.8 | — | **GeoArticle URL pattern** = `Option A → /{main-city-slug}/{topic-slug}/` → 15 URLs GA | Doctrina GMB Crush — booster semántico bajo Main City. **Fuente:** GMB Crush. | confirmed |
+| 4.9 | ← Paso-01 1.10 | **LCAs no generan URLs** = 10 LCAs declaradas → 0 URLs generadas | Doctrina GMB Crush — LCAs viven en contenido y `areaServed`, no en path. **Fuente:** GMB Crush. | OK |
+| 4.10 | ← Paso-01 1.11 | **Approved Expansion URLs** = `E=0 → 0 URLs de expansión` | Decisión de diseño — sin expansión en Phase 1. **Fuente:** Decisión de diseño. | OK |
+| 4.11 | — | **Validación No "near me"** = 0 URLs contienen patrones prohibidos | Comprobar las 28 URLs del cluster contra blacklist `near-me`. **Fuente:** GMB Crush. | OK |
+| 4.12 | — | **Validación No adjetivos vacíos** = 0 URLs contienen `best`, `cheap`, `top-rated`, etc. | Comprobar las 28 URLs contra blacklist de adjetivos SEO vacíos. **Fuente:** GMB Crush. | OK |
+| 4.13 | ← Paso-02 2.2 | **Validación Slugs limpios** = Todos los slugs cumplen slugify estándar | Comprobar slugs de todas las URLs (lowercase, sin acentos, kebab-case). **Fuente:** GMB Crush. | OK |
+| 4.14 | ← Paso-01 1.8 + 1.11 | **Validación No falsa ubicación** = Solo `/madrid/` aparece como city; 0 LCAs como path | Comprobar que las 28 URLs solo usan Main City o Approved Expansion como city. **Fuente:** GMB Crush. | OK |
+| 4.15 | — | **Validación No duplicar intención** = 0 pares de URLs con duplicación detectada | Cruzar URLs por intención (servicio + ciudad + topic) y descartar duplicados. **Fuente:** GMB Crush. | OK |
 
 # Bloque IV — Fuentes Internas GMB Crush usadas
 

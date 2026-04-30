@@ -1096,25 +1096,25 @@ La validación auditabilidad es un gate antes del handoff al Paso 3. Para cada p
 
 <small>§8</small>
 
-> Tabla final con valores reales para Cerrajeros Madrid 24h y status de cada output. Los IDs (`2.1`–`2.15`) coinciden con los declarados en §5.
+> Tabla final compacta con la trazabilidad row-per-output. Los IDs (`2.1`–`2.15`) coinciden con los declarados en §5. Esta tabla es la fuente única de la trazabilidad consolidada del paso (sustituye al antiguo b-doc).
 
-| ID | Output | Valor (Cerrajeros Madrid 24h) | Status |
-|---|---|---|---|
-| 2.1 | Planned GBP Categories Status | Cerrajero (Planned) + 2 Additional (Planned) | confirmed |
-| 2.2 | Primary Category Slug | `cerrajero` | confirmed |
-| 2.3 | Main City Slug | `madrid` | confirmed |
-| 2.4 | Service Slugs (5) | `cerrajero-urgente`, `apertura-puertas`, `cambio-cerraduras`, `cambio-bombines`, `instalacion-cerraduras-seguridad` | confirmed |
-| 2.5 | Service-to-Main-City Applicability | Yes / 0 exclusiones / S_efectiva = 5 | confirmed |
-| 2.6 | Variable S | 5 | confirmed |
-| 2.7 | Variable A | 1 (Servicio de duplicado de llaves) | confirmed |
-| 2.8 | Variable G | 3 | confirmed |
-| 2.9 | Total páginas SEO base | 1 + 5 + 1 + 5 + 1 + 15 = **28** | confirmed |
-| 2.10 | Inventario por tipo de página | Homepage=1 / SO=5 / GeoHub=1 / LBS=5 / AC=1 / GAs=15 | confirmed |
-| 2.11 | Optional Expansion Formula | E=0 → 0 páginas (declarada para activación futura) | confirmed |
-| 2.12 | Validación anti-duplicación | Servicio de cerrajería de urgencia consolidada con core service Cerrajero urgente | OK |
-| 2.13 | Validación dependencias | Orden Homepage → SO → GeoHub → LBS → AC → GAs validado | OK |
-| 2.14 | Validación LCAs fuera fórmula | Almagro, Chamberí, Salamanca, Retiro, etc. → 0 páginas adicionales | OK |
-| 2.15 | Validación auditabilidad del total | 28 explicable componente a componente | OK |
+| ID | Hereda de | Output y valor (Cerrajeros Madrid 24h) | Cómo se obtiene + Fuente | Status |
+|---|---|---|---|---|
+| 2.1 | ← Paso-01 1.5 + 1.6 | **Planned GBP Categories Status** = `Cerrajero (Planned) + 2 Additional (Planned)` | Marcar las categorías como `Planned` hasta que se cree el GBP en Paso 14. **Fuente:** GMB Crush. | confirmed |
+| 2.2 | ← Paso-01 1.5 | **Primary Category Slug** = `cerrajero` | Slugificar la Primary Category (lowercase, sin acentos, kebab-case). **Fuente:** GMB Crush. | confirmed |
+| 2.3 | ← Paso-01 1.7 | **Main City Slug** = `madrid` | Slugificar la Main City (lowercase, sin acentos, kebab-case). **Fuente:** GMB Crush. | confirmed |
+| 2.4 | ← Paso-01 1.9 | **Service Slugs (5)** = `cerrajero-urgente, apertura-puertas, cambio-cerraduras, cambio-bombines, instalacion-cerraduras-seguridad` | Slugificar cada uno de los 5 core services (lowercase, sin acentos, kebab-case). **Fuente:** GMB Crush. | confirmed |
+| 2.5 | — | **Service-to-Main-City Applicability** = `Yes / 0 exclusiones / S_efectiva = 5` | Validar que cada core service aplica a la Main City (sin exclusiones de cliente). **Fuente:** GMB Crush + Input humano. | confirmed |
+| 2.6 | ← Paso-01 1.9 | **Variable S** = `5` | Contar core services aplicables a Main City. **Fuente:** GMB Crush. | confirmed |
+| 2.7 | ← Paso-01 1.6 | **Variable A** = `1` (Servicio de duplicado de llaves) | Contar Additional Categories que necesitan página propia (no cubiertas por core service). **Fuente:** GMB Crush. | confirmed |
+| 2.8 | ← Paso-01 1.12 | **Variable G** = `3` | Hereda directo de Paso-01 1.12 (default doctrina). **Fuente:** GMB Crush. | confirmed |
+| 2.9 | ← 2.6 + 2.7 + 2.8 | **Total páginas SEO base** = `1 + S + 1 + S + A + G×S = 1 + 5 + 1 + 5 + 1 + 15 = 28` | Aplicar fórmula maestra con variables S/A/G del paso. **Fuente:** GMB Crush. | confirmed |
+| 2.10 | ← 2.6 + 2.7 + 2.8 | **Inventario por tipo de página** = `Homepage=1 / SO=5 / GeoHub=1 / LBS=5 / AC=1 / GAs=15` | Desglose de la fórmula 2.9 por page type. **Fuente:** GMB Crush. | confirmed |
+| 2.11 | — | **Optional Expansion Formula** = `E=0 → 0 páginas (declarada para activación futura)` | Declarar fórmula de expansión inactiva en Phase 1; activable cuando E>0. **Fuente:** GMB Crush. | confirmed |
+| 2.12 | — | **Validación anti-duplicación** = Servicio de cerrajería de urgencia consolidada con core service Cerrajero urgente | Cruzar Additional Categories vs core services y consolidar duplicados. **Fuente:** GMB Crush. | OK |
+| 2.13 | — | **Validación dependencias** = Orden Homepage → SO → GeoHub → LBS → AC → GAs validado | Comprobar orden de dependencia entre page types antes de cerrar el inventario. **Fuente:** GMB Crush. | OK |
+| 2.14 | — | **Validación LCAs fuera fórmula** = Almagro, Chamberí, Salamanca, Retiro, etc. → 0 páginas adicionales | Confirmar que ninguna LCA genera URL en la fórmula base. **Fuente:** GMB Crush. | OK |
+| 2.15 | — | **Validación auditabilidad del total** = 28 explicable componente a componente | Validar que el total SEO base se desglosa rastreablemente por page type. **Fuente:** GMB Crush. | OK |
 
 # Bloque IV — Fuentes Internas GMB Crush usadas
 

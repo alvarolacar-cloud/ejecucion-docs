@@ -1073,32 +1073,25 @@ Las señales de confianza recogidas en el intake se reutilizan en homepage, pág
 
 <small>§8</small>
 
-> Tabla final con valores reales para Cerrajeros Madrid 24h y status de cada output. Los IDs (`1.1`–`1.14`) coinciden con los declarados en §5.
+> Tabla final compacta con la trazabilidad row-per-output. Los IDs (`1.1`–`1.14`) coinciden con los declarados en §5. Esta tabla es la fuente única de la trazabilidad consolidada del paso (sustituye al antiguo b-doc).
 
-| ID | Output | Valor (Cerrajeros Madrid 24h) | Status |
-|---|---|---|---|
-| 1.1 | Business Name | `Cerrajeros Madrid 24h` | confirmed |
-| 1.2 | Website URL / Canonical Domain | `https://www.cerrajerosmadrid24h.com` | confirmed |
-| 1.3 | GBP Lifecycle Status | Not Created / After website launch / Not Started / N/A | confirmed (web-first) |
-| 1.4 | Full NAP — Name | Cerrajeros Madrid 24h | confirmed |
-| 1.4 | Full NAP — Street Address | Calle Rafael Calvo 12, Barrio Almagro, Distrito Chamberí | confirmed |
-| 1.4 | Full NAP — City | Madrid | confirmed |
-| 1.4 | Full NAP — State / Province | Comunidad de Madrid | confirmed |
-| 1.4 | Full NAP — ZIP / Postal Code | 28010 | confirmed |
-| 1.4 | Full NAP — Country | España | confirmed |
-| 1.4 | Full NAP — Phone | +34 600 000 000 | confirmed |
-| 1.4 | Full NAP — Email | info@cerrajerosmadrid24h.com | confirmed |
-| 1.5 | Planned Primary GBP Category | `Cerrajero` (Planned) | confirmed |
-| 1.6 | Planned Additional GBP Categories | Servicio de cerrajería de urgencia (cubierta) + Servicio de duplicado de llaves (página propia) | confirmed |
-| 1.7 | Main City | `Madrid` | confirmed |
-| 1.8 | Physical Location City | `Madrid` | confirmed |
-| 1.9 | Servicios principales (S=5) | Cerrajero urgente, Apertura de puertas, Cambio de cerraduras, Cambio de bombines, Instalación de cerraduras de seguridad | confirmed |
-| 1.10 | Direct LCAs (proximidad NAP) | Almagro, Chamberí | confirmed |
-| 1.10 | Candidate LCAs (validables con test GEO) | Salamanca, Retiro, Centro, Tetuán, Chamartín, Arganzuela, Moncloa, Prosperidad | confirmed |
-| 1.11 | Approved Expansion Areas | None in Phase 1 (E=0) | confirmed |
-| 1.12 | GeoArticles per Service (G) | `G = 3` → G × S = 15 GeoArticles | confirmed |
-| 1.13 | Preferred CTA | `Llamar ahora` | confirmed |
-| 1.14 | Trust Signals | 10+ años, técnicos cualificados, servicio móvil, garantía, reseñas iniciales pendientes | confirmed |
+| ID | Hereda de | Output y valor (Cerrajeros Madrid 24h) | Cómo se obtiene + Fuente | Status |
+|---|---|---|---|---|
+| 1.1 | — | **Business Name** = `Cerrajeros Madrid 24h` | Lo declara el cliente en el intake. **Fuente:** Input humano. | confirmed |
+| 1.2 | — | **Website URL / Canonical Domain** = `https://www.cerrajerosmadrid24h.com` | Lo declara el cliente en el intake (formato HTTPS + www + trailing slash). **Fuente:** Input humano. | confirmed |
+| 1.3 | — | **GBP Lifecycle Status** = `Not Created / After website launch / Not Started / N/A` | Lo declara el cliente; doctrina web-first marca `After website launch`. **Fuente:** GMB Crush + Input humano. | confirmed (web-first) |
+| 1.4 | — | **Full NAP** = Name `Cerrajeros Madrid 24h` · Street `Calle Rafael Calvo 12, Barrio Almagro, Distrito Chamberí` · City `Madrid` · State `Comunidad de Madrid` · ZIP `28010` · Country `España` · Phone `+34 600 000 000` · Email `info@cerrajerosmadrid24h.com` | Lo declara el cliente; 8 campos verificables y consistentes con el intake. **Fuente:** Input humano. | confirmed |
+| 1.5 | — | **Planned Primary GBP Category** = `Cerrajero` | Análisis de los top competidores en Local Pack (Maps + Crush Tool); elegir la categoría GBP más representativa. **Fuente:** GMB Crush + Competidores. | confirmed |
+| 1.6 | — | **Planned Additional GBP Categories** = `Servicio de cerrajería de urgencia` (cubierta por core service) + `Servicio de duplicado de llaves` (página propia) | Análisis de competidores top + clasificación cubierta/página propia según mapping con core services. **Fuente:** GMB Crush + Competidores. | confirmed |
+| 1.7 | — | **Main City** = `Madrid` | Doctrina GMB Crush — una sola Main City por cluster, derivada del NAP City. **Fuente:** GMB Crush. | confirmed |
+| 1.8 | — | **Physical Location City** = `Madrid` | Lo declara el cliente; ciudad de presencia física real (puede coincidir con Main City o no). **Fuente:** Input humano. | confirmed |
+| 1.9 | — | **Servicios principales (S=5)** = `Cerrajero urgente, Apertura de puertas, Cambio de cerraduras, Cambio de bombines, Instalación de cerraduras de seguridad` | Top 5 servicios extraídos del análisis de competidores Local Pack + intent comercial. **Fuente:** GMB Crush + Competidores. | confirmed |
+| 1.10 | ← 1.4 (NAP) | **Direct LCAs (proximidad NAP)** = `Almagro, Chamberí` | Calculadas por proximidad geográfica directa al NAP Street + City (Paso-01 §6.10). **Fuente:** GMB Crush. | confirmed |
+| 1.10 | — | **Candidate LCAs (validables con test GEO)** = `Salamanca, Retiro, Centro, Tetuán, Chamartín, Arganzuela, Moncloa, Prosperidad` | Validadas con test GEO (search behavior + competidores que sirven la zona). **Fuente:** GMB Crush + Competidores. | confirmed |
+| 1.11 | — | **Approved Expansion Areas** = `None in Phase 1 (E=0)` | Decisión de diseño — sin expansión en fase inicial; activar solo si negocio aprueba expansión real. **Fuente:** Decisión de diseño. | confirmed |
+| 1.12 | — | **GeoArticles per Service (G)** = `G = 3` → G × S = 15 GeoArticles | Doctrina GMB Crush — default G=3 por core service (ajustable según volumen de búsqueda). **Fuente:** GMB Crush. | confirmed |
+| 1.13 | — | **Preferred CTA** = `Llamar ahora` | Decisión de diseño entre las 4 opciones estándar (Llamar / WhatsApp / Solicitar presupuesto / Email). **Fuente:** Decisión de diseño. | confirmed |
+| 1.14 | — | **Trust Signals** = `10+ años, técnicos cualificados, servicio móvil, garantía, reseñas iniciales pendientes` | Lista de 4-7 señales reales del negocio + benchmarking con competidores top. **Fuente:** GMB Crush + Competidores. | confirmed |
 
 # Bloque IV — Módulo doctrinal: Interpretación de la dirección física y zonas GEO
 

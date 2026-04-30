@@ -1346,27 +1346,27 @@ Aplicar la regla en cada page type que use schema LocalBusiness (Homepage, LBS, 
 
 <small>§8</small>
 
-> Tabla final con valores reales para Cerrajeros Madrid 24h y status de cada output. Los IDs (`6.1`–`6.17`) coinciden con los declarados en §5.
+> Tabla final compacta con la trazabilidad row-per-output. Los IDs (`6.1`–`6.17`) coinciden con los declarados en §5. Esta tabla es la fuente única de la trazabilidad consolidada del paso (sustituye al antiguo b-doc).
 
-| ID | Output | Valor (Cerrajeros Madrid 24h) | Status |
-|---|---|---|---|
-| 6.1 | Principio 1 — Main City crea arquitectura | Madrid es la única Main City del cluster | OK |
-| 6.2 | Principio 2 — LCAs enriquecen contenido | 10 LCAs en contenido + areaServed; 0 URLs `/{lca}/` | OK |
-| 6.3 | Principio 3 — AEAs crean URLs solo si se aprueban | E=0 → 0 URLs de expansión | OK |
-| 6.4 | Principio 4 — Mencionar zona ≠ crear página | Almagro mencionado en LBS sin enlace a `/almagro/` | OK |
-| 6.5 | Principio 5 — No falsa ubicación | NAP=Madrid; ninguna afirmación de oficina en LCAs | OK |
-| 6.6 | Homepage Content Architecture | 1 URL (`/`) con 11 bloques | confirmed |
-| 6.7 | Service Overview Content Architecture | 5 URLs SO con 11 bloques cada una | confirmed |
-| 6.8 | Location-Based Service Content Architecture | 5 URLs LBS con 12 bloques cada una | confirmed |
-| 6.9 | Additional Category Content Architecture | 1 URL AC con 11 bloques | confirmed |
-| 6.10 | GeoHub Content Architecture | 1 URL (`/madrid/`) con 10 bloques | confirmed |
-| 6.11 | GeoArticle Content Architecture | 15 URLs GA con 10 bloques cada una | confirmed |
-| 6.12 | Tabla de uso de LCAs por page type | Matriz 6×2 documentada | confirmed |
-| 6.13 | Ejemplo práctico completo | Texto modelo para LBS Cerrajero urgente Madrid | confirmed |
-| 6.14 | FAQ ejemplo | Plantilla FAQ con cobertura natural | confirmed |
-| 6.15 | Reviews y trust blocks contextualizados | Trust signals adaptados al funnel por page type | OK |
-| 6.16 | FAQs con cobertura natural | FAQs naturales sin keyword stuffing en LBS, GeoHub, GAs | OK |
-| 6.17 | Schema `areaServed` coherente | `areaServed` con Madrid + 10 LCAs en LocalBusiness | OK |
+| ID | Hereda de | Output y valor (Cerrajeros Madrid 24h) | Cómo se obtiene + Fuente | Status |
+|---|---|---|---|---|
+| 6.1 | ← Paso-01 1.7 | **Principio 1 — Main City crea arquitectura** = `Madrid es la única Main City del cluster` | Aplicar la regla a la arquitectura del cluster como filtro de QA antes de cerrar contenido. **Fuente:** GMB Crush. | OK |
+| 6.2 | ← Paso-01 1.10 | **Principio 2 — LCAs enriquecen contenido** = `10 LCAs en contenido + areaServed; 0 URLs /{lca}/` | Aplicar la regla a las 28 URLs como filtro de QA. **Fuente:** GMB Crush. | OK |
+| 6.3 | ← Paso-01 1.11 | **Principio 3 — AEAs crean URLs solo si se aprueban** = `E=0 → 0 URLs de expansión` | Aplicar la regla al inventario URL del cluster. **Fuente:** GMB Crush. | OK |
+| 6.4 | — | **Principio 4 — Mencionar zona ≠ crear página** = `Almagro mencionado en LBS sin enlace a /almagro/` | Aplicar la regla al contenido y enlaces de las 28 URLs. **Fuente:** GMB Crush. | OK |
+| 6.5 | ← Paso-01 1.8 | **Principio 5 — No falsa ubicación** = `NAP=Madrid; ninguna afirmación de oficina en LCAs` | Aplicar la regla al schema, NAP y contenido de las 28 URLs. **Fuente:** GMB Crush. | OK |
+| 6.6 | ← Paso-03 3.5 + Paso-05 5.3 | **Homepage Content Architecture** = `1 URL (/) con 11 bloques` | Aplicar arquitectura de contenido doctrinal Homepage; rellenar bloques con inputs heredados. **Fuente:** GMB Crush. | confirmed |
+| 6.7 | ← Paso-03 3.5 + Paso-05 5.4 | **Service Overview Content Architecture** = `5 URLs SO con 11 bloques cada una` | Aplicar arquitectura de contenido doctrinal SO replicada × S=5 instancias. **Fuente:** GMB Crush. | confirmed |
+| 6.8 | ← Paso-03 3.5 + Paso-05 5.5 | **Location-Based Service Content Architecture** = `5 URLs LBS con 12 bloques cada una` | Aplicar arquitectura de contenido doctrinal LBS replicada × S=5 instancias × Main City. **Fuente:** GMB Crush. | confirmed |
+| 6.9 | ← Paso-03 3.5 + Paso-05 5.6 | **Additional Category Content Architecture** = `1 URL AC con 11 bloques` | Aplicar arquitectura de contenido doctrinal AC × A=1 instancia. **Fuente:** GMB Crush. | confirmed |
+| 6.10 | ← Paso-03 3.5 + Paso-05 5.7 | **GeoHub Content Architecture** = `1 URL (/madrid/) con 10 bloques` | Aplicar arquitectura de contenido doctrinal GeoHub a la única instancia del cluster. **Fuente:** GMB Crush. | confirmed |
+| 6.11 | ← Paso-03 3.5 + Paso-05 5.8 | **GeoArticle Content Architecture** = `15 URLs GA con 10 bloques cada una` | Aplicar arquitectura de contenido doctrinal GA × G×S=15 instancias. **Fuente:** GMB Crush. | confirmed |
+| 6.12 | ← Paso-01 1.10 | **Tabla de uso de LCAs por page type** = `Matriz 6×2 documentada` | Generar matriz fila-por-page-type indicando si usa LCAs y cómo (intro/H2/FAQ/areaServed). **Fuente:** GMB Crush. | confirmed |
+| 6.13 | — | **Ejemplo práctico completo** = `Texto modelo para LBS Cerrajero urgente Madrid` | Redactar bloque modelo (sección Local Coverage Areas Served) aplicando la arquitectura LBS. **Fuente:** GMB Crush. | confirmed |
+| 6.14 | — | **FAQ ejemplo** = `Plantilla FAQ con cobertura natural` | Redactar 4-6 FAQs modelo que mencionen LCAs naturalmente sin keyword stuffing. **Fuente:** GMB Crush. | confirmed |
+| 6.15 | ← Paso-01 1.14 | **Reviews y trust blocks contextualizados** = `Trust signals adaptados al funnel por page type` | Mapear trust signals heredados (Paso-01 1.14) a cada page type según funnel position. **Fuente:** GMB Crush. | OK |
+| 6.16 | — | **FAQs con cobertura natural** = `FAQs naturales sin keyword stuffing en LBS, GeoHub, GAs` | Validar FAQs de las 28 URLs contra blacklist de keyword stuffing. **Fuente:** GMB Crush. | OK |
+| 6.17 | ← Paso-01 1.10 | **Schema `areaServed` coherente** = `areaServed con Madrid + 10 LCAs en LocalBusiness` | Validar que `areaServed` del schema lista solo zonas reales (Main City + LCAs declaradas). **Fuente:** GMB Crush. | OK |
 
 # Bloque IV — Fuentes Internas GMB Crush usadas
 

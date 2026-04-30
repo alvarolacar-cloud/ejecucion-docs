@@ -911,22 +911,22 @@ Aplicar la regla a TODAS las page types del Bloque III como filtro de QA antes d
 
 <small>§8</small>
 
-> Tabla final con valores reales para Cerrajeros Madrid 24h y status de cada output. Los IDs (`5.1`–`5.12`) coinciden con los declarados en §5.
+> Tabla final compacta con la trazabilidad row-per-output. Los IDs (`5.1`–`5.12`) coinciden con los declarados en §5. Esta tabla es la fuente única de la trazabilidad consolidada del paso (sustituye al antiguo b-doc).
 
-| ID | Output | Valor (Cerrajeros Madrid 24h) | Status |
-|---|---|---|---|
-| 5.1 | Primary Service | `Cerrajero urgente` | confirmed |
-| 5.2 | Brand tone | `Urgente` | confirmed |
-| 5.3 | Spec Homepage | 9 sub-outputs aplicados a `/` | confirmed |
-| 5.4 | Spec Service Overview | 9 sub-outputs × 5 instancias (`/cerrajero/{service}/`) | confirmed |
-| 5.5 | Spec Location-Based Service | 9 sub-outputs × 5 instancias (`/cerrajero/madrid/{service}/`) | confirmed |
-| 5.6 | Spec Additional Category | 9 sub-outputs × 1 instancia (`/cerrajero/madrid/duplicado-llaves/`) | confirmed |
-| 5.7 | Spec GeoHub | 9 sub-outputs × 1 instancia (`/madrid/`) | confirmed |
-| 5.8 | Spec GeoArticle | 9 sub-outputs × 15 instancias (`/madrid/{topic}/`) | confirmed |
-| 5.9 | Validación Schema por tipo | 6 page types con schema diferenciado | OK |
-| 5.10 | Validación Word count por intención | Rangos aplicados (Homepage 900-1,300, ..., GA 1,000-1,500) | OK |
-| 5.11 | Validación CTA adaptado al page type | CTAs diferenciados por funnel position | OK |
-| 5.12 | Validación No false location claims | 0 afirmaciones de oficina en LCAs | OK |
+| ID | Hereda de | Output y valor (Cerrajeros Madrid 24h) | Cómo se obtiene + Fuente | Status |
+|---|---|---|---|---|
+| 5.1 | ← Paso-01 1.9 | **Primary Service** = `Cerrajero urgente` | Top 5 servicios cruzados con keyword research; elegir el de mayor volumen local. **Fuente:** GMB Crush + Datos de búsqueda. | confirmed |
+| 5.2 | — | **Brand tone** = `Urgente` | Elegir entre las 5 opciones doctrinales según sector y comportamiento esperado. **Fuente:** Decisión de diseño. | confirmed |
+| 5.3 | ← Paso-01 1.1 + 1.4 + 1.13 + 1.14 + Paso-04 4.3 | **Spec Homepage (Root Entity Anchor)** = 9 sub-outputs aplicados a `/` | Aplicar la spec con inputs heredados; rellenar templates de H1/Meta con placeholders. **Fuente:** GMB Crush. | confirmed |
+| 5.4 | ← Paso-01 1.9 + Paso-02 2.4 + Paso-04 4.4 | **Spec Service Overview (Topical Authority Pillar)** = 9 sub-outputs × 5 instancias (`/cerrajero/{service}/`) | Aplicar spec replicada a los S=5 core services; URL = `[primary-category-slug]/[service-slug]/`. **Fuente:** GMB Crush. | confirmed |
+| 5.5 | ← Paso-01 1.9 + 1.10 + Paso-02 2.4 + Paso-04 4.6 | **Spec LBS (Main City Converter)** = 9 sub-outputs × 5 instancias (`/cerrajero/madrid/{service}/`) | Aplicar spec replicada a S core services × Main City; schema LocalBusiness con `areaServed` = LCAs. **Fuente:** GMB Crush. | confirmed |
+| 5.6 | ← Paso-01 1.6 + Paso-03 3.3 + Paso-04 4.7 | **Spec Additional Category (GBP AC Support)** = 9 sub-outputs × 1 instancia (`/cerrajero/madrid/duplicado-llaves/`) | Aplicar spec a cada AC con página propia; URL usa slugs de Paso-03 3.3. **Fuente:** GMB Crush. | confirmed |
+| 5.7 | ← Paso-01 1.7 + 1.10 + Paso-02 2.3 + Paso-04 4.5 | **Spec GeoHub (Main City Silo Container)** = 9 sub-outputs × 1 instancia (`/madrid/`) | Aplicar spec al GeoHub Main City; listar TODAS las LCAs y enlazar a las 21 páginas hijas. **Fuente:** GMB Crush. | confirmed |
+| 5.8 | ← Paso-01 1.7 + Paso-03 3.4 + Paso-04 4.8 | **Spec GeoArticle (Semantic Booster)** = 9 sub-outputs × 15 instancias (`/madrid/{topic}/`) | Aplicar spec a G×S=15 GAs; topic slugs validados con keyword research (Paso-03 3.4). **Fuente:** GMB Crush. | confirmed |
+| 5.9 | — | **Validación Schema por tipo de página** = 6 page types con schema diferenciado | Aplicar la regla a las 6 page types del Bloque III como filtro de QA. **Fuente:** GMB Crush. | OK |
+| 5.10 | — | **Validación Word count por intención** = Rangos aplicados (Homepage 900-1,300 … GA 1,000-1,500) | Aplicar la regla a las 6 page types del Bloque III como filtro de QA. **Fuente:** GMB Crush. | OK |
+| 5.11 | ← Paso-01 1.13 | **Validación CTA adaptado al page type** = CTAs diferenciados por funnel position | Mapear CTAs a page types según funnel position; el Preferred CTA es default. **Fuente:** GMB Crush. | OK |
+| 5.12 | ← Paso-01 1.8 + 1.10 + Paso-04 4.14 | **Validación No false location claims** = 0 afirmaciones de oficina en LCAs | Validar que `address` schema = NAP físico real y `areaServed` lista solo zonas atendidas. **Fuente:** GMB Crush. | OK |
 
 # Bloque IV — Fuentes Internas GMB Crush usadas
 
