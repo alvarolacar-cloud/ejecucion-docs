@@ -8,183 +8,126 @@ Proveniencia: sistema construido paso a paso en el chat y alineado con los frame
 
 ## §2 Objetivo del Paso 6
 
-Este paso existe para resolver un problema concreto dentro del sistema GMB Crush: definir cómo se escribe y organiza el contenido real de cada tipo de página, y cómo se usan las áreas de cobertura local sin convertirlas automáticamente en URLs.
-La web local no debe construirse desde la intuición, sino desde una secuencia operativa que conecta entidad, categoría GBP, servicios, ciudad principal, cobertura local, schema, contenido e interlinking.
-El objetivo es que cada dato que se recoge o cada página que se crea tenga una función clara dentro del ecosistema local.
-Cuando este paso se omite, la arquitectura empieza a crecer de forma desordenada.
-Eso produce páginas duplicadas, URLs sin intención, contenidos genéricos, señales locales débiles y problemas de canibalización.
-La metodología GMB Crush busca evitar precisamente ese escenario.
-Por eso cada paso debe indicar qué se rellena, qué se genera, qué se revisa y qué errores previene.
-En la versión simplificada del sistema usamos una Main City como base de arquitectura.
-En esta versión web-first, el Google Business Profile no existe todavía: las categorías se tratan como Planned GBP Categories hasta que el Paso 14 cree, verifique y sincronice el GBP con la web.
-Esto evita inventar una GBP URL, reseñas de Google o señales de perfil antes de que existan.
-Las Local Coverage Areas no generan URLs por defecto.
-Las Local Coverage Areas se usan para reforzar el contenido, los ejemplos locales, las FAQs y el schema areaServed.
-Solo las Approved Expansion Areas pueden convertirse en URLs propias cuando exista una justificación clara.
-Esta separación evita confundir señales GEO de contenido con arquitectura obligatoria.
-También evita que un negocio local pequeño acabe con cientos de páginas antes de tener una base sólida.
-El criterio principal es crear primero las páginas que soportan la entidad, la categoría GBP y la intención comercial.
-Después se añaden artículos, enlaces internos, QA y optimización.
-Este paso debe ejecutarse antes de avanzar al siguiente.
-Si se salta o se rellena mal, los pasos posteriores arrastran errores.
-La revisión final debe comprobar que cada elemento tiene una función SEO, una función local y una función de conversión.
-Error que previene: crear solo formularios sin cuerpo operativo.
-Error que previene: mencionar zonas locales de forma artificial.
-Error que previene: crear páginas para cada área de cobertura sin aprobación.
-Error que previene: usar Local Coverage Areas como si fueran Main City.
-Error que previene: olvidar dónde van FAQs, CTAs, reviews, Local Coverage Areas y enlaces internos.
+Definir **cómo se escribe y organiza el contenido real de cada tipo de página** del cluster, y **cómo se usan las Local Coverage Areas (LCAs) en contenido sin convertirlas en URLs**. Mientras el Paso 5 fija las reglas formales por page type (URL, H1, Meta Title, Schema, Word Count, CTA), el Paso 6 fija la arquitectura interna del contenido (intro, H2s, bloques de apoyo, FAQs, ejemplos, secciones de cobertura) y las reglas cross-cutting (reviews, FAQs con cobertura, schema `areaServed`).
 
-## §3 Lo que la IA tiene que rellenar/obtener
+**Outputs del Paso 6:**
 
-```text
-Business Name:
+- §5 Principio 1 — Main City crea arquitectura: una sola ciudad principal genera URLs base
+- §6 Principio 2 — LCAs enriquecen contenido: las áreas de cobertura viven en texto, FAQs y `areaServed`, no en path
+- §7 Principio 3 — AEAs crean URLs solo si se aprueban: umbral demanda + competencia + contenido único
+- §8 Principio 4 — Mencionar una zona ≠ crear una página: separa señal GEO de contenido vs arquitectura URL
+- §9 Principio 5 — No falsa ubicación: nunca afirmar oficina física en zonas donde no se opera
+- §10 Homepage Content Architecture: 11 bloques (H1, Intro, Quick Answer, Servicios, Cobertura preview, Trust, FAQ, NAP, CTA, Enlaces, Schema)
+- §11 Service Overview Content Architecture: 11 bloques sin segmentación local
+- §12 Location-Based Service Content Architecture: 12 bloques con cobertura local nativa
+- §13 Additional Category Content Architecture: 11 bloques con casos de uso locales
+- §14 GeoHub Content Architecture: 10 bloques con sección explícita de cobertura
+- §15 GeoArticle Content Architecture: 10 bloques con LCAs como ejemplos semánticos
+- §16 Tabla de uso de LCAs por page type — matriz 6×2
+- §17 Ejemplo práctico completo — sección de cobertura redactada para Cerrajeros Madrid 24h
+- §18 FAQ ejemplo — pregunta + respuesta con cobertura natural
+- §19 Reviews y trust blocks en contenido — regla cross-cutting (no uniforme cross-cluster)
+- §20 FAQs con cobertura natural — regla cross-cutting (sin keyword stuffing de zonas)
+- §21 Schema `areaServed` coherente — regla cross-cutting (coverage real, no falsas zonas)
 
-Planned Primary GBP Category:
+**Errores que previene el Paso 6:**
 
-Primary Category Slug:
+- Crear solo formularios sin cuerpo operativo (thin content)
+- Mencionar zonas locales de forma artificial (keyword stuffing de barrios)
+- Crear páginas para cada Local Coverage Area sin aprobación (sprawl)
+- Usar LCAs como si fueran Main City (señal SEO confusa)
+- Olvidar dónde van FAQs, CTAs, reviews, LCAs y enlaces internos por page type
+- Inventar oficina física en zonas de cobertura sin sede real (E-E-A-T comprometido)
+- Pegar el mismo bloque de reseñas en todas las páginas sin contexto del funnel
+- Schema `areaServed` que añade ciudades no atendidas solo por SEO
 
-Main City:
+**Cuándo se ejecuta:**
 
-Main City Slug:
+Después del Paso 5 (Page Type Rules) y antes del Paso 7 (Internal Linking + Crawl). El Paso 5 ya fijó qué tiene cada page type a nivel formal; el Paso 6 fija cómo se rellena el cuerpo de cada page type y cómo se integran las LCAs heredadas del Paso 1 §14. El Paso 7 usa los outputs del Paso 6 para construir el grafo de enlaces internos.
 
-Physical Location City:
+## §3 Info heredada de pasos anteriores
 
-Servicios principales:
-1.
-2.
-3.
-4.
-5.
+El Paso 6 toma como input estos elementos generados en pasos previos. La IA no los re-decide aquí; los usa para construir la arquitectura interna de contenido por page type y las reglas de uso de LCAs.
 
-Direct Local Coverage Areas:
-Zonas con proximidad directa al NAP y coherencia GEO confirmada.
-1.
-2.
-3.
+| # | Input heredado | Origen | Uso en el Paso 6 |
+|---|---|---|---|
+| 1 | Business Name | Paso 1 §2 | Identidad de marca en H1, intros, NAP y schema |
+| 2 | Planned Primary GBP Category + slug | Paso 1 §8 + Paso 3 §3 | Pilar temático de Service Overview, segmento `[primary-cat-slug]` en LBS y AC |
+| 3 | Main City + slug | Paso 1 §11 + Paso 3 §3 | Ciudad principal del cluster, segmento `[main-city-slug]` y target geo de LBS, GeoHub y GeoArticles |
+| 4 | Physical Location City (NAP) | Paso 1 §12 | Validación cruzada del Principio 5 (No falsa ubicación) |
+| 5 | Core services (S = 5) | Paso 1 §13 | Lista de servicios para Service Overview, LBS y menú del GeoHub |
+| 6 | Direct Local Coverage Areas | Paso 1 §14 | Zonas con proximidad NAP confirmada → mención principal en cobertura |
+| 7 | Candidate Local Coverage Areas | Paso 1 §14 | Zonas candidatas pendientes test GEO → mención secundaria |
+| 8 | Approved Expansion Areas (E count) | Paso 1 §15 | Determina si aplica el Principio 3 (E=0 → 0 URLs de expansión) |
+| 9 | URL Matrix (28 URLs base) | Paso 3 §3 | URLs concretas a las que aplicar la arquitectura de contenido del Paso 6 |
+| 10 | URL patterns (Canonical, Trailing Slash, patrones por page type) | Paso 4 §5–§19 | Reglas formales que el contenido respeta (no se rompen aquí) |
+| 11 | Page Type assignment por URL | Paso 5 §3 | Determina qué arquitectura de contenido (§10–§15) aplica a cada URL |
+| 12 | Page Type Rules (URL, H1, Meta Title, Schema, Word Count, CTA, etc.) | Paso 5 §7–§12 | El contenido del Paso 6 rellena el body manteniendo las reglas formales del Paso 5 |
+| 13 | Brand tone | Paso 5 §6 | Tono aplicado al copywriting de cada page type |
+| 14 | Trust Signals declarados | Paso 1 §17 | Bloques de confianza usados en homepage, LBS, GeoHub |
+| 15 | Preferred CTA por page type | Paso 5 §11 | CTA aplicado en cada page type |
 
-Candidate Local Coverage Areas:
-Zonas candidatas pendientes de validar con el test de coherencia GEO del Paso 1.
-1.
-2.
-3.
-4.
-5.
+## §4 Ejemplo rellenado — Outputs del Paso 6 para Cerrajeros Madrid 24h
 
-Should Local Coverage Areas generate pages?
-Default: No.
+Esta sección consolida los outputs del Paso 6 en tablas operativas. Cada output corresponde a una sección §X del Bloque II/III y se valida individualmente.
 
-Approved Expansion Areas:
-Optional.
-1.
-2.
-3.
+### §4.1 Principios rectores de cobertura local (§5–§9)
 
-Service Page URL to structure:
+| # | Principio | §X | Aplicación (Cerrajeros Madrid 24h) | Status |
+|---|---|---|---|---|
+| 1 | Main City crea arquitectura | §5 | Madrid es la única Main City del cluster; genera `/madrid/`, `/cerrajero/madrid/...` y `/madrid/...articulo.../` | confirmed |
+| 2 | LCAs enriquecen contenido | §6 | Almagro, Chamberí, Salamanca, Retiro aparecen en intros, FAQs y `areaServed`; 0 URLs `/almagro/`, `/chamberi/`, etc. | confirmed |
+| 3 | AEAs crean URLs solo si se aprueban | §7 | E=0 en Phase 1 → 0 URLs de expansión generadas | confirmed |
+| 4 | Mencionar zona ≠ crear página | §8 | Almagro mencionado en `/cerrajero/madrid/cerrajero-urgente/` sin enlace a `/almagro/` (no existe) | confirmed |
+| 5 | No falsa ubicación | §9 | NAP = Madrid; ninguna página afirma oficina en Almagro, Chamberí, Salamanca o Retiro | confirmed |
 
-Page Type:
-Homepage / Service Overview / Location-Based Service / Additional Category / GeoHub / GeoArticle
+### §4.2 Content Architecture por page type (§10–§15)
 
-Target Service:
+| # | Page Type | §X | Bloques de contenido | URLs aplicadas (Cerrajeros Madrid 24h) | Status |
+|---|---|---|---|---|---|
+| 1 | Homepage | §10 | H1, Intro, Quick Answer, Servicios principales, Cobertura preview, Trust, FAQ, NAP, CTA, Enlaces, Schema (11 bloques) | `/` (1 URL) | confirmed |
+| 2 | Service Overview | §11 | H1, Intro no local, H2 Authority/Uniqueness/Depth/Intent/Optimization, Bullets, FAQs, CTA, Enlaces, Schema (11 bloques) | 5 URLs (`/cerrajero/{service}/`) | confirmed |
+| 3 | Location-Based Service | §12 | H1, Intro local 100–150w, Quick Local Answer, H2 Authority/Uniqueness/Depth, H2 Local Pain Points, H2 LCA Served, H2 Related Services, FAQs, CTA, Enlaces, Schema (12 bloques) | 5 URLs (`/cerrajero/madrid/{service}/`) | confirmed |
+| 4 | Additional Category | §13 | H1, Intro problema local, H2 Authority/Uniqueness/Depth/Intent/Optimization, Local Coverage Use Case, FAQs, CTA, Enlaces, Schema (11 bloques) | 1 URL (`/cerrajero/madrid/duplicado-llaves/`) | confirmed |
+| 5 | GeoHub | §14 | H1, City intro, Menú servicios, AC Menu, LCA Section, GeoArticle Resources, Trust, CTA, Enlaces, Schema (10 bloques) | 1 URL (`/madrid/`) | confirmed |
+| 6 | GeoArticle | §15 | H1, Intro contextual, H2 Problem, H2 Local Context, H2 Options/Mistakes, H2 When to Call, H2 Local Examples, FAQs, CTA, Enlaces, Schema (10 bloques) | 15 URLs (`/madrid/{topic}/`) | ⚠ inferido (topics requieren keyword research real, ver §24.1) |
 
-Target Additional Category:
+### §4.3 Uso de Local Coverage Areas por page type (§16)
 
-Matching Parent Page:
+| Page Type | ¿Usa LCAs? | Cómo las usa | Cantidad típica |
+|---|---|---|---|
+| Homepage | Sí, ligero | Service area preview en bloque dedicado | 3–5 LCAs mencionadas |
+| Service Overview | No | NO debe ser local; pilar temático sin geo | 0 LCAs |
+| Location-Based Service | Sí | Intro, pain points, sección cobertura, FAQs | 2–4 LCAs naturales |
+| Additional Category | Sí | Escenarios locales y cobertura de la categoría | 2–4 LCAs |
+| GeoHub | Sí, recomendado | Sección principal de cobertura local (TODAS las LCAs) | All Direct + Candidate |
+| GeoArticle | Sí | Ejemplos, contexto, landmarks, FAQs | 2–4 LCAs como ejemplos |
 
-Matching GeoHub:
+### §4.4 Reglas cross-cutting de contenido (§19–§21)
 
-Related GeoArticles:
+| # | Regla | §X | Validación (Cerrajeros Madrid 24h) | Status |
+|---|---|---|---|---|
+| 1 | Reviews y trust blocks contextualizados por page type | §19 | Trust signals adaptados al funnel: homepage (4 signals), LBS (3 signals + reviews iniciales pendientes), GeoHub (4 signals globales) — no uniforme cross-cluster | confirmed |
+| 2 | FAQs con cobertura natural | §20 | FAQs de LBS mencionan Almagro/Chamberí en respuestas reales; 0 FAQs construidas como keyword stuffing de zonas | confirmed |
+| 3 | Schema `areaServed` coherente | §21 | `areaServed` lista TODAS las LCAs declaradas (Almagro, Chamberí, Salamanca, Retiro) + Madrid; 0 ciudades fuera de cobertura | confirmed |
 
-Preferred CTA:
+### §4.5 Outputs auxiliares (§16–§18)
 
-Trust Signals:
+| # | Output | §X | Tipo | Status |
+|---|---|---|---|---|
+| 1 | Tabla de uso de LCAs por page type | §16 | Matriz 6×2 | confirmed |
+| 2 | Ejemplo práctico completo (sección de cobertura) | §17 | Texto modelo redactado | confirmed |
+| 3 | FAQ ejemplo (pregunta + respuesta) | §18 | Plantilla de FAQ con cobertura natural | confirmed |
 
-Can the page mention physical office in this area?
-Yes / No
-```
+### §4.6 Validaciones cruzadas con otros pasos
 
-## §4 Ejemplo rellenado
-
-```text
-Business Name:
-Cerrajeros Madrid 24h
-
-Planned Primary GBP Category:
-Cerrajero
-
-Primary Category Slug:
-cerrajero
-
-Main City:
-Madrid
-
-Main City Slug:
-madrid
-
-Physical Location City:
-Madrid
-
-Servicios principales:
-1. Cerrajero urgente
-2. Apertura de puertas
-3. Cambio de cerraduras
-4. Cambio de bombines
-5. Instalación de cerraduras de seguridad
-
-Direct Local Coverage Areas:
-1. Almagro
-2. Chamberí
-
-Candidate Local Coverage Areas:
-1. Salamanca
-2. Retiro
-3. Centro
-4. Tetuán
-5. Chamartín
-6. Arganzuela
-7. Moncloa
-8. Prosperidad
-
-Should Local Coverage Areas generate pages?
-No, not in the base build.
-
-Approved Expansion Areas:
-None in Phase 1.
-
-Service Page URL to structure:
-/cerrajero/madrid/cerrajero-urgente/
-
-Page Type:
-Location-Based Service
-
-Target Service:
-Cerrajero urgente
-
-Target Additional Category:
-Servicio de cerrajería de urgencia is already covered by this service.
-
-Matching Parent Page:
-/cerrajero/cerrajero-urgente/
-
-Matching GeoHub:
-/madrid/
-
-Related GeoArticles:
-1. /madrid/cuanto-cuesta-un-cerrajero-urgente/
-2. /madrid/que-hacer-si-no-puedes-entrar-casa/
-3. /madrid/cuanto-tarda-un-cerrajero/
-
-Preferred CTA:
-Llamar ahora
-
-Trust Signals:
-- 10+ años de experiencia
-- reseñas iniciales pendientes de recopilar tras crear el GBP
-- Técnicos cerrajeros cualificados
-- Servicio móvil en el mismo día
-
-Can the page mention physical office in this area?
-Solo para Madrid, no para Local Coverage Areas salvo que sea cierto.
-```
+| Validación | Origen | Comprobación en Paso 6 | Status |
+|---|---|---|---|
+| Servicios mencionados = core services del Paso 1 §13 | Paso 1 §13 | 5 servicios en homepage y GeoHub coinciden con core services | OK |
+| LCAs mencionadas = Direct + Candidate LCAs del Paso 1 §14 | Paso 1 §14 | Almagro, Chamberí (Direct) + Salamanca, Retiro, Centro, Tetuán, Chamartín, Arganzuela, Moncloa, Prosperidad (Candidate) | OK |
+| URLs referenciadas en contenido existen en URL Matrix (Paso 3 §3) | Paso 3 §3 | Todos los enlaces internos apuntan a URLs aprobadas; 0 enlaces a `/almagro/` u otras inexistentes | OK |
+| Reglas formales del Paso 5 (H1, Meta Title, Word Count) respetadas | Paso 5 §7–§12 | Bloques de contenido del Paso 6 cumplen los caps formales del Paso 5 | OK |
+| `areaServed` del schema (Paso 5 §X.7) lista LCAs declaradas | Paso 5 + Paso 1 §14 | Schema coherente: Madrid en `address`, LCAs en `areaServed` | OK |
 
 # Bloque II — Ejecución por la IA
 
@@ -962,17 +905,29 @@ El campo `areaServed` del schema LocalBusiness lista TODAS las LCAs declaradas +
 | Enlaces internos | ¿Solo se enlaza a URLs existentes? | ✅ / ⬜ |
 | One service | ¿La página mantiene un solo servicio principal cuando aplica? | ✅ / ⬜ |
 
-# Bloque V — Outputs
+# Bloque V — Outputs consolidados
 
 ## §23 Outputs del Paso 6
 
-- Arquitectura interna por tipo de página
-- Reglas de uso de Local Coverage Areas
-- Ejemplos de secciones de cobertura
-- FAQs modelo
-- Reglas anti-error
-- Bloques de contenido listos para briefs
-- Checklist de cobertura local
+| # | Output | §X | Tipo |
+|---|---|---|---|
+| 1 | Principio 1 — Main City crea arquitectura | §5 | Validation flag |
+| 2 | Principio 2 — LCAs enriquecen contenido | §6 | Validation flag |
+| 3 | Principio 3 — AEAs crean URLs solo si se aprueban | §7 | Validation flag |
+| 4 | Principio 4 — Mencionar zona ≠ crear página | §8 | Validation flag |
+| 5 | Principio 5 — No falsa ubicación | §9 | Validation flag |
+| 6 | Homepage Content Architecture | §10 | Estructura de contenido (11 bloques) |
+| 7 | Service Overview Content Architecture | §11 | Estructura de contenido (11 bloques) |
+| 8 | Location-Based Service Content Architecture | §12 | Estructura de contenido (12 bloques) |
+| 9 | Additional Category Content Architecture | §13 | Estructura de contenido (11 bloques) |
+| 10 | GeoHub Content Architecture | §14 | Estructura de contenido (10 bloques) |
+| 11 | GeoArticle Content Architecture | §15 | Estructura de contenido (10 bloques) |
+| 12 | Tabla de uso de LCAs por page type | §16 | Matriz 6×2 |
+| 13 | Ejemplo práctico completo | §17 | Texto modelo |
+| 14 | FAQ ejemplo | §18 | Plantilla |
+| 15 | Reviews y trust blocks contextualizados | §19 | Validation flag |
+| 16 | FAQs con cobertura natural | §20 | Validation flag |
+| 17 | Schema `areaServed` coherente | §21 | Validation flag |
 
 ---
 
