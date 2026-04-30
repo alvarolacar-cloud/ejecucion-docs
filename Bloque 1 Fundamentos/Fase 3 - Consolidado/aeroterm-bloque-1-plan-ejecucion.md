@@ -34,65 +34,65 @@
 
 ## Paso 1 — Intake Form (14 outputs)
 
-| Output | Cómo lo decidimos | Qué nos hace falta |
+| Output | Qué nos hace falta | Cómo lo decidimos |
 |---|---|---|
-| **1.1** Business Name | Lo declara el cliente | `Preflight 1` |
-| **1.2** Website URL / Canonical Domain | Slugify(nombre) + `.com` (propuesto) o lo declara el cliente — formato HTTPS + www + trailing slash | `Preflight 1` + `Cliente confirma` |
-| **1.3** GBP Lifecycle Status | Default web-first según preflight; doctrina marca timing/verification/URL | `Preflight 4` + `Doctrina` |
-| **1.4** Full NAP (8 campos) | Cliente declara los 8 campos; placeholders permitidos para Phone/Email | `Preflight 3` (street + city + ZIP) + `Cliente confirma` (phone, email) |
-| **1.5** Planned Primary GBP Category | Análisis Local Pack — categoría más repetida en el top 5 de competidores | `Preflight 5` + `Local Pack` |
-| **1.6** Planned Additional GBP Categories | Análisis Local Pack — categorías secundarias frecuentes; clasificar cubierta/página propia | `Preflight 5` + `Local Pack` |
-| **1.7** Main City | Ciudad extraída del NAP del preflight | `← 1.4` (City) |
-| **1.8** Physical Location City | Ciudad de presencia física, normalmente = Main City | `Preflight 3` |
-| **1.9** Servicios principales (S=5) | Top 5 frecuencia en Local Pack + cruzar con oferta real del cliente | `Preflight 5` + `Local Pack` + `Cliente confirma` |
-| **1.10** Direct + Candidate LCAs | Direct: barrio/distrito del NAP. Candidate: zonas en 2+ competidores top, validables con test GEO | `← 1.4` (NAP Street + City) + `Local Pack` |
-| **1.11** Approved Expansion Areas | Decisión de diseño — None en Phase 1 (default) | `Decisión operador` (default vacío) |
-| **1.12** GeoArticles per Service (G) | Default doctrina G=3 | `Doctrina` |
-| **1.13** Preferred CTA | Decisión de diseño según urgencia del servicio (Llamar / WhatsApp / Solicitar presupuesto / Email) | `Decisión operador` |
-| **1.14** Trust Signals | Estándar del sector + diferenciadores extraídos de competidores | `Local Pack` + `Cliente confirma` |
+| **1.1** Business Name | `Preflight 1` | Lo declara el cliente |
+| **1.2** Website URL / Canonical Domain | `Preflight 1` + `Cliente confirma` | Slugify(nombre) + `.com` (propuesto) o lo declara el cliente — formato HTTPS + www + trailing slash |
+| **1.3** GBP Lifecycle Status | `Preflight 4` + `Doctrina` | Default web-first según preflight; doctrina marca timing/verification/URL |
+| **1.4** Full NAP (8 campos) | `Preflight 3` (street + city + ZIP) + `Cliente confirma` (phone, email) | Cliente declara los 8 campos; placeholders permitidos para Phone/Email |
+| **1.5** Planned Primary GBP Category | `Preflight 5` + `Local Pack` | Análisis Local Pack — categoría más repetida en el top 5 de competidores |
+| **1.6** Planned Additional GBP Categories | `Preflight 5` + `Local Pack` | Análisis Local Pack — categorías secundarias frecuentes; clasificar cubierta/página propia |
+| **1.7** Main City | `← 1.4` (City) | Ciudad extraída del NAP del preflight |
+| **1.8** Physical Location City | `Preflight 3` | Ciudad de presencia física, normalmente = Main City |
+| **1.9** Servicios principales (S=5) | `Preflight 5` + `Local Pack` + `Cliente confirma` | Top 5 frecuencia en Local Pack + cruzar con oferta real del cliente |
+| **1.10** Direct + Candidate LCAs | `← 1.4` (NAP Street + City) + `Local Pack` | Direct: barrio/distrito del NAP. Candidate: zonas en 2+ competidores top, validables con test GEO |
+| **1.11** Approved Expansion Areas | `Decisión operador` (default vacío) | Decisión de diseño — None en Phase 1 (default) |
+| **1.12** GeoArticles per Service (G) | `Doctrina` | Default doctrina G=3 |
+| **1.13** Preferred CTA | `Decisión operador` | Decisión de diseño según urgencia del servicio (Llamar / WhatsApp / Solicitar presupuesto / Email) |
+| **1.14** Trust Signals | `Local Pack` + `Cliente confirma` | Estándar del sector + diferenciadores extraídos de competidores |
 
 ---
 
 ## Paso 2 — Fórmula Maestra (15 outputs)
 
-| Output | Cómo lo decidimos | Qué nos hace falta |
+| Output | Qué nos hace falta | Cómo lo decidimos |
 |---|---|---|
-| **2.1** Planned GBP Categories Status | Marcar como `Planned` hasta que se cree el GBP en Paso 14 | `← 1.5 + 1.6` |
-| **2.2** Primary Category Slug | Slugify (lowercase, sin acentos, kebab-case) | `← 1.5` |
-| **2.3** Main City Slug | Slugify | `← 1.7` |
-| **2.4** Service Slugs (S=5) | Slugify aplicado a cada uno de los 5 core services | `← 1.9` |
-| **2.5** Service-to-Main-City Applicability | Validar que cada core service aplica a la Main City; cliente declara exclusiones si las hay | `← 1.9` + `Cliente confirma` |
-| **2.6** Variable S (S_efectiva) | Contar core services aplicables tras 2.5 | `← 1.9 + 2.5` |
-| **2.7** Variable A | Contar Additional Categories que necesitan página propia | `← 1.6` |
-| **2.8** Variable G | Hereda directo de 1.12 | `← 1.12` |
-| **2.9** Total páginas SEO base | Aplicar fórmula maestra `1 + S + 1 + S + A + G×S` | `← 2.6 + 2.7 + 2.8` |
-| **2.10** Inventario por tipo de página | Desglose de la fórmula 2.9 por page type | `← 2.6 + 2.7 + 2.8` |
-| **2.11** Optional Expansion Formula | Declarar fórmula de expansión inactiva en Phase 1 | `← 1.11` |
-| **2.12** Validación anti-duplicación | Cruzar Additional Categories vs core services y consolidar duplicados | `← 1.6 + 1.9` |
-| **2.13** Validación dependencias | Validar orden HP → SO → GH → LBS → AC → GAs | `← 2.10` |
-| **2.14** Validación LCAs fuera fórmula | Confirmar que ninguna LCA genera URL en la fórmula base | `← 1.10` |
-| **2.15** Validación auditabilidad del total | Validar que el total se desglosa rastreablemente por page type | `← 2.9 + 2.10` |
+| **2.1** Planned GBP Categories Status | `← 1.5 + 1.6` | Marcar como `Planned` hasta que se cree el GBP en Paso 14 |
+| **2.2** Primary Category Slug | `← 1.5` | Slugify (lowercase, sin acentos, kebab-case) |
+| **2.3** Main City Slug | `← 1.7` | Slugify |
+| **2.4** Service Slugs (S=5) | `← 1.9` | Slugify aplicado a cada uno de los 5 core services |
+| **2.5** Service-to-Main-City Applicability | `← 1.9` + `Cliente confirma` | Validar que cada core service aplica a la Main City; cliente declara exclusiones si las hay |
+| **2.6** Variable S (S_efectiva) | `← 1.9 + 2.5` | Contar core services aplicables tras 2.5 |
+| **2.7** Variable A | `← 1.6` | Contar Additional Categories que necesitan página propia |
+| **2.8** Variable G | `← 1.12` | Hereda directo de 1.12 |
+| **2.9** Total páginas SEO base | `← 2.6 + 2.7 + 2.8` | Aplicar fórmula maestra `1 + S + 1 + S + A + G×S` |
+| **2.10** Inventario por tipo de página | `← 2.6 + 2.7 + 2.8` | Desglose de la fórmula 2.9 por page type |
+| **2.11** Optional Expansion Formula | `← 1.11` | Declarar fórmula de expansión inactiva en Phase 1 |
+| **2.12** Validación anti-duplicación | `← 1.6 + 1.9` | Cruzar Additional Categories vs core services y consolidar duplicados |
+| **2.13** Validación dependencias | `← 2.10` | Validar orden HP → SO → GH → LBS → AC → GAs |
+| **2.14** Validación LCAs fuera fórmula | `← 1.10` | Confirmar que ninguna LCA genera URL en la fórmula base |
+| **2.15** Validación auditabilidad del total | `← 2.9 + 2.10` | Validar que el total se desglosa rastreablemente por page type |
 
 ---
 
 ## Paso 3 — Matriz Base (14 outputs)
 
-| Output | Cómo lo decidimos | Qué nos hace falta |
+| Output | Qué nos hace falta | Cómo lo decidimos |
 |---|---|---|
-| **3.1** Spreadsheet Name | Convención `[Cliente] – GMB Crush Website Architecture` | `← 1.1` |
-| **3.2** GeoHub URL Style | Decisión operador — Option A `/madrid/` o Option B `/cerrajero/madrid/` | `Decisión operador` |
-| **3.3** Additional Category Slugs | Slugify aplicado a las Additional Categories que necesitan página propia | `← 1.6` |
-| **3.4** GeoArticle Topics propuestos | Keyword research por core service + filtrar por intent GEO + validar volumen | `← 1.9` + `Keyword research` |
-| **3.5** URL Matrix completa | Generar matriz N filas × 20 columnas con todas las URLs derivadas de la fórmula | `← 2.9 + 2.10` + outputs 1.X y 2.X relevantes |
-| **3.6** IDs por tipo de página | Convención `[PageType-Index]` aplicada por fila | `← 3.5` |
-| **3.7** Parent Page declarado por fila | Mapear jerarquía padre→hijo según doctrina | `← 3.5` + `Doctrina` |
-| **3.8** Schema asignado desde matriz | Mapping doctrinal por page type | `← 3.5` + `Doctrina` |
-| **3.9** Enlaces internos Required por fila | Listado contractual por page type según doctrina | `← 3.5` + `Doctrina` |
-| **3.10** Priority y Publish Phase por fila | Doctrina: HP P1, LBS P1, SO P2, GH P2, GAs P3-4 | `← 3.5` + `Doctrina` |
-| **3.11** Default Page Status | `Planned` (default al cerrar matriz) | `Doctrina` |
-| **3.12** Notes estratégicas por fila | Decisión operador — opcional, contexto operativo por fila | `Decisión operador` |
-| **3.13** Validación LCAs sin filas base | Confirmar que ninguna LCA genera fila URL en la matriz | `← 1.10 + 3.5` |
-| **3.14** Validación matriz cerrada antes de contenido | Validar que todas las celdas (29×20=580) están rellenas | `← 3.5` |
+| **3.1** Spreadsheet Name | `← 1.1` | Convención `[Cliente] – GMB Crush Website Architecture` |
+| **3.2** GeoHub URL Style | `Decisión operador` | Decisión operador — Option A `/madrid/` o Option B `/cerrajero/madrid/` |
+| **3.3** Additional Category Slugs | `← 1.6` | Slugify aplicado a las Additional Categories que necesitan página propia |
+| **3.4** GeoArticle Topics propuestos | `← 1.9` + `Keyword research` | Keyword research por core service + filtrar por intent GEO + validar volumen |
+| **3.5** URL Matrix completa | `← 2.9 + 2.10` + outputs 1.X y 2.X relevantes | Generar matriz N filas × 20 columnas con todas las URLs derivadas de la fórmula |
+| **3.6** IDs por tipo de página | `← 3.5` | Convención `[PageType-Index]` aplicada por fila |
+| **3.7** Parent Page declarado por fila | `← 3.5` + `Doctrina` | Mapear jerarquía padre→hijo según doctrina |
+| **3.8** Schema asignado desde matriz | `← 3.5` + `Doctrina` | Mapping doctrinal por page type |
+| **3.9** Enlaces internos Required por fila | `← 3.5` + `Doctrina` | Listado contractual por page type según doctrina |
+| **3.10** Priority y Publish Phase por fila | `← 3.5` + `Doctrina` | Doctrina: HP P1, LBS P1, SO P2, GH P2, GAs P3-4 |
+| **3.11** Default Page Status | `Doctrina` | `Planned` (default al cerrar matriz) |
+| **3.12** Notes estratégicas por fila | `Decisión operador` | Decisión operador — opcional, contexto operativo por fila |
+| **3.13** Validación LCAs sin filas base | `← 1.10 + 3.5` | Confirmar que ninguna LCA genera fila URL en la matriz |
+| **3.14** Validación matriz cerrada antes de contenido | `← 3.5` | Validar que todas las celdas (29×20=580) están rellenas |
 
 ---
 
