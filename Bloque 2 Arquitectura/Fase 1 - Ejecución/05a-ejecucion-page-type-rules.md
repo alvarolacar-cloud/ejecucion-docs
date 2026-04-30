@@ -8,9 +8,9 @@ Proveniencia: sistema construido paso a paso en el chat y alineado con los frame
 
 ## §2 Objetivo del Paso 5
 
-En este paso la IA toma todas las decisiones que definen cómo se construye cada page type del cluster — decisiones globales (Primary Service, Brand tone), spec por page type (Función, URL, H1, Meta Title, Meta Description, Word count, Estructura, Schema, Internal links) y validaciones cross-cutting (Schema por tipo, Word count por intención, CTA por funnel, No false location). Todas se aplican sobre los inputs heredados de Pasos 1-3.
+En este paso la IA produce todos los outputs que definen cómo se construye cada page type del cluster — outputs globales (Primary Service, Brand tone), spec por page type (Función, URL, H1, Meta Title, Meta Description, Word count, Estructura, Schema, Internal links) y validaciones cross-cutting (Schema por tipo, Word count por intención, CTA por funnel, No false location). Todos se generan a partir de los inputs heredados de Pasos 1-3.
 
-**Decisiones que se van a tomar en el paso:**
+**Outputs del paso:**
 
 - **Primary Service** elegido (servicio único hero para Homepage, del top 5 heredado)
 - **Brand tone** elegido (Professional / Friendly / Premium / Urgente / Local)
@@ -54,11 +54,11 @@ En este paso la IA toma todas las decisiones que definen cómo se construye cada
 | Primary Category Slug, Main City Slug, Service Slugs | Paso 2 §6 |
 | Additional Category Slugs | Paso 3 §7 |
 
-> Las decisiones nuevas que toma Paso 5 (Primary Service y Brand tone) se desarrollan en §5 y §6 del Bloque II — no son inputs heredados sino outputs decisorios del propio paso.
+> Los outputs nuevos que produce Paso 5 (Primary Service y Brand tone) se desarrollan en §5 y §6 del Bloque II — no son inputs heredados sino outputs propios del paso.
 
 ## §4 Ejemplo rellenado
 
-> Resumen de TODAS las decisiones que se toman en Paso 5, con sus valores para Cerrajeros Madrid 24h. El detalle completo de cada page type spec (Estructura, Word count, Internal links, Ejemplos incorrectos, etc.) vive en cada `§X.10 Ejemplo rellenado` dentro del Bloque II. Los heredados (Business Name, NAP, Servicios, Categorías GBP, etc.) tienen su ejemplo en sus pasos de origen (§4 de Paso 1).
+> Resumen de TODOS los outputs del Paso 5, con sus valores para Cerrajeros Madrid 24h. El detalle completo de cada page type spec (Estructura, Word count, Internal links, Ejemplos incorrectos, etc.) vive en cada `§X.10 Ejemplo rellenado` dentro del Bloque II. Los heredados (Business Name, NAP, Servicios, Categorías GBP, etc.) tienen su ejemplo en sus pasos de origen (§4 de Paso 1).
 
 ```text
 DECISIONES GLOBALES
@@ -113,7 +113,7 @@ VALIDACIONES CROSS-CUTTING (§13–§16)
 
 # Bloque II — Ejecución por la IA
 
-> Bloque II tiene 2 capas: **decisiones globales** (§5 Primary Service, §6 Brand tone) que la IA toma una vez y aplican a todo el cluster; y **page types** (§7-§12) con sus 12 subsections de spec completa + §X.13 Validación operativa.
+> Bloque II tiene 2 capas: **outputs globales** (§5 Primary Service, §6 Brand tone) que la IA produce una vez y aplican a todo el cluster; y **page types** (§7-§12) con sus 12 subsections de spec completa + §X.13 Validación operativa.
 
 ## §5 Primary Service
 
@@ -152,13 +152,13 @@ Primary Service: Cerrajero urgente
 El Primary Service es uno de los 5 core services heredados y se mantiene constante durante toda la construcción del cluster.
 ```
 
-### §5.2 Cómo decidimos el Primary Service
+### §5.2 Cómo se obtiene el Primary Service
 
 **Fuente:** Decisión de diseño + Datos de búsqueda.
 
 **Método:** Tomar el top 5 servicios del Paso 1 §13. Cruzar con keyword research local para identificar cuál tiene mayor volumen de búsqueda mensual en la Main City. Elegir ese como Primary Service.
 
-### §5.3 Decisión registrada
+### §5.3 Output del paso
 
 **Tipo:** String — uno de los 5 core services heredados.
 
@@ -201,7 +201,7 @@ Razón: el sector cerrajería urgente tiene comportamiento de emergencia — el 
 Un solo Brand tone aplica a TODA la copy del cluster, decidido antes de empezar redacción.
 ```
 
-### §6.2 Cómo decidimos el Brand tone
+### §6.2 Cómo se obtiene el Brand tone
 
 **Fuente:** Decisión de diseño.
 
@@ -213,7 +213,7 @@ Un solo Brand tone aplica a TODA la copy del cluster, decidido antes de empezar 
 - `Urgente` — emergencia, urgencias, respuesta inmediata
 - `Local and conversational` — servicios de barrio, proximidad
 
-### §6.3 Decisión registrada
+### §6.3 Output del paso
 
 **Tipo:** Enum — una de las 5 opciones.
 
@@ -810,7 +810,7 @@ El GeoArticle no es una landing comercial. Debe cubrir un tema long-tail de serv
 
 # Bloque III — Reglas Cross-Cutting
 
-> Reglas que aplican a TODAS las page types como filtro de QA. Siguen el patrón 3-subsecciones (Explicación / Cómo aplicamos / Decisión registrada).
+> Reglas que aplican a TODAS las page types como filtro de QA. Siguen el patrón 3-subsecciones (Explicación / Cómo aplicamos la regla / Output del paso).
 
 ## §13 Schema por tipo de página
 
@@ -852,7 +852,7 @@ Cada tipo de página declara su Schema obligatorio; el implementador no decide e
 
 **Método:** Aplicar la regla a TODAS las page types del Bloque II como filtro de QA antes de cerrar el spec de cada página.
 
-### §13.3 Decisión registrada
+### §13.3 Output del paso
 
 **Tipo:** Validation flag — la regla cumple en todas las page types.
 
@@ -898,7 +898,7 @@ Word count se ajusta a la intención del page type, no a un número fijo arbitra
 
 **Método:** Aplicar la regla a TODAS las page types del Bloque II como filtro de QA antes de cerrar el spec de cada página.
 
-### §14.3 Decisión registrada
+### §14.3 Output del paso
 
 **Tipo:** Validation flag — la regla cumple en todas las page types.
 
@@ -944,7 +944,7 @@ El CTA se adapta a la fase del funnel del page type — no es uniforme en todo e
 
 **Método:** Aplicar la regla a TODAS las page types del Bloque II como filtro de QA antes de cerrar el spec de cada página.
 
-### §15.3 Decisión registrada
+### §15.3 Output del paso
 
 **Tipo:** Validation flag — la regla cumple en todas las page types.
 
@@ -990,7 +990,7 @@ Nunca afirmar ubicación física en zonas donde el negocio no opera realmente.
 
 **Método:** Aplicar la regla a TODAS las page types del Bloque II como filtro de QA antes de cerrar el spec de cada página.
 
-### §16.3 Decisión registrada
+### §16.3 Output del paso
 
 **Tipo:** Validation flag — la regla cumple en todas las page types.
 
@@ -1013,9 +1013,9 @@ Nunca afirmar ubicación física en zonas donde el negocio no opera realmente.
 | Enlaces internos | ¿Cada tipo tiene enlaces obligatorios? | ✅ / ⬜ |
 | No mezcla | ¿No se mezclan servicios ni zonas sin aprobación? | ✅ / ⬜ |
 
-# Bloque V — Decisiones consolidadas
+# Bloque V — Outputs consolidados
 
-## §18 Decisiones consolidadas del Paso 5
+## §18 Outputs consolidados del Paso 5
 
 - Reglas de tipo de página definidas
 - URLs por tipo de página confirmadas
