@@ -138,25 +138,25 @@ Calcular el tamaño exacto del cluster aplicando la fórmula maestra `1 + S + 1 
 
 <small>§5</small>
 
-> Tabla declarativa de los 15 outputs que el Paso 2 debe producir. La columna `#` es la **referencia canónica** del output (citable desde otros docs como `Paso-02 #N`). La regla operativa que produce cada output está en §6 con la etiqueta `ref. canónica N` al inicio del bloque.
+> Tabla declarativa de los 15 outputs que el Paso 2 debe producir. Cada output tiene un ID global (`Paso.Output`, ej. `2.1`) citable desde cualquier doc del sistema.
 
-| # | Output | Tipo | Origen |
+| ID | Output | Tipo | Origen |
 |---|---|---|---|
-| 1 | Planned GBP Categories Status | Status (`Planned` hasta Paso 14) | GMB Crush ← Paso 1 §9 + Paso 1 §10 |
-| 2 | Primary Category Slug | URL-safe string | GMB Crush ← Paso 1 §9 |
-| 3 | Main City Slug | URL-safe string | GMB Crush ← Paso 1 §11 |
-| 4 | Service Slugs (S=5) | URL-safe strings | GMB Crush ← Paso 1 §13 |
-| 5 | Service-to-Main-City Applicability | Boolean + exclusiones | GMB Crush + Input humano |
-| 6 | Variable S (S_efectiva) | Entero | GMB Crush ← Paso 1 §13 |
-| 7 | Variable A | Entero | GMB Crush ← Paso 1 §10 |
-| 8 | Variable G | Entero | GMB Crush ← Paso 1 §16 |
-| 9 | Total páginas SEO base | Entero (28 para Cerrajeros) | Fórmula `1+S+1+S+A+G×S` |
-| 10 | Inventario por tipo de página | Tabla 6 page types | Aplicación de la fórmula |
-| 11 | Optional Expansion Formula | Fórmula declarada | GMB Crush |
-| 12 | Validación anti-duplicación | Validation flag | GMB Crush |
-| 13 | Validación dependencias | Validation flag | GMB Crush |
-| 14 | Validación LCAs fuera fórmula | Validation flag | GMB Crush |
-| 15 | Validación auditabilidad del total | Validation flag | GMB Crush |
+| 2.1 | Planned GBP Categories Status | Status (`Planned` hasta Paso 14) | GMB Crush ← Paso 1 §9 + Paso 1 §10 |
+| 2.2 | Primary Category Slug | URL-safe string | GMB Crush ← Paso 1 §9 |
+| 2.3 | Main City Slug | URL-safe string | GMB Crush ← Paso 1 §11 |
+| 2.4 | Service Slugs (S=5) | URL-safe strings | GMB Crush ← Paso 1 §13 |
+| 2.5 | Service-to-Main-City Applicability | Boolean + exclusiones | GMB Crush + Input humano |
+| 2.6 | Variable S (S_efectiva) | Entero | GMB Crush ← Paso 1 §13 |
+| 2.7 | Variable A | Entero | GMB Crush ← Paso 1 §10 |
+| 2.8 | Variable G | Entero | GMB Crush ← Paso 1 §16 |
+| 2.9 | Total páginas SEO base | Entero (28 para Cerrajeros) | Fórmula `1+S+1+S+A+G×S` |
+| 2.10 | Inventario por tipo de página | Tabla 6 page types | Aplicación de la fórmula |
+| 2.11 | Optional Expansion Formula | Fórmula declarada | GMB Crush |
+| 2.12 | Validación anti-duplicación | Validation flag | GMB Crush |
+| 2.13 | Validación dependencias | Validation flag | GMB Crush |
+| 2.14 | Validación LCAs fuera fórmula | Validation flag | GMB Crush |
+| 2.15 | Validación auditabilidad del total | Validation flag | GMB Crush |
 
 ## Reglas que Aplican
 
@@ -165,7 +165,7 @@ Calcular el tamaño exacto del cluster aplicando la fórmula maestra `1 + S + 1 
 > Esta sección contiene los 15 outputs operativos del Paso 2. Cada uno se desarrolla con el mismo patrón: Explicación / Patrón o fórmula / Ejemplos / Regla final / Validación operativa / Cómo se obtiene / Output del paso.
 
 ### Planned GBP Categories Before GBP Creation
-<small>§6.1 · ref. canónica 1</small>
+<small>§6.1</small>
 
 
 **Explicación**
@@ -213,7 +213,7 @@ Antes del GBP, la web soporta categorías planificadas; después del Paso 14, se
 - **Ejemplo (Cerrajeros Madrid 24h):** Planned Primary: Cerrajero. Planned Additional: Servicio de cerrajería de urgencia (cubierta por core service), Servicio de duplicado de llaves (necesita página propia).
 
 ### Slug Generation
-<small>§6.2 · ref. canónica 2</small>
+<small>§6.2</small>
 
 
 **Explicación**
@@ -273,7 +273,7 @@ La transformación es determinista: lowercase + remove diacritics + replace non-
 - **Ejemplo (Cerrajeros Madrid 24h):** `cerrajero` / `madrid` / `cerrajero-urgente`, `apertura-puertas`, `cambio-cerraduras`, `cambio-bombines`, `instalacion-cerraduras-seguridad`.
 
 ### Fórmula base de una Main City
-<small>§6.3 · ref. canónica 3</small>
+<small>§6.3</small>
 
 
 **Explicación**
@@ -329,7 +329,7 @@ La fórmula debe devolver un inventario ejecutable, no un mapa teórico inmaneja
 - **Ejemplo (Cerrajeros Madrid 24h):** 1 + 5 + 1 + 5 + 1 + 15 = 28 páginas SEO base.
 
 ### Variable S
-<small>§6.4 · ref. canónica 4</small>
+<small>§6.4</small>
 
 
 **Explicación**
@@ -380,7 +380,7 @@ La variable S solo cuenta servicios principales reales. Esta regla evita que sin
 - **Ejemplo (Cerrajeros Madrid 24h):** S = 5 (Cerrajero urgente, Apertura de puertas, Cambio de cerraduras, Cambio de bombines, Instalación de cerraduras de seguridad).
 
 ### Service-to-Main-City Applicability
-<small>§6.5 · ref. canónica 5</small>
+<small>§6.5</small>
 
 
 **Explicación**
@@ -432,7 +432,7 @@ La pregunta debe hacerse explícitamente al cliente. Si todos los servicios apli
 - **Ejemplo (Cerrajeros Madrid 24h):** Yes — todos los 5 servicios aplican a Madrid. S_efectiva = 5.
 
 ### Variable A
-<small>§6.6 · ref. canónica 6</small>
+<small>§6.6</small>
 
 
 **Explicación**
@@ -483,7 +483,7 @@ La variable A no es igual al número total de categorías adicionales del GBP. S
 - **Ejemplo (Cerrajeros Madrid 24h):** A = 1 (Servicio de duplicado de llaves; Servicio de cerrajería de urgencia queda cubierta por core service).
 
 ### Variable G
-<small>§6.7 · ref. canónica 7</small>
+<small>§6.7</small>
 
 
 **Explicación**
@@ -534,7 +534,7 @@ La variable G representa cuántos GeoArticles se crean por servicio en la Main C
 - **Ejemplo (Cerrajeros Madrid 24h):** G = 3 → G × S = 15 GeoArticles para Madrid.
 
 ### Local Coverage Areas fuera de la fórmula
-<small>§6.8 · ref. canónica 8</small>
+<small>§6.8</small>
 
 
 **Explicación**
@@ -585,7 +585,7 @@ Las áreas de cobertura local son importantes, pero no son multiplicadores de p�
 - **Ejemplo (Cerrajeros Madrid 24h):** Almagro, Chamberí, Salamanca, Retiro, Centro, Tetuán, Chamartín, Arganzuela, Moncloa, Prosperidad → 0 páginas adicionales en el cluster base.
 
 ### Approved Expansion Areas opcional
-<small>§6.9 · ref. canónica 9</small>
+<small>§6.9</small>
 
 
 **Explicación**
@@ -636,7 +636,7 @@ Si una zona de cobertura se aprueba para expansión, se calcula con un módulo s
 - **Ejemplo (Cerrajeros Madrid 24h):** 0 páginas de expansión (Phase 1 sin Approved Expansion).
 
 ### Dependencias entre páginas
-<small>§6.10 · ref. canónica 10</small>
+<small>§6.10</small>
 
 
 **Explicación**
@@ -687,7 +687,7 @@ El conteo no solo mide cantidad; también debe prever dependencias. Una GeoArtic
 - **Ejemplo (Cerrajeros Madrid 24h):** `/madrid/cuanto-cuesta-un-cerrajero-urgente/` se programa después de `/cerrajero/madrid/cerrajero-urgente/` y `/madrid/`.
 
 ### Resultado total auditable
-<small>§6.11 · ref. canónica 11</small>
+<small>§6.11</small>
 
 
 **Explicación**
@@ -738,7 +738,7 @@ La fórmula debe terminar con una tabla clara de cantidades por tipo de página.
 - **Ejemplo (Cerrajeros Madrid 24h):** 1 Homepage + 5 SO + 1 GeoHub + 5 LBS + 1 Additional + 15 GeoArticles = 28 páginas SEO base.
 
 ### Control anti-duplicación
-<small>§6.12 · ref. canónica 12</small>
+<small>§6.12</small>
 
 
 **Explicación**
@@ -786,7 +786,7 @@ La validación se aplica antes de cerrar el conteo. La IA recorre las Planned Ad
 - **Ejemplo (Cerrajeros Madrid 24h):** Servicio de cerrajería de urgencia → consolidado con core service Cerrajero urgente (no suma a A).
 
 ### Tabla de inventario base
-<small>§6.13 · ref. canónica 13</small>
+<small>§6.13</small>
 
 
 **Explicación**
@@ -816,7 +816,7 @@ Resultado tabular del cálculo. Es el output principal que el Paso 3 (URL Matrix
 - **Ejemplo (Cerrajeros Madrid 24h):** Tabla anterior con totales 1 + 5 + 1 + 5 + 1 + 15 = 28.
 
 ### Optional Expansion Formula
-<small>§6.14 · ref. canónica 14</small>
+<small>§6.14</small>
 
 
 **Explicación**
@@ -845,7 +845,7 @@ Solo si una Local Coverage Area pasa a Approved Expansion Area:
 - **Ejemplo (Cerrajeros Madrid 24h):** E = 0 → 0 páginas de expansión. Fórmula lista para activar si E ≥ 1 en Phase 2.
 
 ### Ejemplo de expansión opcional
-<small>§6.15 · ref. canónica 15</small>
+<small>§6.15</small>
 
 
 **Explicación**
@@ -913,25 +913,25 @@ Extra pages:
 
 <small>§8</small>
 
-> Tabla final con valores reales para Cerrajeros Madrid 24h y status de cada output. La columna `#` mantiene la **referencia canónica** del output (idéntica a §5).
+> Tabla final con valores reales para Cerrajeros Madrid 24h y status de cada output. Los IDs (`2.1`–`2.15`) coinciden con los declarados en §5.
 
-| # | Output | Valor (Cerrajeros Madrid 24h) | Status |
+| ID | Output | Valor (Cerrajeros Madrid 24h) | Status |
 |---|---|---|---|
-| 1 | Planned GBP Categories Status | Cerrajero (Planned) + 2 Additional (Planned) | confirmed |
-| 2 | Primary Category Slug | `cerrajero` | confirmed |
-| 3 | Main City Slug | `madrid` | confirmed |
-| 4 | Service Slugs (5) | `cerrajero-urgente`, `apertura-puertas`, `cambio-cerraduras`, `cambio-bombines`, `instalacion-cerraduras-seguridad` | confirmed |
-| 5 | Service-to-Main-City Applicability | Yes / 0 exclusiones / S_efectiva = 5 | confirmed |
-| 6 | Variable S | 5 | confirmed |
-| 7 | Variable A | 1 (Servicio de duplicado de llaves) | confirmed |
-| 8 | Variable G | 3 | confirmed |
-| 9 | Total páginas SEO base | 1 + 5 + 1 + 5 + 1 + 15 = **28** | confirmed |
-| 10 | Inventario por tipo de página | Homepage=1 / SO=5 / GeoHub=1 / LBS=5 / AC=1 / GAs=15 | confirmed |
-| 11 | Optional Expansion Formula | E=0 → 0 páginas (declarada para activación futura) | confirmed |
-| 12 | Validación anti-duplicación | Servicio de cerrajería de urgencia consolidada con core service Cerrajero urgente | OK |
-| 13 | Validación dependencias | Orden Homepage → SO → GeoHub → LBS → AC → GAs validado | OK |
-| 14 | Validación LCAs fuera fórmula | Almagro, Chamberí, Salamanca, Retiro, etc. → 0 páginas adicionales | OK |
-| 15 | Validación auditabilidad del total | 28 explicable componente a componente | OK |
+| 2.1 | Planned GBP Categories Status | Cerrajero (Planned) + 2 Additional (Planned) | confirmed |
+| 2.2 | Primary Category Slug | `cerrajero` | confirmed |
+| 2.3 | Main City Slug | `madrid` | confirmed |
+| 2.4 | Service Slugs (5) | `cerrajero-urgente`, `apertura-puertas`, `cambio-cerraduras`, `cambio-bombines`, `instalacion-cerraduras-seguridad` | confirmed |
+| 2.5 | Service-to-Main-City Applicability | Yes / 0 exclusiones / S_efectiva = 5 | confirmed |
+| 2.6 | Variable S | 5 | confirmed |
+| 2.7 | Variable A | 1 (Servicio de duplicado de llaves) | confirmed |
+| 2.8 | Variable G | 3 | confirmed |
+| 2.9 | Total páginas SEO base | 1 + 5 + 1 + 5 + 1 + 15 = **28** | confirmed |
+| 2.10 | Inventario por tipo de página | Homepage=1 / SO=5 / GeoHub=1 / LBS=5 / AC=1 / GAs=15 | confirmed |
+| 2.11 | Optional Expansion Formula | E=0 → 0 páginas (declarada para activación futura) | confirmed |
+| 2.12 | Validación anti-duplicación | Servicio de cerrajería de urgencia consolidada con core service Cerrajero urgente | OK |
+| 2.13 | Validación dependencias | Orden Homepage → SO → GeoHub → LBS → AC → GAs validado | OK |
+| 2.14 | Validación LCAs fuera fórmula | Almagro, Chamberí, Salamanca, Retiro, etc. → 0 páginas adicionales | OK |
+| 2.15 | Validación auditabilidad del total | 28 explicable componente a componente | OK |
 
 # Bloque III — Fuentes Internas GMB Crush usadas
 
