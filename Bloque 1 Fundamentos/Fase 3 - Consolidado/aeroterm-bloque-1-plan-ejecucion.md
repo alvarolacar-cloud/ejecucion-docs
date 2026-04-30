@@ -18,7 +18,7 @@
 
 ---
 
-## Leyenda de la columna "Qué nos hace falta"
+## Leyenda de la columna "Fuentes para Decidir"
 
 | Etiqueta | Significado |
 |---|---|
@@ -34,7 +34,7 @@
 
 ## Paso 1 — Intake Form (14 outputs)
 
-| Output | Qué nos hace falta | Cómo lo decidimos |
+| Output a decidir | Fuentes para Decidir | Cómo Decidimos |
 |---|---|---|
 | **1.1** Business Name | `Preflight 1` | Lo declara el cliente |
 | **1.2** Website URL / Canonical Domain | `Preflight 1` + `Cliente confirma` | Slugify(nombre) + `.com` (propuesto) o lo declara el cliente — formato HTTPS + www + trailing slash |
@@ -55,7 +55,7 @@
 
 ## Paso 2 — Fórmula Maestra (15 outputs)
 
-| Output | Qué nos hace falta | Cómo lo decidimos |
+| Output a decidir | Fuentes para Decidir | Cómo Decidimos |
 |---|---|---|
 | **2.1** Planned GBP Categories Status | `← 1.5 + 1.6` | Marcar como `Planned` hasta que se cree el GBP en Paso 14 |
 | **2.2** Primary Category Slug | `← 1.5` | Slugify (lowercase, sin acentos, kebab-case) |
@@ -77,7 +77,7 @@
 
 ## Paso 3 — Matriz Base (14 outputs)
 
-| Output | Qué nos hace falta | Cómo lo decidimos |
+| Output a decidir | Fuentes para Decidir | Cómo Decidimos |
 |---|---|---|
 | **3.1** Spreadsheet Name | `← 1.1` | Convención `[Cliente] – GMB Crush Website Architecture` |
 | **3.2** GeoHub URL Style | `Decisión operador` | Decisión operador — Option A `/madrid/` o Option B `/cerrajero/madrid/` |
