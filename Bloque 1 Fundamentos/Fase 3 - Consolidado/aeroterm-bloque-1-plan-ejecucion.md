@@ -20,6 +20,8 @@
 
 ## Leyenda de la columna "Fuentes para Decidir"
 
+### Etiquetas operativas (las que aparecen en las 3 tablas del plan)
+
 | Etiqueta | Significado |
 |---|---|
 | `Preflight N` | Campo N del preflight |
@@ -29,6 +31,35 @@
 | `Cliente confirma` | Input pendiente del cliente (placeholder hasta confirmación) |
 | `Decisión operador` | Elección del que ejecuta el sistema |
 | `Doctrina` | Default fijo de los manuales GMB Crush |
+
+### Catálogo formal de Fuentes del sistema
+
+> Vocabulario formal usado en §5 (Outputs a Conseguir) y §8 (Outputs Consolidados) de cada a-doc. Las etiquetas operativas de arriba son atajos que mapean a este catálogo.
+
+| Fuente formal | Significado |
+|---|---|
+| `GMB Crush` | La doctrina del sistema lo dicta (manuales GMB Crush) |
+| `Input humano` | Lo declara el cliente (preflight, intake, confirmación) |
+| `Decisión de diseño` | Lo decide el operador con criterio de arquitectura |
+| `Competidores` | Se extrae del análisis Local Pack del top 5 |
+| `Datos de búsqueda` | Volumen / intent / dificultad obtenidos de keyword research |
+| `IA sin respaldo` | Inferencia de la IA sin respaldo de doctrina, cliente o tools (último recurso) |
+| `GMB Crush + Competidores` | Doctrina aplicada sobre análisis Local Pack |
+| `GMB Crush + Datos de búsqueda` | Doctrina aplicada sobre keyword research |
+| `GMB Crush + IA sin respaldo` | Doctrina aplicada con inferencia IA cuando faltan datos |
+| `GMB Crush + Input humano` | Doctrina aplicada sobre lo declarado por el cliente |
+
+### Mapeo entre ambas
+
+| Etiqueta operativa | Equivale a (Fuente formal) |
+|---|---|
+| `Preflight N` | `Input humano` |
+| `← X.Y` | (depende — hereda la Fuente del output X.Y) |
+| `Local Pack` | `GMB Crush + Competidores` |
+| `Keyword research` | `GMB Crush + Datos de búsqueda` |
+| `Cliente confirma` | `Input humano` |
+| `Decisión operador` | `Decisión de diseño` |
+| `Doctrina` | `GMB Crush` |
 
 ---
 
