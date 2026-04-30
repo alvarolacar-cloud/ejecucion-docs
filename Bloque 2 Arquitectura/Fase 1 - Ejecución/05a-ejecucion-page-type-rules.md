@@ -8,37 +8,58 @@ Proveniencia: sistema construido paso a paso en el chat y alineado con los frame
 
 ## §2 Objetivo del Paso 5
 
-Este paso existe para resolver un problema concreto dentro del sistema GMB Crush: definir qué función cumple cada tipo de página antes de escribir contenido o enlazar páginas.
-La web local no debe construirse desde la intuición, sino desde una secuencia operativa que conecta entidad, categoría GBP, servicios, ciudad principal, cobertura local, schema, contenido e interlinking.
-El objetivo es que cada dato que se recoge o cada página que se crea tenga una función clara dentro del ecosistema local.
-Cuando este paso se omite, la arquitectura empieza a crecer de forma desordenada.
-Eso produce páginas duplicadas, URLs sin intención, contenidos genéricos, señales locales débiles y problemas de canibalización.
-La metodología GMB Crush busca evitar precisamente ese escenario.
-Por eso cada paso debe indicar qué se rellena, qué se genera, qué se revisa y qué errores previene.
-En la versión simplificada del sistema usamos una Main City como base de arquitectura.
-En esta versión web-first, el Google Business Profile no existe todavía: las categorías se tratan como Planned GBP Categories hasta que el Paso 14 cree, verifique y sincronice el GBP con la web.
-Esto evita inventar una GBP URL, reseñas de Google o señales de perfil antes de que existan.
-Las Local Coverage Areas no generan URLs por defecto.
-Las Local Coverage Areas se usan para reforzar el contenido, los ejemplos locales, las FAQs y el schema areaServed.
-Solo las Approved Expansion Areas pueden convertirse en URLs propias cuando exista una justificación clara.
-Esta separación evita confundir cobertura real con arquitectura obligatoria.
-También evita que un negocio local pequeño acabe con cientos de páginas antes de tener una base sólida.
-El criterio principal es crear primero las páginas que soportan la entidad, la categoría GBP y la intención comercial.
-Después se añaden artículos, enlaces internos, QA y optimización.
-Este paso debe ejecutarse antes de avanzar al siguiente.
-Si se salta o se rellena mal, los pasos posteriores arrastran errores.
-La revisión final debe comprobar que cada elemento tiene una función SEO, una función local y una función de conversión.
-Error que previene: confundir Service Overview con Location-Based Service.
-Error que previene: convertir GeoArticles en landing pages.
-Error que previene: crear Additional Category Pages duplicadas.
-Error que previene: usar el mismo schema en todos los tipos de página.
-Error que previene: escribir páginas sin word count, CTA, FAQs o estructura AUDIO.
+Producir la spec completa de cada uno de los 6 page types del cluster combinando los inputs heredados de Pasos 1-3 con las decisiones nuevas de Paso 5 (Primary Service y Brand tone).
 
-## §3 Lo que la IA tiene que rellenar/obtener
+**Outputs del paso:**
 
-### Inputs heredados de pasos anteriores
+- Spec **Homepage** — Root Entity Anchor (Función, URL, H1, Meta Title, Meta Description, Word count, Estructura, Schema, Internal links)
+- Spec **Service Overview Page** — Topical Authority Pillar (idem)
+- Spec **Location-Based Service Page** — Main City Converter (idem)
+- Spec **Additional Category Page** — GBP Additional Category Support (idem)
+- Spec **GeoHub Page** — Main City Silo Container (idem)
+- Spec **GeoArticle Page** — Semantic Booster (idem)
+- Validación cross-cutting (Schema por tipo, Word count por intención, CTA por funnel, No false location)
 
-> Estos campos NO se rellenan en Paso 5 — la IA los lee del paso indicado.
+**Errores que previene:**
+
+- Confundir Service Overview con Location-Based Service
+- Convertir GeoArticles en landing pages
+- Crear Additional Category Pages duplicadas
+- Usar el mismo schema en todos los tipos de página
+- Escribir páginas sin word count, CTA, FAQs ni estructura
+
+**Cuándo se ejecuta:** después de Pasos 1-4 cerrados (intake + fórmula + matriz + URL rules). Antes de Paso 6 (content architecture) y Paso 15 (redacción).
+
+## §3 Inputs del paso
+
+### Lo que la IA decide en este paso
+
+```text
+Primary Service:
+(Servicio principal único usado en H1 y Meta Title de la Homepage —
+elegido del top 5 heredado del Paso 1 §13, normalmente el más demandado)
+
+Brand tone:
+Option A: Professional
+Option B: Friendly
+Option C: Premium
+Option D: Urgente
+Option E: Local and conversational
+
+Spec por page type (los 6 que produce este paso):
+- Homepage — Root Entity Anchor
+- Service Overview Page — Topical Authority Pillar
+- Location-Based Service Page — Main City Converter
+- Additional Category Page — GBP Additional Category Support
+- GeoHub Page — Main City Silo Container
+- GeoArticle Page — Semantic Booster
+```
+
+> Para cada page type la IA decide: Función, Patrón URL, H1, Meta Title, Meta Description, Word count, Estructura completa, Schema, Internal links. Spec completa en §5-§10 del Bloque II.
+
+### Info heredada de pasos anteriores
+
+> Estos campos NO se deciden en Paso 5 — la IA los lee del paso indicado.
 
 | Campo | Origen |
 |---|---|
@@ -57,22 +78,6 @@ Error que previene: escribir páginas sin word count, CTA, FAQs o estructura AUD
 | Trust Signals | Paso 1 §18 |
 | Primary Category Slug, Main City Slug, Service Slugs | Paso 2 §6 |
 | Additional Category Slugs | Paso 3 §7 |
-
-### Campos nuevos en Paso 5
-
-```text
-Primary Service:
-(Servicio principal único usado en H1 y Meta Title de la Homepage —
-normalmente el más demandado / con más volumen de búsqueda del top 5
-heredado del Paso 1 §13)
-
-Brand tone:
-Option A: Professional
-Option B: Friendly
-Option C: Premium
-Option D: Urgente
-Option E: Local and conversational
-```
 
 ## §4 Ejemplo rellenado
 
