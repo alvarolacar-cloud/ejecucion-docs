@@ -8,152 +8,114 @@ Proveniencia: sistema construido paso a paso en el chat y alineado con los frame
 
 ## §2 Objetivo del Paso 2
 
-Este paso existe para resolver un problema concreto dentro del sistema GMB Crush: calcular el tamaño real de la web antes de crear URLs, contenido o calendario de publicación.
-La web local no debe construirse desde la intuición, sino desde una secuencia operativa que conecta entidad, categoría GBP, servicios, ciudad principal, cobertura local, schema, contenido e interlinking.
-El objetivo es que cada dato que se recoge o cada página que se crea tenga una función clara dentro del ecosistema local.
-Cuando este paso se omite, la arquitectura empieza a crecer de forma desordenada.
-Eso produce páginas duplicadas, URLs sin intención, contenidos genéricos, señales locales débiles y problemas de canibalización.
-La metodología GMB Crush busca evitar precisamente ese escenario.
-Por eso cada paso debe indicar qué se rellena, qué se genera, qué se revisa y qué errores previene.
-En la versión simplificada del sistema usamos una Main City como base de arquitectura.
-En esta versión web-first, el Google Business Profile no existe todavía: las categorías se tratan como Planned GBP Categories hasta que el Paso 14 cree, verifique y sincronice el GBP con la web.
-Esto evita inventar una GBP URL, reseñas de Google o señales de perfil antes de que existan.
-Las Local Coverage Areas no generan URLs por defecto.
-Las Local Coverage Areas se usan para reforzar el contenido, los ejemplos locales, las FAQs y el schema areaServed.
-Solo las Approved Expansion Areas pueden convertirse en URLs propias cuando exista una justificación clara.
-Esta separación evita confundir cobertura real con arquitectura obligatoria.
-También evita que un negocio local pequeño acabe con cientos de páginas antes de tener una base sólida.
-El criterio principal es crear primero las páginas que soportan la entidad, la categoría GBP y la intención comercial.
-Después se añaden artículos, enlaces internos, QA y optimización.
-Este paso debe ejecutarse antes de avanzar al siguiente.
-Si se salta o se rellena mal, los pasos posteriores arrastran errores.
-La revisión final debe comprobar que cada elemento tiene una función SEO, una función local y una función de conversión.
-Error que previene: crear páginas sin saber cuántas deberían existir.
-Error que previene: meter Local Coverage Areas dentro de la fórmula base.
-Error que previene: confundir Approved Expansion Areas con cobertura local mencionada en contenido.
-Error que previene: duplicar categorías adicionales ya cubiertas por servicios core.
-Error que previene: publicar GeoArticles antes de tener las páginas comerciales que apoyan.
+Calcular el tamaño exacto del cluster aplicando la fórmula maestra `1 + S + 1 + S + A + G × S` sobre los inputs heredados del Paso 1, produciendo el inventario completo de páginas SEO base antes de crear URLs concretas.
 
-## §3 Lo que la IA tiene que rellenar/obtener
+**Outputs del paso:**
 
-```text
-Business Name:
+- **Planned GBP Categories Status** — todas las categorías marcadas como `Planned` hasta el Paso 14
+- **Slugs** — Primary Category Slug, Main City Slug, 5 Service Slugs (operación slugify aplicada)
+- **Service-to-Main-City Applicability** — boolean + lista de exclusiones (default: todos aplican)
+- **Variable S** — número de core services aplicables a Main City (S_efectiva)
+- **Variable A** — número de Additional Categories que necesitan página propia
+- **Variable G** — GeoArticles per Service (heredado del Paso 1 §16)
+- **Total páginas SEO base** — resultado de la fórmula `1 + S + 1 + S + A + G × S`
+- **Inventario por tipo de página** — Homepage / SO / GeoHub / LBS / AC / GeoArticles con sus cantidades
+- **Optional Expansion Formula** — fórmula adicional para Approved Expansion Areas (default: 0 en Phase 1)
+- **Validaciones** — control anti-duplicación, dependencias entre páginas, resultado auditable
 
-Planned Primary GBP Category:
+**Errores que previene:**
 
-Primary Category Slug:
+- Crear páginas sin saber cuántas deberían existir
+- Meter Local Coverage Areas dentro de la fórmula base
+- Confundir Approved Expansion Areas con cobertura local mencionada en contenido
+- Duplicar categorías adicionales ya cubiertas por core services
+- Publicar GeoArticles antes de tener las páginas comerciales que apoyan
 
-Main City:
+**Cuándo se ejecuta:** después de Paso 1 cerrado (intake completo). Antes de Paso 3 (Matriz Base de URLs).
 
-Main City Slug:
+## §3 Info heredada de pasos anteriores
 
-Servicios principales:
-1.
-2.
-3.
-4.
-5.
+> Estos campos NO se deciden en Paso 2 — la IA los lee del paso indicado y los usa como input para aplicar la fórmula y producir el inventario del Bloque II.
 
-Service Slugs:
-1.
-2.
-3.
-4.
-5.
+| Campo | Origen |
+|---|---|
+| Business Name | Paso 1 §5 |
+| Planned Primary GBP Category | Paso 1 §9 |
+| Servicios principales (5 core services) | Paso 1 §13 |
+| Planned Additional GBP Categories | Paso 1 §10 |
+| Additional Categories cubiertas por core services | Paso 1 §10 (consolidación) |
+| Additional Categories que necesitan página propia | Paso 1 §10 (consolidación) |
+| Main City | Paso 1 §11 |
+| Local Coverage Areas | Paso 1 §14 |
+| Approved Expansion Areas | Paso 1 §15 |
+| GeoArticles per Service (G) | Paso 1 §16 |
 
-Planned Additional GBP Categories:
-1.
-2.
-3.
-
-Additional Categories already covered by Servicios principales:
-1.
-2.
-
-Additional Categories that need separate pages:
-1.
-2.
-
-Local Coverage Areas:
-1.
-2.
-3.
-4.
-5.
-
-Should Local Coverage Areas generate pages?
-Default: No.
-
-Approved Expansion Areas:
-1.
-2.
-3.
-
-Does every service apply to the Main City?
-Yes / No
-
-If no, specify exclusions:
-- Service:
-- Reason:
-```
+> Las decisiones nuevas que se toman en Paso 2 (Slug Generation y Service-to-Main-City Applicability) tienen sus propias secciones en Bloque II — §6 y §9.
 
 ## §4 Ejemplo rellenado
 
-```text
-Business Name:
-Cerrajeros Madrid 24h
+> Todos los outputs del Paso 2 con sus valores para Cerrajeros Madrid 24h. Los heredados (Business Name, Categories, Servicios, LCAs, etc.) tienen su ejemplo en sus pasos de origen (§4 de Paso 1).
 
-Planned Primary GBP Category:
-Cerrajero
+### Status GBP Categories
 
-Primary Category Slug:
-cerrajero
+| Output | Valor |
+|---|---|
+| Planned Primary GBP Category | Cerrajero (status: `Planned`) |
+| Planned Additional Categories | Servicio de cerrajería de urgencia, Servicio de duplicado de llaves (status: `Planned`) |
 
-Main City:
-Madrid
+### Slugs
 
-Main City Slug:
-madrid
+| Output | Valor |
+|---|---|
+| Primary Category Slug | `cerrajero` |
+| Main City Slug | `madrid` |
+| Service Slugs | `cerrajero-urgente`, `apertura-puertas`, `cambio-cerraduras`, `cambio-bombines`, `instalacion-cerraduras-seguridad` |
 
-Servicios principales:
-1. Cerrajero urgente
-2. Apertura de puertas
-3. Cambio de cerraduras
-4. Cambio de bombines
-5. Instalación de cerraduras de seguridad
+### Service-to-Main-City Applicability
 
-Service Slugs:
-1. cerrajero-urgente
-2. apertura-puertas
-3. cambio-cerraduras
-4. cambio-bombines
-5. instalacion-cerraduras-seguridad
+| Output | Valor |
+|---|---|
+| ¿Todos los servicios aplican a Main City? | Yes |
+| Exclusiones | (ninguna) |
+| S_efectiva | 5 |
 
-Planned Additional GBP Categories:
-1. Servicio de cerrajería de urgencia
-2. Servicio de duplicado de llaves
+### Variables de la fórmula
 
-Additional Categories already covered by Servicios principales:
-1. Servicio de cerrajería de urgencia
+| Variable | Valor | Origen |
+|---|---|---|
+| S | 5 | Paso 1 §13 (5 core services) |
+| A | 1 | Paso 1 §10 (Solo Servicio de duplicado de llaves necesita página propia; Servicio de cerrajería de urgencia queda cubierta por core service Cerrajero urgente) |
+| G | 3 | Paso 1 §16 |
 
-Additional Categories that need separate pages:
-1. Servicio de duplicado de llaves
+### Inventario por tipo de página
 
-Local Coverage Areas:
-1. Almagro
-2. Chamberí
-3. Salamanca
-4. Retiro
+| Tipo de página | Cantidad | Fórmula |
+|---|---:|---|
+| Homepage | 1 | constante |
+| Service Overview Pages | 5 | S |
+| GeoHub Main City | 1 | constante (Madrid) |
+| Location-Based Service Pages | 5 | S |
+| Additional Category Pages | 1 | A |
+| GeoArticles | 15 | G × S |
+| **Total SEO base** | **28** | **1 + S + 1 + S + A + (G × S)** |
+| `/contacto/` (auxiliar fuera SEO base) | 1 | — |
 
-Should Local Coverage Areas generate pages?
-No, not in the base build.
+### Optional Expansion Formula
 
-Approved Expansion Areas:
-None in Phase 1.
+| Output | Valor |
+|---|---|
+| Approved Expansion Areas (E) | 0 (None in Phase 1) |
+| Páginas de expansión | 0 |
+| Fórmula expansion declarada | `E + S × E + A × E + G × S × E` (lista para futura activación) |
 
-Does every service apply to the Main City?
-Yes
-```
+### Validaciones
+
+| Validación | Resultado para Cerrajeros |
+|---|---|
+| LCAs no entran en fórmula base | Cumplido — Almagro, Chamberí, Salamanca, Retiro NO generan URLs base |
+| Anti-duplicación | Cumplido — Servicio de cerrajería de urgencia consolidada con core service Cerrajero urgente |
+| Dependencias entre páginas | Cumplido — orden Homepage → SO → GeoHub → LBS → AC → GeoArticles |
+| Resultado auditable | Cumplido — 28 páginas explicables componente a componente |
 
 # Bloque II — Ejecución por la IA
 
@@ -426,9 +388,9 @@ La pregunta debe hacerse explícitamente al cliente. Si todos los servicios apli
 
 ### §9.2 Cómo obtenemos la Service-to-Main-City Applicability
 
-**Fuente:** Input humano + GMB Crush.
+**Fuente:** GMB Crush + Input humano.
 
-**Método:** Preguntar al cliente «¿Todos los servicios aplican a la Main City?». Si Sí (default web-first): `S_efectiva = S` y la fórmula queda intacta. Si No: registrar las exclusiones con su razón, recalcular `S_efectiva` y propagar al inventario LBS y GeoArticles base.
+**Método:** Preguntar al cliente «¿Todos los servicios aplican a la Main City?». Si Sí (default web-first según doctrina): `S_efectiva = S` y la fórmula queda intacta. Si No: registrar las exclusiones declaradas por el cliente con su razón, recalcular `S_efectiva` y propagar al inventario LBS y GeoArticles base.
 
 ### §9.3 Output del paso
 
@@ -862,9 +824,9 @@ Extra pages:
 | Total base | ¿El total de páginas está claro? | ✅ / ⬜ |
 | No duplicación | ¿Se evitaron duplicados de intención? | ✅ / ⬜ |
 
-# Bloque IV — Outputs
+# Bloque IV — Outputs consolidados
 
-## §21 Outputs del Paso 2
+## §21 Outputs consolidados del Paso 2
 
 - Fórmula base calculada
 - Variables S, A y G definidas
