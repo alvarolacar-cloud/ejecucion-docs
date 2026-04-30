@@ -154,9 +154,9 @@ El Primary Service es uno de los 5 core services heredados y se mantiene constan
 
 ### §5.2 Cómo se obtiene el Primary Service
 
-**Fuente:** Decisión de diseño + Datos de búsqueda.
+**Fuente:** GMB Crush + Datos de búsqueda.
 
-**Método:** Tomar el top 5 servicios del Paso 1 §13. Cruzar con keyword research local para identificar cuál tiene mayor volumen de búsqueda mensual en la Main City. Elegir ese como Primary Service.
+**Método:** La doctrina dicta tomar el top 5 servicios del Paso 1 §13 y elegir el de mayor volumen de búsqueda local. Cruzar con keyword research (Ahrefs, Semrush, Google Keyword Planner) para identificar volúmenes mensuales en la Main City. Elegir el de mayor volumen como Primary Service.
 
 ### §5.3 Output del paso
 
