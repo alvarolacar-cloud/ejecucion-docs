@@ -8,31 +8,34 @@ Proveniencia: sistema construido paso a paso en el chat y alineado con los frame
 
 ## §2 Objetivo del Paso 1
 
-Este paso existe para resolver un problema concreto dentro del sistema GMB Crush: recoger los datos mínimos del negocio antes de generar arquitectura, URLs o contenido.
-La web local no debe construirse desde la intuición, sino desde una secuencia operativa que conecta entidad, categoría GBP, servicios, ciudad principal, cobertura local, schema, contenido e interlinking.
-El objetivo es que cada dato que se recoge o cada página que se crea tenga una función clara dentro del ecosistema local.
-Cuando este paso se omite, la arquitectura empieza a crecer de forma desordenada.
-Eso produce páginas duplicadas, URLs sin intención, contenidos genéricos, señales locales débiles y problemas de canibalización.
-La metodología GMB Crush busca evitar precisamente ese escenario.
-Por eso cada paso debe indicar qué se rellena, qué se genera, qué se revisa y qué errores previene.
-En la versión simplificada del sistema usamos una Main City como base de arquitectura.
-En esta versión web-first, el Google Business Profile no existe todavía: las categorías se tratan como Planned GBP Categories hasta que el Paso 14 cree, verifique y sincronice el GBP con la web.
-Esto evita inventar una GBP URL, reseñas de Google o señales de perfil antes de que existan.
-Las Local Coverage Areas no generan URLs por defecto.
-Las Local Coverage Areas se usan para reforzar el contenido, los ejemplos locales, las FAQs y el schema areaServed.
-Solo las Approved Expansion Areas pueden convertirse en URLs propias cuando exista una justificación clara.
-Esta separación evita confundir cobertura real con arquitectura obligatoria.
-También evita que un negocio local pequeño acabe con cientos de páginas antes de tener una base sólida.
-El criterio principal es crear primero las páginas que soportan la entidad, la categoría GBP y la intención comercial.
-Después se añaden artículos, enlaces internos, QA y optimización.
-Este paso debe ejecutarse antes de avanzar al siguiente.
-Si se salta o se rellena mal, los pasos posteriores arrastran errores.
-La revisión final debe comprobar que cada elemento tiene una función SEO, una función local y una función de conversión.
-Error que previene: empezar a crear páginas sin conocer la categoría principal del GBP.
-Error que previene: confundir ciudad principal con áreas de cobertura local.
-Error que previene: crear páginas para zonas donde el negocio no atiende clientes.
-Error que previene: usar un NAP diferente al del GBP.
-Error que previene: crear servicios sin saber si son core services o categorías adicionales.
+Paso 1 es el **origen del sistema** — la IA recoge del cliente y/o del análisis competitivo los datos mínimos del negocio que alimentan toda la arquitectura aguas abajo (Pasos 2-19). En este paso no hay heredados; todos los outputs nacen aquí.
+
+**Outputs del paso:**
+
+- **Business Name** — nombre legal de la entidad
+- **Website URL / Canonical Domain** — dominio canónico único
+- **GBP Lifecycle Status** — 4 campos del ciclo de vida del GBP (Status, Creation Timing, Verification, URL)
+- **Full NAP** — 8 campos completos (Name, Street, City, State, ZIP, Country, Phone, Email)
+- **Planned Primary GBP Category** — categoría principal del futuro GBP
+- **Planned Additional GBP Categories** — categorías adicionales clasificadas (cubiertas vs necesitan página)
+- **Main City** — ciudad que genera la arquitectura base
+- **Physical Location City** — ciudad de presencia física real
+- **Servicios principales** — los 5 core services del cluster
+- **Local Coverage Areas** — Direct LCAs (del NAP) + Candidate LCAs (de competidores)
+- **Approved Expansion Areas** — zonas con URL propia (default: vacío en Phase 1)
+- **GeoArticles per Service (G)** — variable de la fórmula del Paso 2
+- **Preferred CTA** — CTA principal del cluster
+- **Trust Signals** — señales de confianza reales y reutilizables
+
+**Errores que previene:**
+
+- Empezar a crear páginas sin conocer la categoría principal del GBP
+- Confundir Main City con Local Coverage Areas
+- Crear páginas para zonas donde el negocio no atiende clientes
+- Usar un NAP inconsistente con el futuro GBP
+- Crear servicios sin distinguir core services de categorías adicionales
+
+**Cuándo se ejecuta:** primer paso del sistema. Recibe input del cliente (preflight `00preflight.md`) y, donde aplica, complementa con análisis competitivo (Local Pack) o keyword research. Antes de Paso 2 (Fórmula maestra).
 
 ## §3 Lo que la IA tiene que rellenar/obtener
 
@@ -143,100 +146,89 @@ Trust Signals:
 
 ## §4 Ejemplo rellenado
 
-```text
-Business Name:
-Cerrajeros Madrid 24h
+> Todos los outputs del Paso 1 con sus valores para Cerrajeros Madrid 24h. Cada tabla agrupa outputs relacionados según el b-doc `01b-decisiones-tomadas-y-fuentes.md`.
 
-Website URL:
-https://www.cerrajerosmadrid24h.com
+### Identidad y dominio
 
-Canonical Domain:
-https://www.cerrajerosmadrid24h.com
+| Output | Valor |
+|---|---|
+| Business Name | Cerrajeros Madrid 24h |
+| Website URL | https://www.cerrajerosmadrid24h.com |
+| Canonical Domain | https://www.cerrajerosmadrid24h.com |
 
-GBP Status:
-Not Created
+### GBP Lifecycle Status (web-first)
 
-GBP Creation Timing:
-After website launch
+| Output | Valor |
+|---|---|
+| GBP Status | Not Created |
+| GBP Creation Timing | After website launch |
+| GBP Verification Status | Not Started |
+| GBP URL | N/A — GBP not created yet |
 
-GBP Verification Status:
-Not Started
+### Full NAP
 
-GBP URL:
-N/A — GBP not created yet
+| Output | Valor |
+|---|---|
+| Name | Cerrajeros Madrid 24h |
+| Street Address | Calle Rafael Calvo 12, Barrio Almagro, Distrito Chamberí |
+| City | Madrid |
+| State / Province | Comunidad de Madrid |
+| ZIP / Postal Code | 28010 |
+| Country | España |
+| Phone | +34 600 000 000 |
+| Email | info@cerrajerosmadrid24h.com |
 
-Full NAP:
-- Name: Cerrajeros Madrid 24h
-- Street Address: Calle Rafael Calvo 12, Barrio Almagro, Distrito Chamberí
-- City: Madrid
-- State / Province: Comunidad de Madrid
-- ZIP / Postal Code: 28010
-- Country: España
-- Phone: +34 600 000 000
-- Email: info@cerrajerosmadrid24h.com
+### Categorías GBP planificadas
 
-Planned Primary GBP Category:
-Cerrajero
+| Output | Valor |
+|---|---|
+| Planned Primary GBP Category | Cerrajero |
+| Planned Additional GBP Categories | Servicio de cerrajería de urgencia; Servicio de duplicado de llaves |
 
-Planned Additional GBP Categories:
-1. Servicio de cerrajería de urgencia
-2. Servicio de duplicado de llaves
+### Geografía (Main City + LCAs + Expansion)
 
-Main City:
-Madrid
+| Output | Valor |
+|---|---|
+| Main City | Madrid |
+| Physical Location City | Madrid |
+| Direct Local Coverage Areas | Almagro, Chamberí |
+| Candidate Local Coverage Areas | Salamanca, Retiro, Centro, Tetuán, Chamartín, Arganzuela, Moncloa, Prosperidad |
+| LCAs generan páginas en la base | No, not in the base build |
+| Approved Expansion Areas | None in Phase 1 |
 
-Physical Location City:
-Madrid
+### Servicios principales (S = 5)
 
-Servicios principales:
-1. Cerrajero urgente
-2. Apertura de puertas
-3. Cambio de cerraduras
-4. Cambio de bombines
-5. Instalación de cerraduras de seguridad
+| # | Servicio |
+|---|---|
+| 1 | Cerrajero urgente |
+| 2 | Apertura de puertas |
+| 3 | Cambio de cerraduras |
+| 4 | Cambio de bombines |
+| 5 | Instalación de cerraduras de seguridad |
 
-Direct Local Coverage Areas:
-1. Almagro
-2. Chamberí
+### Consolidación de Additional Categories
 
-Candidate Local Coverage Areas:
-1. Salamanca
-2. Retiro
-3. Centro
-4. Tetuán
-5. Chamartín
-6. Arganzuela
-7. Moncloa
-8. Prosperidad
+| Categoría | Status arquitectónico |
+|---|---|
+| Servicio de cerrajería de urgencia | Cubierta por core service `Cerrajero urgente` (no genera página adicional) |
+| Servicio de duplicado de llaves | Necesita página propia (A = 1) |
 
-Las Candidate Local Coverage Areas solo se usan como señales GEO activas si pasan el test de coherencia GEO.
+### Contenido y conversión
 
-Should Local Coverage Areas generate pages?
-No, not in the base build.
+| Output | Valor |
+|---|---|
+| GeoArticles per Service (G) | 3 |
+| Preferred CTA | Llamar ahora |
 
-Approved Expansion Areas:
-None in Phase 1.
+### Trust Signals
 
-Additional Categories already covered by core services:
-1. Servicio de cerrajería de urgencia
-
-Additional Categories that need separate pages:
-1. Servicio de duplicado de llaves
-
-GeoArticles per Service:
-3
-
-Preferred CTA:
-Llamar ahora
-
-Trust Signals:
-- 10+ años de experiencia
-- Reseñas iniciales pendientes de recopilar tras crear y verificar el GBP
-- Técnicos cerrajeros cualificados
-- Servicio móvil en el mismo día
-- Garantía de trabajo
-
-```
+| # | Trust signal |
+|---|---|
+| 1 | 10+ años de experiencia |
+| 2 | Reseñas iniciales pendientes de recopilar tras crear y verificar el GBP |
+| 3 | Técnicos cerrajeros cualificados |
+| 4 | Servicio móvil en el mismo día |
+| 5 | Garantía de trabajo |
 
 # Bloque II — Ejecución por la IA
 
@@ -379,9 +371,9 @@ La doctrina GMB Crush separa estrictamente la fase web-first (Pasos 1-13 + 15-18
 
 ### §7.2 Cómo obtenemos el GBP Lifecycle Status
 
-**Fuente:** Input humano + GMB Crush.
+**Fuente:** GMB Crush + Input humano.
 
-**Método:** Preguntar al cliente si ya tiene GBP creado o verificado. Si NO (default web-first): los 4 campos toman los valores fijos del ejemplo. Si SÍ: capturar el estado real y considerar adelantar el Paso 14 fuera del orden estándar.
+**Método:** Preguntar al cliente si ya tiene GBP creado o verificado. Si NO (default web-first según doctrina): los 4 campos toman los valores fijos `Not Created / After website launch / Not Started / N/A`. Si SÍ: capturar el estado real declarado por el cliente y considerar adelantar el Paso 14 fuera del orden estándar.
 
 ### §7.3 Output del paso
 
@@ -853,9 +845,9 @@ G se decide en Paso 1 y la Fórmula Maestra del Paso 2 lo aplica como multiplica
 
 ### §16.2 Cómo obtenemos los GeoArticles per Service
 
-**Fuente:** Decisión de diseño + GMB Crush.
+**Fuente:** GMB Crush.
 
-**Método:** Default `G = 3` según doctrina GMB Crush. Ajustable según capacidad de producción real del cliente y plan de refresh.
+**Método:** Default `G = 3` según doctrina GMB Crush. Ajustable solo si el cliente justifica capacidad de producción y plan de refresh distintos al default doctrinal.
 
 ### §16.3 Output del paso
 
@@ -1343,9 +1335,9 @@ Una zona tiene sentido GEO si sale del ancla física o ayuda a reforzar la relev
 | Servicios principales | ¿Los servicios principales están listados y priorizados? | ✅ / ⬜ |
 | CTA | ¿El CTA principal está definido? | ✅ / ⬜ |
 
-# Bloque V — Outputs
+# Bloque V — Outputs consolidados
 
-## §31 Outputs del Paso 1
+## §31 Outputs consolidados del Paso 1
 
 Los outputs del Paso 1 son los valores generados en la subsección `.3 Output del paso` de cada concepto del Bloque II — Ejecución por la IA:
 
