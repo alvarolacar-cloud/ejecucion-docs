@@ -58,58 +58,107 @@ En este paso la IA produce todos los outputs que definen cómo se construye cada
 
 ## §4 Ejemplo rellenado
 
-> Resumen de TODOS los outputs del Paso 5, con sus valores para Cerrajeros Madrid 24h. El detalle completo de cada page type spec (Estructura, Word count, Internal links, Ejemplos incorrectos, etc.) vive en cada `§X.10 Ejemplo rellenado` dentro del Bloque II. Los heredados (Business Name, NAP, Servicios, Categorías GBP, etc.) tienen su ejemplo en sus pasos de origen (§4 de Paso 1).
+> Todos los outputs del Paso 5 con sus valores para Cerrajeros Madrid 24h. Los heredados (Business Name, NAP, Servicios, Categorías GBP, etc.) tienen su ejemplo en sus pasos de origen (§4 de Paso 1).
 
-```text
-DECISIONES GLOBALES
-- Primary Service: Cerrajero urgente
-- Brand tone: Urgente
+### Outputs globales
 
-DECISIONES POR PAGE TYPE (resumen — detalle en §X.10 de cada uno)
+| Output | Valor |
+|---|---|
+| Primary Service | Cerrajero urgente |
+| Brand tone | Urgente |
 
-Homepage (§7):
-  URL: /
-  H1: Cerrajeros Madrid 24h – Servicios de cerrajería de confianza en Madrid
-  Meta Title: Cerrajero en Madrid | Cerrajeros Madrid 24h
-  Schema: Organization + WebSite + LocalBusiness + FAQPage + Speakable
-  Word count: 900–1,300
+### Spec Homepage (§7)
 
-Service Overview (§8):
-  URL pattern: /cerrajero/[service-slug]/
-  H1 pattern: Servicios profesionales de [service] por Cerrajeros Madrid 24h
-  Schema: Service + WebPage + BreadcrumbList
-  Word count: 700–1,000
+| # | Sub-output | Valor |
+|---|---|---|
+| 1 | Función | Root Entity Anchor — concentra señales de marca y entidad; establece marca, categoría GBP, Main City, servicios, cobertura y contacto |
+| 2 | Patrón URL | `/` |
+| 3 | H1 | Cerrajeros Madrid 24h – Cerrajero urgente de confianza en Madrid |
+| 4 | Meta Title | Cerrajero urgente en Madrid \| Cerrajeros Madrid 24h |
+| 5 | Meta Description | ¿Necesitas cerrajero urgente en Madrid? Cerrajeros Madrid 24h ofrece servicio local, soporte experto y respuesta rápida. Llama hoy. |
+| 6 | Word count | 900–1,300 |
+| 7 | Estructura completa | H1 → Intro con marca + servicio + Main City → Quick Answer → Servicios principales → Vista previa cobertura local → Bloques de confianza → FAQ → Bloque NAP → CTA → Enlaces internos |
+| 8 | Schema | Organization + WebSite + LocalBusiness + FAQPage + Speakable |
+| 9 | Internal links | Service Overview Pages (5), GeoHub `/madrid/`, Additional Category Page `/cerrajero/madrid/duplicado-llaves/`, `/contacto/` |
 
-Location-Based Service (§9):
-  URL pattern: /cerrajero/madrid/[service-slug]/
-  H1 pattern: Cerrajeros Madrid 24h – [service] en Madrid
-  Schema: Service + LocalBusiness + BreadcrumbList
-  Word count: 800–1,200
+### Spec Service Overview Page (§8)
 
-Additional Category (§10):
-  URL pattern: /cerrajero/madrid/[additional-slug]/
-  H1 pattern: Cerrajeros Madrid 24h – [additional] experto en Madrid
-  Schema: Service + BreadcrumbList
-  Word count: 700–1,000
+| # | Sub-output | Valor |
+|---|---|---|
+| 1 | Función | Topical Authority Pillar — pilar temático no geolocalizado |
+| 2 | Patrón URL | `/cerrajero/[service-slug]/` (5 instancias: cerrajero-urgente, apertura-puertas, cambio-cerraduras, cambio-bombines, instalacion-cerraduras-seguridad) |
+| 3 | H1 (template) | Servicios profesionales de [Service] por Cerrajeros Madrid 24h |
+| 4 | Meta Title (template) | [Service] por Cerrajeros Madrid 24h \| Expertos en cerrajería |
+| 5 | Meta Description (template) | ¿Necesitas [Service] de confianza? Cerrajeros Madrid 24h ofrece soluciones expertas, rápidas y cuidadosas. Consulta el proceso completo y sus beneficios. |
+| 6 | Word count | 850–1,000 |
+| 7 | Estructura completa | H1 → Intro no local → H2 Authority → H2 Uniqueness → H2 Depth → H2 Intent → H2 Optimization → Bullet sections → FAQs → CTA → Enlaces internos |
+| 8 | Schema | Service + WebPage + BreadcrumbList + Speakable |
+| 9 | Internal links | Homepage, otras Service Overview, LBS correspondiente en Madrid, GeoArticle relevante |
 
-GeoHub (§11):
-  URL: /madrid/
-  H1: Cerrajeros Madrid 24h – Servicios de cerrajería en Madrid
-  Schema: CollectionPage + BreadcrumbList
-  Word count: 600–900
+### Spec Location-Based Service Page (§9)
 
-GeoArticle (§12):
-  URL pattern: /madrid/[article-topic-slug]/
-  H1 pattern: [Pregunta o tópico local]
-  Schema: Article + FAQPage + BreadcrumbList
-  Word count: 800–1,400
+| # | Sub-output | Valor |
+|---|---|---|
+| 1 | Función | Main City Converter — convierte búsquedas locales servicio + Main City |
+| 2 | Patrón URL | `/cerrajero/madrid/[service-slug]/` (5 instancias) |
+| 3 | H1 (template) | Cerrajeros Madrid 24h – [Service] en Madrid |
+| 4 | Meta Title (template) | Top [Service] en Madrid \| Cerrajeros Madrid 24h |
+| 5 | Meta Description (template) | ¿Necesitas [Service] en Madrid? Cerrajeros Madrid 24h ayuda con [problema 1], [problema 2] y [problema 3]. Llama para recibir soporte local. |
+| 6 | Word count | 800–1,000 |
+| 7 | Estructura completa | H1 → Intro local → Quick Local Answer → H2 Authority → H2 Uniqueness → H2 Depth → H2 Local Pain Points → H2 Local Coverage Areas Served (Almagro, Chamberí, Salamanca, Retiro mencionadas naturalmente) → H2 Related Services in Madrid → FAQs → CTA → Enlaces internos |
+| 8 | Schema | LocalBusiness + BreadcrumbList + FAQPage (opcional) + Speakable (opcional) |
+| 9 | Internal links | Parent Service Overview (`/cerrajero/[service]/`), GeoHub `/madrid/`, otras LBS Madrid, GeoArticles relacionados, `/contacto/` |
 
-VALIDACIONES CROSS-CUTTING (§13–§16)
-- Schema por tipo de página: cumplido en las 6 specs
-- Word count por intención: cumplido (rangos por page type alineados con funnel)
-- CTA adaptado al page type: Llamar ahora (Homepage, LBS, GeoHub) / Solicitar presupuesto (SO, AC) / leer-más (GeoArticle → LBS)
-- No false location claims: cumplido (todas las URLs usan Main City o slug-funcional, ninguna implica oficina física en LCAs)
-```
+### Spec Additional Category Page (§10)
+
+| # | Sub-output | Valor |
+|---|---|---|
+| 1 | Función | GBP Additional Category Support — soporta categoría adicional GBP no cubierta por core service |
+| 2 | Patrón URL | `/cerrajero/madrid/duplicado-llaves/` (1 instancia: A=1) |
+| 3 | H1 | Cerrajeros Madrid 24h – Duplicado de llaves experto en Madrid |
+| 4 | Meta Title | Duplicado de llaves en Madrid \| Cerrajeros Madrid 24h |
+| 5 | Meta Description | ¿Necesitas duplicado de llaves en Madrid? Cerrajeros Madrid 24h ofrece ayuda fiable para [caso 1], [caso 2] y [caso 3]. Llama hoy. |
+| 6 | Word count | 800–1,000 |
+| 7 | Estructura completa | H1 → Intro con problema local → H2 Authority → H2 Uniqueness → H2 Depth → H2 Intent → H2 Optimization → Local Coverage Use Case → FAQs → CTA → Enlaces internos |
+| 8 | Schema | Service (con `areaServed`) + BreadcrumbList + FAQPage (opcional) + Speakable (opcional) |
+| 9 | Internal links | GeoHub `/madrid/`, LBS Madrid relacionadas (cambio-cerraduras, instalacion-cerraduras-seguridad), GeoArticles relevantes, `/contacto/` |
+
+### Spec GeoHub Page (§11)
+
+| # | Sub-output | Valor |
+|---|---|---|
+| 1 | Función | Main City Silo Container — agrupa todas las señales de la Main City |
+| 2 | Patrón URL | `/madrid/` (Option A — heredado de Paso 3 §6) |
+| 3 | H1 | Cerrajeros Madrid 24h – Servicios de cerrajería en Madrid |
+| 4 | Meta Title | Servicios de cerrajería en Madrid \| Cerrajeros Madrid 24h |
+| 5 | Meta Description | Descubre servicios de cerrajería de confianza en Madrid de Cerrajeros Madrid 24h. Servicios locales, recursos útiles, áreas de cobertura y formas de contactar. |
+| 6 | Word count | 700–1,100 |
+| 7 | Estructura completa | H1 → City Intro → Menú de servicios (5 LBS) → Additional Category Menu (Duplicado de llaves) → Local Coverage Areas Section (Almagro, Chamberí, Salamanca, Retiro, etc.) → GeoArticle Resources (15 GA) → Trust Signals → CTA → Enlaces internos |
+| 8 | Schema | CollectionPage + BreadcrumbList + LocalBusiness (opcional si presencia física) |
+| 9 | Internal links | Homepage, las 5 LBS de Madrid, AC Page (Duplicado de llaves), los 15 GeoArticles de Madrid, `/contacto/` |
+
+### Spec GeoArticle Page (§12)
+
+| # | Sub-output | Valor |
+|---|---|---|
+| 1 | Función | Semantic Booster — apoya servicio + Main City + intención long-tail; no es landing comercial |
+| 2 | Patrón URL | `/madrid/[article-topic-slug]/` (15 instancias = G × S = 3 × 5) |
+| 3 | H1 (ejemplo de un GA) | Precio de cerrajero urgente en Madrid |
+| 4 | Meta Title (ejemplo) | Precio de cerrajero urgente en Madrid \| Cerrajeros Madrid 24h |
+| 5 | Meta Description (ejemplo) | Aprende sobre el precio de cerrajero urgente en Madrid: qué esperar, errores comunes, factores locales y cuándo llamar a Cerrajeros Madrid 24h. |
+| 6 | Word count | 1,000–1,500 |
+| 7 | Estructura completa | H1 → Intro contextual → H2 Problem → H2 Local Context → H2 Options / Mistakes → H2 When to Call → H2 Local Examples → FAQs → CTA → Enlaces internos |
+| 8 | Schema | Article + FAQPage + BreadcrumbList + Speakable |
+| 9 | Internal links | Matching LBS Madrid (`/cerrajero/madrid/cerrajero-urgente/`), GeoHub `/madrid/`, GeoArticles relacionados, `/contacto/` |
+
+### Validaciones cross-cutting (§13–§16)
+
+| Validación | Resultado para Cerrajeros |
+|---|---|
+| §13 Schema por tipo de página | Cumplido — cada page type lleva su schema obligatorio (Organization, Service, LocalBusiness, CollectionPage, Article, FAQPage, BreadcrumbList, Speakable según corresponda) |
+| §14 Word count por intención | Cumplido — rangos alineados con funnel (Homepage 900-1,300, SO 850-1,000, LBS 800-1,000, AC 800-1,000, GeoHub 700-1,100, GeoArticle 1,000-1,500) |
+| §15 CTA adaptado al page type | Cumplido — Llamar ahora (Homepage, LBS, GeoHub: alta intención de conversión) · Solicitar presupuesto (SO, AC: media intención) · Leer LBS / Llamar (GeoArticle: navegación al funnel comercial) |
+| §16 No false location claims | Cumplido — todas las URLs usan Main City `madrid` o slug-funcional; ninguna implica oficina física en LCAs (Almagro, Chamberí, etc. solo se mencionan en contenido y schema `areaServed`) |
 
 # Bloque II — Ejecución por la IA
 
