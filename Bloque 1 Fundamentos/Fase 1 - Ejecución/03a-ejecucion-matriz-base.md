@@ -8,10 +8,9 @@ Proveniencia: sistema construido paso a paso en el chat y alineado con los frame
 
 > **Cómo leer este documento:**
 > - **Bloque I — Introducción** describe qué produce el paso y qué hereda.
-> - **Bloque II — Ejemplo rellenado** muestra los 13 outputs del Paso 3 con sus valores reales para Cerrajeros Madrid 24h.
+> - **Bloque II — Ejemplo rellenado** muestra los 14 outputs del Paso 3 con sus valores reales para Cerrajeros Madrid 24h.
 > - **Bloque III — Ejecución por la IA** contiene los 4 sub-bloques operativos: outputs a conseguir, reglas que aplican, checklist final y outputs consolidados.
-> - **Bloque IV — Módulo doctrinal: GeoArticle Topics** explica el método de extracción de los topics (keyword research por servicio core).
-> - **Bloque V — Fuentes Internas GMB Crush usadas** lista los frameworks GMB Crush en los que se basa el paso.
+> - **Bloque IV — Fuentes Internas GMB Crush usadas** lista los frameworks GMB Crush en los que se basa el paso.
 
 # Bloque I — Introducción
 
@@ -26,16 +25,17 @@ Convertir el inventario calculado en Paso 2 en una **URL Matrix operativa** — 
 - **3.1** Spreadsheet Name — nombre del archivo/spreadsheet que contiene la matriz
 - **3.2** GeoHub URL Style — Option A `/city/` o Option B `/category/city/` (decisión de diseño)
 - **3.3** Additional Category Slugs — slugs URL-safe para las Additional Categories que necesitan página propia
-- **3.4** URL Matrix completa — N filas (28 SEO + 1 auxiliar para Cerrajeros) con todos los campos rellenos
-- **3.5** IDs por tipo de página — HP, SO-N, GH, LBS-N, AC-N, GA-N
-- **3.6** Parent Page declarado por fila — jerarquía del cluster
-- **3.7** Schema asignado desde la matriz — no en build-time
-- **3.8** Enlaces internos Required por fila — linking contractual
-- **3.9** Priority y Publish Phase por fila — orden y agrupación
-- **3.10** Default Page Status — estado inicial de cada fila (Planned)
-- **3.11** Notes estratégicas por fila — decisiones que no encajan en columnas estructuradas
-- **3.12** Validación LCAs sin filas base — Local Coverage Areas no generan filas
-- **3.13** Validación matriz cerrada antes de contenido — handoff a Paso 4 y Paso 15
+- **3.4** GeoArticle Topics propuestos — G × S topics (15 para Cerrajeros) extraídos por keyword research por servicio core
+- **3.5** URL Matrix completa — N filas (28 SEO + 1 auxiliar para Cerrajeros) con todos los campos rellenos
+- **3.6** IDs por tipo de página — HP, SO-N, GH, LBS-N, AC-N, GA-N
+- **3.7** Parent Page declarado por fila — jerarquía del cluster
+- **3.8** Schema asignado desde la matriz — no en build-time
+- **3.9** Enlaces internos Required por fila — linking contractual
+- **3.10** Priority y Publish Phase por fila — orden y agrupación
+- **3.11** Default Page Status — estado inicial de cada fila (Planned)
+- **3.12** Notes estratégicas por fila — decisiones que no encajan en columnas estructuradas
+- **3.13** Validación LCAs sin filas base — Local Coverage Areas no generan filas
+- **3.14** Validación matriz cerrada antes de contenido — handoff a Paso 4 y Paso 15
 
 **Errores que previene:**
 
@@ -59,24 +59,24 @@ Convertir el inventario calculado en Paso 2 en una **URL Matrix operativa** — 
 |---|---|
 | Website Root Domain | Paso 1 §6.2 |
 | Canonical Domain | Paso 1 §6.2 |
-| Planned Primary GBP Category | Paso 1 §6.5 |
+| Planned Primary GBP Category | Paso 1 §6.6 |
 | Primary Category Slug | Paso 2 §6.2 |
-| Main City | Paso 1 §6.7 |
+| Main City | Paso 1 §6.8 |
 | Main City Slug | Paso 2 §6.3 |
-| Servicios principales (5 core services) | Paso 1 §6.9 |
-| Service Slugs (S=5) | Paso 2 §6.4 |
-| Additional Categories que necesitan página | Paso 1 §6.6 |
-| Local Coverage Areas | Paso 1 §6.10 |
-| Approved Expansion Areas | Paso 1 §6.11 |
-| GeoArticles per Service (G) | Paso 1 §6.12 |
+| Servicios principales (5 core services) | Paso 1 §6.10 |
+| Service Slugs (S=5) | Paso 2 §6.5 |
+| Additional Categories que necesitan página | Paso 1 §6.7 |
+| Local Coverage Areas | Paso 1 §6.11 |
+| Approved Expansion Areas | Paso 1 §6.12 |
+| GeoArticles per Service (G) | Paso 1 §6.13 |
 
-> Los outputs nuevos que se producen en Paso 3 (Spreadsheet Name, GeoHub URL Style, Additional Category Slugs) tienen sus propias secciones en Bloque III — §6.1, §6.2 y §6.3. Default Page Status y Default Priority son outputs de §6.10 y §6.9 respectivamente.
+> Los outputs nuevos que se producen en Paso 3 (Spreadsheet Name, GeoHub URL Style, Additional Category Slugs, GeoArticle Topics) tienen sus propias secciones en Bloque III — §6.1, §6.2, §6.3 y §6.4. Default Page Status y Default Priority son outputs de §6.11 y §6.10 respectivamente.
 
 # Bloque II — Ejemplo rellenado para el Paso 3 — Matriz Base
 
 <small>§4</small>
 
-> Los 13 outputs del Paso 3 con sus valores reales para Cerrajeros Madrid 24h. Cada sub-sección §4.X corresponde 1:1 al output 3.X declarado en §5.
+> Los 14 outputs del Paso 3 con sus valores reales para Cerrajeros Madrid 24h. Cada sub-sección §4.X corresponde 1:1 al output 3.X declarado en §5.
 
 ### 3.1 — Spreadsheet Name
 
@@ -90,7 +90,21 @@ Option A → `/madrid/`
 
 `duplicado-llaves` (1 slug, A=1)
 
-### 3.4 — URL Matrix completa (28 filas SEO + 1 auxiliar)
+### 3.4 — GeoArticle Topics propuestos
+
+15 topics extraídos por keyword research (G=3 × S=5):
+
+| # | Servicio core | Topics propuestos |
+|---|---|---|
+| 1 | Cerrajero urgente | cuanto-cuesta-un-cerrajero-urgente / que-hacer-si-no-puedes-entrar-casa / cuanto-tarda-un-cerrajero |
+| 2 | Apertura de puertas | cuanto-cuesta-abrir-una-puerta / que-hacer-si-te-dejas-las-llaves-dentro / apertura-de-puertas-sin-romper-cerradura |
+| 3 | Cambio de cerraduras | cuando-cambiar-la-cerradura-de-casa / cambio-de-cerradura-tras-perder-llaves / cerradura-nueva-o-reparacion |
+| 4 | Cambio de bombines | cuando-cambiar-el-bombin / bombin-antibumping-madrid / cambio-de-bombin-sin-cambiar-cerradura |
+| 5 | Instalación de cerraduras de seguridad | mejores-cerraduras-de-seguridad-para-viviendas / cerraduras-de-seguridad-para-comunidades / instalar-cerradura-de-seguridad-en-puerta-blindada |
+
+> **Aviso de trazabilidad:** estos 15 topics son un primer borrador derivado de la fórmula G × S = 15 y de la lógica del servicio. **No vienen de keyword research real**. Antes de producirlos hay que validar volumen de búsqueda, dificultad y oportunidad competitiva por título según el método de §6.4.
+
+### 3.5 — URL Matrix completa (28 filas SEO + 1 auxiliar)
 
 | ID | URL | Tipo | Schema | Priority | Phase | Status |
 |---|---|---|---|---|---|---|
@@ -124,7 +138,7 @@ Option A → `/madrid/`
 | GA-15 | `/madrid/instalar-cerradura-de-seguridad-en-puerta-blindada/` | GeoArticle | Article + FAQPage + BreadcrumbList | P3 | 2 | Planned |
 | AUX | `/contacto/` | Auxiliar | ContactPoint | P4 | 1 | Planned |
 
-### 3.5 — IDs por tipo de página
+### 3.6 — IDs por tipo de página
 
 | ID | URL | Tipo |
 |---|---|---|
@@ -136,7 +150,7 @@ Option A → `/madrid/`
 | GA-1 a GA-15 | `/madrid/{topic}/` | GeoArticles (G×S=15) |
 | AUX | `/contacto/` | Auxiliar |
 
-### 3.6 — Parent Page declarado por fila
+### 3.7 — Parent Page declarado por fila
 
 | ID | Parent Page |
 |---|---|
@@ -148,7 +162,7 @@ Option A → `/madrid/`
 | GA-1 a GA-15 | `/cerrajero/madrid/{matching service}/` (LBS correspondiente) |
 | AUX | `/` (Homepage) |
 
-### 3.7 — Schema asignado desde la matriz
+### 3.8 — Schema asignado desde la matriz
 
 | Page Type | Schema Required |
 |---|---|
@@ -160,7 +174,7 @@ Option A → `/madrid/`
 | GeoArticle | Article + FAQPage + BreadcrumbList |
 | Auxiliar (`/contacto/`) | ContactPoint |
 
-### 3.8 — Enlaces internos Required por fila
+### 3.9 — Enlaces internos Required por fila
 
 Listado contractual de enlaces obligatorios por page type (detalle operativo en Paso 7):
 
@@ -173,7 +187,7 @@ Listado contractual de enlaces obligatorios por page type (detalle operativo en 
 | AC | GeoHub + LBS relacionados |
 | GeoArticle | matching LBS + GeoHub |
 
-### 3.9 — Priority y Publish Phase por fila
+### 3.10 — Priority y Publish Phase por fila
 
 | Page Type | Priority | Phase |
 |---|---|---|
@@ -185,13 +199,13 @@ Listado contractual de enlaces obligatorios por page type (detalle operativo en 
 | GeoArticle | P3 | Phase 2 |
 | Auxiliar | P4 | Phase 1 |
 
-### 3.10 — Default Page Status
+### 3.11 — Default Page Status
 
 `Planned` (estado inicial de cada fila).
 
 Ciclo de vida: `Planned → Draft → Ready for QA → Approved → Published`.
 
-### 3.11 — Notes estratégicas por fila (ejemplos)
+### 3.12 — Notes estratégicas por fila (ejemplos)
 
 | ID | Notes |
 |---|---|
@@ -200,7 +214,7 @@ Ciclo de vida: `Planned → Draft → Ready for QA → Approved → Published`.
 | AC-1 | Necesita keyword research específica para H1 antes de redacción |
 | GA-1 a GA-15 | ⚠ Topics derivados de fórmula G×S, requieren validación con keyword research real (ver Bloque IV §9) |
 
-### 3.12 — Validación LCAs sin filas base
+### 3.13 — Validación LCAs sin filas base
 
 | LCA | Tratamiento en matriz |
 |---|---|
@@ -209,7 +223,7 @@ Ciclo de vida: `Planned → Draft → Ready for QA → Approved → Published`.
 
 **Resultado:** 0 filas adicionales por LCA.
 
-### 3.13 — Validación matriz cerrada antes de contenido
+### 3.14 — Validación matriz cerrada antes de contenido
 
 | Validación | Resultado para Cerrajeros |
 |---|---|
@@ -227,29 +241,30 @@ Ciclo de vida: `Planned → Draft → Ready for QA → Approved → Published`.
 
 <small>§5</small>
 
-> Tabla declarativa de los 13 outputs que el Paso 3 debe producir. Cada output tiene un ID global (`Paso.Output`, ej. `3.1`) citable desde cualquier doc del sistema.
+> Tabla declarativa de los 14 outputs que el Paso 3 debe producir. Cada output tiene un ID global (`Paso.Output`, ej. `3.1`) citable desde cualquier doc del sistema.
 
 | ID | Output | Tipo | Origen |
 |---|---|---|---|
 | 3.1 | Spreadsheet Name | String | Decisión de diseño |
 | 3.2 | GeoHub URL Style | Enum (Option A / Option B) | Decisión de diseño |
-| 3.3 | Additional Category Slugs | Lista de slugs URL-safe | GMB Crush ← Paso 1 §6.6 |
-| 3.4 | URL Matrix completa | Tabla N filas × 20 columnas | GMB Crush |
-| 3.5 | IDs por tipo de página | Strings únicos por fila | GMB Crush |
-| 3.6 | Parent Page declarado por fila | URL del parent | GMB Crush |
-| 3.7 | Schema asignado desde matriz | Schema Type(s) por fila | GMB Crush |
-| 3.8 | Enlaces internos Required por fila | Lista de URLs internas | GMB Crush |
-| 3.9 | Priority y Publish Phase por fila | P1-P4 + Phase 1-N | GMB Crush |
-| 3.10 | Default Page Status | Enum (Planned / Draft / Published) | GMB Crush |
-| 3.11 | Notes estratégicas por fila | String libre, opcional | Decisión de diseño |
-| 3.12 | Validación LCAs sin filas base | Validation flag | GMB Crush |
-| 3.13 | Validación matriz cerrada antes de contenido | Validation flag | GMB Crush |
+| 3.3 | Additional Category Slugs | Lista de slugs URL-safe | GMB Crush ← Paso 1 §6.7 |
+| 3.4 | GeoArticle Topics propuestos | Lista de G × S topics validados | GMB Crush + Datos de búsqueda |
+| 3.5 | URL Matrix completa | Tabla N filas × 20 columnas | GMB Crush |
+| 3.6 | IDs por tipo de página | Strings únicos por fila | GMB Crush |
+| 3.7 | Parent Page declarado por fila | URL del parent | GMB Crush |
+| 3.8 | Schema asignado desde matriz | Schema Type(s) por fila | GMB Crush |
+| 3.9 | Enlaces internos Required por fila | Lista de URLs internas | GMB Crush |
+| 3.10 | Priority y Publish Phase por fila | P1-P4 + Phase 1-N | GMB Crush |
+| 3.11 | Default Page Status | Enum (Planned / Draft / Published) | GMB Crush |
+| 3.12 | Notes estratégicas por fila | String libre, opcional | Decisión de diseño |
+| 3.13 | Validación LCAs sin filas base | Validation flag | GMB Crush |
+| 3.14 | Validación matriz cerrada antes de contenido | Validation flag | GMB Crush |
 
 ## Reglas que Aplican
 
 <small>§6</small>
 
-> Esta sección desarrolla cada uno de los 13 outputs (3.1–3.13) con el mismo patrón: Explicación / Patrón o fórmula / Ejemplos correctos / Ejemplos incorrectos / Regla final / Validación operativa / Cómo se obtiene / Output del paso. Cada sub-sección §6.X corresponde 1:1 al output 3.X declarado en §5.
+> Esta sección desarrolla cada uno de los 14 outputs (3.1–3.14) con el mismo patrón: Explicación / Patrón o fórmula / Ejemplos correctos / Ejemplos incorrectos / Regla final / Validación operativa / Cómo se obtiene / Output del paso. Cada sub-sección §6.X corresponde 1:1 al output 3.X declarado en §5.
 
 ### 3.1 — Spreadsheet Name
 
@@ -355,7 +370,7 @@ La decisión es contractual con el Paso 4 §9 (Main City GeoHub URL Style). Por 
 
 **Explicación**
 
-Las Additional Categories que necesitan página propia (Paso 1 §6.6) necesitan slugs URL-safe específicos. La transformación es la misma que la del Paso 2 §6.2 Slug Generation, pero aplicada al subconjunto de Additional Categories no cubiertas por core services.
+Las Additional Categories que necesitan página propia (Paso 1 §6.7) necesitan slugs URL-safe específicos. La transformación es la misma que la del Paso 2 §6.2 Slug Generation, pero aplicada al subconjunto de Additional Categories no cubiertas por core services.
 
 **Patrón o fórmula**
 
@@ -386,11 +401,11 @@ Cada Additional Category con página propia tiene un slug derivado limpio y úni
 
 **Validación operativa**
 
-Aplicar slugify a cada Additional Category que necesita página propia (heredada del Paso 1 §6.6, validada en Paso 2 §6.7 Variable A). Validar que los slugs no colisionen con Service Slugs ni Primary Category Slug. Solo se generan slugs para Additional Categories efectivas (A); las cubiertas por core services no necesitan slug propio.
+Aplicar slugify a cada Additional Category que necesita página propia (heredada del Paso 1 §6.7, validada en Paso 2 §6.8 Variable A). Validar que los slugs no colisionen con Service Slugs ni Primary Category Slug. Solo se generan slugs para Additional Categories efectivas (A); las cubiertas por core services no necesitan slug propio.
 
 **Cómo se obtiene**
 
-- **Fuente:** GMB Crush ← heredados del Paso 1 §6.6.
+- **Fuente:** GMB Crush ← heredados del Paso 1 §6.7.
 - **Método:** Aplicar la transformación slugify (ver Paso 2 §6.2) a cada Additional Category que necesita página propia. Validar que los slugs no colisionen con Service Slugs ni Primary Category Slug.
 
 **Output del paso**
@@ -398,9 +413,91 @@ Aplicar slugify a cada Additional Category que necesita página propia (heredada
 - **Tipo:** Lista de slugs URL-safe (uno por Additional Category con página propia).
 - **Ejemplo (Cerrajeros Madrid 24h):** `duplicado-llaves` (1 slug, A=1).
 
-### 3.4 — URL Matrix completa
+### 3.4 — GeoArticle Topics propuestos
 
 <small>§6.4</small>
+
+**Explicación**
+
+Los topics de los GeoArticles no se inventan: se extraen mediante keyword research por servicio core. La fórmula maestra del Paso 2 fija la cantidad (G × S = N artículos), pero los temas concretos requieren validación con datos reales de búsqueda antes de producirse. Sin keyword research el GeoArticle nace sin demanda real y se vuelve thin content.
+
+**Patrón o fórmula**
+
+```text
+Por cada core service (S=5), seleccionar G topics (default G=3) que cumplan:
+  - intent informativo (cómo, qué, cuándo, por qué, cuánto)
+  - volumen ≥ umbral_cliente
+  - dificultad ≤ umbral_cliente
+  - no canibaliza la query de la LBS
+
+Total topics = G × S
+```
+
+**Ejemplo correcto con Cerrajeros Madrid 24h**
+
+```text
+S=5 servicios × G=3 topics = 15 GeoArticle Topics propuestos:
+
+Cerrajero urgente (3):
+  cuanto-cuesta-un-cerrajero-urgente
+  que-hacer-si-no-puedes-entrar-casa
+  cuanto-tarda-un-cerrajero
+
+Apertura de puertas (3):
+  cuanto-cuesta-abrir-una-puerta
+  que-hacer-si-te-dejas-las-llaves-dentro
+  apertura-de-puertas-sin-romper-cerradura
+
+Cambio de cerraduras (3): ... (3 topics)
+Cambio de bombines (3): ... (3 topics)
+Instalación de cerraduras de seguridad (3): ... (3 topics)
+```
+
+**Ejemplos incorrectos**
+
+```text
+- Inventar topics por intuición sin datos de búsqueda
+- Usar el mismo topic para varios servicios (canibalización)
+- Crear GeoArticles con intent transaccional que ya cubre la LBS
+- Topics con dificultad muy alta sin volumen que la justifique
+- Slug que no es la query real (manipulado para SEO)
+- GeoArticles sin servicio core asignado (huérfanos)
+```
+
+**Regla final**
+
+```text
+Los topics de GeoArticle se descubren con keyword research por servicio core. Cantidad fija por fórmula (G × S), contenido validado por datos reales.
+```
+
+**Validación operativa**
+
+Los topics son input directo para el output 3.5 (URL Matrix completa) — cada topic genera una fila GA-N con URL `/{main-city-slug}/{topic-slug}/`. Sin keyword research validado, las URLs GA del cluster nacen débiles y la inversión en contenido se desperdicia. Cruce con Paso 1 §6.12 (G variable), Paso 2 §6.8 (Variable G) y Paso 4 §6.8 (GeoArticle URL pattern). Si el cliente no tiene presupuesto/herramientas de keyword research, documentar como ⚠ inferido y validar antes de Paso 15 (Redacción).
+
+**Cómo se obtiene**
+
+- **Fuente:** GMB Crush + Datos de búsqueda.
+- **Método (6 pasos):**
+  1. **Ejecutar keyword research** por cada core service (Paso 1 §6.9, S=5 servicios) con volumen ≥ X impresiones/mes y dificultad ≤ Y (umbrales del cliente / sector).
+  2. **Filtrar queries con intent informativo:** cómo, qué, cuándo, por qué, cuánto, dónde, cuál, mejor.
+  3. **Excluir queries con intent transaccional** o que coincidan con la query de la LBS (anti-canibalización Paso-04 §19).
+  4. **Seleccionar G topics por servicio** (G=3 por defecto, Paso 1 §6.12):
+     - Priorizar volumen alto + dificultad baja.
+     - Asegurar complementariedad: cada topic responde una intención distinta dentro del mismo servicio.
+  5. **Generar el slug del topic:**
+     - Base = la query como apareció en keyword research.
+     - Normalizar siguiendo Paso-04 §17 + Paso-04 §18 + Paso-04 §19 (lowercase, sin acentos, guiones medios, sin adjetivos SEO vacíos).
+  6. **Construir la URL del GeoArticle:**
+     - Patrón: `/{main-city-slug}/{topic-slug}/` (Paso 4 §6.8).
+
+**Output del paso**
+
+- **Tipo:** Lista de G × S topics validados (15 para Cerrajeros con G=3, S=5), cada uno con su slug URL-safe listo para entrar en URL Matrix.
+- **Ejemplo (Cerrajeros Madrid 24h):** 15 topics distribuidos 3 por core service (ver §4 sub-sección 3.4 para listado completo).
+
+### 3.5 — URL Matrix completa
+
+<small>§6.5</small>
 
 **Explicación**
 
@@ -411,7 +508,7 @@ La URL Matrix completa es el output central del Paso 3. Convierte arquitectura e
 ```text
 One URL = one row = one page type = one function
 
-Total filas = Total inventario base (Paso 2 §6.10) + 1 auxiliar (/contacto/)
+Total filas = Total inventario base (Paso 2 §6.11) + 1 auxiliar (/contacto/)
             = (1 + S + 1 + S + A + G×S) + 1
 ```
 
@@ -455,12 +552,12 @@ La matriz base no es una lista de ideas; es una tabla de producción. Cada fila 
 **Cómo se obtiene**
 
 - **Fuente:** GMB Crush.
-- **Método:** Para cada URL del cluster (heredada de Paso 2 §6.10 Tabla de inventario base), crear una fila con todos los campos obligatorios (§6.4.1 Columnas obligatorias listadas más abajo). Una URL = una fila exacta. Las URLs no aprobadas (LCAs sin AEA) NO se incluyen.
+- **Método:** Para cada URL del cluster (heredada de Paso 2 §6.11 Tabla de inventario base), crear una fila con todos los campos obligatorios (§6.5.1 Columnas obligatorias listadas más abajo). Una URL = una fila exacta. Las URLs no aprobadas (LCAs sin AEA) NO se incluyen.
 
 **Output del paso**
 
 - **Tipo:** N filas en el spreadsheet (donde N = total de URLs del cluster + auxiliares).
-- **Ejemplo (Cerrajeros Madrid 24h):** 28 filas SEO + 1 auxiliar = 29 filas. Ver tabla completa en §4 sub-sección 3.4.
+- **Ejemplo (Cerrajeros Madrid 24h):** 28 filas SEO + 1 auxiliar = 29 filas. Ver tabla completa en §4 sub-sección 3.5.
 
 #### Columnas obligatorias de la URL Matrix
 
@@ -500,9 +597,9 @@ GeoArticle           /{main-city-slug}/{topic-slug}/
 
 > **Regla:** Additional Category Pages siguen el mismo patrón que LBS (`/cat/city/slug/`), NO el patrón GeoArticle (`/city/slug/`). Esto las mantiene como páginas comerciales bajo la categoría principal, con la ciudad como nivel intermedio.
 
-### 3.5 — IDs por tipo de página
+### 3.6 — IDs por tipo de página
 
-<small>§6.5</small>
+<small>§6.6</small>
 
 **Explicación**
 
@@ -552,16 +649,16 @@ Cada fila necesita un ID legible para controlar producción, QA y enlaces. El ID
 **Cómo se obtiene**
 
 - **Fuente:** GMB Crush.
-- **Método:** Asignar ID por tipo según la nomenclatura GMB Crush: `HP`, `SO-N`, `GH`, `LBS-N`, `AC-N`, `GA-N`. El número N es secuencial dentro del tipo, ordenado por importancia o por orden de aparición del servicio en Paso 1 §6.9.
+- **Método:** Asignar ID por tipo según la nomenclatura GMB Crush: `HP`, `SO-N`, `GH`, `LBS-N`, `AC-N`, `GA-N`. El número N es secuencial dentro del tipo, ordenado por importancia o por orden de aparición del servicio en Paso 1 §6.10.
 
 **Output del paso**
 
 - **Tipo:** String único por fila (formato `tipo-N`).
 - **Ejemplo (Cerrajeros Madrid 24h):** `HP`, `SO-1`, `SO-2`, ..., `LBS-1`, ..., `GA-15`, `AUX`.
 
-### 3.6 — Parent Page declarado por fila
+### 3.7 — Parent Page declarado por fila
 
-<small>§6.6</small>
+<small>§6.7</small>
 
 **Explicación**
 
@@ -613,7 +710,7 @@ Cada fila debe declarar Parent Page existente; no hay páginas huérfanas en la 
 
 **Validación operativa**
 
-Cada página que no sea homepage necesita una página padre que exista en la propia matriz. Esto ayuda a construir el silo y a saber desde dónde se enlazará cada URL. La regla aplica también para validar Publish Phase (§6.9): un GeoArticle no puede publicarse antes de que su LBS padre esté lista.
+Cada página que no sea homepage necesita una página padre que exista en la propia matriz. Esto ayuda a construir el silo y a saber desde dónde se enlazará cada URL. La regla aplica también para validar Publish Phase (§6.10): un GeoArticle no puede publicarse antes de que su LBS padre esté lista.
 
 **Cómo se obtiene**
 
@@ -625,9 +722,9 @@ Cada página que no sea homepage necesita una página padre que exista en la pro
 - **Tipo:** String — URL del parent (vacío solo para Homepage).
 - **Ejemplo (Cerrajeros Madrid 24h):** Homepage parent = `–`. SO Cerrajero urgente parent = `/`. LBS Cerrajero urgente Madrid parent = `/cerrajero/cerrajero-urgente/`.
 
-### 3.7 — Schema asignado desde la matriz
+### 3.8 — Schema asignado desde la matriz
 
-<small>§6.7</small>
+<small>§6.8</small>
 
 **Explicación**
 
@@ -688,9 +785,9 @@ La matriz debe incluir schema requerido por tipo de página para que el equipo n
 - **Tipo:** Schema Type(s) por fila (uno o más, separados por `+`).
 - **Ejemplo (Cerrajeros Madrid 24h):** Homepage → `Organization + LocalBusiness + WebSite + FAQPage + Speakable`. SO → `Service + WebPage + BreadcrumbList`. LBS → `LocalBusiness + BreadcrumbList`. GA → `Article + FAQPage + BreadcrumbList`.
 
-### 3.8 — Enlaces internos Required por fila
+### 3.9 — Enlaces internos Required por fila
 
-<small>§6.8</small>
+<small>§6.9</small>
 
 **Explicación**
 
@@ -754,9 +851,9 @@ La matriz debe listar enlaces obligatorios para cada URL. Sin esta columna, las 
 - **Tipo:** Lista de URLs internas obligatorias por fila.
 - **Ejemplo (Cerrajeros Madrid 24h):** SO Cerrajero urgente → enlaces a `/`, `/madrid/`, `/cerrajero/madrid/cerrajero-urgente/`, otras SO. LBS Cerrajero urgente Madrid → 6 enlaces (SO padre + GeoHub + 2 related LBS + 2 matching GAs).
 
-### 3.9 — Priority y Publish Phase por fila
+### 3.10 — Priority y Publish Phase por fila
 
-<small>§6.9</small>
+<small>§6.10</small>
 
 **Explicación**
 
@@ -811,16 +908,16 @@ La prioridad mide importancia estratégica; la fase mide cuándo se publica. Una
 **Cómo se obtiene**
 
 - **Fuente:** GMB Crush.
-- **Método:** Priority captura el orden de importancia (P1 alta → P4 baja); Publish Phase captura cuándo se publica (Phase 1, 2, 3...). Default Priority del intake aplica a filas sin override explícito. Son dos campos independientes que NUNCA se mezclan. Validar dependencias antes de asignar Phase: si el Parent Page (§6.6) no existe, la fila se mueve a Phase posterior.
+- **Método:** Priority captura el orden de importancia (P1 alta → P4 baja); Publish Phase captura cuándo se publica (Phase 1, 2, 3...). Default Priority del intake aplica a filas sin override explícito. Son dos campos independientes que NUNCA se mezclan. Validar dependencias antes de asignar Phase: si el Parent Page (§6.7) no existe, la fila se mueve a Phase posterior.
 
 **Output del paso**
 
 - **Tipo:** Priority (P1-P4) + Publish Phase (Phase 1-N) por fila.
 - **Ejemplo (Cerrajeros Madrid 24h):** Homepage = P1, Phase 1. SO core services = P1, Phase 1. GeoHub = P1, Phase 1. LBS = P1, Phase 1. AC = P2, Phase 1. GeoArticles = P3, Phase 2.
 
-### 3.10 — Default Page Status
+### 3.11 — Default Page Status
 
-<small>§6.10</small>
+<small>§6.11</small>
 
 **Explicación**
 
@@ -862,7 +959,7 @@ Status refleja el estado real de cada fila a lo largo del ciclo de vida de la p�
 
 **Validación operativa**
 
-Cada URL necesita un estado para controlar el flujo de producción. Planned, Draft, Ready for QA, Approved y Published son estados suficientes para saber qué hacer con cada fila. El cierre de la matriz (Paso 3 §6.13) deja todas las filas en Planned; los pasos posteriores actualizan según avance: Paso 15 Redacción → Draft, Paso 16 QA → Ready for QA, Paso 18 Deploy → Published.
+Cada URL necesita un estado para controlar el flujo de producción. Planned, Draft, Ready for QA, Approved y Published son estados suficientes para saber qué hacer con cada fila. El cierre de la matriz (Paso 3 §6.14) deja todas las filas en Planned; los pasos posteriores actualizan según avance: Paso 15 Redacción → Draft, Paso 16 QA → Ready for QA, Paso 18 Deploy → Published.
 
 **Cómo se obtiene**
 
@@ -874,9 +971,9 @@ Cada URL necesita un estado para controlar el flujo de producción. Planned, Dra
 - **Tipo:** Enum — Planned / Draft / Ready for QA / Approved / Published.
 - **Ejemplo (Cerrajeros Madrid 24h):** Default Page Status = `Planned`. Cada fila arranca como Planned hasta que se redacte.
 
-### 3.11 — Notes estratégicas por fila
+### 3.12 — Notes estratégicas por fila
 
-<small>§6.11</small>
+<small>§6.12</small>
 
 **Explicación**
 
@@ -927,13 +1024,13 @@ La columna Notes debe registrar por qué una página existe, qué categoría sop
 - **Tipo:** String libre, opcional, por fila.
 - **Ejemplo (Cerrajeros Madrid 24h):** Homepage Notes = `Cliente solicita H1 con 'Madrid 24h' literal por reconocimiento de marca`.
 
-### 3.12 — Validación LCAs sin filas base
+### 3.13 — Validación LCAs sin filas base
 
-<small>§6.12</small>
+<small>§6.13</small>
 
 **Explicación**
 
-Las Local Coverage Areas (Paso 1 §6.10) son zonas seleccionadas como señales GEO. NO generan filas en la matriz base mientras no sean Approved Expansion Areas (Paso 1 §6.11). Esta validación garantiza que la matriz no se infla con URLs no aprobadas.
+Las Local Coverage Areas (Paso 1 §6.11) son zonas seleccionadas como señales GEO. NO generan filas en la matriz base mientras no sean Approved Expansion Areas (Paso 1 §6.12). Esta validación garantiza que la matriz no se infla con URLs no aprobadas.
 
 **Patrón o fórmula**
 
@@ -947,7 +1044,7 @@ Para cada LCA: 0 filas adicionales en la matriz base.
 **Ejemplo correcto con Cerrajeros Madrid 24h**
 
 ```text
-LCAs declaradas (Paso 1 §6.10):
+LCAs declaradas (Paso 1 §6.11):
   Direct: Almagro, Chamberí
   Candidate: Salamanca, Retiro, Centro, Tetuán, Chamartín, Arganzuela, Moncloa, Prosperidad
 
@@ -978,21 +1075,21 @@ Las Local Coverage Areas no generan filas en la matriz base; refuerzan contenido
 
 **Validación operativa**
 
-En la matriz base, el campo Main City (columna F) debe corresponder a la Main City del Paso 1 §6.7. Las Local Coverage Areas (columna I) listan las zonas mencionadas en contenido pero NO en path. Esta validación cruza con Paso 4 §13 (LCAs no generan URLs) y Paso 6 §6 (Principio 2 — LCAs enriquecen contenido). Para que una LCA pase a fila, debe pasar antes a AEA en Paso 1 §6.11.
+En la matriz base, el campo Main City (columna F) debe corresponder a la Main City del Paso 1 §6.8. Las Local Coverage Areas (columna I) listan las zonas mencionadas en contenido pero NO en path. Esta validación cruza con Paso 4 §13 (LCAs no generan URLs) y Paso 6 §6 (Principio 2 — LCAs enriquecen contenido). Para que una LCA pase a fila, debe pasar antes a AEA en Paso 1 §6.12.
 
 **Cómo se obtiene**
 
-- **Fuente:** GMB Crush ← heredado del Paso 1 §6.10 Local Coverage Areas.
-- **Método:** No crear filas en la matriz base para LCAs. La columna geográfica (Main City) usa la Main City (Paso 1 §6.7). Las LCAs aparecen en columna Local Coverage Areas (texto) y schema `areaServed` (Paso 8), no como URLs.
+- **Fuente:** GMB Crush ← heredado del Paso 1 §6.11 Local Coverage Areas.
+- **Método:** No crear filas en la matriz base para LCAs. La columna geográfica (Main City) usa la Main City (Paso 1 §6.8). Las LCAs aparecen en columna Local Coverage Areas (texto) y schema `areaServed` (Paso 8), no como URLs.
 
 **Output del paso**
 
 - **Tipo:** Validation flag — 0 filas adicionales por LCA en la matriz base.
 - **Ejemplo (Cerrajeros Madrid 24h):** 0 filas extra para Almagro, Chamberí, Salamanca, Retiro, Centro, Tetuán, Chamartín, Arganzuela, Moncloa, Prosperidad. Validación: OK.
 
-### 3.13 — Validación matriz cerrada antes de contenido
+### 3.14 — Validación matriz cerrada antes de contenido
 
-<small>§6.13</small>
+<small>§6.14</small>
 
 **Explicación**
 
@@ -1042,7 +1139,7 @@ No se debe escribir contenido página por página sin haber cerrado la matriz. L
 **Cómo se obtiene**
 
 - **Fuente:** GMB Crush.
-- **Método:** La URL Matrix se cierra (todos los campos rellenos para todas las filas) ANTES de empezar redacción de contenido (Paso 15) o construcción (Paso 17). Cualquier cambio aguas abajo obliga a reabrir la matriz y reaplicar QA. Validar que las 20 columnas obligatorias (§6.4) tienen valor en cada fila.
+- **Método:** La URL Matrix se cierra (todos los campos rellenos para todas las filas) ANTES de empezar redacción de contenido (Paso 15) o construcción (Paso 17). Cualquier cambio aguas abajo obliga a reabrir la matriz y reaplicar QA. Validar que las 20 columnas obligatorias (§6.5) tienen valor en cada fila.
 
 **Output del paso**
 
@@ -1060,115 +1157,52 @@ No se debe escribir contenido página por página sin haber cerrado la matriz. L
 - ☐ Spreadsheet Name (3.1) sigue la fórmula `[Business Name] – GMB Crush Website Architecture`
 - ☐ GeoHub URL Style (3.2) elegido (Option A o B) y aplicado consistentemente
 - ☐ Additional Category Slugs (3.3) validados contra Service Slugs (sin colisiones)
-- ☐ URL Matrix completa (3.4) con N filas = total inventario base + auxiliares
+- ☐ GeoArticle Topics propuestos (3.4) extraídos por keyword research por servicio core
+- ☐ URL Matrix completa (3.5) con N filas = total inventario base + auxiliares
 
 ### Validación de campos por fila
 
-- ☐ ID único por fila (3.5) en formato `tipo-N`
-- ☐ Parent Page declarado (3.6) y existente en la matriz
-- ☐ Schema asignado (3.7) según mapeo doctrinal por page type
-- ☐ Enlaces internos Required listados (3.8) según Paso 7
-- ☐ Priority y Publish Phase asignados (3.9) — campos separados, no mezclados
-- ☐ Status inicial = Planned (3.10) en todas las filas
+- ☐ ID único por fila (3.6) en formato `tipo-N`
+- ☐ Parent Page declarado (3.7) y existente en la matriz
+- ☐ Schema asignado (3.8) según mapeo doctrinal por page type
+- ☐ Enlaces internos Required listados (3.9) según Paso 7
+- ☐ Priority y Publish Phase asignados (3.10) — campos separados, no mezclados
+- ☐ Status inicial = Planned (3.11) en todas las filas
 
 ### Validación de doctrina
 
-- ☐ Notes estratégicas (3.11) capturadas para filas con contexto especial
-- ☐ Local Coverage Areas SIN filas base (3.12) — verificar columna Main City = Main City declarada
-- ☐ Matriz cerrada antes de contenido (3.13) — todos los 20 campos rellenos antes de Paso 15
+- ☐ Notes estratégicas (3.12) capturadas para filas con contexto especial
+- ☐ Local Coverage Areas SIN filas base (3.13) — verificar columna Main City = Main City declarada
+- ☐ Matriz cerrada antes de contenido (3.14) — todos los 20 campos rellenos antes de Paso 15
 
 ## Outputs Consolidados
 
 <small>§8</small>
 
-> Tabla final con valores reales para Cerrajeros Madrid 24h y status de cada output. Los IDs (`3.1`–`3.13`) coinciden con los declarados en §5.
+> Tabla final con valores reales para Cerrajeros Madrid 24h y status de cada output. Los IDs (`3.1`–`3.14`) coinciden con los declarados en §5.
 
 | ID | Output | Valor (Cerrajeros Madrid 24h) | Status |
 |---|---|---|---|
 | 3.1 | Spreadsheet Name | `Cerrajeros Madrid 24h – GMB Crush Website Architecture` | confirmed |
 | 3.2 | GeoHub URL Style | Option A → `/madrid/` | confirmed |
 | 3.3 | Additional Category Slugs | `duplicado-llaves` (1 slug, A=1) | confirmed |
-| 3.4 | URL Matrix completa | 28 filas SEO + 1 auxiliar = 29 filas | confirmed |
-| 3.5 | IDs por tipo de página | HP, SO-1..5, GH, LBS-1..5, AC-1, GA-1..15, AUX | confirmed |
-| 3.6 | Parent Page declarado por fila | Cada fila apunta a URL existente o `–` | confirmed |
-| 3.7 | Schema asignado desde matriz | Mapeo doctrinal aplicado a 29 filas | confirmed |
-| 3.8 | Enlaces internos Required por fila | Listado contractual por page type | confirmed |
-| 3.9 | Priority y Publish Phase por fila | P1-P4 + Phase 1-2 según page type | confirmed |
-| 3.10 | Default Page Status | `Planned` (todas las 29 filas) | confirmed |
-| 3.11 | Notes estratégicas por fila | Sample notes documentadas | confirmed |
-| 3.12 | Validación LCAs sin filas base | 0 filas extra para 10 LCAs (Almagro, Chamberí, Salamanca, etc.) | OK |
-| 3.13 | Validación matriz cerrada antes de contenido | 29 filas × 20 columnas = 580 celdas rellenas | OK |
+| 3.4 | GeoArticle Topics propuestos | 15 topics (G=3 × S=5) — ver §4 sub-sección 3.4 | ⚠ inferido (requiere validación con keyword research real) |
+| 3.5 | URL Matrix completa | 28 filas SEO + 1 auxiliar = 29 filas | confirmed |
+| 3.6 | IDs por tipo de página | HP, SO-1..5, GH, LBS-1..5, AC-1, GA-1..15, AUX | confirmed |
+| 3.7 | Parent Page declarado por fila | Cada fila apunta a URL existente o `–` | confirmed |
+| 3.8 | Schema asignado desde matriz | Mapeo doctrinal aplicado a 29 filas | confirmed |
+| 3.9 | Enlaces internos Required por fila | Listado contractual por page type | confirmed |
+| 3.10 | Priority y Publish Phase por fila | P1-P4 + Phase 1-2 según page type | confirmed |
+| 3.11 | Default Page Status | `Planned` (todas las 29 filas) | confirmed |
+| 3.12 | Notes estratégicas por fila | Sample notes documentadas | confirmed |
+| 3.13 | Validación LCAs sin filas base | 0 filas extra para 10 LCAs (Almagro, Chamberí, Salamanca, etc.) | OK |
+| 3.14 | Validación matriz cerrada antes de contenido | 29 filas × 20 columnas = 580 celdas rellenas | OK |
 
-# Bloque IV — Módulo doctrinal: GeoArticle Topics
-
-## GeoArticle Topics — método de extracción
-
-<small>§9</small>
-
-### Explicación
-
-<small>§9.1</small>
-
-Los topics de GeoArticle no se inventan: se extraen mediante keyword research por servicio core. La fórmula maestra del Paso 2 fija la cantidad (G × S = N artículos), pero los temas concretos requieren validación con datos reales de búsqueda antes de producirse. Sin keyword research el GeoArticle nace sin demanda real y se vuelve thin content.
-
-### Patrón o método
-
-<small>§9.2</small>
-
-```text
-Por cada core service (Paso 1 §6.9, S=5 servicios):
-
-1. Ejecutar keyword research con volumen ≥ X impresiones/mes
-   y dificultad ≤ Y (umbrales del cliente / sector).
-2. Filtrar queries con intent informativo:
-   - cómo, qué, cuándo, por qué, cuánto, dónde, cuál, mejor.
-3. Excluir queries con intent transaccional o que coincidan
-   con la query de la LBS (anti-canibalización Paso-04 §19).
-4. Seleccionar G topics por servicio (G=3 por defecto, Paso 1 §6.12):
-   - Priorizar volumen alto + dificultad baja.
-   - Asegurar complementariedad: cada topic responde una intención
-     distinta dentro del mismo servicio.
-5. Generar el slug del topic:
-   - Base = la query como apareció en keyword research.
-   - Normalizar siguiendo Paso-04 §17 + Paso-04 §18 + Paso-04 §19 (lowercase, sin acentos,
-     guiones medios, sin adjetivos SEO vacíos).
-6. Construir la URL del GeoArticle:
-   - Patrón: /[main-city]/[topic-slug]/ (Paso 4 §12).
-```
-
-### Ejemplo correcto con Cerrajeros Madrid 24h
-
-<small>§9.3</small>
-
-15 GeoArticles = 5 servicios core × G=3 topics. Ver listado completo en §10.1.
-
-### Ejemplos incorrectos
-
-<small>§9.4</small>
-
-```text
-- Inventar topics por intuición sin datos de búsqueda
-- Usar el mismo topic para varios servicios (canibalización)
-- Crear GeoArticles con intent transaccional que ya cubre la LBS
-- Topics con dificultad muy alta sin volumen que la justifique
-- Slug que no es la query real (manipulado para SEO)
-- GeoArticles sin servicio core asignado (huérfanos)
-```
-
-### Regla final
-
-<small>§9.5</small>
-
-```text
-Los topics de GeoArticle se descubren con keyword research por servicio
-core. Cantidad fija por fórmula, contenido validado por datos reales.
-```
-
-# Bloque V — Fuentes Internas GMB Crush usadas
+# Bloque IV — Fuentes Internas GMB Crush usadas
 
 ## Fuentes internas GMB Crush usadas
 
-<small>§10</small>
+<small>§9</small>
 
 - Analysis Framework.pdf
 - GMB CRUSH Universal AI Local SEO Framework Template
@@ -1181,9 +1215,9 @@ core. Cantidad fija por fórmula, contenido validado por datos reales.
 
 ### GeoArticles completos (15)
 
-<small>§10.1</small>
+<small>§9.1</small>
 
-> **Aviso de trazabilidad:** estos 15 títulos son un primer borrador derivado de la fórmula G × S = 15 y de la lógica del servicio. **No vienen de keyword research real**. Antes de producirlos hay que validar volumen de búsqueda, dificultad y oportunidad competitiva por título según el método del Bloque IV §9.2. La fórmula garantiza la cantidad; los temas concretos requieren validación.
+> **Aviso de trazabilidad:** estos 15 títulos son un primer borrador derivado de la fórmula G × S = 15 y de la lógica del servicio. **No vienen de keyword research real**. Antes de producirlos hay que validar volumen de búsqueda, dificultad y oportunidad competitiva por título según el método de §6.4 (GeoArticle Topics propuestos). La fórmula garantiza la cantidad; los temas concretos requieren validación.
 
 **Cerrajero urgente (3):**
 1. /madrid/cuanto-cuesta-un-cerrajero-urgente/
