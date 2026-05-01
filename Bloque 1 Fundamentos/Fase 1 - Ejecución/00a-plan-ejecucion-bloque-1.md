@@ -1,20 +1,26 @@
-# Plan de ejecución — Aeroterm · Bloque 1 (Pasos 1-3)
+# Plan de ejecución del Bloque 1 (Pasos 1-3)
 
-> Vista unificada de los **43 outputs** que producen los pasos 1, 2 y 3 cuando se ejecutan para Aeroterm. Antes de arrancar, esta tabla muestra qué se va a producir, cómo se decide cada output y qué inputs hacen falta. Una vez ejecutado, este mismo documento se convierte en el consolidado final con valores reales y status (confirmed / ⚠).
+> Plantilla del sistema. Vista unificada de los **43 outputs** que producen los pasos 1, 2 y 3 cuando se ejecutan para cualquier cliente. Antes de arrancar la ejecución, esta tabla muestra qué se va a producir, cómo se decide cada output y qué fuentes hacen falta. Una vez ejecutado, este mismo documento se rellena con los valores reales del cliente y su status (confirmed / ⚠ inferido / ⚠ placeholder) y se convierte en el consolidado del Bloque 1 para ese cliente.
+
+> **Cómo usar esta plantilla:**
+> 1. Rellena la sección "Cliente" con los 5 campos del preflight.
+> 2. Lee las 3 tablas (Paso 1, 2, 3) para entender qué outputs hay que producir y de dónde viene cada uno.
+> 3. Resuelve los bloqueos críticos antes de arrancar la ejecución (sección final).
+> 4. Una vez ejecutado, vuelca los valores reales en las columnas (o crea un consolidado paralelo en `Fase 3 - Consolidado/`).
 
 ---
 
-## Cliente — Aeroterm
+## Cliente
 
-> Datos del preflight (`Bloque 0 Preflight/00preflight.md`). Pendientes de rellenar antes de ejecutar.
+> Datos del preflight (`Bloque 0 Preflight/00preflight.md`). Rellenar antes de arrancar la ejecución.
 
 | Campo | Valor |
 |---|---|
-| 1. Nombre del negocio | `Aeroterm` |
-| 2. Qué hace | Aerotermia / climatización / energía solar en domicilios |
-| 3. Dirección con CP | `Marqués de Valdecilla 16, 28002 Madrid` (barrio/distrito ⚠ pendiente confirmar) |
-| 4. Estado del GBP | `Not Created` (web-first default) |
-| 5. Ciudades para análisis Local Pack | `Madrid` |
+| 1. Nombre del negocio | `[pendiente]` |
+| 2. Qué hace | `[pendiente]` |
+| 3. Dirección con CP | `[pendiente]` |
+| 4. Estado del GBP | `[pendiente]` |
+| 5. Ciudades para análisis Local Pack | `[pendiente]` |
 
 ---
 
@@ -111,7 +117,7 @@
 | Output a decidir | Fuentes para Decidir | Cómo Decidimos |
 |---|---|---|
 | **3.1** Spreadsheet Name | `← 1.1` | Convención `[Cliente] – GMB Crush Website Architecture` |
-| **3.2** GeoHub URL Style | `Decisión operador` | Decisión operador — Option A `/madrid/` o Option B `/cerrajero/madrid/` |
+| **3.2** GeoHub URL Style | `Decisión operador` | Decisión operador — Option A `/[main-city]/` o Option B `/[primary-cat]/[main-city]/` |
 | **3.3** Additional Category Slugs | `← 1.6` | Slugify aplicado a las Additional Categories que necesitan página propia |
 | **3.4** GeoArticle Topics propuestos | `← 1.9` + `Keyword research` | Keyword research por core service + filtrar por intent GEO + validar volumen |
 | **3.5** URL Matrix completa | `← 2.9 + 2.10` + outputs 1.X y 2.X relevantes | Generar matriz N filas × 20 columnas con todas las URLs derivadas de la fórmula |
@@ -123,7 +129,7 @@
 | **3.11** Default Page Status | `Doctrina` | `Planned` (default al cerrar matriz) |
 | **3.12** Notes estratégicas por fila | `Decisión operador` | Decisión operador — opcional, contexto operativo por fila |
 | **3.13** Validación LCAs sin filas base | `← 1.10 + 3.5` | Confirmar que ninguna LCA genera fila URL en la matriz |
-| **3.14** Validación matriz cerrada antes de contenido | `← 3.5` | Validar que todas las celdas (29×20=580) están rellenas |
+| **3.14** Validación matriz cerrada antes de contenido | `← 3.5` | Validar que todas las celdas de la matriz están rellenas |
 
 ---
 
@@ -147,14 +153,14 @@
 
 ### Tools externos
 
-- ☐ **Google Maps (Local Pack)** — análisis top 5 competidores en `Madrid` por la categoría aerotermia. Resuelve: 1.5, 1.6, 1.9, 1.10 (Candidate), 1.14
-- ☐ **Keyword research (Ahrefs / Semrush / Google KP)** — volumen + intent en Madrid por core service. Resuelve: 3.4 (15 GeoArticle Topics)
+- ☐ **Google Maps (Local Pack)** — análisis top 5 competidores en las ciudades del `Preflight 5` por la categoría del negocio. Resuelve: 1.5, 1.6, 1.9, 1.10 (Candidate), 1.14
+- ☐ **Keyword research (Ahrefs / Semrush / Google KP)** — volumen + intent en la Main City por core service. Resuelve: 3.4 (G×S GeoArticle Topics)
 
 ### Decisiones del operador
 
 - ☐ Approved Expansion Areas (output 1.11) — default `None in Phase 1`
 - ☐ Preferred CTA (output 1.13) — entre Llamar / WhatsApp / Solicitar presupuesto / Email
-- ☐ GeoHub URL Style (output 3.2) — Option A `/madrid/` (default) o Option B `/cerrajero/madrid/`
+- ☐ GeoHub URL Style (output 3.2) — Option A `/[main-city]/` (default) o Option B `/[primary-cat]/[main-city]/`
 - ☐ Notes estratégicas por fila (output 3.12) — opcional
 
 ### Defaults doctrinales (no requieren input)
@@ -189,7 +195,7 @@ Outputs 1.X
             │
             └─► Generar matriz ──► 3.5 → 3.6, 3.7, 3.8, 3.9, 3.10, 3.11
 
-Keyword research ──► 3.4 (15 GeoArticle Topics)
+Keyword research ──► 3.4 (G×S GeoArticle Topics)
 ```
 
 ---
