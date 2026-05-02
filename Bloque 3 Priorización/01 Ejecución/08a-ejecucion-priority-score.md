@@ -103,7 +103,7 @@ Priority Score = Revenue + Intent + GBP Category + Local Relevance + Competition
 
 ### 8.6 — Competition Gap
 
-`4` (top 10 SERP tiene 3 LBS dedicadas + 4 directorios débiles + 3 perfiles GBP — hay hueco real).
+`4` (top 10 SERP tiene 2 LBS dedicadas + 5 directorios débiles + 3 perfiles GBP — hay hueco real).
 
 ### 8.7 — Conversion Urgency
 
@@ -372,18 +372,22 @@ Mide la **alineación de la página con la Primary o Additional GBP Category**. 
 **Escala 1-5**
 
 ```text
-1 = Soporte débil o inexistente
-2 = Soporte indirecto
-3 = Soporte parcial (categoría secundaria sin página propia)
-4 = Soporte directo (categoría adicional con página)
-5 = Match exacto con Primary o Additional GBP Category visible en top 5 Local Pack
+1 = Soporte débil o inexistente (página tangencial a la categoría)
+2 = Soporte indirecto (relación lateral)
+3 = Soporte parcial (informacional general, sin alineamiento fuerte)
+4 = Soporte directo (Additional Category con página propia OR página informacional fuerte alineada con Primary)
+5 = Match exacto: la página es el ancla principal de la Primary o Additional GBP Category (LBS/AC en top 5 Local Pack)
 ```
 
 **Cómo se mide**
 
 - Buscar `[categoría] [Main City]` en Google Maps.
 - Contar perfiles del top 5 que muestran esa categoría como primary.
-- 5 = ≥3 perfiles. 4 = 2 perfiles. 3 = 1 perfil. 2 = no aparece pero es relevante. 1 = no aparece y es lateral.
+- 5 = página comercial dedicada + ≥3 perfiles competidores tienen esa categoría como primary.
+- 4 = AC con página propia, o GA fuerte alineado con Primary (intent comercial).
+- 3 = informacional general (cubre el tema sin enfoque fuerte).
+- 2 = relación lateral, soporte indirecto.
+- 1 = página tangencial sin soporte real.
 
 **Ejemplo correcto con Cerrajeros Madrid 24h**
 
@@ -508,7 +512,7 @@ Mide la **debilidad de los competidores en la SERP** para la combinación servic
 **Ejemplo correcto con Cerrajeros Madrid 24h**
 
 ```text
-LBS Cerrajero urgente Madrid → 4 (3 LBS fuertes + 4 directorios + 3 GBPs en top 10)
+LBS Cerrajero urgente Madrid → 4 (2 LBS dedicadas + 5 directorios + 3 GBPs en top 10)
 LBS Cambio de bombines Madrid → 4 (similar competition)
 GeoArticle "cuanto cuesta cerrajero" → 4 (top 10 con artículos genéricos)
 ```

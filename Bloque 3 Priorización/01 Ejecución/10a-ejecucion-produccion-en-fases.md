@@ -168,16 +168,21 @@ Pre-requisitos: Fases 1-3 publicadas y validadas; datos de GSC mínimos.
 
 ### 10.9 — Calendario semanal de publicación
 
-| Semana | Fase | Páginas | Detalle |
+| Semana | Fase | Páginas | Detalle (URLs concretas) |
 |---|---|---|---|
-| 1 | Entity | 5 | HP + 4 SO |
-| 2 | Entity → Conversion | 5 | 1 SO + GeoHub + 3 LBS P1 |
-| 3 | Conversion | 5 | 2 LBS + 1 AC + QA interno + buffer |
-| 4 | Semantic | 5 | 5 GAs principales (P2) |
+| 1 | Entity | 5 | `/`, `/cerrajero/cerrajero-urgente/`, `/cerrajero/apertura-puertas/`, `/cerrajero/cambio-cerraduras/`, `/cerrajero/cambio-bombines/` (HP + SO-1..4) |
+| 2 | Entity → Conversion | 5 | `/cerrajero/instalacion-cerraduras-seguridad/` (SO-5), `/madrid/` (GH), `/cerrajero/madrid/cerrajero-urgente/` (LBS-1), `/cerrajero/madrid/apertura-puertas/` (LBS-2), `/cerrajero/madrid/cambio-cerraduras/` (LBS-3) |
+| 3 | Conversion | 5 | `/cerrajero/madrid/cambio-bombines/` (LBS-4), `/cerrajero/madrid/instalacion-cerraduras-seguridad/` (LBS-5), `/cerrajero/madrid/duplicado-llaves/` (AC-1), QA por lote, buffer |
+| 4 | Semantic | 5 | 5 GAs principales (P2) — los de mayor Search Intent |
 | 5 | Semantic | 5 | 5 GAs (P2-P3) |
 | 6 | Semantic + arranque Optimization | 5 | 5 GAs long-tail |
 | 7-8 | GBP Creation | — | Crear GBP + sincronizar (no nuevas páginas) |
 | 9+ | Optimization Loop | — | Iteración continua basada en datos |
+
+> **Validación de dependencias por semana** (cumple Regla 6 + matriz §6.10):
+> - **Semana 2** publica LBS-1, LBS-2, LBS-3 — sus parent SO-1, SO-2, SO-3 ya están publicados en Semana 1 ✓. Publica también GeoHub (parent = HP, ya en Semana 1 ✓) y SO-5.
+> - **Semana 3** publica LBS-4 (parent SO-4 en Semana 1 ✓), LBS-5 (parent SO-5 en Semana 2 ✓), AC-1 (parent GH en Semana 2 ✓).
+> - **Semanas 4-6** publican los 15 GAs — todos sus parents LBS están publicados en Semanas 2-3 ✓.
 
 ### 10.10 — Matriz de dependencias de publicación
 

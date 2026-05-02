@@ -38,7 +38,7 @@
 | `Decisión operador` | Elección del que ejecuta el sistema |
 | `Doctrina` | Default fijo de los manuales GMB Crush |
 
-> **Nota:** Bloque 3 hereda del estado de Bloques 1 y 2 (101 outputs upstream); además requiere keyword research y Local Pack para los scores de Paso 8 (Search Intent + Competition Gap), input del cliente para capacities en Paso 10, y decisiones operativas para el calendario.
+> **Nota:** Bloque 3 hereda del estado de Bloques 1 y 2 (102 outputs upstream); además requiere keyword research y Local Pack para los scores de Paso 8 (Search Intent + Competition Gap), input del cliente para capacities en Paso 10, y decisiones operativas para el calendario.
 
 ### Catálogo formal de Fuentes del sistema
 
@@ -173,7 +173,7 @@
 ## Cascada de dependencias (qué bloquea qué)
 
 ```
-Bloques 1+2 cerrados (101 outputs confirmed)
+Bloques 1+2 cerrados (102 outputs confirmed)
     │
     ├─► Paso 8 (Priority Score)
     │       │
@@ -222,4 +222,4 @@ Bloques 1+2 cerrados (101 outputs confirmed)
 
 ---
 
-> **Cuándo arrancar la ejecución:** una vez Bloques 1-2 estén cerrados (101 outputs confirmed) y los tools externos preparados (keyword research listo, Local Pack ejecutado en Paso-01 reutilizado). El Paso 8 se puede ejecutar inmediatamente; el Paso 9 espera a tener URLs candidatas a publicar (en Cerrajeros: las 28 URLs del inventario); el Paso 10 cierra el Bloque y arranca la producción real (semana 1 de Fase 1).
+> **Cuándo arrancar la ejecución:** una vez Bloques 1-2 estén cerrados (102 outputs confirmed) y los tools externos preparados (keyword research listo, Local Pack ejecutado en Paso-01 reutilizado). El Paso 8 se puede ejecutar inmediatamente; el Paso 9 espera a tener URLs candidatas a publicar (en Cerrajeros: las 28 URLs del inventario); el Paso 10 cierra el Bloque y arranca la producción real (semana 1 de Fase 1).
