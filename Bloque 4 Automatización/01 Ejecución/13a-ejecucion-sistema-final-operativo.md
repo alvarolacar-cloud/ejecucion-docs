@@ -428,7 +428,7 @@ Bloque 3 — Priorización:
   Paso 10: Producción en Fases  → 13 outputs (10.1-10.13)
 
 Bloque 4 — Automatización:
-  Paso 11: Pseudocódigo         → 14 outputs (11.1-11.14)
+  Paso 11: Pseudocódigo         → 19 outputs (11.1-11.19)
   Paso 12: Master Prompt        → 12 outputs (12.1-12.12)
   Paso 13: Sistema Final Operativo → 14 outputs (13.1-13.14)
 
@@ -925,7 +925,7 @@ Ver §4 sub-sección 13.7.
 Cambio #001 — 2026-06-15
 Tipo: Expansion
 Descripción: Aprobar Approved Expansion Area 'Toledo' tras validación
-Outputs afectados: 1.11 (Paso 1), 4.10 (Paso 4), 7.15 (Paso 7), 11.6 (Paso 11)
+Outputs afectados: 1.11 (Paso 1), 4.10 (Paso 4), 7.15 (Paso 7), 11.11 (Paso 11)
 Razón: Cliente aprueba expansión tras 6 meses de datos GSC sólidos
 Aprobado por: Operador
 Validado QA: Sí — 2026-06-20

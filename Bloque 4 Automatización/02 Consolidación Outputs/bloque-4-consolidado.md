@@ -70,7 +70,7 @@
 |---|---|---|---|
 | 13.1 | SOP completo del sistema | `[documento maestro 11 secciones]` | ☐ |
 | 13.2 | Resumen ejecutivo del cluster | `[15 campos rellenos]` | ☐ |
-| 13.3 | Workflow detallado de los 13 pasos | `[177 outputs counted]` | ☐ |
+| 13.3 | Workflow detallado de los 13 pasos | `[182 outputs counted]` | ☐ |
 | 13.4 | Estructura de carpetas y archivos | `[árbol filesystem documentado]` | ☐ |
 | 13.5 | Inventario URL final consolidado | `[N+1 URLs con score+tier+phase+QA]` | ☐ |
 | 13.6 | 15 Reglas No Negociables | `[15/15 reglas aplicadas]` | ☐ |
@@ -138,7 +138,7 @@
 
 **Pre-requisitos antes de arrancar Paso 14 (post Phase 1-3 publicadas):**
 
-- ☐ Bloques 1-4 cerrados (177 outputs en confirmed)
+- ☐ Bloques 1-4 cerrados (182 outputs en confirmed)
 - ☐ Fases 1-3 publicadas (28 URLs SEO base activas)
 - ☐ Final Publish Gate Pass en N URLs
 - ☐ GBP Not Created Checklist Pass en N URLs
