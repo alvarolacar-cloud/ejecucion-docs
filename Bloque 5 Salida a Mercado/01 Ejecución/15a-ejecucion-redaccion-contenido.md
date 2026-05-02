@@ -18,12 +18,12 @@ Proveniencia: portado de `repos-1-y-2/Bloque 5 — Salida a Mercado/paso-15-reda
 
 <small>§2</small>
 
-En este paso la IA redacta **TODO el copy del cluster web** aplicando 4 capas de redacción (Estructura / Zonas / Argumentos / Entidades) a los 6 page types doctrinales. Aplica las 4 reglas de calidad universales (Hero+CTA / Problema+Realidad / Datos+Precio / Contexto Local) + 13 reglas operativas que previenen canibalización, clusters rotos, reseñas inventadas y copy genérico. Es el paso que transforma la arquitectura de Bloques 1-4 en contenido publicable.
+En este paso la IA redacta **TODO el copy del cluster web** aplicando 4 capas de redacción (Estructura / Zonas / Argumentos / Entidades) a los 6 page types doctrinales. Aplica las 4 reglas de calidad universales (Hero y CTA / Problema y Realidad del Servicio / Datos, Precio y Opinión Experta / Contexto Local y Realismo) + 13 reglas operativas que previenen canibalización, clusters rotos, reseñas inventadas y copy genérico. Es el paso que transforma la arquitectura de Bloques 1-4 en contenido publicable.
 
 **Outputs del paso:**
 
 - **15.1** Capas de redacción — 4 capas verticales (Estructura / Zonas / Argumentos / Entidades)
-- **15.2** Reglas de calidad universal — 4 reglas (Hero+CTA / Problema+Realidad / Datos+Precio / Contexto Local)
+- **15.2** Reglas de calidad universal — 4 reglas (Hero y CTA / Problema y Realidad del Servicio / Datos, Precio y Opinión Experta / Contexto Local y Realismo)
 - **15.3** Homepage redactada (1 página, 4 capas aplicadas)
 - **15.4** Service Overview Pages redactadas (S=5 páginas, 4 capas × cada una)
 - **15.5** Location-Based Service Pages redactadas (S=5 páginas, 4 capas × cada una)
@@ -109,18 +109,18 @@ Capa 4 — ENTIDADES:
 ### 15.2 — Reglas de calidad universal
 
 ```text
-Regla 1 — Hero + CTA:
+Regla 1 — Hero y CTA:
   Hero compacto (cabe en móvil sin scroll); CTA visible above-the-fold
 
-Regla 2 — Problema + Realidad:
+Regla 2 — Problema y Realidad del Servicio:
   Empezar describiendo el problema concreto del usuario;
   no abrir con descripción del negocio
 
-Regla 3 — Datos + Precio:
+Regla 3 — Datos, Precio y Opinión Experta:
   Incluir datos verificables (precios desde, tiempos típicos, garantías reales);
   no claims genéricos ("los mejores", "los más rápidos")
 
-Regla 4 — Contexto Local:
+Regla 4 — Contexto Local y Realismo:
   Mencionar barrios, calles, casos de uso reales del Main City;
   no listados vacíos de zonas
 ```

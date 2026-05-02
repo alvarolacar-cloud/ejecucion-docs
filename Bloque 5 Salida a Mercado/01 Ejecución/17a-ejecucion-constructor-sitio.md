@@ -18,7 +18,7 @@ Proveniencia: portado de `repos-1-y-2/Bloque 5 — Salida a Mercado/paso-17-cons
 
 <small>§2</small>
 
-En este paso la IA **construye el sitio web funcional** ejecutando — sin decidir — los outputs de Pasos 1-16. Stack canónico: Astro 5 + Tailwind v3 + pnpm. 6 fases operativas (Setup, UI Components, Layouts, Páginas, SEO/Schema, Limpieza de rastros IA) con 2 paradas de confirmación. El Paso 17 es **ejecutor, no decisor**: cualquier contradicción detectada para hasta resolución upstream.
+En este paso la IA **construye el sitio web funcional** ejecutando — sin decidir — los outputs de Pasos 1-16. Stack canónico: Astro 5 + Tailwind v3 + pnpm + Cloudflare Pages. **7 fases operativas** (Fase 0 Acta de Lectura + Fase 1 Setup + Fase 2 UI Components + Fase 3 Layout Global + Fase 4 Construcción de Páginas + Fase 5 SEO/Schema + Fase 6 Limpieza de Rastros IA) con **2 paradas de confirmación** (PARADA 1 después de Fase 0, PARADA 2 antes del Deploy). El Paso 17 es **ejecutor, no decisor**: cualquier contradicción detectada para hasta resolución upstream.
 
 **Outputs del paso:**
 
