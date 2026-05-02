@@ -71,7 +71,7 @@ En este paso la IA produce todos los outputs que **convierten la matriz prioriza
 | Priority y Publish Phase por fila | Paso-03 3.10 |
 | Publish Phase derivada | Paso-08 8.10 |
 | Inventario priorizado completo | Paso-08 8.14 |
-| Final Publish Gate por URL | Paso-09 9.14 |
+| Final Publish Gate por URL | Paso-09 9.7 |
 
 # Bloque II — Ejemplo rellenado para el Paso 10 — Producción en Fases
 
@@ -227,8 +227,8 @@ Pre-requisitos: Fases 1-3 publicadas y validadas; datos de GSC mínimos.
 Bloque 1 (Pasos 1-3):     ✓ confirmed (43 outputs validados)
 Bloque 2 (Pasos 4-7):     ✓ confirmed (59 outputs validados)
 Bloque 3 Paso 8:          ✓ confirmed (14 outputs)
-Bloque 3 Paso 9:          ✓ confirmed (15 outputs, 28 URLs Pass)
-Total upstream:           131 outputs en confirmed.
+Bloque 3 Paso 9:          ✓ confirmed (8 outputs, 28 URLs Pass)
+Total upstream:           124 outputs en confirmed.
 Resultado:                Listo para arrancar Paso 10.
 ```
 
@@ -635,7 +635,7 @@ Ver §4 sub-sección 10.8.
 
 **Validación operativa**
 
-Aplicar tras Fase 3 cerrada. Cruce con Paso-09 9.15 (GBP Not Created Checklist desactivado tras Paso 14).
+Aplicar tras Fase 3 cerrada. Cruce con Paso-09 9.8 (GBP Not Created Checklist desactivado tras Paso 14).
 
 **Cómo se obtiene**
 
@@ -855,7 +855,7 @@ Para arrancar Fase 1:
     Bloque 1 (Pasos 1-3): 43/43 outputs confirmed,
     Bloque 2 (Pasos 4-7): 59/59 outputs confirmed,
     Paso 8: 14/14 outputs confirmed,
-    Paso 9: 15/15 outputs confirmed (Final Publish Gate Pass)
+    Paso 9: 8/8 outputs confirmed (Final Publish Gate Pass)
   )
 ```
 
@@ -889,7 +889,7 @@ Aplicar antes de la semana 1. Si algún output upstream está en ⚠, volver al 
 **Output del paso**
 
 - **Tipo:** Validation flag.
-- **Ejemplo (Cerrajeros Madrid 24h):** 131 outputs upstream en confirmed; listo para arrancar.
+- **Ejemplo (Cerrajeros Madrid 24h):** 124 outputs upstream en confirmed; listo para arrancar.
 
 ## Checklist Final
 
@@ -943,7 +943,7 @@ Aplicar antes de la semana 1. Si algún output upstream está en ⚠, volver al 
 | 10.10 | ← Paso-03 3.7 + Paso-08 8.10 | **Matriz de dependencias de publicación** = `6 reglas de dependencia documentadas` | Cruzar Parent Page (Paso-03 3.7) + Publish Phase (Paso-08 8.10) por URL. **Fuente:** GMB Crush. | confirmed |
 | 10.11 | — | **Las 10 reglas operativas** = `10 reglas aplicadas` | Doctrina GMB Crush — declaración fija de los 10 principios. **Fuente:** GMB Crush. | OK |
 | 10.12 | ← 10.4-10.10 | **Checklist pre-publicación (8 items)** = `8/8 ✓ tras cerrar upstream` | Validar cada check contra outputs heredados. **Fuente:** GMB Crush. | OK |
-| 10.13 | ← Bloques 1+2 + Pasos 8+9 | **Validación Bloques 1-2 cerrados** = `131 outputs upstream en confirmed; listo` | Cruzar status de cada output upstream y validar 100% confirmed. **Fuente:** GMB Crush. | OK |
+| 10.13 | ← Bloques 1+2 + Pasos 8+9 | **Validación Bloques 1-2 cerrados** = `124 outputs upstream en confirmed; listo` | Cruzar status de cada output upstream y validar 100% confirmed. **Fuente:** GMB Crush. | OK |
 
 # Bloque IV — Fuentes Internas GMB Crush usadas
 

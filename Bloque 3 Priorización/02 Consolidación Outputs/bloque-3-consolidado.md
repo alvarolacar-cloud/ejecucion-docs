@@ -1,10 +1,10 @@
 # Consolidado del Bloque 3 — Priorización (Pasos 8-10)
 
-> Plantilla del sistema. Documento de cierre de la Fase 1 (Ejecución) de Bloque 3. Recoge los **42 outputs** producidos por los pasos 8, 9 y 10 con sus valores reales para el cliente y su status (`confirmed` / `⚠ inferido` / `⚠ placeholder` / `validated`).
+> Plantilla del sistema. Documento de cierre de la Fase 1 (Ejecución) de Bloque 3. Recoge los **35 outputs** producidos por los pasos 8, 9 y 10 con sus valores reales para el cliente y su status (`confirmed` / `⚠ inferido` / `⚠ placeholder` / `validated`).
 >
 > Bloque 3 hereda 100% del estado de Bloques 1+2 — si esos están como `⚠`, sus consecuencias en Bloque 3 también lo estarán. El Paso 9 actúa como **gate doctrinal**: cualquier URL con Final Publish Gate fallido bloquea el avance al Paso 10 (Producción en Fases) y al Paso 18 (Deploy).
 
-> **Tabla de pasos cubiertos:** Total **42 outputs** = 14 (Paso 8) + 15 (Paso 9) + 13 (Paso 10).
+> **Tabla de pasos cubiertos:** Total **35 outputs** = 14 (Paso 8) + 8 (Paso 9) + 13 (Paso 10).
 
 ---
 
@@ -45,20 +45,13 @@
 | ID | Output | Valor (cliente) | Status |
 |---|---|---|---|
 | 9.1 | Plantilla de QA por página | `Formulario 10 campos × N URLs` | ☐ |
-| 9.2 | Regla 1 — URL QA | `[N/N URLs Pass]` | ☐ |
-| 9.3 | Regla 2 — Page Type QA | `[N/N URLs Pass]` | ☐ |
-| 9.4 | Regla 3 — One Service Only | `[URLs locales/URLs locales Pass]` | ☐ |
-| 9.5 | Regla 4 — One Main City Only | `[URLs locales/URLs locales Pass]` | ☐ |
-| 9.6 | Regla 5 — Local Coverage QA | `[URLs locales/URLs locales Pass]` | ☐ |
-| 9.7 | Regla 6 — No Fake Location | `[N/N URLs Pass]` | ☐ |
-| 9.8 | Regla 7 — Metadata QA | `[N/N URLs Pass]` | ☐ |
-| 9.9 | Regla 8 — Word Count QA | `[N/N URLs Pass]` | ☐ |
-| 9.10 | Regla 9 — Schema QA | `[N/N URLs Pass]` | ☐ |
-| 9.11 | Regla 10 — Enlaces Internos QA | `[N/N URLs Pass]` | ☐ |
-| 9.12 | Regla 11 — Canibalización QA | `[0 pares solapados]` | ☐ |
-| 9.13 | Regla 12 — CTA QA | `[N/N URLs Pass]` | ☐ |
-| 9.14 | Final Publish Gate | `[N URLs aprobadas, M bloqueadas]` | ☐ |
-| 9.15 | GBP Not Created QA Checklist | `[N URLs validadas, 0 violaciones]` | ☐ |
+| 9.2 | QA Estructural (URL + Page Type + One Service + One City) | `[N/N URLs Pass]` (4 sub-checks) | ☐ |
+| 9.3 | QA Local (Local Coverage + No Fake Location + areaServed) | `[URLs locales/URLs locales Pass]` (3 sub-checks) | ☐ |
+| 9.4 | QA Contenido (Metadata + Word Count + Schema) | `[N/N URLs Pass]` (3 sub-checks) | ☐ |
+| 9.5 | QA Conexión (Internal Links + Breadcrumbs + CTA) | `[N/N URLs Pass]` (3 sub-checks) | ☐ |
+| 9.6 | QA Semántico (Canibalización) | `[0 pares solapados]` (1 sub-check) | ☐ |
+| 9.7 | Final Publish Gate | `[N URLs aprobadas, M bloqueadas]` | ☐ |
+| 9.8 | GBP Not Created QA Checklist | `[N URLs validadas, 0 violaciones]` | ☐ |
 
 ---
 
@@ -86,11 +79,11 @@
 
 | Status | Cantidad | % |
 |---|---:|---:|
-| ☐ pendiente | 42 | 100% |
+| ☐ pendiente | 35 | 100% |
 | ✓ confirmed | 0 | 0% |
 | ⚠ inferido | 0 | 0% |
 | ⚠ placeholder | 0 | 0% |
-| **Total** | **42** | **100%** |
+| **Total** | **35** | **100%** |
 
 > Actualizar esta tabla al cerrar la Fase 1 de Bloque 3 con los conteos reales del cliente.
 
@@ -147,10 +140,10 @@
 > Outputs deterministas que se cierran solos al aplicar la doctrina sobre los outputs heredados de Bloques 1-2 + Bloques A-E. No requieren input externo adicional.
 
 - Paso 8: 8.1, 8.5, 8.8-8.14 (9 outputs)
-- Paso 9: 9.1-9.15 completo (15 outputs — los QA pasan al aplicar las reglas; las violaciones se identifican y se corrigen)
+- Paso 9: 9.1-9.8 completo (8 outputs con 13 sub-checks — los QA pasan al aplicar las reglas; las violaciones se identifican y se corrigen)
 - Paso 10: 10.4-10.6, 10.8-10.13 (9 outputs deterministas tras 10.1-10.3 confirmados)
 
-> Total automático: 33 outputs (algunos del Paso 9 pueden detectar violaciones; en ese caso pasan a `Needs Revision`). Resto: 9 outputs requieren acción humana (Bloques A-E).
+> Total automático: 26 outputs (algunos del Paso 9 pueden detectar violaciones; en ese caso pasan a `Needs Revision`). Resto: 9 outputs requieren acción humana (Bloques A-E).
 
 ---
 
@@ -174,4 +167,4 @@
 
 > **Cruce con el plan de ejecución:** este consolidado es el **output** de ejecutar `00a-plan-ejecucion-bloque-3.md`. Los IDs (8.X, 9.X, 10.X) coinciden 1:1 con los del plan.
 >
-> **Cascada hacia Paso 14 (forward):** la Fase 5 GBP Creation (output 10.8) marca el inicio del Paso 14 — crear el GBP usando la web ya publicada como source of truth. El GBP Not Created QA Checklist (output 9.15) se desactiva tras Paso 14.
+> **Cascada hacia Paso 14 (forward):** la Fase 5 GBP Creation (output 10.8) marca el inicio del Paso 14 — crear el GBP usando la web ya publicada como source of truth. El GBP Not Created QA Checklist (output 9.8) se desactiva tras Paso 14.

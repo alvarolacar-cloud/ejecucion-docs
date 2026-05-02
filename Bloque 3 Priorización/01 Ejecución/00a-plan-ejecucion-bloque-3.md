@@ -1,6 +1,6 @@
 # Plan de ejecución del Bloque 3 (Pasos 8-10)
 
-> Plantilla del sistema. Vista unificada de los **42 outputs** que producen los pasos 8, 9 y 10 cuando se ejecutan para cualquier cliente. Antes de arrancar, esta tabla muestra qué se va a producir, cómo se decide cada output y qué fuentes hacen falta. Una vez ejecutado, este mismo documento se rellena con los valores reales del cliente y su status (`confirmed` / `⚠ inferido` / `⚠ placeholder`) y se convierte en el consolidado del Bloque 3.
+> Plantilla del sistema. Vista unificada de los **35 outputs** que producen los pasos 8, 9 y 10 cuando se ejecutan para cualquier cliente. Antes de arrancar, esta tabla muestra qué se va a producir, cómo se decide cada output y qué fuentes hacen falta. Una vez ejecutado, este mismo documento se rellena con los valores reales del cliente y su status (`confirmed` / `⚠ inferido` / `⚠ placeholder`) y se convierte en el consolidado del Bloque 3.
 
 > **Cómo usar esta plantilla:**
 > 1. Confirma que los Bloques 1 y 2 están cerrados (los 102 outputs en `confirmed`).
@@ -88,25 +88,18 @@
 
 ---
 
-## Paso 9 — QA Checklist (15 outputs)
+## Paso 9 — QA Checklist (8 outputs)
 
 | Output a decidir | Fuentes para Decidir | Cómo Decidimos |
 |---|---|---|
 | **9.1** Plantilla de QA por página | `← 8.14` | Generar formulario 10 campos por URL del inventario priorizado |
-| **9.2** Regla 1 — URL QA | `← 4.3-4.8` | Comparar URL con patrón doctrinal del page type |
-| **9.3** Regla 2 — Page Type QA | `← 5.3-5.8` | Comparar H1 + estructura + schema vs spec del page type |
-| **9.4** Regla 3 — One Service Only | `← 1.9` | Inspeccionar H1 + body de cada URL local |
-| **9.5** Regla 4 — One Main City Only | `← 1.7` | Inspeccionar H1 + breadcrumb + sección cobertura |
-| **9.6** Regla 5 — Local Coverage QA | `← 1.10 + 6.2` | Inspeccionar contenido + schema vs lista LCAs aprobadas |
-| **9.7** Regla 6 — No Fake Location | `← 1.8 + 4.14` | Buscar afirmaciones de ubicación; cruzar con NAP único |
-| **9.8** Regla 7 — Metadata QA | `← 5.3-5.8` | Inspeccionar H1 + meta title + meta description + unicidad |
-| **9.9** Regla 8 — Word Count QA | `← 5.10` | Contar palabras del cuerpo principal vs rango doctrinal |
-| **9.10** Regla 9 — Schema QA | `← 5.9 + 6.17` | Validar JSON-LD + cruce con NAP/areaServed reales |
-| **9.11** Regla 10 — Enlaces Internos QA | `← 7.11` | Inspeccionar enlaces vs matriz de Paso-07 + validar URLs target |
-| **9.12** Regla 11 — Canibalización QA | `← 4.15` | Comparar H1 + URL + intent de N URLs entre sí |
-| **9.13** Regla 12 — CTA QA | `← 1.13 + 5.11` | Inspeccionar presencia + tipo de CTA contra mapeo doctrinal |
-| **9.14** Final Publish Gate | `← 9.2-9.13` | Consolidar resultado de las 12 reglas en 9 checkpoints binarios |
-| **9.15** GBP Not Created QA Checklist | `← 1.3` | Inspeccionar copy + schema + footer contra los 7 checks específicos web-first |
+| **9.2** QA Estructural (URL + Page Type + One Service + One City) | `← 4.3-4.8 + 5.3-5.8 + 1.7 + 1.9` | 4 sub-checks: URL cumple patrón, contenido vs spec, un servicio, una Main City |
+| **9.3** QA Local (Local Coverage + No Fake Location + areaServed) | `← 1.10 + 1.8 + 4.14 + 6.17` | 3 sub-checks: LCAs reales y naturales, sin oficinas falsas, schema areaServed coherente |
+| **9.4** QA Contenido (Metadata + Word Count + Schema) | `← 5.9 + 5.10 + 5.3-5.8` | 3 sub-checks: H1+meta coherentes, profundidad doctrinal, JSON-LD válido |
+| **9.5** QA Conexión (Internal Links + Breadcrumbs + CTA) | `← 7.11 + 7.13 + 5.11 + 1.13` | 3 sub-checks: enlaces matriz 7.11, breadcrumbs jerarquía 7.13, CTA adaptado funnel |
+| **9.6** QA Semántico (Canibalización) | `← 4.15` | 1 sub-check: cada URL cubre intención única; 0 pares solapados |
+| **9.7** Final Publish Gate | `← 9.2-9.6` | Consolidar resultado de las 5 categorías en 9 checkpoints binarios (Ready to publish AND) |
+| **9.8** GBP Not Created QA Checklist | `← 1.3` | Inspeccionar copy + schema + footer contra los 7 checks específicos web-first |
 
 ---
 
@@ -162,9 +155,9 @@
 
 - Priority Score Formula con 6 factores fijos (output 8.1)
 - Priority Tiers con rangos doctrinales (output 8.9)
-- Las 12 reglas QA del Paso 9 (outputs 9.2-9.13)
-- Final Publish Gate con 9 checkpoints (output 9.14)
-- GBP Not Created QA Checklist con 7 checks (output 9.15)
+- Las 5 categorías QA del Paso 9 con 13 sub-checks (outputs 9.2-9.6)
+- Final Publish Gate con 9 checkpoints (output 9.7)
+- GBP Not Created QA Checklist con 7 checks (output 9.8)
 - Las 10 reglas operativas del Paso 10 (output 10.11)
 - Las 5 fases doctrinales y sus dependencias (outputs 10.4-10.8)
 
@@ -188,9 +181,9 @@ Bloques 1+2 cerrados (102 outputs confirmed)
     ├─► Paso 9 (QA Checklist)
     │       │
     │       ├── 9.1 ← 8.14 (plantilla por URL del inventario priorizado)
-    │       ├── 9.2-9.13 las 12 reglas vs outputs upstream del cluster
-    │       ├── 9.14 ← 9.2-9.13 (Final Publish Gate)
-    │       └── 9.15 ← 1.3 (GBP Not Created activo solo si web-first)
+    │       ├── 9.2-9.6 las 5 categorías QA (13 sub-checks) vs outputs upstream del cluster
+    │       ├── 9.7 ← 9.2-9.6 (Final Publish Gate)
+    │       └── 9.8 ← 1.3 (GBP Not Created activo solo si web-first)
     │
     └─► Paso 10 (Producción en Fases)
             │
@@ -211,7 +204,7 @@ Bloques 1+2 cerrados (102 outputs confirmed)
 
 | Bloqueo | Outputs que quedan ⚠ | Cómo se desbloquea |
 |---|---|---|
-| Bloques 1+2 sin cerrar | TODOS los 42 outputs de Bloque 3 | Cerrar Pasos 1-7 antes de arrancar Bloque 3 |
+| Bloques 1+2 sin cerrar | TODOS los 35 outputs de Bloque 3 | Cerrar Pasos 1-7 antes de arrancar Bloque 3 |
 | Sin keyword research | 8.3 Search Intent, 8.6 Competition Gap (parcial) | Ejecutar research en Ahrefs/Semrush/Google KP por URL |
 | Sin SERP analysis manual | 8.6 Competition Gap | Analizar top 10 SERPs por keyword principal |
 | Sin Local Pack analysis | 8.4 GBP Category Relevance | Buscar `[categoría] [Main City]` en Google Maps |

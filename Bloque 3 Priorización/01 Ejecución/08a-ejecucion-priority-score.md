@@ -152,7 +152,7 @@ Cumplido — las 10 LCAs declaradas (Almagro, Chamberí, Salamanca, etc.) no son
 | LBS-1 | `/cerrajero/madrid/cerrajero-urgente/` | LBS | 5 | 5 | 5 | 5 | 4 | 5 | 29 | P1 | 1 |
 | LBS-3 | `/cerrajero/madrid/cambio-cerraduras/` | LBS | 5 | 4 | 5 | 5 | 4 | 4 | 27 | P1 | 2 |
 | LBS-2 | `/cerrajero/madrid/apertura-puertas/` | LBS | 4 | 5 | 5 | 5 | 4 | 5 | 28 | P1 | 2 |
-| LBS-4 | `/cerrajero/madrid/cambio-bombines/` | LBS | 4 | 4 | 5 | 5 | 4 | 3 | 25 | P2 | 2 |
+| LBS-4 | `/cerrajero/madrid/cambio-bombines/` | LBS | 4 | 4 | 5 | 5 | 4 | 4 | 26 | P1 | 2 |
 | LBS-5 | `/cerrajero/madrid/instalacion-cerraduras-seguridad/` | LBS | 5 | 4 | 5 | 5 | 3 | 3 | 25 | P2 | 2 |
 | GH | `/madrid/` | GeoHub | 4 | 4 | 4 | 5 | 4 | 4 | 25 | P2 | 2 |
 | SO-1 | `/cerrajero/cerrajero-urgente/` | SO | 4 | 4 | 4 | 3 | 4 | 4 | 23 | P2 | 2 |
@@ -572,9 +572,10 @@ Mide la **sensibilidad temporal del usuario**. Servicios de emergencia 24h punt�
 
 ```text
 LBS Cerrajero urgente Madrid → 5 (cerrajería 24h = emergencia)
-LBS Cambio de cerraduras Madrid → 4 (decisión a horas/día)
-LBS Cambio de bombines Madrid → 3 (decisión a 24-48h)
-LBS Instalación de cerraduras de seguridad → 3 (planificable)
+LBS Apertura de puertas Madrid → 5 (emergencia, usuario fuera de casa)
+LBS Cambio de cerraduras Madrid → 4 (urgencia post-incidente, decisión a horas/día)
+LBS Cambio de bombines Madrid → 4 (urgencia post-incidente, decisión a horas/día)
+LBS Instalación de cerraduras de seguridad → 3 (preventivo planificado)
 GA "cuándo cambiar la cerradura" → 1-2 (investigación)
 ```
 
@@ -604,7 +605,7 @@ Aplicar a las N URLs. Validar que la Homepage hereda el score más alto de los c
 **Output del paso**
 
 - **Tipo:** Score 1-5 por página.
-- **Ejemplo (Cerrajeros Madrid 24h):** LBS Cerrajero urgente = 5; LBS Bombines = 3; GA = 3.
+- **Ejemplo (Cerrajeros Madrid 24h):** LBS Cerrajero urgente = 5; LBS Apertura puertas = 5; LBS Bombines = 4; LBS Cambio cerraduras = 4; LBS Instalación seguridad = 3; GA = 1-3.
 
 ### 8.8 — Total Score por página
 
@@ -1012,7 +1013,7 @@ Aplicar a las N URLs. Validar que la tabla cubre el 100% de Paso-03 3.5 sin omis
 | 8.4 | ← Paso-01 1.5 + 1.6 | **GBP Category Relevance** = LBS Cerrajero urgente Madrid `5`; AC `4`; SO `4` | Cruce categorías declaradas vs Local Pack en Maps. **Fuente:** GMB Crush + Competidores. | confirmed |
 | 8.5 | ← Paso-01 1.7 + 1.8 + 1.10 | **Local Relevance** = LBS `5`; SO `3`; GH `5`; GA `5` | Inspección URL + schema + contenido contra NAP/Main City/LCAs. **Fuente:** GMB Crush. | confirmed |
 | 8.6 | ← Paso-01 1.7 + 1.9 | **Competition Gap** = LBS `4`; GA `4`; SO `4` | SERP analysis manual + DR/UR Ahrefs por keyword principal. **Fuente:** GMB Crush + Competidores. | confirmed |
-| 8.7 | ← Paso-01 1.9 + 1.13 | **Conversion Urgency** = LBS Cerrajero urgente Madrid `5`; LBS Bombines `3`; GA `3` | Clasificación por ventana de decisión típica + cruce keyword. **Fuente:** GMB Crush. | confirmed |
+| 8.7 | ← Paso-01 1.9 + 1.13 | **Conversion Urgency** = LBS Cerrajero urgente Madrid `5`; LBS Apertura puertas `5`; LBS Bombines `4`; LBS Cambio cerraduras `4`; LBS Instalación seguridad `3`; GA `1-3` | Clasificación por ventana de decisión típica + cruce keyword. **Fuente:** GMB Crush. | confirmed |
 | 8.8 | ← 8.2-8.7 | **Total Score por página** = HP `29`; LBS-1 `29`; GA principal `22`; SO `23` | Suma simple de los 6 factores con peso 1. **Fuente:** GMB Crush. | confirmed |
 | 8.9 | ← 8.8 | **Priority Tiers** = HP `P1`; LBS-1 `P1`; GA `P2`; SO `P3` | Mapping del Total Score a rango doctrinal P1-Hold. **Fuente:** GMB Crush. | confirmed |
 | 8.10 | ← 8.9 + Paso-02 2.10 | **Publish Phase derivada** = HP `Phase 1`; LBS-1 `Phase 1`; GH `Phase 2`; GAs `Phase 3-4` | Cruce Tier × dependencias estructurales (Paso-02 2.13). **Fuente:** GMB Crush. | confirmed |
