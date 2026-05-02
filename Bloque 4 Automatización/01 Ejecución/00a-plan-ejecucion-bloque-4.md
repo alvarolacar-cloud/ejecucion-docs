@@ -1,6 +1,6 @@
 # Plan de ejecución del Bloque 4 (Pasos 11-13)
 
-> Plantilla del sistema. Vista unificada de los **40 outputs** que producen los pasos 11, 12 y 13 cuando se ejecutan para cualquier cliente. Antes de arrancar, esta tabla muestra qué se va a producir, cómo se decide cada output y qué fuentes hacen falta.
+> Plantilla del sistema. Vista unificada de los **45 outputs** que producen los pasos 11, 12 y 13 cuando se ejecutan para cualquier cliente. Antes de arrancar, esta tabla muestra qué se va a producir, cómo se decide cada output y qué fuentes hacen falta.
 
 > **Cómo usar esta plantilla:**
 > 1. Confirma que los Bloques 1, 2 y 3 están cerrados (137 outputs upstream en `confirmed`).
@@ -52,24 +52,29 @@
 
 ---
 
-## Paso 11 — Pseudocódigo del Sistema (14 outputs)
+## Paso 11 — Pseudocódigo del Sistema (19 outputs)
 
 | Output a decidir | Fuentes para Decidir | Cómo Decidimos |
 |---|---|---|
 | **11.1** Función `load_inputs()` | `← Paso-01 + Paso-02 + Paso-03` | Lectura programática de §8 de cada a-doc + preflight; serialización en dict |
 | **11.2** Función `normalize_slugs()` | `← 2.2 + 2.3 + 2.4 + 3.3` | Implementar slugify estándar + aplicar a 4 grupos de slugs |
 | **11.3** Función `validate_categories()` | `← 2.7 + 2.12` | Comparar Additional vs core; aplicar criterio cobertura |
-| **11.4** Función `generate_pages_by_type()` | `← 4.3-4.8 + 5.3-5.8` | 6 sub-funciones por page type aplicando spec Paso-05 |
-| **11.5** Función `inject_local_coverage()` | `← 6.2 + 6.12 + 6.17` | Iterar páginas, mapear page_type → conjunto de LCAs según matriz |
-| **11.6** Función `generate_expansion()` (opcional) | `← 1.11 + 4.10` | Replicar generate_pages_by_type() por Approved Area; vacío si E=0 |
-| **11.7** Función `assign_internal_links()` | `← 7.9 + 7.11` | Lookup matriz 7.11 + selección anchor por catálogo 7.9 |
-| **11.8** Función `score_priority()` | `← 8.1-8.10` | 6 funciones de medición + suma + mapeo tier/phase doctrinales |
-| **11.9** Función `check_dependencies()` | `← 8.11 + 10.10` | Lookup parents + comparar phases + bloquear conflictos |
-| **11.10** Función `run_qa()` | `← 9.2-9.8` | 5 funciones QA + consolidación gate + opcional GBP checklist |
-| **11.11** Función `output_matrices()` | `← 3.5 + 3.8 + 7.11` | Serializar páginas scored + link_matrix en 3 estructuras tabulares |
-| **11.12** Pseudocódigo principal `main()` | `← 11.1-11.11` | Composición funcional + manejo de errores en orden secuencial |
-| **11.13** Validación cobertura inputs | `Doctrina` | Static analysis de las 11 funciones + cruce con catálogo upstream |
-| **11.14** Validación secuencia dependencias | `Doctrina` | Inspección manual del orden + cross-check con dependency graph |
+| **11.4** Función `generate_homepage()` | `← 4.3 + 5.3` | Aplicar spec Homepage del Paso-05 5.3 con inputs heredados |
+| **11.5** Función `generate_service_overview()` | `← 4.4 + 5.4` | Aplicar spec SO del Paso-05 5.4 replicada × S core services (no-locales) |
+| **11.6** Función `generate_geohub()` | `← 4.5 + 5.7 + 3.2` | Aplicar spec GeoHub Paso-05 5.7 al Main City con URL Option A o B |
+| **11.7** Función `generate_lbs()` | `← 4.6 + 5.5` | Aplicar spec LBS Paso-05 5.5 replicada × S × Main City |
+| **11.8** Función `generate_additional_category()` | `← 4.7 + 5.6 + 3.3` | Aplicar spec AC Paso-05 5.6 a las A categorías efectivas |
+| **11.9** Función `generate_geoarticles()` | `← 4.8 + 5.8 + 3.4` | Aplicar spec GA Paso-05 5.8 a G×S combinaciones service × topic |
+| **11.10** Función `inject_local_coverage()` | `← 6.2 + 6.12 + 6.17` | Iterar páginas, mapear page_type → conjunto LCAs según matriz |
+| **11.11** Función `generate_expansion()` (opcional) | `← 1.11 + 4.10` | Replicar lógica generate_*() por Approved Area; vacío si E=0 |
+| **11.12** Función `assign_internal_links()` | `← 7.9 + 7.11` | Lookup matriz 7.11 + selección anchor por catálogo 7.9 |
+| **11.13** Función `score_priority()` | `← 8.1-8.10` | 6 funciones de medición + suma + mapeo tier/phase doctrinales |
+| **11.14** Función `check_dependencies()` | `← 8.11 + 10.10` | Lookup parents + comparar phases + bloquear conflictos |
+| **11.15** Función `run_qa()` | `← 9.2-9.8` | 5 funciones QA + consolidación gate + opcional GBP checklist |
+| **11.16** Función `output_matrices()` | `← 3.5 + 3.8 + 7.11` | Serializar páginas scored + link_matrix en 3 estructuras tabulares |
+| **11.17** Pseudocódigo principal `main()` | `← 11.1-11.16` | Composición funcional + manejo de errores en orden secuencial |
+| **11.18** Validación cobertura inputs | `Doctrina` | Static analysis de las 16 funciones + cruce con catálogo upstream |
+| **11.19** Validación secuencia dependencias | `Doctrina` | Inspección manual del orden + cross-check con dependency graph |
 
 ---
 
@@ -77,7 +82,7 @@
 
 | Output a decidir | Fuentes para Decidir | Cómo Decidimos |
 |---|---|---|
-| **12.1** Master Prompt principal | `← 11.12 + Bloques 1-3` | Componer 10 secciones del prompt + integrar reglas y validations |
+| **12.1** Master Prompt principal | `← 11.17 + Bloques 1-3` | Componer 7 secciones del prompt + integrar reglas y validations (~580 líneas literales) |
 | **12.2** Auxiliary Prompt URL Matrix | `← 3.5 + 4.3-4.8` | Aislar sección URL Matrix del Master + simplificar ROLE |
 | **12.3** Auxiliary Prompt Content Architecture | `← 5.3-5.8 + 6.6-6.11` | Aislar sección Content Architecture del Master |
 | **12.4** Auxiliary Prompt GeoArticles | `← 3.4 + 8.11` | Aislar sección GA del Master + integrar keyword research |
@@ -132,8 +137,11 @@
 
 ### Defaults doctrinales (no requieren input)
 
-- Las 11 funciones del pseudocódigo (outputs 11.1-11.11)
-- Pseudocódigo principal `main()` (output 11.12)
+- Las 16 funciones del pseudocódigo (outputs 11.1-11.16)
+  · 3 funciones de carga/normalización: 11.1-11.3
+  · **6 funciones individuales por page type: 11.4-11.9** (HP/SO/GH/LBS/AC/GA)
+  · 7 funciones de orquestación: 11.10-11.16
+- Pseudocódigo principal `main()` (output 11.17)
 - Estructura del prompt (output 12.6)
 - Web-First GBP Rule (output 12.7)
 - Las 14 reglas no-negociables del prompt (output 12.8)
@@ -154,13 +162,15 @@ Bloques 1-3 cerrados (137 outputs confirmed)
     │
     ├─► Paso 11 (Pseudocódigo)
     │       │
-    │       ├── 11.1-11.11 las 11 funciones (vs outputs upstream)
-    │       ├── 11.12 main() (orquestador)
-    │       └── 11.13-11.14 validaciones
+    │       ├── 11.1-11.3 carga + normalización
+    │       ├── 11.4-11.9 las 6 funciones por page type (HP/SO/GH/LBS/AC/GA)
+    │       ├── 11.10-11.16 orquestación (inject + expansion + links + score + qa + matrices)
+    │       ├── 11.17 main() (orquestador)
+    │       └── 11.18-11.19 validaciones
     │
     ├─► Paso 12 (Master Prompt)
     │       │
-    │       ├── 12.1 Master Prompt (← 11.12 + Bloques 1-3)
+    │       ├── 12.1 Master Prompt (← 11.17 + Bloques 1-3)
     │       ├── 12.2-12.5 4 auxiliares
     │       ├── 12.6-12.10 estructura + reglas + validations
     │       └── 12.11-12.12 validaciones
@@ -181,11 +191,11 @@ Bloques 1-3 cerrados (137 outputs confirmed)
 
 | Bloqueo | Outputs que quedan ⚠ | Cómo se desbloquea |
 |---|---|---|
-| Bloques 1-3 sin cerrar | TODOS los 40 outputs de Bloque 4 | Cerrar Pasos 1-10 antes de arrancar Bloque 4 |
+| Bloques 1-3 sin cerrar | TODOS los 45 outputs de Bloque 4 | Cerrar Pasos 1-10 antes de arrancar Bloque 4 |
 | Outputs upstream con ⚠ inferido | Los outputs derivados quedan ⚠ heredado | Volver al paso correspondiente, completar, re-correr |
 | Operador no decide Tracking stack | 13.8 + 13.13 | Operador define stack y cadencia |
 | Operador no decide convention de Documentación de Cambios | 13.7 | Operador define template |
 
 ---
 
-> **Cuándo arrancar la ejecución:** una vez Bloques 1-3 estén cerrados con los 137 outputs upstream en `confirmed`. Bloque 4 es **enteramente derivativo** — produce 40 outputs nuevos pero todos son consolidaciones/orquestaciones de los upstream. Cero research externo, cero tools nuevos. Tras cerrar Bloque 4, el Paso 14 (GBP Creation) queda DESBLOQUEADO con 7 pre-requisitos del output 13.10.
+> **Cuándo arrancar la ejecución:** una vez Bloques 1-3 estén cerrados con los 137 outputs upstream en `confirmed`. Bloque 4 es **enteramente derivativo** — produce 45 outputs nuevos pero todos son consolidaciones/orquestaciones de los upstream. Cero research externo, cero tools nuevos. Tras cerrar Bloque 4, el Paso 14 (GBP Creation) queda DESBLOQUEADO con 7 pre-requisitos del output 13.10.

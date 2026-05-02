@@ -1,10 +1,10 @@
 # Consolidado del Bloque 4 — Automatización (Pasos 11-13)
 
-> Plantilla del sistema. Documento de cierre de la Fase 1 (Ejecución) de Bloque 4. Recoge los **40 outputs** producidos por los pasos 11, 12 y 13 con sus valores reales para el cliente y su status (`confirmed` / `⚠ inferido` / `⚠ placeholder` / `validated`).
+> Plantilla del sistema. Documento de cierre de la Fase 1 (Ejecución) de Bloque 4. Recoge los **45 outputs** producidos por los pasos 11, 12 y 13 con sus valores reales para el cliente y su status (`confirmed` / `⚠ inferido` / `⚠ placeholder` / `validated`).
 >
 > Bloque 4 hereda 100% del estado de Bloques 1-3 — si esos están como `⚠`, sus consecuencias en Bloque 4 también lo estarán. El cierre del Bloque 4 desbloquea el Paso 14 (GBP Creation, Bloque 5+).
 
-> **Tabla de pasos cubiertos:** Total **40 outputs** = 14 (Paso 11) + 12 (Paso 12) + 14 (Paso 13).
+> **Tabla de pasos cubiertos:** Total **45 outputs** = 19 (Paso 11) + 12 (Paso 12) + 14 (Paso 13).
 
 ---
 
@@ -19,24 +19,29 @@
 
 ---
 
-## Paso 11 — Pseudocódigo del Sistema (14 outputs)
+## Paso 11 — Pseudocódigo del Sistema (19 outputs)
 
 | ID | Output | Valor (cliente) | Status |
 |---|---|---|---|
 | 11.1 | Función `load_inputs()` | `[dict con variables del cluster]` | ☐ |
 | 11.2 | Función `normalize_slugs()` | `[dict con slugs normalizados]` | ☐ |
 | 11.3 | Función `validate_categories()` | `[lista effective_additional]` (A=?) | ☐ |
-| 11.4 | Función `generate_pages_by_type()` | `[N+1 URLs según fórmula maestra]` | ☐ |
-| 11.5 | Función `inject_local_coverage()` | `[N páginas locales con LCAs en areaServed]` | ☐ |
-| 11.6 | Función `generate_expansion()` | `[]` (Phase 1 default E=0) | ☐ |
-| 11.7 | Función `assign_internal_links()` | `[~N enlaces según matriz 7.11]` | ☐ |
-| 11.8 | Función `score_priority()` | `[N URLs con score+tier+phase]` | ☐ |
-| 11.9 | Función `check_dependencies()` | `[N URLs validadas, M Blocked]` | ☐ |
-| 11.10 | Función `run_qa()` | `[N URLs con publish_gate]` | ☐ |
-| 11.11 | Función `output_matrices()` | `[3 matrices: URL/Schema/Link]` | ☐ |
-| 11.12 | Pseudocódigo principal `main()` | `[orquestador con 11 llamadas]` | ☐ |
-| 11.13 | Validación cobertura inputs heredados | `[137 outputs upstream cubiertos; 0 inputs inventados]` | ☐ |
-| 11.14 | Validación secuencia respeta dependencias | `[0 inversiones de orden detectadas]` | ☐ |
+| 11.4 | Función `generate_homepage()` | `[1 HP con spec 5.3]` | ☐ |
+| 11.5 | Función `generate_service_overview()` | `[S SO no-locales con spec 5.4]` | ☐ |
+| 11.6 | Función `generate_geohub()` | `[1 GeoHub Main City con spec 5.7]` | ☐ |
+| 11.7 | Función `generate_lbs()` | `[S LBS con spec 5.5 + LCAs]` | ☐ |
+| 11.8 | Función `generate_additional_category()` | `[A AC con spec 5.6]` | ☐ |
+| 11.9 | Función `generate_geoarticles()` | `[G×S GAs con spec 5.8]` | ☐ |
+| 11.10 | Función `inject_local_coverage()` | `[N páginas locales con LCAs en areaServed]` | ☐ |
+| 11.11 | Función `generate_expansion()` | `[]` (Phase 1 default E=0) | ☐ |
+| 11.12 | Función `assign_internal_links()` | `[~N enlaces según matriz 7.11]` | ☐ |
+| 11.13 | Función `score_priority()` | `[N URLs con score+tier+phase]` | ☐ |
+| 11.14 | Función `check_dependencies()` | `[N URLs validadas, M Blocked]` | ☐ |
+| 11.15 | Función `run_qa()` | `[N URLs con publish_gate]` | ☐ |
+| 11.16 | Función `output_matrices()` | `[3 matrices: URL/Schema/Link]` | ☐ |
+| 11.17 | Pseudocódigo principal `main()` | `[orquestador con 16 llamadas]` | ☐ |
+| 11.18 | Validación cobertura inputs heredados | `[137 outputs upstream cubiertos; 0 inputs inventados]` | ☐ |
+| 11.19 | Validación secuencia respeta dependencias | `[0 inversiones de orden detectadas]` | ☐ |
 
 ---
 
@@ -76,7 +81,7 @@
 | 13.11 | Sistema como fuente única de verdad | `[SOP declarado source of truth]` | ☐ |
 | 13.12 | Validación cluster ready for GBP | `[7 checks status]` | ☐ |
 | 13.13 | Validación tracking configurado | `[3-4 tools status]` | ☐ |
-| 13.14 | Cierre de Bloque 4 | `[40 outputs confirmed; Bloque 5 UNLOCKED]` | ☐ |
+| 13.14 | Cierre de Bloque 4 | `[45 outputs confirmed; Bloque 5 UNLOCKED]` | ☐ |
 
 ---
 
@@ -84,11 +89,11 @@
 
 | Status | Cantidad | % |
 |---|---:|---:|
-| ☐ pendiente | 40 | 100% |
+| ☐ pendiente | 45 | 100% |
 | ✓ confirmed | 0 | 0% |
 | ⚠ inferido | 0 | 0% |
 | ⚠ placeholder | 0 | 0% |
-| **Total** | **40** | **100%** |
+| **Total** | **45** | **100%** |
 
 > Actualizar esta tabla al cerrar la Fase 1 de Bloque 4 con los conteos reales del cliente.
 
@@ -105,15 +110,15 @@
 | 13.7 | Documentación de Cambios template | Operador define formato del template (6 campos por defecto) |
 | 13.8 | Tracking Plan | Operador define stack (GSC/GA4/Rank Tracker) y cadencia (semanal/trimestral) |
 
-### Bloque B — Cascada automática (resuelve 38 outputs)
+### Bloque B — Cascada automática (resuelve 43 outputs)
 
-> Los 38 outputs restantes son enteramente deterministas — se derivan de los 137 outputs upstream de Bloques 1-3 + Paso 11 + Paso 12. Cero research externo, cero tools nuevos.
+> Los 43 outputs restantes son enteramente deterministas — se derivan de los 137 outputs upstream de Bloques 1-3 + Paso 11 + Paso 12. Cero research externo, cero tools nuevos.
 
-- Paso 11: 11.1-11.14 completos (14 outputs, derivados de Bloques 1-3)
+- Paso 11: 11.1-11.19 completos (19 outputs, derivados de Bloques 1-3, incluye 6 funciones individuales por page type)
 - Paso 12: 12.1-12.12 completos (12 outputs, derivados de Bloques 1-3 + Paso 11)
 - Paso 13: 13.1-13.6, 13.9-13.14 (12 outputs, derivados de Bloques 1-3 + Pasos 11-12)
 
-> Total automático: 38 outputs. Resto: 2 outputs requieren decisión del operador (Bloque A).
+> Total automático: 43 outputs. Resto: 2 outputs requieren decisión del operador (Bloque A).
 
 ---
 
@@ -125,8 +130,8 @@
 
 - ☐ Bloques 1-3 cerrados (137 outputs upstream en confirmed)
 - ☐ Bloque A resuelto (Tracking Plan + Documentación template)
-- ☐ Bloque B cerrado (38 outputs derivados confirmados)
-- ☐ Paso 11 cerrado (14 outputs)
+- ☐ Bloque B cerrado (43 outputs derivados confirmados)
+- ☐ Paso 11 cerrado (19 outputs)
 - ☐ Paso 12 cerrado (12 outputs)
 - ☐ Paso 13 cerrado (14 outputs incl. SOP completo)
 - ☐ Pre-requisitos para Paso 14 (7 items en `13.10`) listos para checklist post-Phase 1-3

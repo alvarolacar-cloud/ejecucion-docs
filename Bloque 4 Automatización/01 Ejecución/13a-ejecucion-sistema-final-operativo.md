@@ -59,10 +59,10 @@ En este paso la IA produce todos los outputs que **cierran el sistema web antes 
 | Bloque 1 (Pasos 1-3) | 1.1-3.14 (43 outputs) | Sección "Inputs y arquitectura base" del SOP |
 | Bloque 2 (Pasos 4-7) | 4.1-7.15 (59 outputs) | Sección "URL rules + Page types + Content arch + Linking" del SOP |
 | Bloque 3 (Pasos 8-10) | 8.1-10.13 (35 outputs) | Sección "Priority + QA + Producción en fases" del SOP |
-| Bloque 4 (Paso 11-12) | 11.1-12.12 (26 outputs) | Sección "Pseudocódigo + Master Prompt" del SOP |
+| Bloque 4 (Paso 11-12) | 11.1-12.12 (31 outputs) | Sección "Pseudocódigo + Master Prompt" del SOP |
 | GBP Lifecycle Status | Paso-01 1.3 | Determina activación de Paso 14 (forward) |
 
-**Total upstream:** 137 outputs de Bloques 1-3 + 26 outputs de Pasos 11-12 = 163 outputs que el SOP consolida. Tras cerrar Paso 13, Bloque 4 añade sus propios 14 outputs → total sistema Bloques 1-4 = 177 outputs.
+**Total upstream:** 137 outputs de Bloques 1-3 + 31 outputs de Pasos 11-12 = 168 outputs que el SOP consolida. Tras cerrar Paso 13, Bloque 4 añade sus propios 14 outputs → total sistema Bloques 1-4 = 182 outputs.
 
 # Bloque II — Ejemplo rellenado para el Paso 13 — Sistema Final Operativo
 
@@ -72,22 +72,317 @@ En este paso la IA produce todos los outputs que **cierran el sistema web antes 
 
 ### 13.1 — SOP completo del sistema
 
-```text
+> SOP completo expandido para Cerrajeros Madrid 24h. Las 11 secciones se rellenan con los outputs de Bloques 1-4 + los outputs 13.2-13.14.
+
+```markdown
 # SOP — Cerrajeros Madrid 24h · Cluster GMB Crush
 
-## 1. Resumen ejecutivo (← 13.2)
-## 2. Workflow detallado de los 13 pasos (← 13.3)
-## 3. Estructura de carpetas y archivos (← 13.4)
-## 4. Inventario URL final (← 13.5)
-## 5. Reglas No Negociables (← 13.6)
-## 6. Documentación de Cambios (← 13.7)
-## 7. Tracking Plan (← 13.8)
-## 8. Roadmap final de publicación (← 13.9)
-## 9. Pre-requisitos para Paso 14 (← 13.10)
-## 10. Sistema como fuente única de verdad (← 13.11)
-## 11. Validaciones de cierre (← 13.12 + 13.13)
+═══════════════════════════════════════════════════════════════════
+SECCIÓN 1 — RESUMEN EJECUTIVO (output 13.2)
+═══════════════════════════════════════════════════════════════════
 
-[Cada sección rellena con outputs heredados de Bloques 1-4]
+Cliente:                Cerrajeros Madrid 24h
+Sector:                 Cerrajería urgente
+Main City:              Madrid
+Categoría primaria:     Cerrajero (Planned)
+GBP Status:             Not Created (web-first)
+Total URLs:             29 (28 SEO base + 1 auxiliar)
+Estructura:             1 HP + 5 SO + 1 GH + 5 LBS + 1 AC + 15 GA + 1 AUX
+LCAs:                   10 (2 Direct + 8 Candidate)
+Variables:              S=5, A=1, G=3, E=0
+Bloques 1-3 status:     confirmed (137 outputs)
+Bloque 4 status:        confirmed (45 outputs Pasos 11-13)
+Total outputs upstream: 182
+QA Gate:                Pass (28/28 URLs)
+Phase actual:           Pre-Phase 1 (listos para arrancar)
+Tracking:               GSC + GA4 + Rank Tracker (Ahrefs) configurado
+Generado:               2026-04-30
+
+═══════════════════════════════════════════════════════════════════
+SECCIÓN 2 — WORKFLOW DETALLADO DE LOS 13 PASOS (output 13.3)
+═══════════════════════════════════════════════════════════════════
+
+Bloque 1 — Fundamentos (43 outputs):
+  Paso 1: Intake Form          → 14 outputs (1.1-1.14)
+    · Business Name, Website, GBP Status, Full NAP (8 campos)
+    · Primary GBP Category, Additional Categories
+    · Main City, Physical Location City, Servicios principales (S=5)
+    · Direct + Candidate LCAs, Approved Expansion (E=0)
+    · GeoArticles per Service (G=3), Preferred CTA, Trust Signals
+  Paso 2: Fórmula Maestra      → 15 outputs (2.1-2.15)
+    · Slugs limpios + S_efectiva + Variable A + Total páginas (28)
+    · Inventario por tipo + 4 validaciones doctrinales
+  Paso 3: Matriz Base           → 14 outputs (3.1-3.14)
+    · Spreadsheet Name + GeoHub URL Style (Option A `/madrid/`)
+    · URL Matrix completa (29 filas) + Schema Map + Parents
+    · GeoArticle Topics (15 validados con keyword research)
+
+Bloque 2 — Arquitectura (59 outputs):
+  Paso 4: URL Rules             → 15 outputs (4.1-4.15)
+  Paso 5: Page Type Rules       → 12 outputs (5.1-5.12)
+  Paso 6: Content + LCAs        → 17 outputs (6.1-6.17)
+  Paso 7: Internal Linking      → 15 outputs (7.1-7.15)
+
+Bloque 3 — Priorización (35 outputs):
+  Paso 8: Priority Score        → 14 outputs (8.1-8.14)
+  Paso 9: QA Checklist          → 8 outputs (9.1-9.8)
+  Paso 10: Producción en Fases  → 13 outputs (10.1-10.13)
+
+Bloque 4 — Automatización (45 outputs):
+  Paso 11: Pseudocódigo         → 19 outputs (11.1-11.19)
+  Paso 12: Master Prompt        → 12 outputs (12.1-12.12)
+  Paso 13: Sistema Final Operativo → 14 outputs (13.1-13.14)
+
+Bloque 5+ — Salida a Mercado (forward):
+  Paso 14: GBP Creation
+  Paso 15: Redacción
+  Paso 18: Deploy
+  Pasos 16, 17, 19+: optimización post-launch
+
+═══════════════════════════════════════════════════════════════════
+SECCIÓN 3 — ESTRUCTURA DE CARPETAS Y ARCHIVOS (output 13.4)
+═══════════════════════════════════════════════════════════════════
+
+ejecución/
+├── 00 convenciones/
+│   ├── 00-esqueleto-paso-a.md           (esqueleto canónico)
+│   ├── 00convenciones-ejecucion.md      (convenciones generales)
+│   └── _autocheck_paso.py               (validador automatizado)
+├── Bloque 0 Preflight/
+│   └── 00preflight.md                   (5 campos del cliente)
+├── Bloque 1 Fundamentos/
+│   ├── 01 Ejecución/
+│   │   ├── 00a-plan-ejecucion-bloque-1.md
+│   │   ├── 01a-ejecucion-intake-form.md
+│   │   ├── 02a-ejecucion-formula-maestra-arquitectura.md
+│   │   └── 03a-ejecucion-matriz-base.md
+│   └── 02 Consolidación Outputs/
+│       └── bloque-1-consolidado.md
+├── Bloque 2 Arquitectura/
+│   ├── 01 Ejecución/
+│   │   ├── 00a-plan-ejecucion-bloque-2.md
+│   │   ├── 04a-ejecucion-url-rules.md
+│   │   ├── 05a-ejecucion-page-type-rules.md
+│   │   ├── 06a-ejecucion-estructura-contenido-areas-cobertura-local.md
+│   │   └── 07a-ejecucion-internal-linking-rules.md
+│   └── 02 Consolidación Outputs/
+│       └── bloque-2-consolidado.md
+├── Bloque 3 Priorización/
+│   ├── 01 Ejecución/
+│   │   ├── 00a-plan-ejecucion-bloque-3.md
+│   │   ├── 08a-ejecucion-priority-score.md
+│   │   ├── 09a-ejecucion-qa-checklist.md
+│   │   └── 10a-ejecucion-produccion-en-fases.md
+│   └── 02 Consolidación Outputs/
+│       └── bloque-3-consolidado.md
+└── Bloque 4 Automatización/
+    ├── 01 Ejecución/
+    │   ├── 00a-plan-ejecucion-bloque-4.md
+    │   ├── 11a-ejecucion-pseudocodigo-sistema.md
+    │   ├── 12a-ejecucion-master-prompt.md
+    │   └── 13a-ejecucion-sistema-final-operativo.md
+    └── 02 Consolidación Outputs/
+        └── bloque-4-consolidado.md
+
+Convenciones de naming:
+- `00a-` prefix → plantilla pre-execution del Bloque
+- `NNa-` (NN=01..13) → a-doc del paso N (sistema)
+- `[cliente]-bloque-N-consolidado.md` → output post-execution por cliente
+- `bloque-N-consolidado.md` → plantilla genérica del consolidado del Bloque
+
+═══════════════════════════════════════════════════════════════════
+SECCIÓN 4 — INVENTARIO URL FINAL CONSOLIDADO (output 13.5)
+═══════════════════════════════════════════════════════════════════
+
+Total: 28 SEO base + 1 auxiliar = 29 URLs
+
+| ID    | URL                                                        | Tipo                | Schema                                  | Score | Tier | Phase | QA   |
+|-------|------------------------------------------------------------|---------------------|-----------------------------------------|-------|------|-------|------|
+| HP    | /                                                          | Homepage            | Org+WebSite+LB+FAQ+Speakable            | 29    | P1   | 1     | Pass |
+| SO-1  | /cerrajero/cerrajero-urgente/                              | Service Overview    | Service+WebPage+Bread+Speakable         | 23    | P2   | 2     | Pass |
+| SO-2  | /cerrajero/apertura-puertas/                               | Service Overview    | Service+WebPage+Bread+Speakable         | 21    | P2   | 2     | Pass |
+| SO-3  | /cerrajero/cambio-cerraduras/                              | Service Overview    | Service+WebPage+Bread+Speakable         | 20    | P3   | 2     | Pass |
+| SO-4  | /cerrajero/cambio-bombines/                                | Service Overview    | Service+WebPage+Bread+Speakable         | 19    | P3   | 2     | Pass |
+| SO-5  | /cerrajero/instalacion-cerraduras-seguridad/               | Service Overview    | Service+WebPage+Bread+Speakable         | 19    | P3   | 2     | Pass |
+| GH    | /madrid/                                                   | GeoHub              | CollectionPage+Bread                    | 25    | P2   | 2     | Pass |
+| LBS-1 | /cerrajero/madrid/cerrajero-urgente/                       | LBS                 | LB+Bread+FAQ+Speakable                  | 29    | P1   | 1     | Pass |
+| LBS-2 | /cerrajero/madrid/apertura-puertas/                        | LBS                 | LB+Bread+FAQ+Speakable                  | 28    | P1   | 2     | Pass |
+| LBS-3 | /cerrajero/madrid/cambio-cerraduras/                       | LBS                 | LB+Bread+FAQ+Speakable                  | 27    | P1   | 2     | Pass |
+| LBS-4 | /cerrajero/madrid/cambio-bombines/                         | LBS                 | LB+Bread+FAQ+Speakable                  | 26    | P1   | 2     | Pass |
+| LBS-5 | /cerrajero/madrid/instalacion-cerraduras-seguridad/        | LBS                 | LB+Bread+FAQ+Speakable                  | 25    | P2   | 2     | Pass |
+| AC-1  | /cerrajero/madrid/duplicado-llaves/                        | Additional Cat      | Service+Bread                            | 21    | P2   | 3     | Pass |
+| GA-1  | /madrid/cuanto-cuesta-un-cerrajero-urgente/                | GeoArticle          | Article+FAQ+Bread+Speakable             | 22    | P2   | 3     | Pass |
+| GA-2  | /madrid/que-hacer-si-no-puedes-entrar-casa/                | GeoArticle          | Article+FAQ+Bread+Speakable             | 21    | P2   | 3     | Pass |
+| GA-3  | /madrid/cuanto-tarda-un-cerrajero/                         | GeoArticle          | Article+FAQ+Bread+Speakable             | 20    | P3   | 3     | Pass |
+| ...   | (15 GAs total, P2-P3, Phase 3-4)                          |                     |                                         |       |      |       |      |
+| AUX   | /contacto/                                                 | Auxiliar            | ContactPoint                             | —     | —    | 1     | Pass |
+
+Cumple Paso-02 2.9: 1 + 5 + 1 + 5 + 1 + 15 = 28 SEO base.
+
+═══════════════════════════════════════════════════════════════════
+SECCIÓN 5 — REGLAS NO NEGOCIABLES DEL SISTEMA (output 13.6)
+═══════════════════════════════════════════════════════════════════
+
+1. Una página local = 1 servicio + 1 Main City única
+2. LCAs viven en contenido + areaServed; NUNCA generan URLs
+3. Approved Expansion requiere aprobación explícita del operador
+4. Slugs limpios: lowercase + sin acentos + kebab-case
+5. Sin near-me, sin adjetivos vacíos en URLs
+6. Schema válido y veraz por page type
+7. Word count en rango doctrinal por page type
+8. Internal links cumplen matriz Paso-07 7.11
+9. Anchors variados (catálogo Paso-07 7.9)
+10. Breadcrumbs jerárquicos por page type
+11. CTA presente y adaptado al funnel
+12. Priority Score con 6 factores (Paso-08 8.1)
+13. HP siempre P1 + Phase 1
+14. GAs no se publican antes que su LBS hijo (Paso-08 8.11)
+15. Web-first si GBP=Not Created (no inventar señales GBP hasta Paso 14)
+
+Las 14 primeras vienen del Paso-12 12.8. La 15ª se añade aquí: "Sistema es fuente única de verdad" (output 13.11).
+
+═══════════════════════════════════════════════════════════════════
+SECCIÓN 6 — DOCUMENTACIÓN DE CAMBIOS (output 13.7)
+═══════════════════════════════════════════════════════════════════
+
+Template para registrar cualquier cambio futuro al cluster post-deploy.
+
+Campos obligatorios por entrada:
+1. Fecha
+2. Tipo: [Expansion / Refresh / Correction / GBP Update / Other]
+3. Descripción: [qué cambia + URLs afectadas]
+4. Outputs upstream afectados: [lista de IDs Paso-NN N.X]
+5. Razón: [por qué se cambia ahora + datos que justifican]
+6. Aprobado por: [Operador]
+7. Validado QA: [Sí + fecha / No + razones]
+
+Ejemplo Cerrajeros Madrid 24h:
+
+Cambio #001 — 2026-06-15
+Tipo:           Expansion
+Descripción:    Aprobar Approved Expansion Area 'Toledo' tras 6 meses de datos GSC
+URLs afectadas: 21 nuevas (1 GH + 5 LBS + 15 GAs en Toledo)
+Outputs:        1.11 (Paso 1), 4.10 (Paso 4), 7.15 (Paso 7), 11.11 (Paso 11)
+Razón:          Cliente aprueba expansión tras 6 meses con datos GSC sólidos
+                en Madrid (CTR > 8%, posiciones top 3 en 12 keywords core)
+Aprobado por:   Operador
+Validado QA:    Sí — 2026-06-20
+
+═══════════════════════════════════════════════════════════════════
+SECCIÓN 7 — TRACKING PLAN (output 13.8)
+═══════════════════════════════════════════════════════════════════
+
+Stack:
+- Google Search Console (GSC):
+  · Configurar pre-Phase 1
+  · Verificar dominio canonical (https://www.cerrajerosmadrid24h.com)
+  · Subir sitemap.xml
+  · Cadencia revisión: semanal Phase 1-3, bi-semanal Phase 4+
+
+- Google Analytics 4 (GA4):
+  · Configurar pre-Phase 1
+  · Eventos de conversión: call_click, form_submit, email_click
+  · Audiencias: visitors_madrid, returning_visitors, mobile_emergency
+  · Cadencia revisión: semanal Phase 1-3, mensual Phase 4+
+
+- Rank Tracker (Ahrefs):
+  · Keywords core: 50+ (cerrajero urgente Madrid, cerrajero 24h Madrid, etc.)
+  · Keywords LCAs: ~30 (cerrajero Almagro, cerrajero Chamberí, etc.)
+  · Keywords long-tail: 15+ (cuanto cuesta cerrajero urgente Madrid, etc.)
+  · Cadencia revisión: semanal Phase 1-3, bi-semanal Phase 4+
+
+- GMB Crush Grid:
+  · Pendiente Paso 14 (cuando exista el GBP)
+  · Configurar tras GBP verificado
+  · Geo grid 5×5 alrededor del NAP físico
+  · Cadencia revisión: mensual desde Paso 14
+
+═══════════════════════════════════════════════════════════════════
+SECCIÓN 8 — ROADMAP FINAL DE PUBLICACIÓN (output 13.9)
+═══════════════════════════════════════════════════════════════════
+
+| Fase | Semanas | Páginas                          | Pre-req crítico                       |
+|------|---------|----------------------------------|---------------------------------------|
+| 1    | 1-2     | HP + 5 SO + GH (7)              | Bloques 1-4 cerrados; QA Gate Pass    |
+| 2    | 2-3     | 5 LBS + 1 AC (6)                | Fase 1 publicada                      |
+| 3    | 4-6     | 15 GAs                          | Fase 2 publicada                      |
+| 4    | 6+      | (sin nuevas; iteración)         | Tracking activo, datos ≥ 30 días GSC  |
+| 5    | 7-8     | (Paso 14 — creación GBP)        | Fases 1-3 publicadas + datos GSC      |
+
+Dependencias estructurales (matriz Paso-10 10.10):
+- SO requiere HP publicada
+- GH requiere HP publicada
+- LBS requiere HP + SO + GH publicadas
+- AC requiere HP + GH publicadas
+- GA requiere LBS matching + GH publicadas
+- Expansion requiere base completa + Approved Expansion
+
+═══════════════════════════════════════════════════════════════════
+SECCIÓN 9 — PRE-REQUISITOS PARA PASO 14 (output 13.10)
+═══════════════════════════════════════════════════════════════════
+
+Antes de crear el GBP en Paso 14, validar los 7 pre-requisitos:
+
+☐ 1. Bloques 1-4 cerrados al 100% (182 outputs upstream confirmed)
+☐ 2. Fases 1-3 publicadas (28 URLs SEO base activas)
+☐ 3. Final Publish Gate Pass en 28/28 URLs
+☐ 4. GBP Not Created QA Checklist Pass en 28/28 URLs
+☐ 5. Tracking configurado y reportando datos (mínimo 30 días GSC)
+☐ 6. NAP coherente entre web + cualquier directorio existente
+☐ 7. Decisión del operador: arrancar Paso 14 (GBP Creation)
+
+Si cualquier pre-requisito falla, NO se arranca Paso 14.
+
+═══════════════════════════════════════════════════════════════════
+SECCIÓN 10 — SISTEMA COMO FUENTE ÚNICA DE VERDAD (output 13.11)
+═══════════════════════════════════════════════════════════════════
+
+Cualquier discrepancia entre:
+- Web publicada
+- GBP (cuando se cree en Paso 14)
+- Materiales de marketing (folletos, ads, redes sociales)
+- Comunicaciones del cliente
+
+Se resuelve consultando este SOP + outputs upstream de Bloques 1-4.
+
+El SOP es la SOURCE OF TRUTH del cluster. Cualquier cambio que afecte a
+la arquitectura debe:
+1. Registrarse en Documentación de Cambios (sección 6)
+2. Actualizar el output upstream correspondiente
+3. Re-correr el QA Gate (Paso-09 9.7)
+4. Re-publicar el SOP con el cambio
+
+Múltiples SOPs paralelos están prohibidos. Un cluster = un SOP.
+
+═══════════════════════════════════════════════════════════════════
+SECCIÓN 11 — VALIDACIONES DE CIERRE (outputs 13.12 + 13.13 + 13.14)
+═══════════════════════════════════════════════════════════════════
+
+Validación 1 — Cluster web ready for GBP (output 13.12):
+☐ 28 SEO base URLs publicadas
+☐ Final Publish Gate Pass: 28/28
+☐ GBP Not Created Checklist Pass: 28/28
+☐ Internal links cumplen matriz: ~80 enlaces validados
+☐ Schema válido en todas las URLs
+☐ NAP coherente (web + footer + schema)
+☐ Roadmap Phase 1-3 ejecutado
+☐ Tracking activo: GSC + GA4 + Rank Tracker
+
+Validación 2 — Tracking configurado pre-launch (output 13.13):
+☐ Google Search Console: dominio verificado, sitemap subido
+☐ Google Analytics 4: eventos call/form/email configurados
+☐ Rank Tracker: 50+ keywords core + LCAs + long-tail configurados
+☐ GMB Crush Grid: pendiente Paso 14 (lógico)
+
+Validación 3 — Cierre de Bloque 4 (output 13.14):
+☐ Paso 11 (Pseudocódigo): 19/19 outputs confirmed
+☐ Paso 12 (Master Prompt): 12/12 outputs confirmed
+☐ Paso 13 (Sistema Final Operativo): 14/14 outputs confirmed
+☐ Total Bloque 4: 45 outputs confirmed
+☐ Total sistema (Bloques 1-4): 182 outputs confirmed
+☐ Cluster Cerrajeros Madrid 24h en estado "Operativo"
+→ Bloque 4 closure: COMPLETE
+→ Avanzar a Bloque 5 (GBP Creation + Salida a mercado): UNLOCKED
 ```
 
 ### 13.2 — Resumen ejecutivo del cluster
@@ -105,8 +400,8 @@ Estructura:             1 HP + 5 SO + 1 GH + 5 LBS + 1 AC + 15 GA + 1 AUX
 LCAs:                   10 (2 Direct + 8 Candidate)
 Variables:              S=5, A=1, G=3, E=0
 Bloques 1-3 status:     confirmed (137 outputs)
-Bloque 4 status:        confirmed (26 outputs Pasos 11-12)
-Total outputs upstream: 163 (Bloques 1-3 + Pasos 11-12)
+Bloque 4 status:        confirmed (31 outputs Pasos 11-12)
+Total outputs upstream: 168 (Bloques 1-3 + Pasos 11-12)
 QA Gate:                Pass (28/28 URLs)
 Phase actual:           Pre-Phase 1 (listos para arrancar)
 Tracking:               GSC + GA4 + Rank Tracker (Ahrefs) configurado
@@ -250,7 +545,7 @@ Cadencia revisión:
 
 ```text
 Antes de crear el GBP:
-☐ Bloques 1-4 cerrados al 100% (177 outputs upstream confirmed)
+☐ Bloques 1-4 cerrados al 100% (182 outputs upstream confirmed)
 ☐ Fases 1-3 publicadas (28 URLs SEO base activas)
 ☐ Final Publish Gate Pass en 28/28 URLs
 ☐ GBP Not Created QA Checklist Pass en 28/28 URLs
@@ -309,8 +604,8 @@ Bloque 4 cerrado:
 ☑ Paso 11 (Pseudocódigo): 14/14 outputs confirmed
 ☑ Paso 12 (Master Prompt): 12/12 outputs confirmed
 ☑ Paso 13 (Sistema Final Operativo): 14/14 outputs confirmed
-☑ Total Bloque 4: 40 outputs confirmed
-☑ Total sistema (Bloques 1-4): 177 outputs confirmed
+☑ Total Bloque 4: 45 outputs confirmed
+☑ Total sistema (Bloques 1-4): 182 outputs confirmed
 ☑ Cluster Cerrajeros Madrid 24h en estado "Operativo"
 → Bloque 4 closure: COMPLETE
 → Avanzar a Bloque 5 (GBP Creation + Salida a mercado): UNLOCKED
@@ -478,7 +773,7 @@ Cruce con outputs declarados en §5 de cada a-doc upstream.
 **Output del paso**
 
 - **Tipo:** Sección procedimental del SOP.
-- **Ejemplo (Cerrajeros Madrid 24h):** workflow con 13 pasos + 177 outputs counted.
+- **Ejemplo (Cerrajeros Madrid 24h):** workflow con 13 pasos + 182 outputs counted.
 
 ### 13.4 — Estructura de carpetas y archivos
 
@@ -770,7 +1065,7 @@ Ver §4 sub-sección 13.10.
 
 ```text
 Para Cerrajeros antes del Paso 14:
-☑ Bloques 1-4 cerrados (177 outputs confirmed) — pendiente cuando Bloque 4 cierre
+☑ Bloques 1-4 cerrados (182 outputs confirmed) — pendiente cuando Bloque 4 cierre
 ☑ Fases 1-3 publicadas (28 URLs SEO base activas) — pendiente cuando publication loop ejecute
 ☑ Final Publish Gate Pass — pendiente
 ☑ GBP Not Created Checklist Pass — pendiente
@@ -871,7 +1166,7 @@ Validación de cierre que confirma que el cluster web está listo para arrancar 
 
 ```text
 Ready for Paso 14 = AND(
-  Bloques 1-4 cerrados (177 outputs upstream confirmed),
+  Bloques 1-4 cerrados (182 outputs upstream confirmed),
   Fases 1-3 publicadas,
   Final Publish Gate Pass en N URLs,
   GBP Not Created Checklist Pass en N URLs,
@@ -979,7 +1274,7 @@ Bloque 4 closure = AND(
   Paso 11 (14 outputs) confirmed,
   Paso 12 (12 outputs) confirmed,
   Paso 13 (14 outputs) confirmed
-) → Bloques 1-4 total = 177 outputs confirmed → Bloque 5 UNLOCKED
+) → Bloques 1-4 total = 182 outputs confirmed → Bloque 5 UNLOCKED
 ```
 
 **Ejemplo correcto con Cerrajeros Madrid 24h**
@@ -997,7 +1292,7 @@ Ver §4 sub-sección 13.14 — Bloque 4 cerrado, sistema completo, Bloque 5 desb
 **Regla final**
 
 ```text
-Bloque 4 cerrado solo cuando los 3 pasos (11+12+13) están confirmed = 40 outputs nuevos del Bloque 4.
+Bloque 4 cerrado solo cuando los 3 pasos (11+12+13) están confirmed = 45 outputs nuevos del Bloque 4.
 ```
 
 **Validación operativa**
@@ -1053,7 +1348,7 @@ Aplicar al final de Paso 13. Cruce con outputs upstream Bloques 1-3.
 |---|---|---|---|---|
 | 13.1 | ← Bloques 1-4 (todos los outputs) | **SOP completo del sistema** = documento maestro 11 secciones para Cerrajeros | Componer 11 secciones referenciando outputs upstream + outputs 13.2-13.14. **Fuente:** GMB Crush. | confirmed |
 | 13.2 | ← Paso-01 1.X + Paso-02 2.X + Paso-08 8.X + Paso-12 12.10 | **Resumen ejecutivo** = 15 campos rellenos (Cliente, Sector, Main City, Status, Total URLs, etc.) | Plantilla con placeholders rellenados desde outputs upstream. **Fuente:** GMB Crush. | confirmed |
-| 13.3 | ← Bloques 1-4 (estructura) | **Workflow detallado** = 13 pasos × outputs counts (177 outputs total) | Compilar desde §5 de los 13 a-docs anteriores. **Fuente:** GMB Crush. | confirmed |
+| 13.3 | ← Bloques 1-4 (estructura) | **Workflow detallado** = 13 pasos × outputs counts (182 outputs total) | Compilar desde §5 de los 13 a-docs anteriores. **Fuente:** GMB Crush. | confirmed |
 | 13.4 | — | **Estructura de carpetas y archivos** = árbol con 4 Bloques + carpetas 01/02 + archivos | Captura del filesystem + documentar convención. **Fuente:** GMB Crush. | confirmed |
 | 13.5 | ← Paso-03 3.5 + Paso-08 8.14 + Paso-09 9.7 | **Inventario URL final** = 29 URLs (28 SEO + 1 aux) con score+tier+phase+QA | Join de las matrices de los pasos upstream en una tabla consolidada. **Fuente:** GMB Crush. | confirmed |
 | 13.6 | ← Bloques 1-3 (todas las reglas) + Paso-12 12.8 | **15 Reglas No Negociables** = aplicadas con éxito en el cluster | Compilar desde Paso-12 12.8 (14 reglas) + añadir 15ª "fuente única de verdad". **Fuente:** GMB Crush. | OK |
@@ -1064,7 +1359,7 @@ Aplicar al final de Paso 13. Cruce con outputs upstream Bloques 1-3.
 | 13.11 | — | **Sistema como fuente única de verdad** = SOP de Cerrajeros declarado source of truth | Declaración doctrinal embebida en el SOP. **Fuente:** GMB Crush. | OK |
 | 13.12 | ← Paso-09 9.7 + 13.10 | **Validación cluster ready for GBP** = pendiente (a completar tras Phase 1-3) | Cruzar 7 checks contra outputs upstream. **Fuente:** GMB Crush. | OK (pendiente ejecución) |
 | 13.13 | ← 13.8 | **Validación tracking configurado** = 3/4 ✓ (GMB Grid esperando Paso 14) | Auditar cada herramienta del stack. **Fuente:** GMB Crush. | OK (pendiente ejecución) |
-| 13.14 | ← Paso-11 + Paso-12 + Paso-13 | **Cierre de Bloque 4** = 40 outputs nuevos confirmed; Bloque 5 UNLOCKED | Validación de los 3 pasos del Bloque 4. **Fuente:** GMB Crush. | OK |
+| 13.14 | ← Paso-11 + Paso-12 + Paso-13 | **Cierre de Bloque 4** = 45 outputs nuevos confirmed; Bloque 5 UNLOCKED | Validación de los 3 pasos del Bloque 4. **Fuente:** GMB Crush. | OK |
 
 # Bloque IV — Fuentes Internas GMB Crush usadas
 
