@@ -8,22 +8,28 @@
 
 <!-- ej. Cerrajeros Madrid 24h -->
 
+`Aeroterm`
+
 
 ## 2. Qué hace (descripción corta del servicio)
 
 <!-- ej. cerrajería urgente y apertura de puertas en domicilios y oficinas -->
+
+`Instalación, mantenimiento y sustitución de sistemas de aerotermia en domicilios; servicios de calefacción/climatización + energía solar como complemento.`
 
 
 ## 3. Dirección con código postal
 
 <!-- ej. Calle Rafael Calvo 12, Barrio Almagro, Distrito Chamberí, 28010 Madrid -->
 
+`Marqués de Valdecilla 16, 28002 Madrid` ⚠ barrio/distrito pendiente confirmar (catastro o Google Maps).
+
 > Si el negocio es móvil sin dirección física, declarar `Servicio móvil — Main City: [ciudad]`. La IA infiere Main City desde aquí.
 
 
 ## 4. Estado del GBP
 
-- [ ] Not Created (default web-first)
+- [x] Not Created (default web-first)
 - [ ] Created (sin verificar)
 - [ ] Verified
 - [ ] Pending Verification
@@ -32,6 +38,8 @@
 ## 5. Ciudades donde analizar competidores
 
 <!-- ej. Madrid -->
+
+`Madrid`
 
 > Una o varias. La IA usa estas ciudades como base del Local Pack analysis para extraer Primary Category, servicios core, categorías adicionales, Candidate LCAs y trust signals.
 
